@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DebugToolStaus">
+        <s:complexType />
+      </s:element>
+      <s:element name="DebugToolStausResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DebugToolStausResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JobConfiguration">
+        <s:complexType />
+      </s:element>
+      <s:element name="JobConfigurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JobConfigurationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnonymousPrintingStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="AnonymousPrintingStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AnonymousPrintingStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DebugToolStausSoapIn">
+    <wsdl:part name="parameters" element="tns:DebugToolStaus" />
+  </wsdl:message>
+  <wsdl:message name="DebugToolStausSoapOut">
+    <wsdl:part name="parameters" element="tns:DebugToolStausResponse" />
+  </wsdl:message>
+  <wsdl:message name="JobConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:JobConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="JobConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:JobConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnonymousPrintingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:AnonymousPrintingStatus" />
+  </wsdl:message>
+  <wsdl:message name="AnonymousPrintingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:AnonymousPrintingStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AccountingConfiguratorSoap">
+    <wsdl:operation name="DebugToolStaus">
+      <wsdl:input message="tns:DebugToolStausSoapIn" />
+      <wsdl:output message="tns:DebugToolStausSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JobConfiguration">
+      <wsdl:input message="tns:JobConfigurationSoapIn" />
+      <wsdl:output message="tns:JobConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnonymousPrintingStatus">
+      <wsdl:input message="tns:AnonymousPrintingStatusSoapIn" />
+      <wsdl:output message="tns:AnonymousPrintingStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountingConfiguratorSoap" type="tns:AccountingConfiguratorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DebugToolStaus">
+      <soap:operation soapAction="http://tempuri.org/DebugToolStaus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JobConfiguration">
+      <soap:operation soapAction="http://tempuri.org/JobConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnonymousPrintingStatus">
+      <soap:operation soapAction="http://tempuri.org/AnonymousPrintingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AccountingConfiguratorSoap12" type="tns:AccountingConfiguratorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DebugToolStaus">
+      <soap12:operation soapAction="http://tempuri.org/DebugToolStaus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JobConfiguration">
+      <soap12:operation soapAction="http://tempuri.org/JobConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnonymousPrintingStatus">
+      <soap12:operation soapAction="http://tempuri.org/AnonymousPrintingStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountingConfigurator">
+    <wsdl:port name="AccountingConfiguratorSoap" binding="tns:AccountingConfiguratorSoap">
+      <soap:address location="http://localhost/AccountingPlusAdmin/WebServices/Configurator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AccountingConfiguratorSoap12" binding="tns:AccountingConfiguratorSoap12">
+      <soap12:address location="http://localhost/AccountingPlusAdmin/WebServices/Configurator.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DeviceSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <deviceinfo uuid="SN1722924218MNSHARP MX-5111N" machineid="" osaversion="4.0">
+    <serial-number xmlns="urn:schemas-sc-jp:mfp:osa-1-1">1722924218</serial-number>
+    <modelname xmlns="urn:schemas-sc-jp:mfp:osa-1-1">SHARP MX-5111N</modelname>
+    <location xmlns="urn:schemas-sc-jp:mfp:osa-1-1">Simulation</location>
+    <mac_address xmlns="urn:schemas-sc-jp:mfp:osa-1-1">00:00:00:00:00:00</mac_address>
+    <network_address xmlns="urn:schemas-sc-jp:mfp:osa-1-1">172.29.242.184</network_address>
+  </deviceinfo>
+  <mfpwebservices>
+    <MFP_WEBSERVICE_TYPE name="MFPCoreWS" port="80">/MfpWebServices/MFPCoreWS.asmx</MFP_WEBSERVICE_TYPE>
+  </mfpwebservices>
+  <xmldocacl>
+    <user-info xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <account-id xsi:nil="true" />
+    </user-info>
+    <mfp-feature sys-name="COMMON" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <setting-constraints>
+        <property sys-name="duplex-mode">
+          <setting sys-name="SIMPLEX">false</setting>
+          <setting sys-name="DUPLEX">false</setting>
+        </property>
+        <property sys-name="finishing">
+          <setting sys-name="STAPLE">false</setting>
+          <setting sys-name="PUNCH">false</setting>
+          <setting sys-name="FOLD">false</setting>
+          <setting sys-name="SADDLE-STITCH">false</setting>
+        </property>
+      </setting-constraints>
+    </mfp-feature>
+    <mfp-feature sys-name="PRINT" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <setting-constraints>
+        <property sys-name="color-mode">
+          <setting sys-name="MONOCHROME">false</setting>
+          <setting sys-name="SINGLE-COLOR">false</setting>
+          <setting sys-name="DUAL-COLOR">false</setting>
+          <setting sys-name="TRIPLE-COLOR">false</setting>
+          <setting sys-name="FULL-COLOR">false</setting>
+        </property>
+        <property sys-name="prohibit-toner-save">
+          <setting sys-name="NO-TONER-SAVE">false</setting>
+          <setting sys-name="TONER-SAVE-1">false</setting>
+          <setting sys-name="TONER-SAVE-2">false</setting>
+          <setting sys-name="TONER-SAVE-3">false</setting>
+        </property>
+      </setting-constraints>
+      <sub-feature sys-name="FTP-PULL-PRINT" allow="false" />
+      <sub-feature sys-name="USB-DIRECT-PRINT" allow="false" />
+      <sub-feature sys-name="SMB-PULL-PRINT" allow="false" />
+      <sub-feature sys-name="SEND-WHILE-PRINT" allow="false" />
+      <sub-feature sys-name="CREATE-PC-BROWSE-PDF" allow="false" />
+    </mfp-feature>
+    <mfp-feature sys-name="COPY" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <setting-constraints>
+        <property sys-name="color-mode">
+          <setting sys-name="MONOCHROME">false</setting>
+          <setting sys-name="FULL-COLOR">false</setting>
+          <setting sys-name="SINGLE-COLOR">false</setting>
+          <setting sys-name="DUAL-COLOR">false</setting>
+        </property>
+        <property sys-name="prohibit-toner-save">
+          <setting sys-name="NO-TONER-SAVE">false</setting>
+          <setting sys-name="TONER-SAVE-1">false</setting>
+          <setting sys-name="TONER-SAVE-2">false</setting>
+          <setting sys-name="TONER-SAVE-3">false</setting>
+        </property>
+      </setting-constraints>
+      <sub-feature sys-name="SPECIAL-MODES" allow="false" />
+      <sub-feature sys-name="SEND-WHILE-COPY" allow="false" />
+      <sub-feature sys-name="CREATE-PC-BROWSE-PDF" allow="false" />
+    </mfp-feature>
+    <mfp-feature sys-name="IMAGE-SEND" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <setting-constraints>
+        <property sys-name="color-mode">
+          <setting sys-name="FULL-COLOR">false</setting>
+        </property>
+      </setting-constraints>
+      <sub-feature sys-name="DIRECT-ADDRESS-ENTRY" allow="false">
+        <details>
+          <detail sys-name="EMAIL-SEND">false</detail>
+          <detail sys-name="IFAX-SEND">false</detail>
+          <detail sys-name="FAX-SEND">false</detail>
+          <detail sys-name="NETWORK-FOLDER">false</detail>
+        </details>
+      </sub-feature>
+      <sub-feature sys-name="LOCAL-ADDRESS-BOOK" allow="false">
+        <details>
+          <detail sys-name="EMAIL-SEND">false</detail>
+          <detail sys-name="IFAX-SEND">false</detail>
+          <detail sys-name="FAX-SEND">false</detail>
+          <detail sys-name="NETWORK-FOLDER">false</detail>
+        </details>
+      </sub-feature>
+      <sub-feature sys-name="GLOBAL-ADDRESS-BOOK" allow="false">
+        <details>
+          <detail sys-name="ADDRESS-BOOK-1">false</detail>
+          <detail sys-name="ADDRESS-BOOK-2">false</detail>
+          <detail sys-name="ADDRESS-BOOK-3">false</detail>
+          <detail sys-name="ADDRESS-BOOK-4">false</detail>
+          <detail sys-name="ADDRESS-BOOK-5">false</detail>
+          <detail sys-name="ADDRESS-BOOK-6">false</detail>
+          <detail sys-name="ADDRESS-BOOK-7">false</detail>
+        </details>
+      </sub-feature>
+      <sub-feature sys-name="EMAIL-SEND" allow="false" />
+      <sub-feature sys-name="FAX-SEND" allow="false" />
+      <sub-feature sys-name="FAX2-SEND" allow="false" />
+      <sub-feature sys-name="FAX3-SEND" allow="false" />
+      <sub-feature sys-name="IFAX-SEND" allow="false" />
+      <sub-feature sys-name="FTP-SEND" allow="false" />
+      <sub-feature sys-name="NETWORK-FOLDER" allow="false" />
+      <sub-feature sys-name="PC-FAX-SEND" allow="false" />
+      <sub-feature sys-name="PC-IFAX-SEND" allow="false" />
+      <sub-feature sys-name="REMOTE-PC-SCAN" allow="false" />
+      <sub-feature sys-name="DESKTOP" allow="false" />
+      <sub-feature sys-name="SPECIAL-MODES" allow="false" />
+      <sub-feature sys-name="PROGRAM-REGISTRATION" allow="false" />
+      <sub-feature sys-name="CREATE-PC-BROWSE-PDF" allow="false" />
+    </mfp-feature>
+    <mfp-feature sys-name="SCAN-TO-HDD" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <setting-constraints>
+        <property sys-name="color-mode">
+          <setting sys-name="MONOCHROME">false</setting>
+          <setting sys-name="FULL-COLOR">false</setting>
+          <setting sys-name="DUAL-COLOR">false</setting>
+        </property>
+      </setting-constraints>
+      <sub-feature sys-name="SPECIAL-MODES" allow="false" />
+      <sub-feature sys-name="CREATE-PC-BROWSE-PDF" allow="false" />
+    </mfp-feature>
+    <mfp-feature sys-name="DOC-FILING-PRINT" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <setting-constraints>
+        <property sys-name="color-mode">
+          <setting sys-name="MONOCHROME">false</setting>
+          <setting sys-name="FULL-COLOR">false</setting>
+          <setting sys-name="DUAL-COLOR">false</setting>
+          <setting sys-name="SINGLE-COLOR">false</setting>
+        </property>
+        <property sys-name="prohibit-toner-save">
+          <setting sys-name="NO-TONER-SAVE">false</setting>
+          <setting sys-name="TONER-SAVE-1">false</setting>
+          <setting sys-name="TONER-SAVE-2">false</setting>
+          <setting sys-name="TONER-SAVE-3">false</setting>
+        </property>
+      </setting-constraints>
+      <sub-feature sys-name="SPECIAL-MODES" allow="false" />
+      <sub-feature sys-name="PREVIEW" allow="false" />
+      <sub-feature sys-name="DISPLAY-LOGINUSER-FILES-ONLY" allow="false" />
+    </mfp-feature>
+    <mfp-feature sys-name="SHARP-OSA" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <sub-feature sys-name="STANDARD-APPLICATION" allow="false">
+        <details>
+          <detail sys-name="APPLICATION-1">false</detail>
+          <detail sys-name="APPLICATION-2">false</detail>
+          <detail sys-name="APPLICATION-3">false</detail>
+          <detail sys-name="APPLICATION-4">false</detail>
+          <detail sys-name="APPLICATION-5">false</detail>
+          <detail sys-name="APPLICATION-6">false</detail>
+          <detail sys-name="APPLICATION-7">false</detail>
+          <detail sys-name="APPLICATION-8">false</detail>
+        </details>
+      </sub-feature>
+    </mfp-feature>
+    <mfp-feature sys-name="SETTINGS" allow="false" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <sub-feature sys-name="SYSTEM-SETTINGS" allow="false">
+        <details>
+          <detail sys-name="TOTAL-COUNT">false</detail>
+          <detail sys-name="DISPLAY-CONTRAST">false</detail>
+          <detail sys-name="CLOCK">false</detail>
+          <detail sys-name="KEYBOARD-SELECT">false</detail>
+          <detail sys-name="LIST-PRINT-USER">false</detail>
+          <detail sys-name="BYPASS-TRAY-EXCLUDED">false</detail>
+          <detail sys-name="BYPASS-TRAY">false</detail>
+          <detail sys-name="ADDRESS-CONTROL">false</detail>
+          <detail sys-name="FAX-DATA-RECEIVE">false</detail>
+          <detail sys-name="PRINTER-DEFAULT-SETTINGS">false</detail>
+          <detail sys-name="PCL-SETTINGS">false</detail>
+          <detail sys-name="PS-SETTINGS">false</detail>
+          <detail sys-name="DOC-FILING-CONTROL">false</detail>
+          <detail sys-name="USB-DEVICE-CHECK">false</detail>
+          <detail sys-name="USER-CONTROL">false</detail>
+          <detail sys-name="ENERGY-SAVE">false</detail>
+          <detail sys-name="OPERATION-SETTINGS">false</detail>
+          <detail sys-name="DEVICE-SETTINGS">false</detail>
+          <detail sys-name="COPY-SETTINGS">false</detail>
+          <detail sys-name="NETWORK-SETTINGS">false</detail>
+          <detail sys-name="PRINTER-SETTINGS">false</detail>
+          <detail sys-name="IMAGESEND-OPERATION-SETTINGS">false</detail>
+          <detail sys-name="IMAGESEND-SCANNER-SETTINGS">false</detail>
+          <detail sys-name="IMAGESEND-FAX-SETTINGS">false</detail>
+          <detail sys-name="IMAGESEND-IFAX-SETTINGS">false</detail>
+          <detail sys-name="DOC-FILING-SETTINGS">false</detail>
+          <detail sys-name="LIST-PRINT-ADMIN">false</detail>
+          <detail sys-name="SECURITY-SETTINGS">false</detail>
+          <detail sys-name="PRODUCT-KEY">false</detail>
+          <detail sys-name="ESCP-SETTINGS">false</detail>
+          <detail sys-name="ENABLE-DISABLE-SETTINGS">false</detail>
+          <detail sys-name="FIELD-SUPPORT-SYSTEM">false</detail>
+          <detail sys-name="CHANGE-ADMIN-PASSWORD">false</detail>
+          <detail sys-name="RETENTION-CALLING">false</detail>
+          <detail sys-name="OSA-SETTINGS">false</detail>
+        </details>
+      </sub-feature>
+      <sub-feature sys-name="WEB-SETTINGS" allow="false">
+        <details>
+          <detail sys-name="DISPLAY-DEVICE">false</detail>
+          <detail sys-name="POWER-RESET">false</detail>
+          <detail sys-name="MACHINE-ID">false</detail>
+          <detail sys-name="APPLICATION-SETTINGS">false</detail>
+          <detail sys-name="REGISTER-PRE-SET-TEXT">false</detail>
+          <detail sys-name="EMAIL-ALERT">false</detail>
+          <detail sys-name="JOB-LOG">false</detail>
+          <detail sys-name="PORT-SETTINGS">false</detail>
+          <detail sys-name="STORAGE-BACKUP">false</detail>
+          <detail sys-name="CUSTOM-LINKS">false</detail>
+          <detail sys-name="OPERATION-MANUAL-DOWNLOAD">false</detail>
+        </details>
+      </sub-feature>
+    </mfp-feature>
+  </xmldocacl>
+  <Credentials>
+    <account-id xmlns="urn:schemas-sc-jp:mfp:osa-1-1">ksjhkf4</account-id>
+    <metadata xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <password>nmvfe4837945fn7c9347</password>
+    </metadata>
+  </Credentials>
+  <xmldoclimits>
+    <LIMITS_TYPE sys-name="COPY">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+        <limit sys-name="SINGLE-COLOR">0</limit>
+        <limit sys-name="DUAL-COLOR">0</limit>
+        <limit sys-name="FULL-COLOR">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="PRINT">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+        <limit sys-name="SINGLE-COLOR">0</limit>
+        <limit sys-name="DUAL-COLOR">0</limit>
+        <limit sys-name="TRIPLE-COLOR">0</limit>
+        <limit sys-name="FULL-COLOR">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="LIST-PRINT">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+        <limit sys-name="FULL-COLOR">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="FAX-SEND">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="FAX2-SEND">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="FAX3-SEND">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="I-FAX-SEND">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="SCANNER">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+        <limit sys-name="FULL-COLOR">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="DOC-FILING-PRINT">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+        <limit sys-name="SINGLE-COLOR">0</limit>
+        <limit sys-name="DUAL-COLOR">0</limit>
+        <limit sys-name="FULL-COLOR">0</limit>
+      </property>
+    </LIMITS_TYPE>
+    <LIMITS_TYPE sys-name="SCAN-TO-HDD">
+      <property sys-name="color-mode" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+        <limit sys-name="MONOCHROME">0</limit>
+        <limit sys-name="DUAL-COLOR">0</limit>
+        <limit sys-name="FULL-COLOR">0</limit>
+      </property>
+    </LIMITS_TYPE>
+  </xmldoclimits>
+</DeviceSession>

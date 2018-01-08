@@ -1,0 +1,1867 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s0="urn:schemas-sc-jp:mfp:osa-1-1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="urn:schemas-sc-jp:mfp:osa-1-1" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:schemas-sc-jp:mfp:osa-1-1">
+      <s:element name="Hello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="Credentials" nillable="true" type="s0:CREDENTIALS_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="osa-reg-applications" nillable="true" type="s0:OSA_APPLICATIONS_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="mfp-web-services" nillable="true" type="s0:MFP_WEBSERVICES_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml-doc-acl" nillable="true" type="s0:ACL_DOC_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml-doc-limits" nillable="true" type="s0:LIMITS_DOC_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="counters" nillable="true" type="s0:COUNTERS_TYPE" />
+            <s:element minOccurs="0" maxOccurs="1" name="extensions" type="s0:MFP_EXTENSIONS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DEVICE_INFO_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="serial-number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="modelname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="network_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+        </s:sequence>
+        <s:attribute name="uuid" type="s:string" />
+      </s:complexType>
+      <s:complexType name="CREDENTIALS_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:CREDENTIALS_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="data-type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="metadata" type="s0:OPAQUE_DATA_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CREDENTIALS_BASE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="account-id" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OPAQUE_DATA_TYPE">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="OSA_APPLICATIONS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="osa-reg-app" type="s0:OSA_REG_APPLICATION_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OSA_REG_APPLICATION_TYPE">
+        <s:attribute name="key" type="s:string" />
+        <s:attribute name="name" type="s:string" />
+      </s:complexType>
+      <s:complexType name="MFP_WEBSERVICES_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="web-service" type="s0:MFP_WEBSERVICE_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MFP_WEBSERVICE_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="name" type="s:string" />
+            <s:attribute name="port" type="s:positiveInteger" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ACL_DOC_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_BASE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="mfp-feature" type="s0:ACL_MAIN_FEATURE_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ACL_MAIN_FEATURE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="setting-constraints" type="s0:ArrayOfACL_PROPERTY_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sub-feature" type="s0:ACL_SUB_FEATURE_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+        <s:attribute name="allow" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfACL_PROPERTY_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:ACL_PROPERTY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ACL_PROPERTY_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="setting" type="s0:ACL_SETTING_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+      </s:complexType>
+      <s:complexType name="ACL_SETTING_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:boolean">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ACL_SUB_FEATURE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="details" type="s0:ArrayOfACL_DETAIL_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+        <s:attribute name="allow" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfACL_DETAIL_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="detail" type="s0:ACL_DETAIL_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ACL_DETAIL_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:boolean">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="LIMITS_DOC_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="limits" type="s0:LIMITS_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LIMITS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="unbounded" name="property" type="s0:PROPERTY_LIMIT_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+      </s:complexType>
+      <s:complexType name="PROPERTY_LIMIT_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="limit" type="s0:LIMIT_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+      </s:complexType>
+      <s:complexType name="LIMIT_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:nonNegativeInteger">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="COUNTERS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="counter" type="s0:COUNTER_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COUNTER_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:nonNegativeInteger">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+            <s:attribute name="at" type="s0:E_POS_MARK_TYPE" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="E_POS_MARK_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="START" />
+          <s:enumeration value="END" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="MFP_EXTENSIONS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="auth-extension" type="s0:AUTH_EXTENSION_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AUTH_EXTENSION_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="data-type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="WSDL_BUILD_NUMBER_TYPE">
+        <s:restriction base="s:string" />
+      </s:simpleType>
+      <s:element name="HelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="set-extensions" type="s0:MFP_EXTENSIONS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="job-type" type="s0:E_MFP_JOB_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="UISessionId" nillable="true" type="s:string" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoginUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="arg" type="s0:GETLOGINUSER_ARG_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="E_MFP_JOB_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="COPY" />
+          <s:enumeration value="PRINT" />
+          <s:enumeration value="SCAN" />
+          <s:enumeration value="DOCFILING" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetLoginUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user-info" type="s0:USERINFO_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USERINFO_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="metadata" type="s0:ArrayOfPROPERTY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OSA_JOB_ID_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="job-type" type="s0:E_MFP_JOB_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="UISessionId" type="s:string" />
+        </s:sequence>
+        <s:attribute name="uid" type="s:string" />
+      </s:complexType>
+      <s:element name="Security" type="s0:SECURITY_SOAPHEADER_TYPE" />
+      <s:complexType name="SECURITY_SOAPHEADER_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="license-key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s0:CREDENTIALS_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelJobResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteJobResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseJobResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="Subscribe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="event-type" type="s0:E_EVENT_ID_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="sinkURL" type="s0:ACCESS_POINT_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="action" type="s:boolean" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="E_EVENT_ID_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="ON_JOB_CREATE" />
+          <s:enumeration value="ON_JOB_EXECUTE" />
+          <s:enumeration value="ON_JOB_CANCEL" />
+          <s:enumeration value="ON_JOB_CLOSE" />
+          <s:enumeration value="ON_JOB_STARTED" />
+          <s:enumeration value="ON_JOB_COMPLETED" />
+          <s:enumeration value="ON_USER_LOGOUT" />
+          <s:enumeration value="ON_SYSTEM_ERROR" />
+          <s:enumeration value="ON_HKEY_PRESSED" />
+          <s:enumeration value="ON_MODE_EXITED" />
+          <s:enumeration value="ON_SCAN_COMPLETED" />
+          <s:enumeration value="ON_FILE_TRANSFERRED" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ACCESS_POINT_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="URLType" type="s0:E_ADDRESSPOINT_TYPE" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="E_ADDRESSPOINT_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="EMAIL" />
+          <s:enumeration value="SOAP" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SubscribeResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="Event">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="event-data" type="s0:EVENT_DATA_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EVENT_DATA_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="details" type="s0:DETAILS_ABSTRACT_BASE_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DETAILS_ABSTRACT_BASE_TYPE" abstract="true" />
+      <s:complexType name="DETAILS_ON_JOB_COMPLETED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="inserted-elements" type="s0:ArrayOfINSERTED_ELEMENT_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="JobResults" type="s0:JOB_RESULTS_ABSTRACT_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfINSERTED_ELEMENT_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:INSERTED_ELEMENT_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="INSERTED_ELEMENT_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="name" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="JOB_RESULTS_ABSTRACT_TYPE" abstract="true" />
+      <s:complexType name="JOB_RESULTS_BASE_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_RESULTS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="mfp-job-id" type="s0:MFP_JOB_ID_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="job-mode" type="s0:JOB_MODE_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="job-status" type="s0:JOB_STATUS_TYPE" />
+              <s:element minOccurs="1" maxOccurs="2" name="timestamp" type="s0:TDSTAMP_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_BASE_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="properties" type="s0:ArrayOfPROPERTY_SET_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MFP_JOB_ID_TYPE">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element name="session-id" type="s:string" />
+            <s:element name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JOB_MODE_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s0:E_JOB_STATUS_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="details" type="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="E_JOB_STATUS_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="READY" />
+          <s:enumeration value="QUEUED" />
+          <s:enumeration value="STARTED" />
+          <s:enumeration value="CANCELED" />
+          <s:enumeration value="SUSPENDED" />
+          <s:enumeration value="FINISHED" />
+          <s:enumeration value="ERROR" />
+          <s:enumeration value="SCANNED" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="JOB_STATUS_DETAILS_ABSTRACT_TYPE" abstract="true" />
+      <s:complexType name="JOB_STATUS_DETAILS_STARTED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="started_at" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="errorList" type="s0:ArrayOfERROR_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfERROR_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="error" type="s0:ERROR_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ERROR_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="severity" type="s0:E_OSA_ERROR_SEVERITY_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="code" type="s0:E_OSA_ERROR_MAINCODE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub-errorList" type="s0:ArrayOfSUB_ERROR_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="E_OSA_ERROR_SEVERITY_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="FATAL" />
+          <s:enumeration value="OPERATIONAL" />
+          <s:enumeration value="WARNING" />
+          <s:enumeration value="INFO" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="E_OSA_ERROR_MAINCODE_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="OSA_SCAN_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_FEEDSYSTEM_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_TRANSPORTSYSTEM_TROUBLE" />
+          <s:enumeration value="OSA_SYSTEM_TROUBLE" />
+          <s:enumeration value="OSA_LIMITS_REACHED" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_TROUBLE" />
+          <s:enumeration value="OSA_TONER_TROUBLE" />
+          <s:enumeration value="OSA_DEVELOPER_TROUBLE" />
+          <s:enumeration value="OSA_OPTIONS_TROUBLE" />
+          <s:enumeration value="OSA_NETWORK_TROUBLE" />
+          <s:enumeration value="OSA_FAX_TROUBLE" />
+          <s:enumeration value="OSA_RIC_TROUBLE" />
+          <s:enumeration value="OSA_FATAL_ERROR_OTHER" />
+          <s:enumeration value="OSA_SCAN_ORG_JAM" />
+          <s:enumeration value="OSA_PRINT_PAPER_JAM" />
+          <s:enumeration value="OSA_SCAN_ORG_NOTDETECTED" />
+          <s:enumeration value="OSA_PRINT_FEEDTRAY" />
+          <s:enumeration value="OSA_PRINT_OUTTRAY_FULL" />
+          <s:enumeration value="OSA_OPERATIONAL_ERROR_OTHER" />
+          <s:enumeration value="OSA_PRINT_TONER_LOW" />
+          <s:enumeration value="OSA_PRINT_PAPER_LOW" />
+          <s:enumeration value="OSA_PRINT_OUTTRAY_NOTEMPTY" />
+          <s:enumeration value="OSA_PRINT_STAPLE" />
+          <s:enumeration value="OSA_SERVICE_REQUIRED_TROUBLE" />
+          <s:enumeration value="OSA_WARNING_OTHER" />
+          <s:enumeration value="OSA_SYS_READY" />
+          <s:enumeration value="OSA_SYS_DOOR_OPEN" />
+          <s:enumeration value="OSA_INFO_OTHER" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfSUB_ERROR_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sub-error" type="s0:SUB_ERROR_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SUB_ERROR_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="code" type="s0:E_OSA_ERROR_SUBCODE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="raw" type="s0:RAW_DATA" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="E_OSA_ERROR_SUBCODE_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="OSA_NO_SUB_ERROR_CODE" />
+          <s:enumeration value="OSA_SCAN_SUB_POWER_TROUBLE" />
+          <s:enumeration value="OSA_SCAN_SUB_CIS_TROUBLE" />
+          <s:enumeration value="OSA_SCAN_SUB_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_SCAN_SUB_CCD_TROUBLE" />
+          <s:enumeration value="OSA_SCAN_SUB_MIRROR_TROUBLE" />
+          <s:enumeration value="OSA_SCAN_SUB_EEPROM_ERROR" />
+          <s:enumeration value="OSA_SCAN_SUB_SERVER_TROUBLE" />
+          <s:enumeration value="OSA_SCAN_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_PRINT_ENG_SUB_POWER_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_SUB_PRINTCONTROLLER_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_SUB_DUPLEXPRINTCONTROLLER_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_SUB_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_PRINT_ENG_TRANSPORTSYSTEM_SUB_SYS1_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_TRANSPORTSYSTEM_SUB_SYS2_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_TRANSPORTSYSTEM_SUB_ROLLER_TROUBLE" />
+          <s:enumeration value="OSA_PRINT_ENG_TRANSPORTSYSTEM_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_SYSTEM_SUB_MEMORYFULL_TROUBLE" />
+          <s:enumeration value="OSA_SYSTEM_SUB_HDD_TROUBLE" />
+          <s:enumeration value="OSA_SYSTEM_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_SYSDATA_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_HDD_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_CONTROL_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_INCOMPATIBLE_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_SCNPWB_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_PROCESSCONTROLPWB_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_FAN_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_EEPROM_ERROR" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_CHECKSUM_ERROR" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_SRAM_ERROR" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_PCMODEM_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_CONTROL_SYSTEM_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_MC_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_LASER_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_LSU_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_INCOMPATIBLE_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_THERMISTER_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_HR_HIGHTEMP_DETECTION" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_EEPROM_ERROR" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_CHECKSUM_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_FUSING_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_MOTOR_TROUBLE" />
+          <s:enumeration value="OSA_PROCESS_CONTROL_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_TONER_SUB_CARTRIDGE_TROUBLE" />
+          <s:enumeration value="OSA_TONER_SUB_SUPPLY_ABNORMALITY_TROUBLE" />
+          <s:enumeration value="OSA_TONER_SUB_CRUM_ERROR" />
+          <s:enumeration value="OSA_TONER_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_DEVELOPER_SUB_CARTRIDGE_TROUBLE" />
+          <s:enumeration value="OSA_DEVELOPER_SUB_DRUM_CARTRIDGE_TROUBLE" />
+          <s:enumeration value="OSA_DEVELOPER_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_OPTION_SUB_FINISHER_TROUBLE" />
+          <s:enumeration value="OSA_OPTION_SUB_STAPLER_TROUBLE" />
+          <s:enumeration value="OSA_OPTION_SUB_PUSHER_MOTOR_TROUBLE" />
+          <s:enumeration value="OSA_OPTION_SUB_SADDLE_TROUBLE" />
+          <s:enumeration value="OSA_OPTION_SUB_PUNCH_TROUBLE" />
+          <s:enumeration value="OSA_OPTION_SUB_INSERTER_TROUBLE" />
+          <s:enumeration value="OSA_OPTION_SUB_EEPROM_ERROR" />
+          <s:enumeration value="OSA_OPTION_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_NETWORK_SUB_NIC_TROUBLE" />
+          <s:enumeration value="OSA_NETWORK_SUB_SERVER_ERROR" />
+          <s:enumeration value="OSA_NETWORK_SUB_NIC_TIMEOUT" />
+          <s:enumeration value="OSA_NETWORK_SUB_INVALID_FTPACCOUNT" />
+          <s:enumeration value="OSA_NETWORK_SUB_INVALID_FTPDIRECTORY" />
+          <s:enumeration value="OSA_NETWORK_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_FAX_SUB_FAXBOARD_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_FAXBOX_INCOMPATIBLE_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_FAXMODEM_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_FAXBATTERY_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_FAXCOMMU_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_EXPANSION_FLASH_MEMORY_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_IFAX_SERVER_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_IFAX_MEMORY_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_IFAX_DATA_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_IFAX_INVALIDACCOUNT_TROUBLE" />
+          <s:enumeration value="OSA_FAX_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_RIC_SUB_COMMU_TROUBLE" />
+          <s:enumeration value="OSA_RIC_SUB_TROUBLE_OTHER" />
+          <s:enumeration value="OSA_PRINT_FEEDTRAY_SUB_EMPTY" />
+          <s:enumeration value="OSA_PRINT_FEEDTRAY_SUB_OPEN" />
+          <s:enumeration value="OSA_PRINT_FEEDTRAY_SUB_ILLEGALSIZEDETECT" />
+          <s:enumeration value="OSA_PRINT_FEEDTRAY_OTHER" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_INVALIDPAPER" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_EMPTY" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_JAM" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_SADDLEEMPTY" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_SADDLE_INVALIDPAPER" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_SADDLEJAM" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_INVALIDPAPEROFFLINE" />
+          <s:enumeration value="OSA_PRINT_STAPLE_SUB_SADDLEINVALIDPAPEROFFLINE" />
+          <s:enumeration value="OSA_SERVICE_REQUIRED_SUB_PART1" />
+          <s:enumeration value="OSA_SERVICE_REQUIRED_SUB_PART2" />
+          <s:enumeration value="OSA_SERVICE_REQUIRED_SUB_PART3" />
+          <s:enumeration value="OSA_SERVICE_REQUIRED_SUB_OTHER" />
+          <s:enumeration value="OSA_SYS_SUB_SCN_READY" />
+          <s:enumeration value="OSA_SYS_SUB_PRINT_ENG_READY" />
+          <s:enumeration value="OSA_SYS_SUB_FAX_READY" />
+          <s:enumeration value="OSA_SYS_SUB_READY_OTHER" />
+          <s:enumeration value="OSA_SYS_SUB_ENGINE_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_MAIN_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_STAPLER_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_DUPLEX_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_SADDLE_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_INSERTER_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_ADU_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_LCC_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_PUNCHER_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_FINISHER_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_SCAN_OC_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_SCAN_SPF_DOOR_OPEN" />
+          <s:enumeration value="OSA_SYS_SUB_DOOR_OPEN_OTHER" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="RAW_DATA">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_FINISHED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="started_at" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="stopped_at" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="errorList" type="s0:ArrayOfERROR_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_ERROR_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="errorList" type="s0:ArrayOfERROR_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_READY_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_SUSPENDED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="errorList" type="s0:ArrayOfERROR_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_CANCELED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="canceled_at" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_QUEUED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="pos_in-queue" type="s:positiveInteger" />
+              <s:element minOccurs="1" maxOccurs="1" name="queue_at" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_STATUS_DETAILS_SCANNED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_STATUS_DETAILS_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="page-count" type="s:positiveInteger" />
+              <s:element minOccurs="1" maxOccurs="1" name="original-source" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TDSTAMP_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:dateTime">
+            <s:attribute name="mark" type="s0:E_TDSTAMP_MARK_TYPE" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="E_TDSTAMP_MARK_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="JOB_START" />
+          <s:enumeration value="JOB_END" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPROPERTY_SET_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_SET_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROPERTY_SET_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="JOB_RESULTS_SCAN_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_RESULTS_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="resources" type="s0:RESOURCE_LIST_SCAN_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RESOURCE_LIST_SCAN_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:RESOURCE_LIST_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="unbounded" name="paper-out" type="s0:RESOURCE_PAPER_TYPE" />
+              <s:element minOccurs="0" maxOccurs="unbounded" name="delivery-info" type="s0:RESOURCE_ACCESSPOINT_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RESOURCE_LIST_ABSTRACT_TYPE" abstract="true" />
+      <s:complexType name="RESOURCE_LIST_COPY_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:RESOURCE_LIST_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="unbounded" name="paper-out" type="s0:RESOURCE_PAPER_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RESOURCE_PAPER_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sheet-count" type="s:positiveInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="invalid-sheet-count" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="2" name="copies-count" type="s0:JOB_COUNT_TYPE" />
+          <s:element minOccurs="0" maxOccurs="2" name="page-count" type="s0:JOB_COUNT_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_SET_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JOB_COUNT_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:nonNegativeInteger">
+            <s:attribute name="at" type="s0:E_JOB_MARK_TYPE" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="E_JOB_MARK_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="reserved" />
+          <s:enumeration value="completed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="RESOURCE_LIST_PRINT_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:RESOURCE_LIST_COPY_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RESOURCE_LIST_DOCFILING_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:RESOURCE_LIST_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="unbounded" name="paper-out" type="s0:RESOURCE_PAPER_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RESOURCE_ACCESSPOINT_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="access-point" type="s0:ACCESS_POINT_ABSTRACT_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="file-info" type="s0:ArrayOfPROPERTY_SET_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ACCESS_POINT_ABSTRACT_TYPE" abstract="true" />
+      <s:complexType name="ACCESS_POINT_FTP_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:ACCESS_POINT_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dest-address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="dest-path" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Security" type="s0:CREDENTIALS_BASE_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ACCESS_POINT_MAILTO_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:ACCESS_POINT_ABSTRACT_TYPE">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="dest-address" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_RESULTS_COPY_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_RESULTS_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="resources" type="s0:RESOURCE_LIST_COPY_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_RESULTS_DOCFILING_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_RESULTS_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="resources" type="s0:RESOURCE_LIST_DOCFILING_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JOB_RESULTS_PRINT_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:JOB_RESULTS_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="resources" type="s0:RESOURCE_LIST_PRINT_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_USER_LOGOUT_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="cause" type="s0:E_LOGOUT_CAUSE_TYPE" />
+              <s:element minOccurs="0" maxOccurs="1" name="last-screen" type="s0:SCREEN_INFO_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="E_LOGOUT_CAUSE_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="HKEY" />
+          <s:enumeration value="TIMEOUT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DETAILS_ON_SYSTEM_ERROR_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="errorList" type="s0:ArrayOfERROR_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_HKEY_PRESSED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="key-id" type="s0:E_MFP_KEY_ID_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="E_MFP_KEY_ID_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="KEY_BW_START" />
+          <s:enumeration value="KEY_COLOR_START" />
+          <s:enumeration value="KEY_COPY" />
+          <s:enumeration value="KEY_IMGSND" />
+          <s:enumeration value="KEY_PRINT" />
+          <s:enumeration value="KEY_DOC_FILING" />
+          <s:enumeration value="KEY_JOB_STATUS" />
+          <s:enumeration value="KEY_CLEAR" />
+          <s:enumeration value="KEY_CLEAR_ALL" />
+          <s:enumeration value="KEY_SPECIAL_FUNCTIONS" />
+          <s:enumeration value="KEY_CUSTOM_SETTINGS" />
+          <s:enumeration value="KEY_PROGRAM" />
+          <s:enumeration value="KEY_STOP" />
+          <s:enumeration value="KEY_HOME" />
+          <s:enumeration value="KEY_OSA" />
+          <s:enumeration value="KEY_MODE" />
+          <s:enumeration value="KEY_OTHER" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DETAILS_ON_JOB_STARTED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="mfp-job-id" type="s0:MFP_JOB_ID_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="job-mode" type="s0:JOB_MODE_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_OSAJOB_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_SCAN_COMPLETED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="mfp-job-id" type="s0:MFP_JOB_ID_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="page-count" type="s:positiveInteger" />
+              <s:element minOccurs="1" maxOccurs="1" name="original-source" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_FILE_TRANSFERRED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="mfp-job-id" type="s0:MFP_JOB_ID_TYPE" />
+              <s:element minOccurs="1" maxOccurs="1" name="filename" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="page-count" type="s:nonNegativeInteger" />
+              <s:element minOccurs="1" maxOccurs="1" name="result" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_JOB_EXECUTE_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ON_OSAJOB_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_JOB_CLOSE_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ON_OSAJOB_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_JOB_CREATE_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ON_OSAJOB_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_JOB_CANCEL_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ON_OSAJOB_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DETAILS_ON_MODE_EXITED_TYPE">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:DETAILS_ABSTRACT_BASE_TYPE" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="EventResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml-doc-acl" type="s0:ACL_DOC_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyUserCredentials">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyUserCredentialsResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="Authorize">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="mfp-job-id" type="s0:MFP_JOB_ID_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_BASE_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="job-settings" type="s0:JOBSETTINGS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JOBSETTINGS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="job-mode" type="s0:JOB_MODE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_SET_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthorizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml-doc-limits" type="s0:LIMITS_DOC_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="xml-doc-acl" nillable="true" type="s0:ACL_DOC_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml-doc-limits" nillable="true" type="s0:LIMITS_DOC_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableDeviceResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobSettableElements">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="arg" type="s0:ARG_SETTABLE_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ARG_SETTABLE_TYPE">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+            <s:element name="ui-job" type="s0:UI_USER_TYPE" />
+            <s:element name="job-type" type="s0:E_MFP_JOB_TYPE" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UI_USER_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="job-type" type="s0:E_MFP_JOB_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="UISessionId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetJobSettableElementsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml-doc-out" type="s0:XML_DOC_DSC_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XML_DOC_DSC_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="metadata" type="s0:ArrayOfMETAELEMENT_DSC_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_DSC_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="complex" type="s0:COMPLEX_DSC_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMETAELEMENT_DSC_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="meta-element" type="s0:METAELEMENT_DSC_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="METAELEMENT_DSC_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="PROPERTY_DSC_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="appInfo" type="s0:ArrayOfELEMENT_CONSTRAINT_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="allowedValueList" type="s0:ArrayOfString" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+        <s:attribute name="isType" type="s0:ELEMENT_VALUE_TYPE_TYPE" use="required" />
+        <s:attribute name="minOccurs" type="s:nonNegativeInteger" />
+        <s:attribute name="maxOccurs" type="s:nonNegativeInteger" />
+      </s:complexType>
+      <s:complexType name="ArrayOfELEMENT_CONSTRAINT_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="hasConstraint" type="s0:ELEMENT_CONSTRAINT_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ELEMENT_CONSTRAINT_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="name" type="s0:ELEMENT_CONSTRAINT_ATTR_TYPE" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="ELEMENT_CONSTRAINT_ATTR_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="minLength" />
+          <s:enumeration value="maxLength" />
+          <s:enumeration value="minValue" />
+          <s:enumeration value="maxValue" />
+          <s:enumeration value="regex" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="allowed" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ELEMENT_VALUE_TYPE_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="bool" />
+          <s:enumeration value="integer" />
+          <s:enumeration value="string" />
+          <s:enumeration value="list" />
+          <s:enumeration value="sequence" />
+          <s:enumeration value="choice" />
+          <s:enumeration value="all" />
+          <s:enumeration value="operation" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="COMPLEX_DSC_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_DSC_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="complex" type="s0:COMPLEX_DSC_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+        <s:attribute name="isType" type="s0:ELEMENT_VALUE_TYPE_TYPE" use="required" />
+        <s:attribute name="minOccurs" type="s:nonNegativeInteger" />
+        <s:attribute name="maxOccurs" type="s:nonNegativeInteger" />
+      </s:complexType>
+      <s:element name="GetTotalCounters">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalCountersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="counters" type="s0:COUNTERS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyReadEnd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyReadEndResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="SetJobElements">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="config-data" type="s0:XML_DOC_SET_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XML_DOC_SET_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_SET_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="complex" type="s0:COMPLEX_SET_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COMPLEX_SET_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_SET_TYPE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="complex" type="s0:COMPLEX_SET_TYPE" />
+        </s:sequence>
+        <s:attribute name="sys-name" type="s:string" use="required" />
+      </s:complexType>
+      <s:element name="SetJobElementsResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="job-status" type="s0:JOB_STATUS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="arg" type="s0:GETJOBRESULTS_ARG1_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GETJOBRESULTS_ARG1_TYPE">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+            <s:element name="at_offset" type="s:integer" />
+            <s:element name="list" type="s0:GETJOBRESULTS_ARG2_TYPE" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GETJOBRESULTS_ARG2_TYPE">
+        <s:sequence>
+          <s:element name="JobId" type="s0:OSA_JOB_ID_TYPE" />
+          <s:element name="number-of-results" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GETLOGINUSER_ARG_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UISessionId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROPERTY_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="property" type="s0:PROPERTY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROPERTY_TYPE">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="sys-name" type="s:string" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:element name="GetJobResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="executed-jobs" type="s0:EXECUTED_JOBS_TYPE" />
+            <s:element minOccurs="0" maxOccurs="1" name="more-results" type="s:boolean" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EXECUTED_JOBS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JobResults" type="s0:JOB_RESULTS_ABSTRACT_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ShowScreen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UISessionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="screen-addr" type="s0:SHOWSCREEN_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SHOWSCREEN_TYPE">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element name="app-screen" type="s:string" />
+            <s:element name="mfp-screen" type="s0:E_MFP_SHOWSCREEN_TYPE" />
+            <s:element name="default-screen" type="s0:SCREEN_INFO_TYPE" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="E_MFP_SHOWSCREEN_TYPE">
+        <s:restriction base="s:string">
+          <s:enumeration value="TOP_LEVEL_SCREEN" />
+          <s:enumeration value="OSA_APPLICATIONS" />
+          <s:enumeration value="LOGIN_SCREEN" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SCREEN_INFO_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="main-mode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sub-mode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="app-address" type="s:anyURI" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ShowScreenResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="arg" type="s0:GETUSERINFO_ARG_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" />
+          <s:attribute name="product-family" type="s:positiveInteger" use="optional" />
+          <s:attribute name="product-version" type="s:string" use="optional" />
+          <s:attribute name="operation-version" type="s:string" use="optional" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GETUSERINFO_ARG_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user-info" type="s0:CREDENTIALS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceSettings">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="device-info" type="s0:DEVICE_INFO_TYPE" />
+            <s:element minOccurs="1" maxOccurs="1" name="device-setting" type="s0:DEVICE_SETTING_TYPE" />
+            <s:element minOccurs="0" maxOccurs="1" name="configuration" type="s0:CONFIGURATION_TYPE" />
+            <s:element minOccurs="0" maxOccurs="1" name="screens" type="s0:SCREENS_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DEVICE_SETTING_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="osa-info" type="s0:ArrayOfPROPERTY_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="system-setting" type="s0:SYSTEM_SETTING_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SCREENS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="screen" type="s0:SCREEN_INFO_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SYSTEM_SETTING_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="auto-clear-setting" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usb-device-driver" type="s0:USB_DEVICE_DRIVER_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="security" type="s0:SECURITY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="USB_DEVICE_DRIVER_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="encryption" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="driver-type" type="s0:ArrayOfPROPERTY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SECURITY_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="port" type="s0:PORT_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="ssl" type="s0:SSL_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PORT_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="server" type="s0:ArrayOfPROPERTY_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="client" type="s0:ArrayOfPROPERTY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SSL_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="encryption-level" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CONFIGURATION_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="hardware" type="s0:ArrayOfPROPERTY_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="software" type="s0:ArrayOfPROPERTY_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetDeviceContext">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UISessionId" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="unbounded" name="property" type="s0:PROPERTY_TYPE" />
+          </s:sequence>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:element name="SetDeviceContextResponse">
+        <s:complexType>
+          <s:attribute name="generic" type="s0:WSDL_BUILD_NUMBER_TYPE" use="required" />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="HelloSoapIn">
+    <part name="parameters" element="s0:Hello" />
+  </message>
+  <message name="HelloSoapOut">
+    <part name="parameters" element="s0:HelloResponse" />
+  </message>
+  <message name="CreateJobSoapIn">
+    <part name="parameters" element="s0:CreateJob" />
+  </message>
+  <message name="CreateJobSoapOut">
+    <part name="parameters" element="s0:CreateJobResponse" />
+  </message>
+  <message name="CreateJobSecurity">
+    <part name="Security" element="s0:Security" />
+  </message>
+  <message name="GetLoginUserSoapIn">
+    <part name="parameters" element="s0:GetLoginUser" />
+  </message>
+  <message name="GetLoginUserSoapOut">
+    <part name="parameters" element="s0:GetLoginUserResponse" />
+  </message>
+  <message name="GetLoginUserSecurity">
+    <part name="Security" element="s0:Security" />
+  </message>
+  <message name="CancelJobSoapIn">
+    <part name="parameters" element="s0:CancelJob" />
+  </message>
+  <message name="CancelJobSoapOut">
+    <part name="parameters" element="s0:CancelJobResponse" />
+  </message>
+  <message name="ExecuteJobSoapIn">
+    <part name="parameters" element="s0:ExecuteJob" />
+  </message>
+  <message name="ExecuteJobSoapOut">
+    <part name="parameters" element="s0:ExecuteJobResponse" />
+  </message>
+  <message name="CloseJobSoapIn">
+    <part name="parameters" element="s0:CloseJob" />
+  </message>
+  <message name="CloseJobSoapOut">
+    <part name="parameters" element="s0:CloseJobResponse" />
+  </message>
+  <message name="SubscribeSoapIn">
+    <part name="parameters" element="s0:Subscribe" />
+  </message>
+  <message name="SubscribeSoapOut">
+    <part name="parameters" element="s0:SubscribeResponse" />
+  </message>
+  <message name="SubscribeSecurity">
+    <part name="Security" element="s0:Security" />
+  </message>
+  <message name="EventSoapIn">
+    <part name="parameters" element="s0:Event" />
+  </message>
+  <message name="EventSoapOut">
+    <part name="parameters" element="s0:EventResponse" />
+  </message>
+  <message name="AuthenticateSoapIn">
+    <part name="parameters" element="s0:Authenticate" />
+  </message>
+  <message name="AuthenticateSoapOut">
+    <part name="parameters" element="s0:AuthenticateResponse" />
+  </message>
+  <message name="NotifyUserCredentialsSoapIn">
+    <part name="parameters" element="s0:NotifyUserCredentials" />
+  </message>
+  <message name="NotifyUserCredentialsSoapOut">
+    <part name="parameters" element="s0:NotifyUserCredentialsResponse" />
+  </message>
+  <message name="AuthorizeSoapIn">
+    <part name="parameters" element="s0:Authorize" />
+  </message>
+  <message name="AuthorizeSoapOut">
+    <part name="parameters" element="s0:AuthorizeResponse" />
+  </message>
+  <message name="EnableDeviceSoapIn">
+    <part name="parameters" element="s0:EnableDevice" />
+  </message>
+  <message name="EnableDeviceSoapOut">
+    <part name="parameters" element="s0:EnableDeviceResponse" />
+  </message>
+  <message name="EnableDeviceSecurity">
+    <part name="Security" element="s0:Security" />
+  </message>
+  <message name="GetJobSettableElementsSoapIn">
+    <part name="parameters" element="s0:GetJobSettableElements" />
+  </message>
+  <message name="GetJobSettableElementsSoapOut">
+    <part name="parameters" element="s0:GetJobSettableElementsResponse" />
+  </message>
+  <message name="GetTotalCountersSoapIn">
+    <part name="parameters" element="s0:GetTotalCounters" />
+  </message>
+  <message name="GetTotalCountersSoapOut">
+    <part name="parameters" element="s0:GetTotalCountersResponse" />
+  </message>
+  <message name="NotifyReadEndSoapIn">
+    <part name="parameters" element="s0:NotifyReadEnd" />
+  </message>
+  <message name="NotifyReadEndSoapOut">
+    <part name="parameters" element="s0:NotifyReadEndResponse" />
+  </message>
+  <message name="SetJobElementsSoapIn">
+    <part name="parameters" element="s0:SetJobElements" />
+  </message>
+  <message name="SetJobElementsSoapOut">
+    <part name="parameters" element="s0:SetJobElementsResponse" />
+  </message>
+  <message name="GetJobStatusSoapIn">
+    <part name="parameters" element="s0:GetJobStatus" />
+  </message>
+  <message name="GetJobStatusSoapOut">
+    <part name="parameters" element="s0:GetJobStatusResponse" />
+  </message>
+  <message name="GetJobResultsSoapIn">
+    <part name="parameters" element="s0:GetJobResults" />
+  </message>
+  <message name="GetJobResultsSoapOut">
+    <part name="parameters" element="s0:GetJobResultsResponse" />
+  </message>
+  <message name="ShowScreenSoapIn">
+    <part name="parameters" element="s0:ShowScreen" />
+  </message>
+  <message name="ShowScreenSoapOut">
+    <part name="parameters" element="s0:ShowScreenResponse" />
+  </message>
+  <message name="ShowScreenSecurity">
+    <part name="Security" element="s0:Security" />
+  </message>
+  <message name="GetUserInfoSoapIn">
+    <part name="parameters" element="s0:GetUserInfo" />
+  </message>
+  <message name="GetUserInfoSoapOut">
+    <part name="parameters" element="s0:GetUserInfoResponse" />
+  </message>
+  <message name="GetDeviceSettingsSoapIn">
+    <part name="parameters" element="s0:GetDeviceSettings" />
+  </message>
+  <message name="GetDeviceSettingsSoapOut">
+    <part name="parameters" element="s0:GetDeviceSettingsResponse" />
+  </message>
+  <message name="GetDeviceSettingsSecurity">
+    <part name="Security" element="s0:Security" />
+  </message>
+  <message name="SetDeviceContextSoapIn">
+    <part name="parameters" element="s0:SetDeviceContext" />
+  </message>
+  <message name="SetDeviceContextSoapOut">
+    <part name="parameters" element="s0:SetDeviceContextResponse" />
+  </message>
+  <portType name="MFPCoreWSSoap">
+    <operation name="Hello">
+      <input message="s0:HelloSoapIn" />
+      <output message="s0:HelloSoapOut" />
+    </operation>
+    <operation name="CreateJob">
+      <input message="s0:CreateJobSoapIn" />
+      <output message="s0:CreateJobSoapOut" />
+    </operation>
+    <operation name="GetLoginUser">
+      <input message="s0:GetLoginUserSoapIn" />
+      <output message="s0:GetLoginUserSoapOut" />
+    </operation>
+    <operation name="CancelJob">
+      <input message="s0:CancelJobSoapIn" />
+      <output message="s0:CancelJobSoapOut" />
+    </operation>
+    <operation name="ExecuteJob">
+      <input message="s0:ExecuteJobSoapIn" />
+      <output message="s0:ExecuteJobSoapOut" />
+    </operation>
+    <operation name="CloseJob">
+      <input message="s0:CloseJobSoapIn" />
+      <output message="s0:CloseJobSoapOut" />
+    </operation>
+    <operation name="Subscribe">
+      <input message="s0:SubscribeSoapIn" />
+      <output message="s0:SubscribeSoapOut" />
+    </operation>
+    <operation name="Event">
+      <input message="s0:EventSoapIn" />
+      <output message="s0:EventSoapOut" />
+    </operation>
+    <operation name="Authenticate">
+      <input message="s0:AuthenticateSoapIn" />
+      <output message="s0:AuthenticateSoapOut" />
+    </operation>
+    <operation name="NotifyUserCredentials">
+      <input message="s0:NotifyUserCredentialsSoapIn" />
+      <output message="s0:NotifyUserCredentialsSoapOut" />
+    </operation>
+    <operation name="Authorize">
+      <input message="s0:AuthorizeSoapIn" />
+      <output message="s0:AuthorizeSoapOut" />
+    </operation>
+    <operation name="EnableDevice">
+      <input message="s0:EnableDeviceSoapIn" />
+      <output message="s0:EnableDeviceSoapOut" />
+    </operation>
+    <operation name="GetJobSettableElements">
+      <input message="s0:GetJobSettableElementsSoapIn" />
+      <output message="s0:GetJobSettableElementsSoapOut" />
+    </operation>
+    <operation name="GetTotalCounters">
+      <input message="s0:GetTotalCountersSoapIn" />
+      <output message="s0:GetTotalCountersSoapOut" />
+    </operation>
+    <operation name="NotifyReadEnd">
+      <input message="s0:NotifyReadEndSoapIn" />
+      <output message="s0:NotifyReadEndSoapOut" />
+    </operation>
+    <operation name="SetJobElements">
+      <input message="s0:SetJobElementsSoapIn" />
+      <output message="s0:SetJobElementsSoapOut" />
+    </operation>
+    <operation name="GetJobStatus">
+      <input message="s0:GetJobStatusSoapIn" />
+      <output message="s0:GetJobStatusSoapOut" />
+    </operation>
+    <operation name="GetJobResults">
+      <input message="s0:GetJobResultsSoapIn" />
+      <output message="s0:GetJobResultsSoapOut" />
+    </operation>
+    <operation name="ShowScreen">
+      <input message="s0:ShowScreenSoapIn" />
+      <output message="s0:ShowScreenSoapOut" />
+    </operation>
+    <operation name="GetUserInfo">
+      <input message="s0:GetUserInfoSoapIn" />
+      <output message="s0:GetUserInfoSoapOut" />
+    </operation>
+    <operation name="GetDeviceSettings">
+      <input message="s0:GetDeviceSettingsSoapIn" />
+      <output message="s0:GetDeviceSettingsSoapOut" />
+    </operation>
+    <operation name="SetDeviceContext">
+      <input message="s0:SetDeviceContextSoapIn" />
+      <output message="s0:SetDeviceContextSoapOut" />
+    </operation>
+  </portType>
+  <binding name="MFPCoreWSSoap" type="s0:MFPCoreWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Hello">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/Hello" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateJob">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/CreateJob" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:CreateJobSecurity" part="Security" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLoginUser">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetLoginUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetLoginUserSecurity" part="Security" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelJob">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/CancelJob" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteJob">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/ExecuteJob" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CloseJob">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/CloseJob" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Subscribe">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/Subscribe" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:SubscribeSecurity" part="Security" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Event">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/Event" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Authenticate">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/Authenticate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="NotifyUserCredentials">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/NotifyUserCredentials" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="NotifyReadEnd">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/NotifyReadEnd" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Authorize">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/Authorize" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="EnableDevice">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/EnableDevice" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:EnableDeviceSecurity" part="Security" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetJobSettableElements">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetJobSettableElements" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTotalCounters">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetTotalCounters" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetJobElements">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/SetJobElements" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetJobStatus">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetJobStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetJobResults">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetJobResults" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ShowScreen">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/ShowScreen" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:ShowScreenSecurity" part="Security" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserInfo">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetUserInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDeviceSettings">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/GetDeviceSettings" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetDeviceSettingsSecurity" part="Security" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetDeviceContext">
+      <soap:operation soapAction="urn:schemas-sc-jp:mfp:osa-1-1/SetDeviceContext" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MFPCoreWS">
+    <port name="MFPCoreWSSoap" binding="s0:MFPCoreWSSoap">
+      <soap:address location="http://localhost/MFPCoreWS/MFPCoreWS.asmx" />
+    </port>
+  </service>
+</definitions>

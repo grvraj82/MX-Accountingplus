@@ -1,0 +1,381 @@
+P { 
+   margin-top:1pt; 
+   margin-bottom:1pt; 
+   text-align:left; 
+   font-size:12pt;  }
+H1 { 
+    margin-top:6.00pt; 
+    margin-bottom:2.00pt; 
+    text-align:left; 
+    font-family:Verdana; 
+    font-size:10pt; 
+    font-weight:bold;  }
+H2 { 
+    margin-top:6.00pt; 
+    margin-bottom:2.00pt; 
+    text-align:left; 
+    font-size:12pt; 
+    font-weight:bold;  }
+H3 { 
+    margin-top:6.00pt; 
+    margin-bottom:2.00pt; 
+    text-align:left; 
+    font-size:12pt; 
+    font-weight:bold;  }
+H4 { 
+    margin-top:6.00pt; 
+    margin-bottom:2.00pt; 
+    text-align:left; 
+    font-size:12pt; 
+    font-weight:bold;  }
+H5 { 
+    margin-top:6.00pt; 
+    margin-bottom:2.00pt; 
+    text-align:left; 
+    font-size:12pt; 
+    font-weight:bold;  }
+H6 { 
+    margin-top:6.00pt; 
+    margin-bottom:2.00pt; 
+    text-align:left; 
+    font-size:12pt; 
+    font-weight:bold;  }
+H6.Heading7 { 
+             margin-top:6.00pt; 
+             margin-bottom:2.00pt; 
+             text-align:left; 
+             font-size:12pt; 
+             font-weight:bold;  }
+H6.Heading8 { 
+             margin-top:6.00pt; 
+             margin-bottom:2.00pt; 
+             text-align:left; 
+             font-size:12pt; 
+             font-weight:bold;  }
+H6.Heading9 { 
+             margin-top:6.00pt; 
+             margin-bottom:2.00pt; 
+             text-align:left; 
+             font-size:12pt; 
+             font-weight:bold;  }
+P.footnote-text { 
+                 margin-top:1pt; 
+                 margin-bottom:1pt; 
+                 text-align:left; 
+                 font-size:10pt;  }
+P.toc-1 { 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:12pt;  }
+P.toc-2 { 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:10pt; 
+         font-variant:small-caps;  }
+P.toc-3 { 
+         margin-left:10.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:10pt; 
+         font-style:italic;  }
+P.toc-4 { 
+         margin-left:20.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:9pt;  }
+P.toc-5 { 
+         margin-left:30.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:9pt;  }
+P.toc-6 { 
+         margin-left:40.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:9pt;  }
+P.toc-7 { 
+         margin-left:50.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:9pt;  }
+P.toc-8 { 
+         margin-left:60.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:9pt;  }
+P.toc-9 { 
+         margin-left:70.00pt; 
+         margin-top:1pt; 
+         margin-bottom:1pt; 
+         text-align:left; 
+         font-size:9pt;  }
+P.index-1 { 
+           margin-left:10.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-heading { 
+                 margin-left:36.00pt; 
+                 margin-top:6.00pt; 
+                 margin-bottom:6.00pt; 
+                 text-align:left; 
+                 font-size:10pt; 
+                 font-weight:bold; 
+                 font-style:italic;  }
+P.index-2 { 
+           margin-left:20.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-3 { 
+           margin-left:30.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-4 { 
+           margin-left:40.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-5 { 
+           margin-left:50.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-6 { 
+           margin-left:60.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-7 { 
+           margin-left:70.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-8 { 
+           margin-left:80.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.index-9 { 
+           margin-left:90.00pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-indent:0; 
+           text-align:left; 
+           font-size:10pt;  }
+P.Normal-Indent { 
+                 margin-left:36.00pt; 
+                 margin-top:1pt; 
+                 margin-bottom:1pt; 
+                 text-align:left; 
+                 font-size:12pt;  }
+P.Tip-Note-Heading { 
+                    margin-top:6.00pt; 
+                    margin-bottom:1pt; 
+                    text-align:left; 
+                    font-size:12pt; 
+                    font-weight:bold;  }
+P.Tip-Note-Text { 
+                 margin-left:15.10pt; 
+                 margin-top:1pt; 
+                 margin-bottom:1pt; 
+                 text-align:left; 
+                 font-size:12pt;  }
+P.Tip-Note-Text-Bulleted { 
+                          margin-left:15.10pt; 
+                          margin-top:1pt; 
+                          margin-bottom:1pt; 
+                          text-indent:0; 
+                          text-align:left; 
+                          font-size:12pt;  }
+P.Topic-Text-Bulleted { 
+                       margin-left:15.10pt; 
+                       margin-top:1pt; 
+                       margin-bottom:1pt; 
+                       text-indent:0; 
+                       text-align:left; 
+                       font-size:12pt;  }
+P.Topic-Text-Indent { 
+                     margin-left:15.10pt; 
+                     margin-top:1pt; 
+                     margin-bottom:1pt; 
+                     text-align:left; 
+                     font-size:12pt;  }
+P.Topic-Text-Numbered { 
+                       margin-left:15.10pt; 
+                       margin-top:1pt; 
+                       margin-bottom:1pt; 
+                       text-indent:0; 
+                       text-align:left; 
+                       font-size:12pt;  }
+P.Topic-Text-Onestep { 
+                      margin-left:15.10pt; 
+                      margin-top:1pt; 
+                      margin-bottom:1pt; 
+                      text-indent:0; 
+                      text-align:left; 
+                      font-size:12pt;  }
+P.Body-Text { 
+             margin-left:18.00pt; 
+             margin-top:1pt; 
+             margin-bottom:4.00pt; 
+             text-align:left; 
+             line-height:13.50pt; 
+             font-family:Times; 
+             font-size:11pt; 
+             color:black;  }
+P.Block-Text { 
+              margin-top:1pt; 
+              margin-bottom:1pt; 
+              text-align:left; 
+              font-size:12pt;  }
+P.Bullet { 
+          margin-left:48.50pt; 
+          margin-top:1pt; 
+          margin-bottom:1pt; 
+          text-indent:0; 
+          text-align:left; 
+          font-size:12pt;  }
+P.caption { 
+           margin-left:7.20pt; 
+           margin-right:7.20pt; 
+           margin-top:1pt; 
+           margin-bottom:1pt; 
+           text-align:left; 
+           font-size:12pt; 
+           font-weight:bold;  }
+P.TableText { 
+             margin-top:4.00pt; 
+             margin-bottom:5.00pt; 
+             text-align:left; 
+             line-height:11.00pt; 
+             font-family:Times; 
+             font-size:10pt; 
+             color:black;  }
+P.NUMLST { 
+          margin-left:36.00pt; 
+          margin-top:1pt; 
+          margin-bottom:4.00pt; 
+          text-indent:0; 
+          text-align:left; 
+          line-height:13.50pt; 
+          font-family:Times; 
+          font-size:11pt; 
+          color:black;  }
+P.GLSRYWORD { 
+             margin-left:18.00pt; 
+             margin-top:1pt; 
+             margin-bottom:2.00pt; 
+             text-align:left; 
+             line-height:16.00pt; 
+             font-family:Helvetica; 
+             font-size:11pt; 
+             color:black; 
+             font-weight:bold;  }
+P.header { 
+          margin-top:1pt; 
+          margin-bottom:1pt; 
+          text-align:left; 
+          font-family:Helvetica; 
+          font-size:9pt; 
+          color:black;  }
+P.TableHeader { 
+               margin-top:3.00pt; 
+               margin-bottom:3.00pt; 
+               text-align:center; 
+               font-size:11pt; 
+               font-weight:bold;  }
+P.Body-Text-2 { 
+               margin-top:1pt; 
+               margin-bottom:1pt; 
+               text-align:left; 
+               font-family:Arial; 
+               font-size:8pt;  }
+P.TBLHED { 
+          margin-top:1pt; 
+          margin-bottom:3.00pt; 
+          text-align:left; 
+          line-height:9.00pt; 
+          font-family:Helvetica; 
+          font-size:9pt; 
+          color:black; 
+          font-weight:bold; 
+          font-variant:small-caps;  }
+P.List-3 { 
+          margin-left:54.00pt; 
+          margin-top:3.00pt; 
+          margin-bottom:1pt; 
+          text-indent:0; 
+          text-align:left; 
+          font-family:Times; 
+          font-size:11pt;  }
+P.Code { 
+        margin-top:6.00pt; 
+        margin-bottom:6.00pt; 
+        text-align:left; 
+        font-family:Courier New; 
+        font-size:11pt;  }
+P.Normal-(Web)   { 
+                  margin-left:18.00pt; 
+                  margin-top:3.00pt; 
+                  margin-bottom:1pt; 
+                  text-align:left; 
+                  font-size:12pt;  }
+P.DocInfo { 
+           margin-left:18.00pt; 
+           margin-top:3.00pt; 
+           margin-bottom:3.00pt; 
+           text-align:left; 
+           font-family:Times New Roman; 
+           font-size:11pt;  }
+P.Body-Text-Indent-2 { 
+                      margin-left:27.00pt; 
+                      margin-top:1pt; 
+                      margin-bottom:1pt; 
+                      text-indent:0; 
+                      text-align:left; 
+                      font-family:Arial; 
+                      font-size:8pt;  }
+P.Body-Text-Indent-3 { 
+                      margin-left:72.00pt; 
+                      margin-top:1pt; 
+                      margin-bottom:1pt; 
+                      text-align:left; 
+                      font-family:Arial; 
+                      font-size:8pt;  }
+BODY { 
+      font-size:12pt; 
+      background-color:white;  }
+ol ol { 
+       margin-top:1px;  }
+ol ul { 
+       margin-top:1px;  }
+ul ul { 
+       margin-top:1px;  }
+ul ol { 
+       margin-top:1px;  }

@@ -1,0 +1,400 @@
+<%--Web Admin Skin--%>
+<asp:Image runat="server" SkinID="masterImgClose" ImageUrl="Images/Error_close.png" />
+<asp:Image runat="server" SkinID="LogonImgBeta" ImageUrl="Images/Beta1.png" />
+<asp:Image runat="server" SkinID="LogonImgRequired" ImageUrl="Images/Required.gif" />
+<asp:Image runat="server" SkinID="LogonimgLoginuser" ImageUrl="Images/login_user.png" />
+<asp:Image runat="server" SkinID="ManageusersimgUploadCsv" ImageUrl="Images/Import_User.png" />
+<asp:Image runat="server" SkinID="ManageusersimgImageButtonSyncLdap" ImageUrl="Images/Import_User.png" />
+<asp:Image runat="server" SkinID="ManageusersimgSplit"  ImageUrl="Images/Split.png" />
+<asp:Image runat="server" SkinID="InnerpageimgMenusplit1" ImageUrl="Images/Menu_split1.png" />
+<asp:Image runat="server" SkinID="InnerpageimgImgClose" ImageUrl="Images/Error_close.png" />
+<asp:Image runat="server" SkinID="InnerpageImgDisplayType" ImageUrl="Images/Stop-32.png" />
+<asp:Image runat="server" SkinID="UpdateProgress" ImageUrl="Images/updateProgress.gif" />
+<asp:Image runat="server" SkinID="ImageLoader" ImageUrl="Images/Progress.gif" />
+<asp:Image runat="server" SkinID="ImageError" CssClass="ImageError" ImageUrl="Images/Stop.png" />
+<asp:Image runat="server" ImageUrl="Images/Number_Up.png" SkinID="CopiesDown"/>
+<asp:Image runat="server" ImageUrl="Images/Number_down.png" SkinID="CopiesUp"/>
+<asp:Image runat="server" ImageUrl="Images/SysOverViewIcon.png" height="20" width="20" ToolTip = "AccountingPlus System Overview" border="0" SkinID="SystemOverviewIcon"  />
+<asp:Image runat="server" ImageUrl="Images/Stop.png" SkinID="StopImage" height="128px" width="128px"  ToolTip="Error" />
+
+<asp:Image runat="server" SkinID="HeadingLeft"  ImageUrl="Images/HeadingLeft_Bg.png" border="0" vspace="5" />
+<asp:Image runat="server" SkinID="HeadingRight"  ImageUrl="Images/HeadingRight_Bg.png" border="0" vspace="5" />
+
+<asp:ImageButton  runat="server" SkinID="AddItem" ImageUrl="Images/Add_General.png" />
+<asp:ImageButton  runat="server" SkinID="RemoveItem" ImageUrl="Images/Remove_General.png" />
+<asp:ImageButton  runat="server" SkinID="AddToList" ImageUrl="Images/AddToList.png" />
+<asp:ImageButton  runat="server" SkinID="SearchList" ImageUrl="Images/SearchList.png" />
+<asp:ImageButton  runat="server" SkinID="CancelAction" ImageUrl="Images/CancelAction.png" />
+
+<asp:Table runat="server" CssClass="Grid" GridLines="Horizontal" SkinID="Grid" />
+<asp:Table runat="server" CssClass="DoubleHeaderGrid" GridLines="Both" SkinID="DoubleHeaderGrid" />
+
+<asp:Image runat="server" SkinID="SysOverview"  ImageUrl="Images/SysOverView.png" />
+
+<asp:ImageButton SkinID="MoveLeft" runat="server" ImageUrl="Images/MoveLeft.png"/>
+<asp:ImageButton SkinID="MoveRight" runat="server" ImageUrl="Images/MoveRight.png"/>
+<asp:ImageButton SkinID="InnerPageHiddenMenu" ImageUrl="Images/Hidden_Menu.png" runat="server" />
+<asp:ImageButton SkinID="InnerPageShowMenu" ImageUrl="Images/Show_Menu.png" runat="server"/>
+<asp:ImageButton SkinID="CancelSearch" ImageUrl="Images/CancelSearch.png" runat="server"/>
+
+
+<asp:ImageButton runat="server" SkinID="ImportUsersGoBack" ImageUrl="Images/back.png" />
+<asp:ImageButton runat="server" SkinID="ManageusersimgUploadCsv" ImageUrl="Images/Import_User.png" />
+<asp:ImageButton runat="server" SkinID="ManageusersimgImageButtonSyncLdap" ImageUrl="Images/Import_User.png" />
+<asp:ImageButton  runat="server" SkinID="InnerpageimgHome" ImageUrl="Images/Folder-Home-icon.png" />
+<asp:ImageButton  runat="server" SkinID="InnerpageimgAbout" ImageUrl="Images/about-icon.png" />
+<asp:ImageButton  runat="server" SkinID="InnerpageimgLogout" ImageUrl="Images/Log-Out-icon.png" />
+<asp:ImageButton runat="server" SkinID="ManageusersimgAddusers" ImageUrl="Images/Add_User.png" />
+<asp:ImageButton runat="server" SkinID="ManageusersimgEditusers" ImageUrl="Images/Edit_Use.png" />
+<asp:ImageButton runat="server" SkinID="ManageusersimgResetusers" ImageUrl="Images/Unlock_User.png" />
+<asp:ImageButton runat="server" SkinID="ManageusersimgImageButtonDelete" ImageUrl="Images/Delete_User.png" />
+<asp:ImageButton runat="server" SkinID="ManageMFPSimgadd" ImageUrl="Images/d_add.png" />
+<asp:ImageButton runat="server" SkinID="ManageMFPSimgedit" ImageUrl="Images/D_edit.png" />
+<asp:ImageButton runat="server" SkinID="ManageMFPSimgCancel" ImageUrl="Images/Add_User.png" />
+<asp:ImageButton runat="server" SkinID="ManageMFPSimgDelete" ImageUrl="Images/d_delete.png" />
+<asp:ImageButton runat="server" SkinID="ManageMFPSimgDiscover" ImageUrl="Images/d_Discover.png" />
+<asp:ImageButton runat="server" SkinID="ManageMFPSimgRefresh" ImageUrl="Images/Refreshicon.png" />
+<asp:ImageButton runat="server" SkinID="JoblogimgExcel" ImageUrl="Images/XLS.png" />
+<asp:ImageButton runat="server" SkinID="JoblogimgCSV" ImageUrl="Images/CSV.png" />
+<asp:ImageButton runat="server" SkinID="JoblogimgXML" ImageUrl="Images/XML.png" />
+<asp:ImageButton runat="server" SkinID="JoblogimgClear" ImageUrl="Images/Clear.png" />
+<asp:ImageButton runat="server" SkinID="JoblogimgRefresh" ImageUrl="Images/Refreshicon.png" />
+<asp:ImageButton  runat="server" SkinID="IBAdd" ImageUrl="Images/add.png" />
+<asp:ImageButton  runat="server" SkinID="IBEdit" ImageUrl="Images/edit.png" />
+<asp:ImageButton  runat="server" SkinID="IBDelete" ImageUrl="Images/delete.png" />
+<asp:ImageButton  runat="server" SkinID="UpArrow" ImageUrl="Images/Up-arrow-32.png" />
+<asp:ImageButton  runat="server" SkinID="DownArrow" ImageUrl="Images/Down-arrow-32.png" />
+<asp:ImageButton  runat="server" SkinID="DeleteArrow" ImageUrl="Images/Delete-32.png" />
+<asp:ImageButton  runat="server" SkinID="Search" ImageUrl="Images/Search.png" />
+<asp:ImageButton  runat="server" SkinID="SearchSmall" ImageUrl="Images/Search_Small.png" />
+
+<asp:TableHeaderRow runat="server" CssClass="Grid_topbg" SkinID="TableRow"  />
+<asp:TableRow runat="server" CssClass="DoubleRowHeader" SkinID="TableDoubleRow"  />
+<asp:Menu runat="server" CssClass="NavigationMenu" SkinID="NavigationMenu">
+    <StaticSelectedStyle CssClass="SotrBox_Selected"></StaticSelectedStyle>
+    <StaticMenuItemStyle Height="30px" Width="5px" HorizontalPadding="5px"
+        VerticalPadding="2px"></StaticMenuItemStyle>
+    <DynamicMenuItemStyle ForeColor="Black" HorizontalPadding="5px" VerticalPadding="2px" />
+    <StaticHoverStyle CssClass="SotrBox_1" ForeColor="Black" />
+</asp:menu>
+
+<asp:Label SkinID="TotalResource" ForeColor="Black" Font-Bold="false" CssClass="TextWrapping" Font-Italic="false" Font-Size="10" runat="server" />
+<asp:Label SkinID="NormalFontLabel" runat="server" CssClass="Normal_FontLabel" />
+
+<asp:Label SkinID="RegisterFontLabel" runat="server" CssClass="RegisterLabels" />
+<asp:Label SkinID="NormalFontLabel_bold" runat="server" CssClass="Normal_FontLabel_bold" />
+<asp:Label SkinID="MFPNormalFontLabel" runat="server" CssClass="MFPNormal_FontLabel" />
+<asp:DropDownList SkinID="DropDownPage"  class="visited2" runat="server" />
+
+ <asp:RadioButton SkinID="RadioFontLabel" CssClass="Normal_FontLabel_bold"  runat="server" />
+
+<%--End of Web Admin Skin--%>
+
+
+<%--MFP Skins--%>
+
+<asp:Image runat="server" SkinID="MFPLoginUser" ImageUrl="Images/LoginUser1.png" />
+<asp:Image runat="server" SkinID="MFPLoginFailureIndicator" ImageUrl="Images/FailureIndicator.png" />
+<asp:Image runat="server" SkinID="MFPLoginErrorClose" ImageUrl="Images/Error_close.png" />
+
+<asp:ImageButton runat="server" SkinID="MFPLoginCancel" ImageUrl="Images/Cancel_buttonMfp.png" />
+<asp:ImageButton runat="server" SkinID="MFPLoginLogin" ImageUrl="Images/Login_buttonMFP.png" />
+<asp:ImageButton runat="server" SkinID="MFPLoginManualLogin" ImageUrl="Images/Manual_Login1.png" />
+
+<asp:Label runat="server" CssClass="LabelLoginFont" SkinID="LabelLogon"  />
+
+<%--End of MFP Skins--%>
+
+<%--LogOn MastePage Skins--%>
+<asp:Image runat="server" SkinID="LogOnMasterHelp" ImageUrl="Images/Help.png" />
+<asp:Image runat="server" SkinID="MasterLogonInformation" ImageUrl="Images/information.png" />
+<asp:Image runat="server" SkinID="MasterLogonOk" ImageUrl="Images/ok1.gif" />
+<%--LogOn MastePage Skins End--%>
+
+<%--LogOn  Skins--%>
+<asp:Image runat="server" SkinID="LogonTopLeft" ImageUrl="Images/TopLeft.png" />
+<asp:Image runat="server" SkinID="LogonTopRight" ImageUrl="Images/Top_Right.png" />
+<asp:Image runat="server" SkinID="LoginUserIcon" ImageUrl="Images/Login_UserIcon.png" />
+<asp:Image runat="server" SkinID="LogonRequired" ImageUrl="Images/Required.gif" />
+<asp:Image runat="server" SkinID="LogonLoginUser" ImageUrl="Images/login_user.png" />
+<asp:Image runat="server" SkinID="LogonResetLogin" ImageUrl="Images/ResetLogin.png" />
+
+
+
+<%--LogOn Skins End--%>
+
+
+<%--AddUpdateDevices  Skins--%>
+<asp:ImageButton runat="server" SkinID="DeviceAddImageButtonBack" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="DeviceAddImageButtonSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="DeviceAddImageButtonReset" ImageUrl="Images/Reset.png" />
+<%--End AddUpdateDevices  Skins--%>
+
+<%--AddUsers  Skins--%>
+<asp:ImageButton runat="server" SkinID="AddUsersImageButtonBack" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="AddUsersImageButtonSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="AddUsersImageButtonReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="ManageUserCards" ImageUrl="Images/Manage_User_Cards.png" />
+<asp:ImageButton runat="server" SkinID="DownloadCSV" ImageUrl="Images/CSV download.png" />
+<asp:Image runat="server" SkinID="DownloadCSVFile" ImageUrl="Images/CSV download.png" />
+<asp:ImageButton runat="server" SkinID="HelpUsers" ImageUrl="Images/UsersHelp.png" />
+<%--End AddUsers  Skins--%>
+
+<%--ManageUsers  Skins--%>
+<asp:ImageButton runat="server" SkinID="ManageUsersLockUser" ImageUrl="Images/Lock_User.png" />
+<asp:ImageButton runat="server" SkinID="ManageUsersSettings" ImageUrl="Images/Settings.png" />
+<asp:ImageButton runat="server" SkinID="ManageUsersRefresh" ImageUrl="Images/Refreshicon.png" />
+<asp:ImageButton runat="server" SkinID="ManageUsersAssignUserstoCostCenter" ImageUrl="Images/Assign_Users_to_cost_centre.png" />
+<asp:ImageButton runat="server" SkinID="ManageUsersCostCentertoMFP" ImageUrl="Images/Assign_cost_center_to_MFP.png" />
+<asp:Image runat="server" SkinID="SettingsImageButtonHelp" ImageUrl="Images/Help.Png" />
+
+
+
+
+<%--End ManageUsers  Skins--%>
+
+
+<%--ManageSettings  Skins--%>
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonBack" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonLock" ImageUrl="Images/Language_disable.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonUnLock" ImageUrl="Images/Language_Enable.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonDelete" ImageUrl="Images/Remove_database.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonBackup" ImageUrl="Images/Backup_database.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonRestore" ImageUrl="Images/Restore_database.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonRefresh" ImageUrl="Images/Refreshicon.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonAdd" ImageUrl="Images/WallPaper_Add.png" />
+<asp:ImageButton runat="server" SkinID="SettingsImageButtonWallPaperDelete" ImageUrl="Images/WallPaper_Delete.png" />
+
+<%--End ManageSettings  Skins--%>
+
+<%--ManageDBUploadUsers  Skins--%>
+<asp:ImageButton runat="server" SkinID="DBUploadBackPage" ImageUrl="Images/BackPage.png" />
+<%--End ManageDBUploadUsers  Skins--%>
+
+<%--PermissionsAndLimits  Skins--%>
+<asp:Image runat="server" SkinID="PermessionsAndLimitsCritical" ImageUrl="Images/Critical.png" />
+<asp:Image runat="server" SkinID="PermessionsAndLimitsDownArrow" ImageUrl="Images/down_arrow.png" />
+<asp:ImageButton runat="server" SkinID="PermessionsAndLimitsSettings" ImageUrl="Images/Settings.png" />
+<asp:ImageButton runat="server" SkinID="PermessionsAndLimitsReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="PermessionsAndLimitsSave" ImageUrl="Images/save.png" />
+
+<%--End PermissionsAndLimits  Skins--%>
+
+<%--AssignAccessRights  Skins--%>
+<asp:ImageButton runat="server" SkinID="AssignAccessRightsSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="AssignAccessRightsReset" ImageUrl="Images/Reset.png" />
+
+
+<%--End AssignAccessRights  Skins--%>
+
+<%--ManageDevice  Skins--%>
+<asp:ImageButton runat="server" SkinID="ManageDeviceDisableDevice" ImageUrl="Images/Disable_Device.png" />
+<asp:ImageButton runat="server" SkinID="ManageDeviceEnableDevice" ImageUrl="Images/Enable_Device.png" />
+<asp:ImageButton runat="server" SkinID="ManageDeviceSettings" ImageUrl="Images/Settings.png" />
+<asp:ImageButton runat="server" SkinID="ManageDeviceRegister" ImageUrl="Images/Register02.png" />
+
+<asp:ImageButton runat="server" SkinID="ManageDevicePrinterWithChart" ImageUrl="Images/Printer_with_chart.png" />
+<asp:ImageButton runat="server" SkinID="ManageDeviceMFPGroup" ImageUrl="Images/MFP_Group.png" />
+
+<%--End ManageDevice  Skins--%>
+
+<%--CostCenter  Skins--%>
+<asp:ImageButton runat="server" SkinID="CostCenterBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="CostCenterSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="CostCenterReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="ManageDeviceMFPURLs" ImageUrl="Images/DeviceURLs.png" />
+
+<%--CostCenter Skins End--%>
+
+<%--AssignUsersToGroups  Skins--%>
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsAdd" ImageUrl="Images/add.png" />
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsEdit" ImageUrl="Images/edit.png" />
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsDelete" ImageUrl="Images/delete.png" />
+<asp:ImageButton runat="server" SkinID="AssignUsersToGroupsCancel" ImageUrl="Images/CancelSave.png" />
+<%--AssignUsersToGroups Skins End--%>
+
+<%--AssignMFPsToGroups  Skins--%>
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupssave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupedit" ImageUrl="Images/edit.png" />
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupdelete" ImageUrl="Images/delete.png" />
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupsCancelSave" ImageUrl="Images/CancelSave.png" />
+<asp:ImageButton runat="server" SkinID="AssignMFPsToGroupadd" ImageUrl="Images/add.png" />
+
+<%--AssignMFPsToGroups Skins End--%>
+
+<%--AssignCostProfileToMFPGroups  Skins--%>
+<asp:ImageButton runat="server" SkinID="AssignCostProfileToMFPGroupsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="AssignCostProfileToMFPGroupsReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="AssignCostProfileToMFPGroupssave" ImageUrl="Images/save.png" />
+<%--AssignCostProfileToMFPGroups Skins End--%>
+
+<%--JobList  Skins--%>
+<asp:ImageButton runat="server" SkinID="JobListSettings" ImageUrl="Images/Settings.png" />
+<asp:ImageButton runat="server" SkinID="JobListRefreshicon" ImageUrl="Images/Refreshicon.png" />
+<%--JobList Skins End--%>
+
+
+<%--JobLog  Skins--%>
+<asp:ImageButton runat="server" SkinID="JobLogSettings" ImageUrl="Images/Refreshicon.png" />
+
+
+<%--JobLog Skins End--%>
+
+<%--AuditLog  Skins--%>
+<asp:ImageButton runat="server" SkinID="AuditLogRefreshicon" ImageUrl="Images/Refreshicon.png" />
+<asp:ImageButton runat="server" SkinID="AuditLogSearchPrev" ImageUrl="Images/Search_Prev.png" />
+<asp:ImageButton runat="server" SkinID="AuditLogSearchNext" ImageUrl="Images/Search_Next.png" />
+
+<%--JobLog Skins End--%>
+<%--ReportLog  Skins--%>
+
+
+<%--ReportLog Skins End--%>
+
+<%--SummaryReports  Skins--%>
+<asp:ImageButton runat="server" SkinID="SummaryReportschart" ImageUrl="Images/chart.png" />
+<asp:ImageButton runat="server" SkinID="SummaryReportschartTable" ImageUrl="Images/chart_Table.png" />
+
+
+<%--SummaryReports Skins End--%>
+<%--PriceManger  Skins--%>
+<asp:ImageButton runat="server" SkinID="PriceMangerSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="PriceMangerAdd" ImageUrl="Images/add.png" />
+<asp:ImageButton runat="server" SkinID="PriceMangerEdit" ImageUrl="Images/edit.png" />
+<asp:ImageButton runat="server" SkinID="PriceMangerDelete" ImageUrl="Images/delete.png" />
+<asp:ImageButton runat="server" SkinID="PriceMangerCancel" ImageUrl="Images/CancelSave.png" />
+<asp:ImageButton runat="server" SkinID="PriceMangerAssign_cost_center_to_MFP" ImageUrl="Images/Assign_cost_center_to_MFP.png" />
+
+<%--PriceManger Skins End--%>
+<%--PaperSizes  Skins--%>
+<asp:ImageButton runat="server" SkinID="PaperSizesBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="PaperSizesSave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="PaperSizesReset" ImageUrl="Images/Reset.png" />
+<%--PaperSizes Skins End--%>
+
+<%--AssignUserGroupsToMFPGroups  Skins--%>
+<asp:ImageButton runat="server" SkinID="AssignUserGroupsToMFPGroupsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="AssignUserGroupsToMFPGroupssave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="AssignUserGroupsToMFPGroupsReset" ImageUrl="Images/Reset.png" />
+
+<%--AssignUserGroupsToMFPGroups Skins End--%>
+
+<%--AutoRefill  Skins--%>
+<asp:Image runat="server" SkinID="AutoRefilldownarrow" ImageUrl="Images/down_arrow.png" />
+<%--AutoRefill Skins End--%>
+
+<%--DiscoverDevices  Skins--%>
+
+<asp:ImageButton runat="server" SkinID="DiscoverDevicesBackPage" ImageUrl="Images/BackPage.png" />
+<asp:Image runat="server" SkinID="DiscoveryStatusProcessing" ImageUrl="Images/Processing.gif" />
+<%--DiscoverDevices Skins End--%>
+
+
+<%--ImportLdapUsers  Skins--%>
+<asp:ImageButton runat="server" SkinID="ImportLdapUsersBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="ImportLdapUsersReset" ImageUrl="Images/Reset.png" />
+<asp:ImageButton runat="server" SkinID="ImportLdapUsersSettings" ImageUrl="Images/Settings.png" />
+<asp:Image runat="server" SkinID="ImportLdapUsersloading" ImageUrl="Images/loading.gif" />
+
+
+<%--ImportLdapUsers Skins End--%>
+
+<%--JobSettings  Skins--%>
+<asp:ImageButton runat="server" SkinID="JobSettingsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="JobSettingsPrintIMG" ImageUrl="Images/Print_IMG.png" />
+
+
+<%--JobSettings Skins End--%>
+
+<%--Limits  Skins--%>
+<asp:ImageButton runat="server" SkinID="LimitsSettings" ImageUrl="Images/Settings.png" />
+
+
+
+<%--Limits Skins End--%>
+
+<%--ManageDepartments  Skins--%>
+<asp:ImageButton runat="server" SkinID="ManageDepartmentsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="ManageDepartmentssave" ImageUrl="Images/save.png" />
+<asp:ImageButton runat="server" SkinID="ManageDepartmentsReset" ImageUrl="Images/Reset.png" />
+
+<%--ManageDepartments Skins End--%>
+<%--ManageGroups  Skins--%>
+<asp:ImageButton runat="server" SkinID="ManageGroupsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="ManageGroupssave" ImageUrl="Images/ManageGroupssave.png" />
+<asp:ImageButton runat="server" SkinID="ManageGroupsReset" ImageUrl="Images/ManageGroupsReset.png" />
+
+<%--ManageGroups Skins End--%>
+
+<%--ManageLanguages  Skins--%>
+<asp:ImageButton runat="server" SkinID="ManageLanguagesBackPage" ImageUrl="Images/BackPage.png" />
+
+
+<%--ManageLanguages Skins End--%>
+
+<%--ManagePermissions  Skins--%>
+<asp:ImageButton runat="server" SkinID="ManagePermissionsSettings" ImageUrl="Images/Settings.png" />
+
+
+<%--ManagePermissions Skins End--%>
+<%--PrintJobStatus  Skins--%>
+<asp:ImageButton runat="server" SkinID="PrintJobStatusBackPage" ImageUrl="Images/BackPage.png" />
+
+
+<%--PrintJobStatus Skins End--%>
+
+
+<%--UnAuthorisedAccess  Skins--%>
+<asp:ImageButton runat="server" SkinID="UnAuthorisedAccessBackPage" ImageUrl="Images/BackPage.png" />
+
+
+<%--UnAuthorisedAccess Skins End--%>
+
+
+<asp:Image runat="server" SkinID="UnAuthorisedAccessAccessDenined" ImageUrl="Images/AccessDenined.jpg" />
+<asp:Image runat="server" SkinID="ApplicationErrorMessageStop" ImageUrl="Images/Stop.png" />
+<asp:ImageButton runat="server" SkinID="ApplicationActivatorBackPage" ImageUrl="Images/BackPage.png" />
+<asp:ImageButton runat="server" SkinID="FleetMonitorReportsBackPage" ImageUrl="Images/BackPage.png" />
+<asp:Image runat="server" SkinID="FleetMonitorReportsMfp" ImageUrl="Images/Mfp.png" />
+
+<%--FirstLogOn  Skins--%>
+<asp:Image runat="server" SkinID="FirstLogOnTopLeft" ImageUrl="Images/TopLeft.png" />
+<asp:Image runat="server" SkinID="FirstLogOnTopRight" ImageUrl="Images/Top_Right.png" />
+<asp:Image runat="server" SkinID="FirstLogOnLoginUserIcon" ImageUrl="Images/Login_UserIcon.png" />
+<asp:Image runat="server" SkinID="FirstLogOnRequired" ImageUrl="Images/Required.gif" />
+<asp:Image runat="server" SkinID="FirstLogOnLoginUser" ImageUrl="Images/Login_User.png" />
+
+<%--FirstLogOn Skins End--%>
+<%--InnerPage  Skins--%>
+<asp:Image runat="server" SkinID="InnerPageLoadingimg" ImageUrl="Images/Loading_img.gif" />
+<asp:ImageButton runat="server" SkinID="InnerPageHome" ImageUrl="Images/Home.png" />
+<asp:Image runat="server" SkinID="InnerPageHelp" ImageUrl="Images/Help.png" />
+<asp:ImageButton runat="server" SkinID="InnerPageLogOff" ImageUrl="Images/Logout.png" />
+<asp:Image runat="server" SkinID="InnerPageLoginUserICO" ImageUrl="Images/Login_UserICO.png" />
+<asp:Image runat="server" SkinID="InnerPageTopLeft" ImageUrl="Images/TopLeft.png" />
+<asp:Image runat="server" SkinID="InnerPageTopRight" ImageUrl="Images/Top_Right.png" />
+<asp:Image runat="server" SkinID="InnerPageUserIconIMG" ImageUrl="Images/User_Icon_IMG.png" />
+<asp:Image runat="server" SkinID="InnerPageGroup" ImageUrl="Images/Group.png" />
+<asp:Image runat="server" SkinID="InnerPageDevicesIMG" ImageUrl="Images/Devices_IMG.png" />
+<asp:Image runat="server" SkinID="InnerPagePrice" ImageUrl="Images/Price.png" />
+<asp:Image runat="server" SkinID="InnerPagePrintIMG" ImageUrl="Images/Print_IMG.png" />
+<asp:Image runat="server" SkinID="InnerPageJobLogIMG" ImageUrl="Images/JobLog_IMG.png" />
+<asp:Image runat="server" SkinID="InnerPageAuditLogIMG" ImageUrl="Images/AuditLog_IMG.png" />
+<asp:Image runat="server" SkinID="InnerPageGraphicalReport" ImageUrl="Images/Graphical report.png" />
+<asp:Image runat="server" SkinID="InnerPageSettings" ImageUrl="Images/Settings.png" />
+<asp:Image runat="server" SkinID="InnerPageHiddenMenu" ImageUrl="Images/Hidden_Menu.png" />
+<asp:Image runat="server" SkinID="InnerPageBottomLeft" ImageUrl="Images/Bottom_Left.png" />
+<asp:Image runat="server" SkinID="InnerPageBottomRight" ImageUrl="Images/Bottom_right.png" />
+<asp:Image runat="server" SkinID="InnerPageInformation" ImageUrl="Images/information.png" />
+<asp:Image runat="server" SkinID="InnerPageOk1" ImageUrl="Images/ok1.gif" />
+<%--InnerPage Skins End--%>
+
+
+

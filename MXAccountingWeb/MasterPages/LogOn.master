@@ -1,0 +1,182 @@
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPagesLogOn" CodeBehind="LogOn.master.cs" %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html id="PageHtml" runat="server" xmlns="http://www.w3.org/1999/xhtml">
+<head id="HeaderSection" runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="ApplicationTitle" runat="server">
+            <asp:Literal ID="LabelApplicationName" runat="server"></asp:Literal>
+        </asp:ContentPlaceHolder>
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <asp:ContentPlaceHolder ID="ClientMessages" runat="server">
+        <asp:Literal ID="LiteralClientVariables" runat="server"></asp:Literal>
+    </asp:ContentPlaceHolder>
+    <script src="../JavaScript/dialog_box.js" type="text/javascript"></script>
+     <link href="../Notify/jNotify.jquery.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../Notify/jquery.js"></script>
+    <script type="text/javascript" src="../Notify/jNotify.jquery.js"></script>
+    <script language="javascript" type="text/javascript">
+        
+        <asp:Literal ID="PageBackgroundUrl" runat="server"></asp:Literal>
+        
+        function AdjustHeight() {
+            var availheight = screen.availHeight;
+            var availwidth = screen.availWidth;
+            var imageObject = document.getElementById("HeightAdjustImage");
+            imageObject.width = availwidth - 100;
+            imageObject.style.paddingLeft = "175px";
+        }
+        function AboutUs() {
+            document.getElementById('Aboutbox').style.display = "inline";
+        }
+        function AboutUsClose() {
+            document.getElementById('Aboutbox').style.display = "none";
+        }
+        
+        function bgLoad() {
+            var detected_os = navigator.userAgent.toLowerCase();
+            if ((navigator.appVersion.indexOf('MSIE 6.0') != -1) || (navigator.appVersion.indexOf('MSIE 5.5') != -1)) {
+                document.write("<div id='page-background' style='position:absolute; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:absolute; z-index:1; padding:0px;'>");
+
+            }
+            else if ((navigator.appVersion.indexOf('Chrome') != -1) || (navigator.appVersion.indexOf('Safari') != -1) || (navigator.userAgent.indexOf('Opera') >= 0)) {                
+                document.write("<div id='page-background' style='position:fixed;z-index:-1; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:relative; z-index:1; padding:0px;'>");
+            }
+            else {
+
+                document.write("<div id='page-background' style='position:fixed; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:relative; z-index:1; padding:0px;'>");
+
+            }
+        }
+    </script>
+</head>
+<style type="text/css">
+     <asp:Literal ID="PageBackground" runat="server"></asp:Literal>
+</style>
+<body leftmargin="0" topmargin="0" scroll="NO">
+    <script language="javascript" type="text/javascript">        bgLoad();</script>
+    <form id="PageForm" runat="server">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+            <td height="87" valign="top">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" height="87" class="HeaderBG">
+                    <tr>
+                        <td valign="middle"><asp:Image ID="ImageApplicationLogo" runat="server" Style="cursor: hand" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" valign="middle" height="500">
+                <div style="height: 25px;">
+                </div>
+                <table width="98%" height="540" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="Top_LeftBG">
+                        </td>
+                        <td height="400" align="center" valign="top">
+                            <asp:ContentPlaceHolder ID="PageContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </td>
+                        <td class="Right_RightBG">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="25" align="left" valign="top" class="Copyrights">
+               <table cellpadding="0" cellspacing="0" width="100%">
+               <tr style="height:5px">
+               </tr>
+                        <tr>
+                            <td align="left" style="width: 50%">
+                                &nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LabelFooter" runat="server" Text="" Style="padding-left: 15px;"></asp:Label>
+                            </td>
+                            <td align="right" style="width: 50%">
+                                <asp:Label ID="LabelVersionInfo" runat="server" class="Copyrights" Text="" Style="padding-right: 30px;"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+            </td>
+        </tr>
+    </table>
+  <!--  <div id="Aboutbox" style="display: none; width: 425px; height: 160px; position: fixed;
+        padding: 0px; left: 35%; top: 0%; z-index: 1">
+        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%" id="tblPopup">
+            <tr>
+                <td height="25" class="AboutHeader">
+                    <table width="100%">
+                        <tr width="100%">
+                            <td width="95%">
+                                <asp:Label ID="LabelAboutHeader" runat="server" Text=""></asp:Label>
+                            </td>
+                            <td width="95%" align="right">
+                                <asp:Image ID="ImageInformation" SkinID="MasterLogonInformation" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height="10">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="LabelTittle" runat="server" CssClass="AddressText" Text="" Style="padding-left: 5px;"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td height="5">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="LabelAppName" runat="server" CssClass="AddressText" Text="" Style="padding-left: 5px;"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td height="10">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   
+                </td>
+            </tr>
+            <tr>
+                <td height="10">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="LabelCopyright" runat="server" CssClass="AddressText" Text="" Style="padding-left: 5px;"></asp:Label>
+                </td>
+            </tr>
+            <tr style="display: none">
+                <td>
+                    <asp:Label CssClass="AddressText" ID="LabelContactInfo" runat="server" Text="" Style="padding-left: 5px;"></asp:Label>
+                    :
+                    <asp:Label ID="LabelContactText" runat="server" CssClass="AddressText" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="footer">
+                    <a href="#" onclick="AboutUsClose()">
+                        <asp:Image ID="ImageLogonOk" SkinID="MasterLogonOk" runat="server" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>-->
+    </form>
+</body>
+</html>

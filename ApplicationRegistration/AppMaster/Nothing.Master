@@ -1,0 +1,23 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Nothing.master.cs" Inherits="ApplicationRegistration.AppMaster.Nothing" %>
+<!--  
+  Copyright 2007 (c), SHARP CORPORATION.
+   
+  All rights are reserved.  Reproduction or transmission in whole or in part,
+  in any form or by any means, electronic, mechanical or otherwise, 
+  is prohibited without the prior written consent of the copyright owner.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>::::</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="PageContentHolder" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

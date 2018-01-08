@@ -1,0 +1,1873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C90D5F2C-3F8C-4B76-986E-4CB78F6CE607}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AccountingPlusEA</RootNamespace>
+    <AssemblyName>AccountingPlusEA</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>obj\Debug\Package\AccountingPlusEA.zip</DesktopBuildPackageLocation>
+    <DeployIisAppPath>Default Web Site/AccountingPlusEA_deploy</DeployIisAppPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\External Liberaries\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Browsers\NetFront.browser" />
+    <Content Include="App_Themes\Black\480X272\Images\Active_Down.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Active_Downarrow_1.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Active_Up.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Black\480X272\Images\BG.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Blank.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Button_center.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Button_Left.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Button_Right.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Cance_print.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Card_Login.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Delete.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Error.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Error_close.png" />
+    <Content Include="App_Themes\Black\480X272\Images\FastPrint_Delete_IMG.png" />
+    <Content Include="App_Themes\Black\480X272\Images\HR_line.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Info.png" />
+    <Content Include="App_Themes\Black\480X272\Images\loading.gif" />
+    <Content Include="App_Themes\Black\480X272\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Login_User.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Logout_IMG.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Black\480X272\Images\MFP.png" />
+    <Content Include="App_Themes\Black\480X272\Images\MFPMode.png" />
+    <Content Include="App_Themes\Black\480X272\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Black\480X272\Images\NextSortMode_ASC.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Number_down.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Number_Up.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Black\480X272\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Print_IMG_Delete.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Print_Options.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Titlebar_bg.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Black\480X272\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Black\480X272\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Black\480X272\Images\yes.gif" />
+    <Content Include="App_Themes\Black\480X272\Style.css" />
+    <Content Include="App_Themes\Black\FormBrowser\Images\IDCard.gif" />
+    <Content Include="App_Themes\Black\FormBrowser\Images\Login_user_IMG.gif" />
+    <Content Include="App_Themes\Black\FormBrowser\Images\logo.gif" />
+    <Content Include="App_Themes\Black\FormBrowser\Images\Swipe_GO_IMG.gif" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\BG.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Blank.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Error.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Info.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\loading.gif" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\MFP.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\none.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Images\yes.gif" />
+    <Content Include="App_Themes\Black\Wide-SVGA\Style.css" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\BG.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Blank.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Error.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Info.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\loading.gif" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\MFP.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\none.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Black\Wide-VGA\Images\yes.gif" />
+    <Content Include="App_Themes\Black\Wide-VGA\Style.css" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\BG.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Blank.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Error.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Info.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\loading.gif" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\MFP.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\none.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Black\Wide-XGA\Images\yes.gif" />
+    <Content Include="App_Themes\Black\Wide-XGA\Style.css" />
+    <Content Include="App_Themes\Blue\480X272\Images\Active_Down.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Active_Downarrow_1.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Active_Up.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\BG.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Blank.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Button_center.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Button_Left.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Button_Right.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Cance_print.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Card_Login.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Delete.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Error.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Error_close.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\FastPrint_Delete_IMG.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\HR_line.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Info.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\loading.gif" />
+    <Content Include="App_Themes\Blue\480X272\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Login_User.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Logout_IMG.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\MFP.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\MFPMode.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\NextSortMode_ASC.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Number_down.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Number_Up.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Print_IMG_Delete.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Print_Options.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Titlebar_bg.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Blue\480X272\Images\yes.gif" />
+    <Content Include="App_Themes\Blue\480X272\Style.css" />
+    <Content Include="App_Themes\Blue\FormBrowser\Images\IDCard.gif" />
+    <Content Include="App_Themes\Blue\FormBrowser\Images\Login_user_IMG.gif" />
+    <Content Include="App_Themes\Blue\FormBrowser\Images\logo.gif" />
+    <Content Include="App_Themes\Blue\FormBrowser\Images\Swipe_GO_IMG.gif" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Balance_Bg.jpg" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Bal_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\BG.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Blank.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Body_Bg.jpg" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Body_Bg_Old.jpg" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\BW_Img_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\BW_Img_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Cancel_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Color_Img_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Color_Img_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Copy_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Copy_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Error.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Fax_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Fax_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Info.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\LeftTab_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\LeftTab_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\loading.gif" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\MFP.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Ministatement_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Mybal_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Mybal_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\none.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Number_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Print_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Print_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Recharge_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Scan_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Scan_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Tab_Bg_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Tab_Bg_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\User_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Images\yes.gif" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\Style.css" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Balance_Bg.jpg" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Bal_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\BG.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Blank.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Body_Bg.jpg" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\BW_Img_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\BW_Img_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Cancel_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Color_Img_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Color_Img_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Copy_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Copy_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Error.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Error_Msg_Close.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Fax_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Fax_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Go_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Info.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\LeftTab_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\LeftTab_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\loading.gif" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Logout_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\MFP.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Ministatement_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Mybal_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Mybal_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\none.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Number_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Print_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Print_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Recharge_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Scan_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Scan_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Tab_Bg_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Tab_Bg_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\User_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Images\yes.gif" />
+    <Content Include="App_Themes\Blue\Wide-VGA\Style.css" />
+    <Content Include="App_Themes\Blue\Wide-XGA\AppSkin.skin" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Balance_Bg.jpg" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Bal_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\BG.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Blank.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Body_Bg.jpg" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Body_Bg_Old.jpg" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\BW_Img_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\BW_Img_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Cancel_Btn_Bg.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Color_Img_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Color_Img_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Copy_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Copy_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Error.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Fax_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Fax_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Info.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\LeftTab_Selected.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\LeftTab_Unselected.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\loading.gif" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Logout_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\MFP.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Ministatement_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Mybal_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Mybal_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\none.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Print_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Print_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Recharge_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Scan_Icon_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Scan_Icon_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Tab_Bg_BW.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Tab_Bg_Color.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\User_Icon.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Images\yes.gif" />
+    <Content Include="App_Themes\Blue\Wide-XGA\Style.css" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Down.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Downarrow_0.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Downarrow_1.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Up.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Active_Up_0.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Green\480X272\Images\BG.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Blank.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Button_center.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Button_Left.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Button_Right.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Cance_print.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Card_Login.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Delete.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Error.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Error_close.png" />
+    <Content Include="App_Themes\Green\480X272\Images\FastPrint_Delete_IMG.png" />
+    <Content Include="App_Themes\Green\480X272\Images\HR_line.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Info.png" />
+    <Content Include="App_Themes\Green\480X272\Images\loading.gif" />
+    <Content Include="App_Themes\Green\480X272\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Login_User.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Logout_IMG.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Green\480X272\Images\MFP.png" />
+    <Content Include="App_Themes\Green\480X272\Images\MFPMode.png" />
+    <Content Include="App_Themes\Green\480X272\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Green\480X272\Images\NextSortMode_ASC.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Number_down.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Number_up.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Green\480X272\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Print_IMG_Delete.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Print_Options.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Titlebar_bg.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Green\480X272\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Green\480X272\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Green\480X272\Images\yes.gif" />
+    <Content Include="App_Themes\Green\480X272\Style.css" />
+    <Content Include="App_Themes\Green\FormBrowser\Images\IDCard.gif" />
+    <Content Include="App_Themes\Green\FormBrowser\Images\Login_user_IMG.gif" />
+    <Content Include="App_Themes\Green\FormBrowser\Images\logo.gif" />
+    <Content Include="App_Themes\Green\FormBrowser\Images\Swipe_GO_IMG.gif" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\BG.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Blank.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Error.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Info.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\loading.gif" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\MFP.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\none.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Images\yes.gif" />
+    <Content Include="App_Themes\Green\Wide-SVGA\Style.css" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\BG.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Blank.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Error.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Info.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\loading.gif" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\MFP.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\none.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Green\Wide-VGA\Images\yes.gif" />
+    <Content Include="App_Themes\Green\Wide-VGA\Style.css" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\BG.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Blank.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Error.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Info.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\loading.gif" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\MFP.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\none.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\PermissionsLimits.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Green\Wide-XGA\Images\yes.gif" />
+    <Content Include="App_Themes\Green\Wide-XGA\Style.css" />
+    <Content Include="App_Themes\Plain\480X272\Images\Active_Down.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Active_Downarrow_1.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Active_Up.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\BG.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Blank.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Button_center.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Button_Left.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Button_Right.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Cance_print.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Card_Login.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Delete.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Error_close.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\FastPrint_Delete_IMG.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\HR_line.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Info.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\loading.gif" />
+    <Content Include="App_Themes\Plain\480X272\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Login_User.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Logout_IMG.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\MFP.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\MFPMode.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\NextSortMode_ASC.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Number_down.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Number_Up.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Print_IMG_Delete.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Print_Options.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Titlebar_bg.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Plain\480X272\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Plain\480X272\Style.css" />
+    <Content Include="App_Themes\Plain\FormBrowser\Images\IDCard.gif" />
+    <Content Include="App_Themes\Plain\FormBrowser\Images\Login_user_IMG.gif" />
+    <Content Include="App_Themes\Plain\FormBrowser\Images\logo.gif" />
+    <Content Include="App_Themes\Plain\FormBrowser\Images\Swipe_GO_IMG.gif" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\BG.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Blank.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Booklet_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Booklet_2Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Booklet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_2Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_Punch_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_Punch_2Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_2Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_Punch_2Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Info.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\loading.gif" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Login_User.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\MFP.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\none.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Table_HRLine - Copy.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Images\Vr_line_pageNG.png" />
+    <Content Include="App_Themes\Plain\Wide-SVGA\Style.css" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Active_Downarrow.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Active_Uparrow.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Arrow_Down.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Arrow_Up.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\BG.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Blank.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Button_center.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Button_Left.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Button_Right.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\BW_bg.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Card_Login.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Color_BG.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Disable_Downarrow.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Disable_Uparrow.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Error_close.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\HR_Line.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Info.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\loading.gif" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\LoginIcon.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Login_user_IMG.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menubar_bg.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menu_bar_selectedBG.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menu_bar_unselect.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menu_split_Center.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menu_split_Left.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menu_split_right.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Menu_split_selectTime.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\MFP.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\MFPTransparent.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\none.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Number_down.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Number_Up.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Overlay_Inside.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Overlay_Login.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Settings_Overlay.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Swipe_GO_IMG.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Table_HRLine.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Table_titebar_Vrline.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Table_Vrline.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Title_bar_bg.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Unselect_all.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\UserGroup_Login.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Vr_Line.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Images\Vr_Line_insdiepage.png" />
+    <Content Include="App_Themes\Plain\Wide-VGA\Style.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Images\bg.png" />
+    <Content Include="Images\button1Bg.png" />
+    <Content Include="Images\button2Bg.png" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\email.gif" />
+    <Content Include="Images\Print.png" />
+    <Content Include="Images\Scan.png" />
+    <Content Include="Images\warning-icon.png" />
+    <Content Include="index.html" />
+    <Content Include="Mfp\AccessDenied.aspx" />
+    <Content Include="NonOSA\css\bootstrap.min.css" />
+    <Content Include="NonOSA\css\Login_Index.css" />
+    <Content Include="NonOSA\css\Login_style.css" />
+    <Content Include="NonOSA\Images\1.gif" />
+    <Content Include="NonOSA\Images\Bg.jpg" />
+    <Content Include="NonOSA\Images\Card_Icon.png" />
+    <Content Include="NonOSA\Images\Login_Img.png" />
+    <Content Include="NonOSA\Images\Logo_Big.png" />
+    <Content Include="NonOSA\Images\Logo_Small.png" />
+    <Content Include="NonOSA\Images\Password_Icon.png" />
+    <Content Include="NonOSA\Images\Pin_Icon.png" />
+    <Content Include="NonOSA\Images\Sprite_image.png" />
+    <Content Include="NonOSA\Images\Username_Icon.png" />
+    <Content Include="NonOSA\JobList.aspx" />
+    <Content Include="MfpSink.asmx" />
+    <Content Include="Mfp\AccountBalance.aspx" />
+    <Content Include="Mfp\AccountingLogOn.aspx" />
+    <Content Include="Mfp\Balance.aspx" />
+    <Content Include="Mfp\CardLogin.aspx" />
+    <Content Include="Mfp\CardLogOn.aspx" />
+    <Content Include="Mfp\CopyScan.aspx" />
+    <Content Include="Mfp\InputScreen.aspx" />
+    <Content Include="Mfp\LimitBalance.aspx" />
+    <Content Include="Mfp\LogOn.aspx" />
+    <Content Include="Mfp\Main.aspx" />
+    <Content Include="Mfp\ManualLogOn.aspx" />
+    <Content Include="Mfp\MiniStatement.aspx" />
+    <Content Include="Mfp\OsaICCardLogon.aspx" />
+    <Content Include="Mfp\PinLoginNumPad.aspx" />
+    <Content Include="Mfp\PinLogOn.aspx" />
+    <Content Include="Mfp\RedirectScreen.aspx" />
+    <Content Include="Mfp\Refresh.aspx" />
+    <Content Include="Mfp\SelectCostCenter.aspx" />
+    <Content Include="NonOSA\js\bootstrap.min.js" />
+    <Content Include="NonOSA\js\jquery-2.1.1.js" />
+    <Content Include="NonOSA\Login.html" />
+    <Content Include="NonOSA\TabLogin.aspx" />
+    <Content Include="PSPModel\LimitBalance.aspx" />
+    <Content Include="PSPModel\OsaICCardLogin.aspx" />
+    <Content Include="PSPModel\SelectCostCenter.aspx" />
+    <Content Include="SKY\CardLogOn.aspx" />
+    <Content Include="SKY\DefaultSky.aspx" />
+    <Content Include="SKY\DomainList.aspx" />
+    <Content Include="SKY\JobList.aspx" />
+    <Content Include="SKY\Logon.aspx" />
+    <Content Include="SKY\ManualLogOn.aspx" />
+    <Content Include="SKY\MessageForm.aspx" />
+    <Content Include="SKY\MyBalance.aspx" />
+    <Content Include="SKY\PinLogOn.aspx" />
+    <Content Include="SKY\PrintJobs.aspx" />
+    <Content Include="SKY\SelectGroup.aspx" />
+    <Content Include="SKY\SelfRegistration.aspx" />
+    <Content Include="SKY\ValidationResponse.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppCode\ApplicationBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppCode\ApplicationHelper.cs" />
+    <Compile Include="AppCode\Crytopgraphy.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetFileData.aspx.cs">
+      <DependentUpon>GetFileData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetFileData.aspx.designer.cs">
+      <DependentUpon>GetFileData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\LogOn.Master.cs">
+      <DependentUpon>LogOn.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\LogOn.Master.designer.cs">
+      <DependentUpon>LogOn.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MFPApplicationError.aspx.cs">
+      <DependentUpon>MFPApplicationError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MFPApplicationError.aspx.designer.cs">
+      <DependentUpon>MFPApplicationError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MfpSink.cs">
+      <DependentUpon>MfpSink.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mfp\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\AccountBalance.aspx.cs">
+      <DependentUpon>AccountBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\AccountBalance.aspx.designer.cs">
+      <DependentUpon>AccountBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\AccountingLogOn.aspx.cs">
+      <DependentUpon>AccountingLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\AccountingLogOn.aspx.designer.cs">
+      <DependentUpon>AccountingLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\Balance.aspx.cs">
+      <DependentUpon>Balance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\Balance.aspx.designer.cs">
+      <DependentUpon>Balance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\CardLogin.aspx.cs">
+      <DependentUpon>CardLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\CardLogin.aspx.designer.cs">
+      <DependentUpon>CardLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\CardLogOn.aspx.cs">
+      <DependentUpon>CardLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\CardLogOn.aspx.designer.cs">
+      <DependentUpon>CardLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\CopyScan.aspx.cs">
+      <DependentUpon>CopyScan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\CopyScan.aspx.designer.cs">
+      <DependentUpon>CopyScan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\DeviceScreen.aspx.cs">
+      <DependentUpon>DeviceScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\DeviceScreen.aspx.designer.cs">
+      <DependentUpon>DeviceScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\FirstTimeUse.aspx.cs">
+      <DependentUpon>FirstTimeUse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\FirstTimeUse.aspx.designer.cs">
+      <DependentUpon>FirstTimeUse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\FtpPrintJobStatus.aspx.cs">
+      <DependentUpon>FtpPrintJobStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\FtpPrintJobStatus.aspx.designer.cs">
+      <DependentUpon>FtpPrintJobStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\InputScreen.aspx.cs">
+      <DependentUpon>InputScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\InputScreen.aspx.designer.cs">
+      <DependentUpon>InputScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\JobList.aspx.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\JobList.aspx.designer.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\JobSettings.aspx.cs">
+      <DependentUpon>JobSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\JobSettings.aspx.designer.cs">
+      <DependentUpon>JobSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\JobStatus.aspx.cs">
+      <DependentUpon>JobStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\JobStatus.aspx.designer.cs">
+      <DependentUpon>JobStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\LimitBalance.aspx.cs">
+      <DependentUpon>LimitBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\LimitBalance.aspx.designer.cs">
+      <DependentUpon>LimitBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\LogOn.aspx.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\LogOn.aspx.designer.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\ManualLogOn.aspx.cs">
+      <DependentUpon>ManualLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\ManualLogOn.aspx.designer.cs">
+      <DependentUpon>ManualLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\LicenseErrorpage.aspx.cs">
+      <DependentUpon>LicenseErrorpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\LicenseErrorpage.aspx.designer.cs">
+      <DependentUpon>LicenseErrorpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\MiniStatement.aspx.cs">
+      <DependentUpon>MiniStatement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\MiniStatement.aspx.designer.cs">
+      <DependentUpon>MiniStatement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\OsaICCardLogon.aspx.cs">
+      <DependentUpon>OsaICCardLogon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\OsaICCardLogon.aspx.designer.cs">
+      <DependentUpon>OsaICCardLogon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\PinLoginNumPad.aspx.cs">
+      <DependentUpon>PinLoginNumPad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\PinLoginNumPad.aspx.designer.cs">
+      <DependentUpon>PinLoginNumPad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\PinLogOn.aspx.cs">
+      <DependentUpon>PinLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\PinLogOn.aspx.designer.cs">
+      <DependentUpon>PinLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\PrintJobs.aspx.cs">
+      <DependentUpon>PrintJobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\PrintJobs.aspx.designer.cs">
+      <DependentUpon>PrintJobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\RedirectPage.aspx.cs">
+      <DependentUpon>RedirectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\RedirectPage.aspx.designer.cs">
+      <DependentUpon>RedirectPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\RedirectScreen.aspx.cs">
+      <DependentUpon>RedirectScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\RedirectScreen.aspx.designer.cs">
+      <DependentUpon>RedirectScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\Refresh.aspx.cs">
+      <DependentUpon>Refresh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\Refresh.aspx.designer.cs">
+      <DependentUpon>Refresh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\SelectCostCenter.aspx.cs">
+      <DependentUpon>SelectCostCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\SelectCostCenter.aspx.designer.cs">
+      <DependentUpon>SelectCostCenter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\SelfRegistration.aspx.cs">
+      <DependentUpon>SelfRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\SelfRegistration.aspx.designer.cs">
+      <DependentUpon>SelfRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mfp\SoapExp.aspx.cs">
+      <DependentUpon>SoapExp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mfp\SoapExp.aspx.designer.cs">
+      <DependentUpon>SoapExp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NonOSA\JobList.aspx.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NonOSA\JobList.aspx.designer.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NonOSA\TabLogin.aspx.cs">
+      <DependentUpon>TabLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NonOSA\TabLogin.aspx.designer.cs">
+      <DependentUpon>TabLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nop.aspx.cs">
+      <DependentUpon>Nop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nop.aspx.designer.cs">
+      <DependentUpon>Nop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSPModel\CardLogOn.aspx.cs">
+      <DependentUpon>CardLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\CardLogOn.aspx.designer.cs">
+      <DependentUpon>CardLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\FirstTimeUse.aspx.cs">
+      <DependentUpon>FirstTimeUse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\FirstTimeUse.aspx.designer.cs">
+      <DependentUpon>FirstTimeUse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\JobList.aspx.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\JobList.aspx.designer.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\JobSettings.aspx.cs">
+      <DependentUpon>JobSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\JobSettings.aspx.designer.cs">
+      <DependentUpon>JobSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\LimitBalance.aspx.cs">
+      <DependentUpon>LimitBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\LimitBalance.aspx.designer.cs">
+      <DependentUpon>LimitBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\ManualLogOn.aspx.cs">
+      <DependentUpon>ManualLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\ManualLogOn.aspx.designer.cs">
+      <DependentUpon>ManualLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\OsaICCardLogin.aspx.cs">
+      <DependentUpon>OsaICCardLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\OsaICCardLogin.aspx.designer.cs">
+      <DependentUpon>OsaICCardLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\PinLogOn.aspx.cs">
+      <DependentUpon>PinLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\PinLogOn.aspx.designer.cs">
+      <DependentUpon>PinLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\PrintJobs.aspx.cs">
+      <DependentUpon>PrintJobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\PrintJobs.aspx.designer.cs">
+      <DependentUpon>PrintJobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\SelectCostCenter.aspx.cs">
+      <DependentUpon>SelectCostCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\SelectCostCenter.aspx.designer.cs">
+      <DependentUpon>SelectCostCenter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSPModel\SelfRegistration.aspx.cs">
+      <DependentUpon>SelfRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSPModel\SelfRegistration.aspx.designer.cs">
+      <DependentUpon>SelfRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\CardLogOn.aspx.cs">
+      <DependentUpon>CardLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\CardLogOn.aspx.designer.cs">
+      <DependentUpon>CardLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\DefaultSky.aspx.cs">
+      <DependentUpon>DefaultSky.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\DefaultSky.aspx.designer.cs">
+      <DependentUpon>DefaultSky.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\DomainList.aspx.cs">
+      <DependentUpon>DomainList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\DomainList.aspx.designer.cs">
+      <DependentUpon>DomainList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\JobList.aspx.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\JobList.aspx.designer.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\Logon.aspx.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\Logon.aspx.designer.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\ManualLogOn.aspx.cs">
+      <DependentUpon>ManualLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\ManualLogOn.aspx.designer.cs">
+      <DependentUpon>ManualLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\MessageForm.aspx.cs">
+      <DependentUpon>MessageForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\MessageForm.aspx.designer.cs">
+      <DependentUpon>MessageForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\MyBalance.aspx.cs">
+      <DependentUpon>MyBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\MyBalance.aspx.designer.cs">
+      <DependentUpon>MyBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\PinLogOn.aspx.cs">
+      <DependentUpon>PinLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\PinLogOn.aspx.designer.cs">
+      <DependentUpon>PinLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\PrintJobs.aspx.cs">
+      <DependentUpon>PrintJobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\PrintJobs.aspx.designer.cs">
+      <DependentUpon>PrintJobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\SelectGroup.aspx.cs">
+      <DependentUpon>SelectGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\SelectGroup.aspx.designer.cs">
+      <DependentUpon>SelectGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\SelfRegistration.aspx.cs">
+      <DependentUpon>SelfRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\SelfRegistration.aspx.designer.cs">
+      <DependentUpon>SelfRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SKY\ValidationResponse.aspx.cs">
+      <DependentUpon>ValidationResponse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SKY\ValidationResponse.aspx.designer.cs">
+      <DependentUpon>ValidationResponse.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppLibrary\AppLibrary.csproj">
+      <Project>{5DBF1017-FC64-4261-8132-98391C2EE629}</Project>
+      <Name>AppLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApplicationAuditor\ApplicationAuditor.csproj">
+      <Project>{4A325D15-2BA3-40C6-9BFD-6596D641862E}</Project>
+      <Name>ApplicationAuditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseBridge\DatabaseBridge.csproj">
+      <Project>{9D9B36C5-737C-40F1-BE47-E8F877050623}</Project>
+      <Name>DatabaseBridge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataManagerMfp\DataManagerMfp.csproj">
+      <Project>{CC3A8009-5A83-4E5D-AE86-B73C3C7371D3}</Project>
+      <Name>DataManagerMfp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ldap dll\LdapStoreManager.csproj">
+      <Project>{BF3155FB-1BE3-4009-A0BD-1665CE4CFE1B}</Project>
+      <Name>LdapStoreManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OsaDirectEAManager\OsaDirectEAManager.csproj">
+      <Project>{7593BBE4-4B61-417F-AFAD-5A1C3C858E58}</Project>
+      <Name>OsaDirectEAManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrintJobProvider\PrintJobProvider.csproj">
+      <Project>{CDEAAED1-0849-4C02-994D-B1D7B7E36C93}</Project>
+      <Name>PrintJobProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegistrationAdaptor\RegistrationAdaptor.csproj">
+      <Project>{A64B09E2-539E-4FFC-8B9C-401BC26FAC80}</Project>
+      <Name>RegistrationAdaptor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPages\LogOn.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GetFileData.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="MFPApplicationError.aspx" />
+    <Content Include="Mfp\DeviceScreen.aspx" />
+    <Content Include="Mfp\FirstTimeUse.aspx" />
+    <Content Include="Mfp\FtpPrintJobStatus.aspx" />
+    <Content Include="Mfp\JobList.aspx" />
+    <Content Include="Mfp\JobSettings.aspx" />
+    <Content Include="Mfp\JobStatus.aspx" />
+    <Content Include="Mfp\LicenseErrorpage.aspx" />
+    <Content Include="Mfp\PrintJobs.aspx" />
+    <Content Include="Mfp\RedirectPage.aspx" />
+    <Content Include="Mfp\SelfRegistration.aspx" />
+    <Content Include="Mfp\SoapExp.aspx" />
+    <Content Include="Nop.aspx" />
+    <Content Include="PSPModel\CardLogOn.aspx" />
+    <Content Include="PSPModel\FirstTimeUse.aspx" />
+    <Content Include="PSPModel\JobList.aspx" />
+    <Content Include="PSPModel\JobSettings.aspx" />
+    <Content Include="PSPModel\ManualLogOn.aspx" />
+    <Content Include="PSPModel\PinLogOn.aspx" />
+    <Content Include="PSPModel\PrintJobs.aspx" />
+    <Content Include="PSPModel\SelfRegistration.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Themes\Blue\Wide-XGA\Images\Wide-S\" />
+    <Folder Include="App_UserData\WallPapers\480X272\" />
+    <Folder Include="App_UserData\WallPapers\FormBrowser\" />
+    <Folder Include="App_UserData\WallPapers\Wide-SVGA\" />
+    <Folder Include="App_UserData\WallPapers\Wide-VGA\" />
+    <Folder Include="DeviceSessionData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Black\480X272\AppSkin.skin" />
+    <Content Include="App_Themes\Black\Wide-SVGA\AppSkin.skin" />
+    <Content Include="App_Themes\Black\Wide-VGA\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Blue\480X272\AppSkin.skin" />
+    <Content Include="App_Themes\Blue\Wide-SVGA\AppSkin.skin" />
+    <Content Include="App_Themes\Blue\Wide-VGA\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Green\480X272\AppSkin.skin" />
+    <Content Include="App_Themes\Green\Wide-SVGA\AppSkin.skin" />
+    <Content Include="App_Themes\Green\Wide-VGA\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Plain\480X272\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Plain\Wide-SVGA\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Plain\Wide-VGA\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Black\Wide-XGA\AppSkin.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#BG.png.1.2" />
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#Button_center.png.1.2" />
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#Button_Left.png.1.2" />
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#Button_Right.png.1.2" />
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#LoginIcon.png.1.1" />
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#Login_user_IMG.png.1.2" />
+    <None Include="App_Themes\Blue\Wide-XGA\Images\.#Swipe_GO_IMG.png.1.2" />
+    <Content Include="App_Themes\Green\Wide-XGA\AppSkin.skin" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51838</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/AccountingPlusEAMDev</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

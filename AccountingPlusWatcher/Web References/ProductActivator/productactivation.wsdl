@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.sharp.com/ApplicationRegistration" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.sharp.com/ApplicationRegistration" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.sharp.com/ApplicationRegistration">
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="registrationXmlData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnRegister">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serialKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnRegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnRegisterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportLicense">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serialKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldClientCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldActivationCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newClientCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newActivationCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlRegistrationData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportLicenseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImportLicenseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportLicense">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serialKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="activationCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportLicenseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExportLicenseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serialKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customFieldXmlData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCustomFieldsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCustomFieldsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMfpList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMfpListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMfpListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLicensePeriodically">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="productAccessPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serialKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="macAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="activationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isValidServerID" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="totalServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="totalClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLicensePeriodicallyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateLicensePeriodicallyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnRegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:UnRegister" />
+  </wsdl:message>
+  <wsdl:message name="UnRegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:UnRegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportLicenseSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportLicense" />
+  </wsdl:message>
+  <wsdl:message name="ImportLicenseSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportLicenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportLicenseSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportLicense" />
+  </wsdl:message>
+  <wsdl:message name="ExportLicenseSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportLicenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMfpListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMfpList" />
+  </wsdl:message>
+  <wsdl:message name="GetMfpListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMfpListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLicensePeriodicallySoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateLicensePeriodically" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLicensePeriodicallySoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateLicensePeriodicallyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProductActivationSoap">
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterSoapIn" />
+      <wsdl:output message="tns:RegisterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnRegister">
+      <wsdl:input message="tns:UnRegisterSoapIn" />
+      <wsdl:output message="tns:UnRegisterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportLicense">
+      <wsdl:input message="tns:ImportLicenseSoapIn" />
+      <wsdl:output message="tns:ImportLicenseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportLicense">
+      <wsdl:input message="tns:ExportLicenseSoapIn" />
+      <wsdl:output message="tns:ExportLicenseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields">
+      <wsdl:input message="tns:UpdateCustomFieldsSoapIn" />
+      <wsdl:output message="tns:UpdateCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMfpList">
+      <wsdl:input message="tns:GetMfpListSoapIn" />
+      <wsdl:output message="tns:GetMfpListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLicensePeriodically">
+      <wsdl:input message="tns:ValidateLicensePeriodicallySoapIn" />
+      <wsdl:output message="tns:ValidateLicensePeriodicallySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductActivationSoap" type="tns:ProductActivationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnRegister">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/UnRegister" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportLicense">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/ImportLicense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportLicense">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/ExportLicense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/UpdateCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMfpList">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/GetMfpList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLicensePeriodically">
+      <soap:operation soapAction="http://www.sharp.com/ApplicationRegistration/ValidateLicensePeriodically" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProductActivationSoap12" type="tns:ProductActivationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnRegister">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/UnRegister" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportLicense">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/ImportLicense" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportLicense">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/ExportLicense" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/UpdateCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMfpList">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/GetMfpList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLicensePeriodically">
+      <soap12:operation soapAction="http://www.sharp.com/ApplicationRegistration/ValidateLicensePeriodically" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductActivation">
+    <wsdl:port name="ProductActivationSoap" binding="tns:ProductActivationSoap">
+      <soap:address location="http://localhost/applicationregistration/webservices/productactivation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProductActivationSoap12" binding="tns:ProductActivationSoap12">
+      <soap12:address location="http://localhost/applicationregistration/webservices/productactivation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

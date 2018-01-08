@@ -1,0 +1,537 @@
+body
+{
+	margin:0;
+	padding:0;
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:url("../Images/Bg.jpg") left top no-repeat scroll #04080e;
+}
+
+li
+{
+	list-style:none;
+}
+
+a:hover, a:visited, a
+{
+	text-decoration:none;
+}
+
+h1, h2
+{
+	text-transform:uppercase;
+	font-weight:bold;
+}
+
+
+/*Header Css Starts*/
+
+.top-header
+{
+	background:transparent;
+	width:100%;
+	z-index:99999;
+}
+
+.top-header img.logo
+{
+	margin:0 auto;
+    margin-top:40px !important;
+    min-width:170px;
+	transition:all .5s ease 0s;
+    -webkit-transition:all .5s ease 0s;
+    -moz-transition:all .5s ease 0s;
+    -o-transition:all .5s ease 0s;
+    -ms-transition:all .5s ease 0s;
+}
+
+.navbar-default
+{
+  background-color:transparent;
+  border-color:transparent;
+  margin-bottom:0;
+  /*margin-top: 8px;*/
+  transition:all .5s ease 0s;
+  -webkit-transition:all .5s ease 0s;
+  -moz-transition:all .5s ease 0s;
+  -o-transition:all .5s ease 0s;
+  -ms-transition:all .5s ease 0s;
+}
+
+.nav-bar
+{
+	/*margin-top: 12px;*/
+}
+
+.navbar-toggle span
+{
+	color:#fff;
+}
+
+ul.nav
+{
+	margin:0;
+	padding:0;
+}
+
+.navbar-default .navbar-nav>li>a
+{
+ 	font-size:15px;
+	color:#000;
+	transition:all .7s ease 0s;
+	-webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+	padding:14px 15px;
+	font-weight:normal;
+    border-bottom:3px solid #FFFFFF;
+}
+
+.navbar-default .navbar-nav>li>a:hover
+{
+	background:#f4f4f3 !important;
+	color:#00a6e5 !important;
+    border-bottom:3px solid #00a6e5;
+}
+
+.navbar-default .navbar-toggle .icon-bar
+{
+    background-color:#000;
+}
+
+.navbar-default .navbar-nav>li>a.active
+{
+    background:#f4f4f3 !important;
+	color:#00a6e5 !important;
+    border-bottom:3px solid #00a6e5;
+}
+
+.navbar-default .navbar-toggle
+{
+  border-color:#fff;
+  margin-top:4px;
+}
+
+.navbar-nav > li > a
+{
+    line-height:71px !important;
+}
+
+/*Header Css Ends*/
+
+
+/*Login Css Starts*/
+
+.Login_ImgDiv
+{
+    padding:30px;
+    padding-bottom:0 !important;
+}
+
+.Login_ImgDiv img
+{
+    width:450px;
+    margin:0 auto;
+}
+
+.LoginBox_Bg
+{
+    width:400px;
+    margin:0 auto;
+    margin-top:3% !important;
+}
+
+.LoginBox_Header
+{
+    line-height:75px;
+    padding:0;
+    font-size:34px;
+    font-weight:lighter;
+    color:#FFFFFF;
+    text-align:center;
+}
+
+.Logintype_Outerdiv
+{
+    padding:7px 0 0 0;
+    color:#7b7b7b;
+    max-height:330px;
+    overflow:auto;
+}
+
+.Logintype_Outerdiv ul
+{
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.Logintype_Outerdiv_New
+{
+    padding:7px 0 0 0;
+    color:#7b7b7b;
+    max-height:330px;
+    overflow:auto;
+}
+
+.Logintype_Outerdiv_New ul
+{
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.Login_Dropdown
+{
+    background:#dce0e9;
+    border:0 !important;
+    margin:30px 0 0 0;
+    font-size:13px;
+    color:#7b7b7b;
+    height:40px;
+    padding:0 3px 0 10px;
+    width:100%;
+}
+
+.Login_TextBox_Username
+{
+    background:url("../Images/Username_Icon.png") left top no-repeat scroll #dce0e9;
+    border:0 !important;
+    margin:30px 0 0 0;
+    font-size:13px;
+    color:#7b7b7b;
+    height:40px;
+    padding:0 3px 0 50px;
+    width:100%;
+}
+
+.Login_TextBox_Username:focus
+{
+    background:url("../Images/Username_Icon.png") left top no-repeat scroll #FFFFFF;
+    -webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+}
+
+.Login_TextBox_PWD
+{
+    background:url("../Images/Password_Icon.png") left top no-repeat scroll #dce0e9;
+    border:0 !important;
+    margin:30px 0 0 0;
+    font-size:13px;
+    color:#7b7b7b;
+    height:40px;
+    padding:0 3px 0 50px;
+    width:100%;
+}
+
+.Login_TextBox_PWD:focus
+{
+    background:url("../Images/Password_Icon.png") left top no-repeat scroll #FFFFFF;
+    -webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+}
+
+.Login_TextBox_CardId
+{
+    background:url("../Images/Card_Icon.png") left top no-repeat scroll #dce0e9;
+    border:0 !important;
+    margin:30px 0 0 0;
+    font-size:13px;
+    color:#7b7b7b;
+    height:40px;
+    padding:0 3px 0 50px;
+    width:100%;
+}
+
+.Login_TextBox_CardId:focus
+{
+    background:url("../Images/Card_Icon.png") left top no-repeat scroll #FFFFFF;
+    -webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+}
+
+.Login_TextBox_Pin
+{
+    background:url("../Images/Pin_Icon.png") left top no-repeat scroll #dce0e9;
+    border:0 !important;
+    margin:30px 0 0 0;
+    font-size:13px;
+    color:#7b7b7b;
+    height:40px;
+    padding:0 3px 0 50px;
+    width:100%;
+}
+
+.Login_TextBox_Pin:focus
+{
+    background:url("../Images/Card_Icon.png") left top no-repeat scroll #FFFFFF;
+    -webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+}
+
+.Login_Btn
+{
+    background-color:#318dc8;
+    border:0 !important;
+    height:40px;
+    font-size:16px;
+    font-weight:normal;
+    color:#FFFFFF;
+    width:100%;
+    margin:30px 0 0 0;
+    cursor:pointer;
+}
+
+.Login_Btn:hover
+{
+    background-color:#0286b8;
+    transition:all .7s ease 0s;
+	-webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+}
+
+/*Login Css Starts*/
+
+
+/*BottomMenu Thumbs Css Starts*/
+
+.BottomMenu_Thumbs
+{
+	padding:20px 0 20px 0;
+}
+
+.BottThumbs_Bg
+{
+	padding:0 !important;
+    margin-left:29%;
+}
+
+.BottThumbs_Bg li
+{
+    background:rgba(166,203,255,0.20);
+    border-radius:55px;
+	margin-top:15px;
+    margin-right:20px;
+	/*display:table-cell;*/
+    width:110px;
+    /*height:81px;*/
+	cursor:pointer;
+    float:left;
+}
+
+.BottThumbs_Bg li:hover
+{
+	background-color:#318dc8;
+	transition: all .7s ease 0s;
+	-webkit-transition: all .7s ease 0s;
+	-moz-transition: all .7s ease 0s;
+	-o-transition: all .7s ease 0s;
+	-ms-transition: all .7s ease 0s;
+}
+
+.BottThumbs_Bg li.Selected
+{
+    background:#318dc8;
+    border-radius:55px;
+	margin-top:15px;
+    margin-right:20px;
+	/*display:table-cell;*/
+    width:110px;
+    /*height:81px;*/
+	cursor:pointer;
+    float:left;
+}
+
+/*BottomMenu Thumbs Css Ends*/
+
+
+.Toggle
+{
+    margin:0 auto;
+    background-color:rgba(0, 0, 0, 0.38);
+    line-height:45px;
+    border-radius:24px;
+    width:290px;
+    margin-top:15px !important;
+}
+
+.ToggleSub
+{
+    background:transparent;
+    width:145px;
+    border-radius:24px;
+    display:table-cell;
+    font-size:15px;
+    color:#FFFFFF;
+    text-align:center;
+    cursor:pointer;
+}
+
+.ToggleSub:hover
+{
+    background:#318dc8;
+    transition: all .7s ease 0s;
+	-webkit-transition: all .7s ease 0s;
+	-moz-transition: all .7s ease 0s;
+	-o-transition: all .7s ease 0s;
+	-ms-transition: all .7s ease 0s;
+}
+
+.ToggleSub_Select
+{
+    background:#318dc8;
+    width:145px;
+    border-radius:24px;
+    display:table-cell;
+    font-size:15px;
+    color:#FFFFFF;
+    text-align:center; 
+}
+
+.ManualLogin_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -321px -10px;
+    height:56px;
+    width:50px;
+    margin-bottom:28px !important;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:25px !important;
+}
+
+.CardLogin_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -391px -10px;
+    height:56px;
+    width:63px;
+    margin-bottom:20px !important;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:33px !important;
+}
+
+.PinLogin_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -9px -80px;
+    height:48px;
+    width:74px;
+    margin-bottom:21px !important;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px !important;
+}
+
+.MarginTop_CardLogin
+{
+    margin-top:30%;
+}
+
+
+/* Responsive Area */
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+	.navbar-default .navbar-nav>li>a {font-size:15px; padding:14px 9px;}
+
+}
+
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+
+	.navbar-default .navbar-nav>li>a {font-size:16px; padding:10px 8px;}
+          
+}
+
+
+@media (max-width: 992px) {
+
+    .Login_ImgDiv {min-height:450px;}
+
+    .LoginBox_Bg {width:340px; margin:0 auto; margin-top:3% !important;}
+    
+}
+
+@media (max-width: 767px) {
+
+    .Login_ImgDiv {min-height:0;}
+
+    .Login_ImgDiv img {width:450px; margin:0 auto;}
+
+    .LoginBox_Bg {width:400px; margin:0 auto; margin-top:3% !important;}
+
+    .Logintype_Outerdiv {max-height:720px;}
+
+    .Logintype_Outerdiv_New {max-height:720px;}
+
+    .BottThumbs_Bg {margin-left:23%;}
+
+    .BottomMenu_Thumbs {padding:15px 0 15px 0;}
+
+    .MarginTop_CardLogin {margin-top:0%;}
+
+}
+
+/* xs */
+@media (min-width: 480px) and (max-width: 767px) {
+
+	.header-logo img {margin-top:20px;}
+
+	.navbar-default .navbar-nav>li>a {font-size:20px;}
+
+    .navbar-default .navbar-toggle {margin:19px 29px 0 0;}
+
+    .navbar-nav > li > a {line-height:30px !important;}
+          
+}
+
+@media (max-width: 670px) {
+
+    .LoginBox_Bg {width:400px; margin:0 auto; margin-top:3% !important;}
+
+    .BottThumbs_Bg {margin-left:19%;}
+
+}
+
+@media (max-width: 595px) {
+
+    .LoginBox_Bg {width:400px; margin:0 auto; margin-top:3% !important;}
+    
+    .BottThumbs_Bg {margin-left:16%;}
+
+}
+
+@media (max-width: 490px) {
+
+    .Login_ImgDiv {padding:12px;}
+
+	.LoginBox_Bg {width:100%; margin:0 auto; margin-top:3% !important;}
+
+    .BottThumbs_Bg {margin-left:5%;}
+
+}
+
+/* XS Portrait */
+@media (max-width: 479px) {
+
+	.top-header img.logo {margin:0 auto; margin-top:20px !important;}
+
+	.header-logo{/*margin-top:20px !important;*/}
+
+	.navbar-default .navbar-toggle {border-color:#fff; margin:15px 0 10px 0; right:10%;}
+
+	.navbar-default .navbar-nav>li>a {font-size:16px; text-align:left;}
+
+    .navbar-nav > li > a {line-height:25px !important;}
+    
+}
+
+

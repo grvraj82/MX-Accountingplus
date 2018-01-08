@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TrendsMaster.master.cs"
+    Inherits="AccountingPlusWeb.MasterPages.TrendsMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="../JavaScript/resizing_background.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+
+        function AdjustHeight() {
+            var availheight = screen.availHeight;
+            var availwidth = screen.availWidth;
+            var imageObject = document.getElementById("HeightAdjustImage");
+
+            imageObject.width = availwidth - 25;
+            imageObject.style.paddingLeft = "30px";
+        }
+
+    </script>
+    <asp:ContentPlaceHolder ID="ClientMessages" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body leftmargin="0" topmargin="0" onresize="rbResize()">
+    <script language="javascript" type="text/javascript">        rbOpen(false);</script>
+    <form id="PageForm" runat="server">
+    <table width="100%" align="center" id="HeightAdjustImage">
+        <tr>
+            <td height="10">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:ContentPlaceHolder ID="PageContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <script language="javascript" type="text/javascript">        rbClose("../App_Themes/Blue/Images/Bg.jpg");</script>
+    <script language="javascript" type="text/javascript">        rbInit();</script>
+    <script language="javascript" type="text/javascript">        AdjustHeight();</script>
+</body>
+</html>

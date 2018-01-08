@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="True" CodeBehind="Blank.master.cs" Inherits="AccountingPlusWeb.MasterPages.Blank" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head id="HeaderSection" runat="server">
+       <title>
+          <asp:Literal ID="LabelApplicationName" runat="server"></asp:Literal></title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <asp:ContentPlaceHolder ID="ClientMessages" runat="server">
+        <asp:Literal ID="LiteralClientVariables" runat="server"></asp:Literal>
+    </asp:ContentPlaceHolder>
+    
+   <script src="../JavaScript/dialog_box.js" type="text/javascript"></script>
+    <script src="../JavaScript/resizing_background.js" type="text/javascript"></script>
+    <script src="../JavaScript/InnerMaster.js" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript">
+    
+    <asp:Literal ID="PageBackgroundUrl" runat="server"></asp:Literal>
+        function bgLoad() {
+            var detected_os = navigator.userAgent.toLowerCase();
+            if ((navigator.appVersion.indexOf('MSIE 6.0') != -1) || (navigator.appVersion.indexOf('MSIE 5.5') != -1)) {
+                document.write("<div id='page-background' style='position:absolute; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:absolute; z-index:1; padding:0px;'>");
+
+            }
+            else if ((navigator.appVersion.indexOf('Chrome') != -1) || (navigator.appVersion.indexOf('Safari') != -1) || (navigator.userAgent.indexOf('Opera') >= 0)) {           
+                document.write("<div id='page-background' style='position:fixed;z-index:-1; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:relative; z-index:1; padding:0px;'>");
+            }
+            else {
+
+                document.write("<div id='page-background' style='position:fixed; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:relative; z-index:1; padding:0px;'>");
+
+            }
+        }
+
+
+        function AdjustHeight() {
+            var availheight = screen.availHeight;
+            var availwidth = screen.availWidth;
+            var imageObject = document.getElementById("HeightAdjustImage");
+
+            imageObject.width = availwidth - 25;
+            imageObject.style.paddingLeft = "30px";
+        }
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function ConnectTo(pageUrl) {
+            location.href = pageUrl;
+        }
+
+        function SelectTab(object) {
+            object.className = "TabOnmouseOver";
+        }
+
+        function ResetTab(object) {
+            object.className = "TabItem";
+        }
+        function AboutUs() {
+            document.getElementById('Aboutbox').style.display = "inline";
+        }
+        function AboutUsClose() {
+            document.getElementById('Aboutbox').style.display = "none";
+        }
+
+        function fnShowCellSettings() { }
+        function Meuselected(val) {
+            
+        }
+       
+    </script>
+
+    <style type="text/css">
+        .style1
+        {
+            height: 70px;
+        }
+    </style>
+</head>
+<body leftmargin="0" topmargin="0">
+ <script language="javascript" type="text/javascript">     bgLoad();</script>
+ 
+    <form id="PageForm" runat="server">
+    
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left" id="HeightAdjustImage">
+        <tr>
+            <td align="left" valign="top" class="style1">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="100%" rowspan="2" align="left" valign="middle">
+                          <asp:Image ID="ImageApplicationLogo" runat="server" Style="cursor: hand" />
+                        
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr >
+            <td height="35" align="center" valign="middle">
+                <table border="0" width="70%" cellpadding="0" cellspacing="0">
+                   
+                    <tr>
+                        <td height="606" colspan="0"  align="center" valign="middle">
+                            <table width="100%" align="center">
+                                <tr>
+                                    <td>
+                                     <div class="main">
+                                        <asp:ContentPlaceHolder ID="PageContent" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="bottom" class="Copyrights">
+                &nbsp;&nbsp; 
+                <asp:Label ID="LabelFooter" runat="server" Text=""></asp:Label>
+            </td>
+        </tr>
+    </table>
+  
+    </form>
+      
+
+</body>
+</html>
+
+

@@ -1,0 +1,102 @@
+#define DLG_SELECTSERVERTYPE			"SelectServerType"	
+#define DLG_SELECTSERVERTYPE_ID      10489
+#define BUTTON_NEXT    1 
+#define BUTTON_BACK   12 
+//#define BUTTON_CANCEL  9   
+#define RADIO_NEW 1322
+#define RADIO_EXIST 1324  
+ 
+function NUMBER  SelectServerType() 
+STRING svString;
+NUMBER nId,nResult, nvSize;  
+BOOL bDone;
+HWND hDlg;
+begin
+    if (!bSdInit) then
+      SdInit();
+    endif;
+    
+    nResult  = DefineDialog (DLG_SELECTSERVERTYPE, 0, "", 
+
+                            DLG_SELECTSERVERTYPE_ID, "", 0, 
+
+                            HWND_INSTALL, DLG_MSG_STANDARD|DLG_CENTERED); 
+
+
+    //if (EzDefineDialog(DLG_SELECTSERVERTYPE, "", "selectservertype", DLG_SELECTSERVERTYPE_ID) = DLG_ERR) then
+       // return ISERR_GEN_FAILURE;
+    //endif;
+
+    // Loop in dialog until the user selects a standard button
+    bDone = FALSE;
+
+    while (!bDone)
+        nId = WaitOnDialog(DLG_SELECTSERVERTYPE);
+        switch (nId)
+	        case DLG_INIT:   
+	        		CANT_INSTALL_SQL:
+	              	nvSize = 300;
+					MsiGetProperty(ISMSI_HANDLE,"SERVERTYPE", svServertype, nvSize);
+	                if(svServertype = "EXIST") then   
+	                
+	                CtrlSetState (DLG_SELECTSERVERTYPE, RADIO_EXIST, BUTTON_CHECKED);                                        
+	                CtrlSetState (DLG_SELECTSERVERTYPE, RADIO_NEW, BUTTON_UNCHECKED); 
+	                MsiSetProperty(ISMSI_HANDLE,"SERVERTYPE","EXIST");
+
+	                else   
+	                
+	                CtrlSetState (DLG_SELECTSERVERTYPE, RADIO_NEW, BUTTON_CHECKED);
+	                CtrlSetState (DLG_SELECTSERVERTYPE, RADIO_EXIST, BUTTON_UNCHECKED); 
+	                MsiSetProperty(ISMSI_HANDLE,"SERVERTYPE","NEW");
+	                
+	                endif;
+	 		
+			case RADIO_NEW:					
+	            if( CtrlGetState( DLG_SELECTSERVERTYPE, RADIO_NEW ) = BUTTON_CHECKED ) then
+	                CtrlSetState (DLG_SELECTSERVERTYPE, RADIO_EXIST, BUTTON_UNCHECKED);  
+	                MsiSetProperty(ISMSI_HANDLE,"SERVERTYPE","NEW");
+	            endif;   
+	           
+	        case RADIO_EXIST:
+	            if( CtrlGetState( DLG_SELECTSERVERTYPE, RADIO_EXIST ) = BUTTON_CHECKED ) then
+	                CtrlSetState (DLG_SELECTSERVERTYPE, RADIO_NEW, BUTTON_UNCHECKED); 
+	                MsiSetProperty(ISMSI_HANDLE,"SERVERTYPE","EXIST");
+	            endif;  
+	           
+	        case SD_PBUT_CONTINUE:  
+	        	nvSize = 300;
+	            MsiGetProperty(ISMSI_HANDLE,"SERVERTYPE", svServertype, nvSize);
+	            
+				//read server
+	            nId   = NEXT;
+	            bDone = TRUE;
+	
+	        case SD_PBUT_BACK:   
+	        	
+	            nId    = BACK;
+	            bDone  = TRUE;
+	
+	        case DLG_ERR:
+	            nId   = ISERR_GEN_FAILURE;
+	            SdError(nId, DLG_SELECTSERVERTYPE);
+	            bDone = TRUE;
+	
+	        case DLG_CLOSE:
+	            SdCloseDlg(hDlg, nId, bDone);
+	
+	
+	        default:
+	            // check standard handling
+	            if (SdIsStdButton(nId) && SdDoStdButton(nId)) then
+	                    bDone = TRUE;
+	            endif;
+        endswitch;
+    endwhile;
+
+    EndDialog(DLG_SELECTSERVERTYPE);
+    ReleaseDialog(DLG_SELECTSERVERTYPE);
+
+    SdUnInit();
+
+    return nId;
+end;

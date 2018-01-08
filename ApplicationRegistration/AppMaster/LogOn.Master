@@ -1,0 +1,158 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LogOn.Master.cs" Inherits="ApplicationRegistration.AppMaster.LogOn" %>
+<!--  
+  Copyright 2007 (c), SHARP CORPORATION.
+   
+  All rights are reserved.  Reproduction or transmission in whole or in part,
+  in any form or by any means, electronic, mechanical or otherwise, 
+  is prohibited without the prior written consent of the copyright owner.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="ctl00_Head1">
+<title>:: SHARP&copy;Corporation - Product Registration and Activation ::</title>
+
+<link href="../AppStyle/style.css" rel="stylesheet" type="text/css" />
+<link href="../AppStyle/ApplicationStyle.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+    
+    function AdjustHeight()
+    {
+        var availheight=screen.availHeight
+        var availwidth=screen.availWidth
+        imageObject = document.images["HeightAdjustImage"]
+        imageObject.height = availheight - 710;
+        SetGridWidth();
+    }
+    function FocusFirstEditableContol()
+    {
+    }
+    
+    function SetGridWidth()
+    {
+    }
+    
+    function GetHelp()
+    {
+        var width = 800;
+        var height = 600;
+        var top = screen.availHeight/2-(height/2);
+        var left = screen.availWidth/2-(width/2);
+        window.open('../Help/UserGuide/Registration-and-Activation.htm','help','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=Yes,resizable=no,copyhistory=no,width=' + width + ' ,height=' + height + ', top=' + top + ', left=' + left);
+    }
+    </script>
+</head>
+<body leftmargin="0" topmargin="0" rightmargin="0" bgcolor="#668ec1" onload="javascript:AdjustHeight()" onFocus="javascript:AdjustHeight()" >
+<form id="Form2" runat="server">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+	<tr>
+    	<td rowspan="3" align="left" valign="top" width="2%"></td>
+	    <td colspan="3" align="left" valign="top">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tbody>
+		<tr>
+		 <td width="2%" align="left" valign="top" ><img src="../AppImages/top_left_t.gif" /></td>
+		 <td width="100%" align="left" valign="top" background="../AppImages/top_top.gif" >
+		 <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+		 <tr>
+		 <td colspan="2" align="left" height="19" valign="top"></td>
+         </tr>
+		 <tr>
+         <td colspan="2" valign="top">
+          <!-- Sharp Logo -->
+               <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                 
+                  <tr>
+                    <td height="19" colspan="2" align="left" valign="middle"><img src="../AppImages/ProductRegActLogo.gif" />&nbsp;</td>
+                    <td width="18%" align="left" valign="middle"></td>
+                    <td width="82%" align="right" valign="middle" style="white-space:nowrap; height: 54px;">
+                        <img src="../AppImages/CompanyLogo.gif"/>&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+          </td>
+   		  </tr>
+		  </tbody>
+		   </table>
+			</td>
+       		 <td width="1%"  align="right" valign="top" ><img src="../AppImages/top_right1_t.gif" /></td>
+	      </tr>
+    	  </tbody></table></td>
+	      <td rowspan="3" align="left" valign="top" width="2%"></td>
+  		  </tr>
+  		  <tr>   
+		  <td style="width: 28px;" align="left" background="../AppImages/left_1_3.gif" height="28" valign="top"></td>
+		 <td rowspan="2" align="right" bgcolor="white" valign="top" width="94%"> 
+   
+		  
+		   <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#7cadf0" >
+	      <tbody>
+		  <tr>
+        	<td  align="right" style="height:31px">
+        	&nbsp;<b><a href="javascript:GetHelp()" title="Help">Help</a></b></td>
+          </tr>
+    	  <tr>
+        	<td  align="left" valign="top" style="background-color:white">
+        	<!-- Page Content -->
+        	<asp:ContentPlaceHolder ID="PageContentHolder" runat="server">&nbsp;</asp:ContentPlaceHolder>
+            </td>
+      </tr>
+    </tbody></table>
+ 
+  </td>
+    <td align="right" background="../AppImages/left_1_2_11.gif" height="31" valign="top" width="1%"> </td>
+  </tr>
+  <tr>
+    <td style="width: 28px;" align="right" background="../AppImages/left_1.gif" bgcolor="#7cadf0" valign="top">
+	<table style="height: 100%;" background="../AppImages/test_t.gif" border="0" cellpadding="0" cellspacing="0" width="74%">
+      <tbody>
+	  
+	  <tr>
+        <td style="height: 350px; width: 21px;" align="left" valign="bottom"></td>
+      </tr>
+	  <!----------- dyamic hieght ------------->
+	  <tr>
+        <td style="width:1px;height:100%" height="100%"><img id="HeightAdjustImage" height="100%" width="1px" /></td>
+      </tr>
+	  <!-------------------End -------------------->
+	  
+      <tr>
+        <td style="height: 30px; width: 21px;" align="left" background="../AppImages/body_center1.gif" valign="bottom"></td>
+      </tr>
+    </tbody></table></td>
+    <td align="left" background="../AppImages/left_1_t.gif" valign="top" width="1%">
+	<table style="height: 100%;" background="../AppImages/test_t21.gif" border="0" cellpadding="0" cellspacing="0" width="77%">
+      <tbody><tr>
+        <td style="height: 350px;" align="left" valign="bottom"></td>
+      </tr>
+      <tr>
+        <td style="height: 58px;" align="left" background="../AppImages/body_center1.gif" valign="bottom"></td>
+      </tr>
+    </tbody></table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"></td>
+    <td style="width: 28px;" align="center" background="../AppImages/bottom_left1.gif" valign="top"><img src="../AppImages/bottom_left.gif" height="74" width="27" /></td>
+    <td align="left" background="../AppImages/bottom_left1.gif" valign="top">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tbody><tr>
+        <td align="left" background="../AppImages/bottom_center.gif" height="68" valign="top" width="3%"><img src="../AppImages/bottom_bott.gif" /></td>
+        <td align="left" background="../AppImages/bottom_center.gif" valign="top" width="95%">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tbody><tr>
+            <td colspan="2" height="10"></td>
+          </tr>
+          <tr>
+            <td width="83%" height="43" align="left" valign="middle" class="link2_1">&copy; 2011 SHARP Software Development India Pvt. Ltd. All Rights Reserved.</td>
+            <td class="link2_1" align="right" valign="middle" width="17%"></td>
+          </tr>
+        </tbody></table></td>
+        <td align="left" background="../AppImages/bottom_center.gif" valign="top" width="2%"><img src="../AppImages/bottom_bott1.gif" /></td>
+      </tr>
+    </tbody></table></td>
+    <td align="left" background="../AppImages/bottom_left1.gif" valign="top"><img src="../AppImages/bottom_right.gif" height="74" width="28" /></td>
+	 <td align="left" valign="top"></td>
+	
+  </tr>
+</tbody></table>
+</form>    
+</body></html>

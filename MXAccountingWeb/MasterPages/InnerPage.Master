@@ -1,0 +1,885 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InnerPage.master.cs"
+    Inherits="AccountingPlusWeb.MasterPages.InnerPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html id="PageHtml" runat="server">
+<head id="HeaderSection" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>
+        <asp:Literal ID="LabelApplicationName" runat="server"></asp:Literal></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <asp:ContentPlaceHolder ID="ClientMessages" runat="server">
+        <asp:Literal ID="LiteralClientVariables" runat="server"></asp:Literal>
+    </asp:ContentPlaceHolder>
+    <script src="../JavaScript/dialog_box.js" type="text/javascript"></script>
+    <script src="../JavaScript/InnerMaster.js" type="text/javascript"></script>
+    <link href="../Notify/jNotify.jquery.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../Notify/jquery.js"></script>
+    <script type="text/javascript" src="../Notify/jNotify.jquery.js"></script>
+    <script language="javascript" type="text/javascript">
+    
+    <asp:Literal ID="PageBackgroundUrl" runat="server"></asp:Literal>
+        function bgLoad() {
+            var detected_os = navigator.userAgent.toLowerCase();
+            if ((navigator.appVersion.indexOf('MSIE 6.0') != -1) || (navigator.appVersion.indexOf('MSIE 5.5') != -1)) {
+                document.write("<div id='page-background' style='position:absolute; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:absolute; z-index:1; padding:0px;'>");
+
+            }
+            else if ((navigator.appVersion.indexOf('Chrome') != -1) || (navigator.appVersion.indexOf('Safari') != -1) || (navigator.userAgent.indexOf('Opera') >= 0)) {           
+                document.write("<div id='page-background' style='position:fixed;z-index:-1; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:relative; z-index:1; padding:0px;'>");
+            }
+            else {
+
+                document.write("<div id='page-background' style='position:fixed; top:0; left:0; width:100%; height:100%;'><img src='" + pageBackgroundUrl + "' width='100%' height='100%'></div>");
+                document.write(" <div id='content' style='position:relative; z-index:1; padding:0px;'>");
+
+            }
+        }
+    </script>
+    <style type="text/css">
+        .style2
+        {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #FFFFFF;
+            font-size: 10px;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index:1001;
+            -moz-opacity: 0.5;
+            opacity:.5;
+            filter: alpha(opacity=50);
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top:25%;
+           
+            padding: 16px;
+            border: 1px solid #ccc;
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+          
+    </style>
+</head>
+<body leftmargin="0" topmargin="0" onload="DisplayTabs()">
+    <script language="javascript" type="text/javascript">        bgLoad();</script>
+    <form id="PageForm" runat="server">
+    <asp:HiddenField ID="HiddenFieldUserRole" runat="server" />
+    <asp:Panel ID="PanelComunicator" Visible="false" runat="server">
+        <asp:Label ID="LabelMessage" runat="server" Text=""></asp:Label>
+    </asp:Panel>
+    <div style="display: inline;" id="MainpageLoading">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td align="center" style="padding-top: 200px;">
+                    <asp:Image ID="ImageInnerPageLoadingimg" SkinID="InnerPageLoadingimg" runat="server" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: none;" id="MainPageShow">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+                <td height="87" valign="top">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="87" class="HeaderBG">
+                        <tr>
+                            <td width="33%" align="left" valign="middle">
+                                <table width="100%" border="0">
+                                    <tr>
+                                        <td width="10%">
+                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                <tr>
+                                                    <td width="225px">
+                                                        <div style="padding-left: 10px">
+                                                            <asp:Image ID="ImageApplicationLogo" runat="server" /></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="90%">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width: 33%" align="center">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td valign="baseline">
+                                            <asp:Label ID="LabelRegisterNow" CssClass="H_titleGroup" runat="server" Text=""></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top">
+                                            <asp:Label ID="LblTrialMessage" runat="server" Text=""></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width: 33%" align="right">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="width: 95%">
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td align="left">
+                                                        <table width="100%" align="center" cellpadding="2" cellspacing="2" border="0">
+                                                            <tr style="white-space: nowrap;">
+                                                                <td align="right" width="30%">
+                                                                    <asp:Label ID="LabelLanguage" runat="server" Text="Language : "></asp:Label>
+                                                                </td>
+                                                                <td align="center" width="70%" valign="middle">
+                                                                    &nbsp;&nbsp;<asp:DropDownList ID="DropDownLanguageMaster" AutoPostBack="true" runat="server"
+                                                                        OnSelectedIndexChanged="DropDownLanguageMaster_SelectedIndexChanged">
+                                                                    </asp:DropDownList>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td align="right">
+                                                        <table border="0" cellpadding="3" cellspacing="3">
+                                                            <tr>
+                                                                <!--<td align="center" valign="middle">
+                                                                    <asp:ImageButton ID="ImageHome" ToolTip="" runat="server" SkinID="InnerPageHome"
+                                                                        CausesValidation="False" OnClick="ImageHome_Click" />
+                                                                </td>
+                                                                -->
+                                                                <td align="center" valign="middle" style="display: none;">
+                                                                    <a href="#" onclick="AboutUs()">
+                                                                        <asp:Image ID="ImageHelp" SkinID="InnerPageHelp" runat="server" />
+                                                                    </a>
+                                                                </td>
+                                                                <td valign="middle" align="right">
+                                                                    <asp:Image ID="ImageLoginUserICO" SkinID="InnerPageLoginUserICO" runat="server" />
+                                                                </td>
+                                                                <td valign="middle" align="left" style="white-space: nowrap">
+                                                                    <asp:Label ID="LabelUserName" runat="server" Text="" class="Noraml_LoginuserFont"></asp:Label>
+                                                                </td>
+                                                                <td align="center" valign="middle">
+                                                                    <asp:ImageButton ID="ImageLogOff" Width="32" Height="31" CausesValidation="false"
+                                                                        SkinID="InnerPageLogOff" ToolTip="" runat="server" OnClick="ImageLogOff_Click" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" height="500">
+                    <div style="height: 5px;">
+                    </div>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="2%" height="20" align="right">
+                                <asp:Image ID="ImageTopLeft" SkinID="InnerPageTopLeft" runat="server" />
+                            </td>
+                            <td width="96%" class="Top_TopBG" align="left">
+                                <a href="../Administration/SysOverView.aspx">
+                                    <asp:Image ID="ImageSystemOverviewIcon" SkinID="SystemOverviewIcon" runat="server" /></a>
+                            </td>
+                            <td width="2%" align="left">
+                                <asp:Image ID="ImageTopRoght" SkinID="InnerPageTopRight" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="Top_LeftBG">
+                            </td>
+                            <td height="" align="left" valign="top" class="CenterBG">
+                                <asp:Table ID="TableMaincontent" Width="100%" runat="server">
+                                    <asp:TableRow>
+                                        <asp:TableCell Width="225px" VerticalAlign="Top">
+                                            <table width="225px" border="0" cellpadding="0" cellspacing="0" height="" class="table_border_org">
+                                                <tr>
+                                                    <td align="left" valign="top" class="CenterBG">
+                                                        <table width="225px" border="0" cellpadding="0" cellspacing="0">
+                                                            <tr class="Menu_bg" id="UserID" style="cursor: pointer; cursor: hand" onclick="Meuselected('UserID');">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageUserIconIMG" SkinID="InnerPageUserIconIMG" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowCellUsers();">
+                                                                                <asp:Label ID="LabelUsers" runat="server" Text=""></asp:Label>&nbsp;&nbsp;
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TdUserSubMenu">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0">
+                                                                        <tr id="ManageUsers">
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkManageUsers" runat="server"
+                                                                                    Text="" Height="30" Width="100%" OnClick="LinkManageUsers_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="PermissionsLimits" >
+                                                                            <td width="100%" align="right" id="tdPermissionsLimits" runat="server" visible="false">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonPermissionsLimits"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LLinkButtonPermissionsLimits_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" style="display: none">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonPermissions"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonPermissions_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" style="display: none">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonLimits" runat="server"
+                                                                                    Text="" Height="30" Width="100%" OnClick="LinkButtonLimits_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="AccessRights" >
+                                                                            <td width="100%" align="right" valign="middle" id="tdAccessRights" runat="server" visible="false">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonUserRights"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonMFPRights_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="MyPermissionsandLimits">
+                                                                <td width="100%" align="right">
+                                                                    <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonMyPermissionsandLimits"
+                                                                        runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonMyPermissionsLimits_Click"></asp:LinkButton>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" id="menuSplitDevices">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="Device" style="cursor: pointer; cursor: hand" onclick="Meuselected('Device');">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageDevicesIMG" SkinID="InnerPageDevicesIMG" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowCellMFPs();">
+                                                                                <asp:Label ID="LabelMFPs" runat="server" Text=""></asp:Label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TdMFPSubMenu" style="display: none">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0">
+                                                                        <tr>
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonManageDevices"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonManageDevices_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonMFPGroup"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonMFPGroup_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonAssignToGroups"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonAssignToGroups_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="display: none">
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonMFPRights"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonMFPRights_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCostProfile"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonCostProfile_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCounterDetails"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonCounterDetails_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" id="menuSplitPricing">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="CostCenters" style="cursor: pointer; cursor: hand; display: none"
+                                                                onclick="Meuselected('CostCenters');">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageGroup" SkinID="InnerPageGroup" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowCostCenters();">
+                                                                                <asp:Label ID="LabelCostCenters" runat="server" Text=""></asp:Label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TrCostCenterSubMenu" style="display: none;">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0">
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" id="Tr1">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="Pricing" style="cursor: pointer; cursor: hand" onclick="Meuselected('Pricing');">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImagePrice" SkinID="InnerPagePrice" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowPrice();">
+                                                                                <asp:Label ID="LabelPrices" runat="server" Text=""></asp:Label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TrPriceSubMenu" style="display: none;">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0">
+                                                                        <tr id="trCostCenter" runat="server" visible="false">
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCostCenter"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonCostCenter_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="trCostCenters" runat="server" visible="false">
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCostCenters"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonCostCenters_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonPaperSize"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonPaperSize_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonAddCostProfile"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonAddCostProfile_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonPrices" runat="server"
+                                                                                    Text="" Height="30" Width="100%" OnClick="LinkButtonPrices_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" id="menuSplitPrintJobs">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="JobList">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImagePrintIMG" SkinID="InnerPagePrintIMG" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="Setting_FontNormal_white" ID="LinkButtonPrintJobs"
+                                                                                    runat="server" Text="" Width="100%" OnClick="LinkButtonPrintJobs_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                             </tr>
+                                                               <tr class="Menubg_SplitBG" id="TrmenuBalanceHrline" runat="server"  visible="false">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="trBalance" runat="server" visible="false">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="Image1" SkinID="InnerPagePrice" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="Setting_FontNormal_white" ID="LinkButtonBalance"
+                                                                                    runat="server" Text="Balance" Width="100%" OnClick="LinkButtonBalance_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" id="menuSplitJobLog">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="JobLog">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageJobLogIMG" SkinID="InnerPageJobLogIMG" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="Setting_FontNormal_white" ID="LinkButtonJobLog"
+                                                                                    runat="server" Text="" Width="100%" OnClick="LinkButtonJobLog_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" id="menuSplitAuditLog">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="AuditLog" style="cursor: pointer; cursor: hand" onclick="Meuselected('AuditLog');">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageAuditLogIMG" SkinID="InnerPageAuditLogIMG" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowAuditLog();">
+                                                                                <asp:Label ID="LabelAuditLog" runat="server" Text="Audit Log"></asp:Label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TrAuditLogSubMenu" style="display: none;">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0">
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonAuditLog"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonAuditLog_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonTruncateAuditLogShrink"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonTruncateAuditLogShrink_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG" style="display: none">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="Groups" style="display: none">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageInnerGroup" SkinID="InnerPageGroup" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="Setting_FontNormal_white" ID="LinkButtonGroups"
+                                                                                    runat="server" Text="" Height="150%" Width="100%" OnClick="LinkButtonGroups_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="Reports" style="cursor: pointer; cursor: hand" onclick="Meuselected('Reports');">
+                                                                <td height="40" align="left" valign="top" id="ReportsHeadding">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageGraphicalReport" SkinID="InnerPageGraphicalReport" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowCellReports();">
+                                                                                <asp:Label ID="LabelReports" runat="server" Text=""></asp:Label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TdReportsMenu" style="display: none;">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0" border="0">
+                                                                     <tr id="AdvancedReport">
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCrystalReport" runat="server"
+                                                                                    Text="Advanced Report" Height="30" Width="100%" OnClick="LinkButtonCrystalReport_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                           <tr>
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonReportChart" runat="server"
+                                                                                    Text="Report-Prints/Copies"  Height="30" Width="100%" OnClick="LinkButtonReportChart_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonReport" runat="server"
+                                                                                    Text="" Height="30" Width="100%" OnClick="LinkButtonReport_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="QuickJobSummary">
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonQuickJobSummary"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonQuickJobSummary_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="GraphicalReport">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonGraphicalReport"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonGraphicalReport_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="display: none">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonReport2" runat="server"
+                                                                                    Text="Graphical Report 2 " Height="30" Width="100%" OnClick="LinkButtonReport2_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="display: none">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonFleetReports"
+                                                                                    runat="server" Text="Device Fleet Reports" Height="30" Width="100%" OnClick="LinkButtonFleetReports_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="Invoice">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonInvoice" runat="server"
+                                                                                    Text="" Height="30" Width="100%" OnClick="LinkButtonInvoice_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menubg_SplitBG">
+                                                                <td height="2" align="left" valign="top" class="Menu_Hrline">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="Menu_bg" id="Settings" style="cursor: pointer; cursor: hand" onclick="Meuselected('Settings');">
+                                                                <td height="40" align="left" valign="top">
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" height="40">
+                                                                        <tr>
+                                                                            <td width="20%" align="center">
+                                                                                <asp:Image ID="ImageSettings" SkinID="InnerPageSettings" runat="server" />
+                                                                            </td>
+                                                                            <td width="80%" class="Setting_FontNormal_white" onclick="return fnShowCellSettings();">
+                                                                                <asp:Label ID="LabelSettings" runat="server" Text=""></asp:Label>&nbsp;
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TrSettingsMenu" style="display: none;">
+                                                                <td width="20%" align="left" valign="top">
+                                                                    <table width="98%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tr id="GeneralSettings">
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonGeneralSettings"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonGeneralSettings_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                          <tr id="Currency" runat="server" visible="true">
+                                                                            <td width="100%" align="right">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCurrency"
+                                                                                    runat="server" Text="Currency Settings" Height="30" Width="100%" OnClick="LinkButtonCurrency_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="AutoRefill">
+                                                                            <td align="right" valign="bottom">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonAutoRefill"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonAutoRefill_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="CardConfiguration">
+                                                                            <td align="right" valign="bottom">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCardConfiguration"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonCardConfiguration_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                          <tr id="Tr2">
+                                                                            <td align="right" valign="bottom">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonEmailPrintSettings"
+                                                                                    runat="server" Text="Email Print Settings" Height="30" Width="100%" OnClick="LinkButtonEmailPrintSettings_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="ADandDMSettings">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonADandDMSettings"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonADandDMSettings_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="ADSyncSettings">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonSyncSettings"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonSyncSettings_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="JobConfiguration">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonJobConfiguration"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonJobConfiguration_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="LogConfiguration">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonLogConfiuration"
+                                                                                    runat="server" Text="Log Configuration" Height="30" Width="100%" OnClick="LinkButtonLogConfiuration_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="Departments" style="display: none">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonDepartments"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonDepartments_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="ManageLanguages">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonManageLanguages"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonManageLanguages_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="CustomMessages">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonCustomMessages"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonCustomMessages_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="ApplicationRegistration">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonApplicationRegistration"
+                                                                                    runat="server" Text="" Height="35" Width="100%" OnClick="LinkButtonApplicationRegistration_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="Subscription">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonSubscription"
+                                                                                    runat="server" Text="" Height="35" Width="100%" OnClick="LinkButtonSubscription_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="RegistrationDetails" style="display: none">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonRegistrationDetails"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonRegistrationDetails_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="Backup">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonBackup" runat="server"
+                                                                                    Text="" Height="30" Width="100%" OnClick="LinkButtonBackup_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="AppThems">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonAppThemes"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonAppThems_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="SMTPSettings">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonSMTPSettings"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonSMTPSettings_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="ProxySettings">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonProxySettings"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonProxySettings_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="ServerDetails">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonServerDetails"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonServerDetails_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="MyProfile">
+                                                                            <td align="right" valign="middle">
+                                                                                <asp:LinkButton CausesValidation="false" CssClass="link" ID="LinkButtonMyProfile"
+                                                                                    runat="server" Text="" Height="30" Width="100%" OnClick="LinkButtonMyProfile_Click"></asp:LinkButton>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="12" align="left" valign="top" class="Menu_BG_bottom">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:TableCell>
+                                        <asp:TableCell Visible="false" Width="10px" VerticalAlign="Middle">
+                                            <asp:ImageButton Visible="true" ID="ImageButtonHideMenu" SkinID="InnerPageHiddenMenu"
+                                                runat="server" OnClick="ImageButtonHideMenu_Click" />
+                                            <asp:ImageButton Visible="true" ID="ImageButtonShowMenu" SkinID="InnerPageShowMenu"
+                                                runat="server" OnClick="ImageButtonShowMenu_Click" />
+                                        </asp:TableCell>
+                                        <asp:TableCell Width="100%" VerticalAlign="Top">
+                                            <div class="main">
+                                                <asp:ContentPlaceHolder ID="PageContent" runat="server">
+                                                </asp:ContentPlaceHolder>
+                                            </div>
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                            </td>
+                            <td class="Right_RightBG">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="20" align="right">
+                                <asp:Image ID="ImageBottomLeft" SkinID="InnerPageBottomLeft" runat="server" />
+                            </td>
+                            <td height="20" class="Bottom_BottomBG">
+                            </td>
+                            <td height="20" align="left">
+                                <asp:Image ID="ImageBottomRight" SkinID="InnerPageBottomRight" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" valign="top" class="Copyrights">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="left" style="width: 50%">
+                                &nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LabelFooter" runat="server" Text=""></asp:Label>
+                            </td>
+                            <td align="right" style="width: 50%">
+                                <asp:Label ID="LabelVersionInfo" runat="server" class="Copyrights" Text="" Style="padding-right: 20px;"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div id="Aboutbox" style="display: none; width: 425px; height: 160px; position: fixed;
+            padding: 0px; left: 35%; top: 0%; z-index: 1">
+            <table border="0" cellpadding="0" cellspacing="0" style="width: 100%" id="tblPopup">
+                <tr>
+                    <td height="25" class="AboutHeader">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="95%">
+                                    <asp:Label ID="LabelAboutHeader" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td width="95%" align="right">
+                                    <asp:Image ID="ImageInformation" SkinID="InnerPageInformation" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr height="10">
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="LabelAppName" runat="server" CssClass="AddressText" Text="" Style="padding-left: 5px;"></asp:Label>
+                    </td>
+                </tr>
+                <tr height="10">
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+                <tr height="10">
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="LabelCopyright" runat="server" class="f10b" CssClass="AddressText"
+                            Text="" Style="padding-left: 5px;"></asp:Label>
+                    </td>
+                </tr>
+                <tr style="display: none">
+                    <td>
+                        <asp:Label CssClass="AddressText" ID="LabelContactInfo" class="f10b" runat="server"
+                            Text="" Style="padding-left: 5px;"></asp:Label>
+                        :
+                        <asp:Label ID="LabelContactText" runat="server" class="f10b" CssClass="AddressText"
+                            Text=""></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="footer">
+                        <a href="#" onclick="AboutUsClose()">
+                            <asp:Image ID="ImageOk" SkinID="InnerPageOk1" runat="server" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+    <script language="javascript" type="text/javascript">
+        //Page Load event
+        function Pageload() {
+            document.getElementById("MainpageLoading").style.display = "none";
+            document.getElementById("MainPageShow").style.display = "inline";
+        }
+        try {
+            //Page onload 
+            Pageload();
+        }
+        catch (Error) {
+
+        }
+    </script>
+</body>
+</html>

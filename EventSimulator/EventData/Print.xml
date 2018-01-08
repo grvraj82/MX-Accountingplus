@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP-ENV:Body>
+    <Event generic="1.0.0.19" xmlns="urn:schemas-sc-jp:mfp:osa-1-1" product-family="32" product-version="i078P0Af" operation-version="01.00.00">
+      <event-data>
+        <user-info>
+          <account-id>1</account-id>
+        </user-info>
+        <device-info uuid="SN5500830Y00MNSHARP MX-2700G">
+          <serial-number>5500830Y00</serial-number>
+          <modelname>SHARP MX-2700G</modelname>
+          <location></location>
+          <mac_address>08:00:1F:82:79:1F</mac_address>
+          <network_address>172.29.240.72</network_address>
+        </device-info>
+        <details xsi:type="DETAILS_ON_JOB_COMPLETED_TYPE">
+          <JobResults xsi:type="JOB_RESULTS_PRINT_TYPE">
+            <mfp-job-id>
+              <JobId uid="SN5500830Y00JB000002388">
+                <job-type>PRINT</job-type>
+                <UISessionId></UISessionId>
+              </JobId>
+            </mfp-job-id>
+            <job-mode sys-name="JOB_MODE_DIRECT_PRINT_WEB"/>
+            <job-status>
+              <status>FINISHED</status>
+              <details xsi:type="JOB_STATUS_DETAILS_FINISHED_TYPE">
+                <started_at>2008-05-10T03:48:00-05:00</started_at>
+                <stopped_at>2008-05-10T03:49:00-05:00</stopped_at>
+              </details>
+            </job-status>
+            <timestamp mark="JOB_START">2008-05-10T03:48:00-05:00</timestamp>
+            <timestamp mark="JOB_END">2008-05-10T03:49:00-05:00</timestamp>
+            <user-info>
+              <account-id>1</account-id>
+            </user-info>
+            <device-info uuid="SN5500830Y00MNSHARP MX-2700G">
+              <serial-number>5500830Y00</serial-number>
+              <modelname>SHARP MX-2700G</modelname>
+              <location></location>
+              <mac_address>08:00:1F:82:79:1F</mac_address>
+              <network_address>172.29.240.72</network_address>
+            </device-info>
+            <properties>
+              <property sys-name="login-name">1</property>
+              <property sys-name="original-size">LETTER</property>
+              <property sys-name="duplex-mode">1SIDED</property>
+              <property sys-name="printer-resolution">1</property>
+              <property sys-name="finisher">SORT</property>
+              <property sys-name="staple">STAPLE_NONE</property>
+              <property sys-name="color-mode">AUTO</property>
+              <property sys-name="doc-filing">NOT_STORED</property>
+            </properties>
+            <resources>
+              <paper-out>
+                <sheet-count>1</sheet-count>
+                <property sys-name="color-mode">FULL-COLOR</property>
+              </paper-out>
+              <paper-out>
+                <copies-count at="reserved">1</copies-count>
+                <copies-count at="completed">1</copies-count>
+                <page-count at="reserved">1</page-count>
+                <page-count at="completed">1</page-count>
+              </paper-out>
+              <paper-out>
+                <sheet-count>1</sheet-count>
+                <page-count at="completed">1</page-count>
+                <property sys-name="color-mode">FULL-COLOR</property>
+                <property sys-name="papersize">LETTER</property>
+                <property sys-name="papertype">PLAIN</property>
+              </paper-out>
+            </resources>
+          </JobResults>
+        </details>
+      </event-data>
+    </Event>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

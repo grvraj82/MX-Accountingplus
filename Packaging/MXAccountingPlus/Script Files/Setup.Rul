@@ -1,0 +1,926 @@
+//===========================================================================
+//
+//  File Name:    Setup.rul
+//
+//  Description:  Blank setup main script file
+//
+//  Comments:     Blank setup is an empty setup project. If you want to
+//				  create a new project via. step-by step instructions use the
+//				  Project Assistant.
+//
+//===========================================================================
+
+// Included header files ----------------------------------------------------
+#include "ifx.h"    
+#include "Functions.h"
+                            
+/// Global Variables
+STRING svUpgrade,szInstallLocation, svSupPath, szOldBuildVersion, svNewBuildVersion, svExistGuid, svSoruceDir;                            
+BOOL bFrameWork11,bFrameWork20;        
+STRING szServer, szUser, szPassword, szConnection, szDB, svDBtype, svServertype, szSQLServerPath, szDotNet40Path;  
+ // global variable to store SETUPEXEDIR property value
+STRING SETUPEXEDIR[MAX_PATH + 1];
+//---------------------------------------------------------------------------
+// OnBegin
+//
+// The OnBegin event is called directly by the framework after the setup
+// initializes.
+//---------------------------------------------------------------------------
+function OnBegin()
+NUMBER nBuffer, nvSize;  
+begin			
+			
+	// TO DO: you may change default non-UI setting, for example
+	// 
+	// You may also perform your custom initialization steps, check requirements, etc. 
+	
+
+	if !(MAINTENANCE) then 
+		nBuffer = MAX_PATH + 1; // initialize size buffer before calling MsiGetProperty
+   		MsiGetProperty(ISMSI_HANDLE, "SETUPEXEDIR", SETUPEXEDIR, nBuffer); 
+   		nvSize = 256;
+		MsiGetProperty(ISMSI_HANDLE,"SERVERTYPE",svServertype, nvSize); 
+   		szSQLServerPath = SETUPEXEDIR ^ "Prerequisites" ^ "SQLServer2008R2_x86_ENU.exe";
+   		szDotNet40Path = SETUPEXEDIR ^ "Prerequisites" ^ "dotNetFx40_Full_x86_x64.exe";
+		CheckPrerequisites(); 
+		CheckUpgrade();   
+		
+	endif; 
+	SetTitle(@CID_PRODUCT_NAME, 24, BACKGROUNDCAPTION); 
+	nvSize = 300;
+	MsiGetProperty(ISMSI_HANDLE,"SUPPORTDIR",svSupPath,nvSize); 	
+end;    
+
+//---------------------------------------------------------------------------
+// OnFirstUIBefore
+//
+// The OnFirstUIBefore event is called by the framework when the setup is
+// running in first install mode. By default this event displays UI allowing
+// the end user to specify installation parameters.
+//---------------------------------------------------------------------------
+function OnFirstUIBefore()
+    NUMBER nResult, nSetupType, nvSize, nUser;
+    STRING szTitle, szMsg, szQuestion, svName, svCompany, szFile,svDir, svInstallpath, szString;
+    STRING szLicenseFile, szOpt1, szOpt2,svSpecialFolders,svPath,svDelimiter;
+    LIST list, listStartCopy;
+	BOOL bCustom,bPRWeb,bPRServer,bPRMFP,bvAllUsers,bLicenseAccepted;
+begin	  
+REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+    // TO DO: if you want to enable background, window title, and caption bar title                                                                   
+    // SetTitle( @PRODUCT_NAME, 24, WHITE );                                        
+    // SetTitle( @PRODUCT_NAME, 0, BACKGROUNDCAPTION ); 	                  
+    // Enable( FULLWINDOWMODE );						   
+    // Enable( BACKGROUND );							  
+    // SetColor(BACKGROUND,RGB (0, 128, 128));	
+  
+    list = ListCreate (STRINGLIST);				   
+
+	SHELL_OBJECT_FOLDER = @PRODUCT_NAME;	   
+    
+	nSetupType = TYPICAL;   
+	
+	bLicenseAccepted = FALSE;
+
+Dlg_SdWelcome:
+    szTitle = "";
+    szMsg   = "";
+    nResult = SdWelcome(szTitle, szMsg);
+    if (nResult = BACK) goto Dlg_SdWelcome; 
+	szTitle   = "";
+	svName    = "";
+    svCompany = "";     
+    nvSize = 256;
+	MsiGetProperty(ISMSI_HANDLE,"SERVERTYPE",svServertype, nvSize);
+    if (svUpgrade = "TRUE") then
+ 		INSTALLDIR = szInstallLocation;
+ 		if(svServertype = "EXIST") then
+			goto  Dlg_SQL;
+		else
+			goto  Dlg_SdStartCopy;
+		endif;
+	else	
+		goto  Dlg_SdLicense;
+	endif;   
+    
+Dlg_SdLicense:
+    if(NEXT = SdLicense2(szTitle,"","",SUPPORTDIR ^ "License.txt",bLicenseAccepted)) then   
+    	bLicenseAccepted = TRUE;
+		goto Dlg_SdCustomerInformation;
+	else
+		goto  Dlg_SdWelcome;
+	endif;       
+	   
+Dlg_SdCustomerInformation: 
+	szTitle   = "";
+	svName    = "";
+    svCompany = ""; 
+	 nResult =SdCustomerInformation ( szTitle, svName, svCompany, bvAllUsers );
+	 if (nResult = BACK) goto Dlg_SdLicense;  
+	 if (svUpgrade = "TRUE") then
+			//To set the value sqlserver related properties  
+		    MsiSetProperty(ISMSI_HANDLE,"IS_SQLSERVER_SERVER",szServer);  
+	 		INSTALLDIR = szInstallLocation;
+			goto  Dlg_SQL;
+		else
+			goto  Dlg_SdAskDestPath;
+		endif;
+	            
+Dlg_SdAskDestPath: 
+    nResult = SdAskDestPath(szTitle, szMsg, INSTALLDIR, 0);
+    //IsStringContains("AccountingPlus",INSTALLDIR);  
+    szString = INSTALLDIR;   
+     if !(szString % @CID_PRODUCT_NAME) then
+     	INSTALLDIR = INSTALLDIR ^ @CID_PRODUCT_NAME; 
+     endif;
+    
+    if (nResult = BACK) goto Dlg_SdCustomerInformation;
+    
+    if (nResult = NEXT) then 
+            
+    	svSpecialFolders = "PersonalFolder TempFolder WindowsFolder CommonFilesFolder" ;
+        svPath = INSTALLDIR; 
+        nvSize = 1000;
+		MsiSetProperty(ISMSI_HANDLE,"Path_Exist",svPath);
+        svDelimiter = " " ; 
+        if !(IsDoNotContainSpecialFolder(ISMSI_HANDLE,svPath,svSpecialFolders ,svDelimiter)) then			
+        	SetDialogTitle(WARNING ,@CID_PRODUCT_NAME);
+			MessageBox ( @CID_DESKTOP_NOTINSTALL, WARNING );
+			goto Dlg_SdAskDestPath;
+		endif;  
+		
+    	if!(CheckDiskSpace() ) then
+    		SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+			MessageBox(@CID_DISKSPACE,SEVERE);
+			goto Dlg_SdAskDestPath:    
+		endif; 
+		
+		if(Is(FILE_EXISTS, szSQLServerPath)) then
+			goto  Dlg_SelectServerType;
+		else
+			goto  Dlg_DBType;
+		endif; 		
+	endif; 
+	
+Dlg_SelectServerType:
+	//if (svUpgrade != "TRUE" && Is(FILE_EXISTS, szSQLServerPath)) then	
+	nResult = SelectServerType();
+	if (nResult = BACK) goto Dlg_SdAskDestPath;  
+	nvSize = 256;
+	MsiGetProperty(ISMSI_HANDLE,"SERVERTYPE",svServertype, nvSize);
+	if(svServertype = "EXIST") then
+		goto  Dlg_DBType;
+	else
+		goto  Dlg_SdStartCopy;
+	endif;  
+	
+Dlg_DBType:	  
+	nResult = SelectServerLocation();
+	if(nResult = BACK) then
+		if(Is(FILE_EXISTS, szSQLServerPath)) then
+			goto  Dlg_SelectServerType;
+		else
+			goto  Dlg_SdAskDestPath;
+		endif; 	
+	endif;   
+	
+
+Dlg_SQL:    	
+    nResult = OnSQLLogin( nResult );
+    if( nResult = BACK ) then
+	 if(svUpgrade = "TRUE") then
+			goto Dlg_SdWelcome;
+		else
+			goto Dlg_DBType;   
+		endif;
+	//goto Dlg_SdAskDestPath;
+	endif;  
+
+Dlg_SdStartCopy:
+    szTitle = "";
+    szMsg   = "";
+    //listStartCopy = ListCreate( STRINGLIST );
+    //The following is an example of how to add a string(svName) to a list(listStartCopy).
+    //eg. ListAddString(listStartCopy,svName,AFTER);
+      	ListAddString (list, @IDS__IsVerifyReadyDlg_UserInfo, AFTER); 
+	    ListAddString (list, "          " + @IDS__IsVerifyReadyDlg_UserName + svName, AFTER); 
+	    ListAddString (list, "          " + @IDS__IsVerifyReadyDlg_Company + svCompany, AFTER);	
+	    ListAddString (list, "          ", AFTER);
+		ListAddString (list, @IDS__DestinationFolder_DestinationFolder + ":", AFTER);      
+		ListAddString (list, "          " + INSTALLDIR, AFTER); 
+    nResult = SdStartCopy( szTitle, szMsg, list );  // SdStartCopy( szTitle, szMsg, listStartCopy );  
+    
+    nvSize = 256;
+	MsiGetProperty(ISMSI_HANDLE,"SERVERTYPE",svServertype, nvSize); 
+     //ListDestroy(listStartCopy);   
+	if (nResult = BACK)then
+		ListDeleteAll(list);
+		if (svUpgrade = "TRUE") then
+	 		if(svServertype = "EXIST") then
+				goto  Dlg_SQL;
+			else
+				goto  Dlg_SdWelcome;
+			endif;
+		else	
+			if(svServertype = "EXIST") then
+				goto  Dlg_SQL;
+			else
+				goto  Dlg_SelectServerType;
+			endif;
+		endif;
+	endif;
+	
+    // disable the cancel button
+    Disable(56); 
+     
+    // setup default status
+    Enable(STATUSEX);    
+    
+    if(svUpgrade = "TRUE") then
+		 UpgradeProcess();  
+	elseif((svServertype = "NEW") && (Is(FILE_EXISTS, szSQLServerPath))) then
+		 if !(IsInstanceExists()) then
+		 	InstallSQLServer();
+		 endif;	
+	endif;
+	
+	if(svServertype = "NEW") then 
+		//First initialize SQL Server runtime
+    	SQLRTInitialize2();
+		//To set the value sqlserver related properties.  
+		szServer = "(local)\\MXAPSERVER";
+		szConnection = "iSignagePlus";		
+   		szDB = "master";	
+		szUser = "sa";
+		szPassword = "MXAPADMIN@123";
+		if(CheckSQLConnection(szConnection, szServer, szDB, szUser, szPassword)) then
+	    	MsiSetProperty(ISMSI_HANDLE,"IS_SQLSERVER_SERVER",szServer);  
+			MsiSetProperty(ISMSI_HANDLE,"IS_SQLSERVER_DATABASE",szDB);
+			MsiSetProperty(ISMSI_HANDLE,"IS_SQLSERVER_USERNAME",szUser);
+			MsiSetProperty(ISMSI_HANDLE,"IS_SQLSERVER_PASSWORD",szPassword);    
+		else
+			abort;
+		endif;	
+    endif; 
+ 
+    return 0;
+end;
+
+//---------------------------------------------------------------------------
+// OnSQLLogin
+//---------------------------------------------------------------------------
+function number OnSQLLogin( nBtn )
+string sMessage;
+string sTemp[MAX_PATH];
+number nResult, nSize, nCount;
+BOOL   bWinLogin, bNext;
+LIST   listConnections, listDBs;   
+STRING szProgram, szScriptFilePath, szOutputFilePath, szCommandLine, svFindString, svSelectedDBVersion; 
+NUMBER nValue, nLength, nvReturnLineNo, nvSize;
+begin
+
+    //First initialize SQL Server runtime
+    SQLRTInitialize2();
+   szDB = "master";  
+   // Suppress ISSQLSRV.DLL to show a connection error message.
+	MsiSetProperty( ISMSI_HANDLE, "IS_SQLSERVER_CA_SILENT", "1" );
+
+    //Get the names of all the necessary connections
+    listConnections = SQLRTGetConnections();
+    ListGetFirstString (listConnections, szConnection);
+
+    nCount = 0;
+
+    //determine if NEXT or BACK will be returned 
+    //if there are no connections to make
+    if( nBtn != BACK ) then
+        bNext = TRUE;
+    else
+        bNext = FALSE;
+		//start at end if going BACK
+		while (ISERR_SUCCESS = ListGetNextString( listConnections, szConnection ) );
+			nCount++;
+		endwhile;
+    endif;
+
+    
+    // Login for each connection
+    while (nResult = ISERR_SUCCESS)
+
+        //Get Default values for connection
+        SQLRTGetConnectionInfo( szConnection, szServer, szDB, szUser, szPassword );
+
+        bWinLogin = SQLRTGetConnectionAuthentication( szConnection );
+
+        // Display login dialog (without connection name)
+        // COMMENT OUT TO SWAP DIALOGS                      
+        bWinLogin = FALSE;
+        nResult = SQLServerSelectLogin2( szConnection, szServer, szUser, szPassword, bWinLogin, szDB, TRUE, TRUE );
+
+        // Display login dialog (with connection name)
+        // UNCOMMENT TO SWAP DIALOGS
+        // nResult = SQLServerSelectLogin2( szConnection, szServer, szUser, szPassword, bWinLogin, szDB, TRUE, TRUE );
+
+        if( nResult = NEXT ) then
+
+            //store data in case we need it again
+            SQLRTPutConnectionInfo2( szConnection, szServer, szDB, szUser, szPassword );
+
+	        //SQLRTPutConnectionAuthentication( szConnection, bWinLogin );
+
+            //test connection
+			nResult = SQLRTTestConnection2( szConnection, szServer, szDB, szUser, szPassword, bWinLogin );
+
+            nSize = MAX_PATH;
+            MsiGetProperty( ISMSI_HANDLE, "IS_SQLSERVER_STATUS", sTemp, nSize );
+
+           if( sTemp != "0" ) then
+
+				nSize = _MAX_PATH;
+				MsiGetProperty( ISMSI_HANDLE, "IS_SQLSERVER_STATUS_ERROR", sMessage, nSize );
+                    
+				if( nSize = 0 ) then
+			        Sprintf(sMessage, SdLoadString( IDS_IFX_SQL_ERROR_LOGIN_FAILED ), szConnection, SdLoadString( ISCRIPT_E_UNKNOWN_ERROR_DESC ));
+				endif;
+				
+				MessageBox( sMessage, MB_OK );
+
+                //Show same login dialog again
+                nResult = ListCurrentString(listConnections, szConnection);
+
+            else //SUCCESS
+                
+                //Move on to next connection
+                nCount++;
+                bNext = TRUE;
+                nResult = ListGetNextString(listConnections, szConnection);
+                    
+                //*********************************************************************/
+				// To check a Specific Database is exists in selected\mentioned Server,
+				// When Select SHARED Database.
+				//
+				//*********************************************************************/ 
+                    
+	               	if(svDBtype = "SHARE") then   
+	               			szDB = "AccountingPlusDB";
+			                // get drive list
+							listDBs = SQLRTGetDatabases( szConnection, szServer, bWinLogin, szUser, szPassword );
+							//if( StrLengthChars( svDB ) = 0 ) ListGetFirstString( listDBs, svDB ); endif;  
+							ListSetIndex (listDBs, 0); 
+							nValue = ListFindString  (listDBs, szDB);
+							 
+				            if !(nValue = 0) then 
+				            
+				                MessageBox ("AccountingPlus Database 'AccountingPlusDB' is not exists in '" + szServer + "' Server", SEVERE); 
+				                nResult = 0;
+				                
+				            else           
+				            
+								  // To Run Sql Query and retrieving a value from the database.
+				                  szProgram = "osql.exe";
+					              szScriptFilePath = SUPPORTDIR ^  "AccountingPlusVersion.sql"; 
+					              szOutputFilePath = SUPPORTDIR ^ "AccountingPlusVersion.output"; 
+					              LongPathToQuote(szScriptFilePath,TRUE);
+					              nLength = MAX_PATH;   
+					              szCommandLine = '/U'+ ' ' + szUser + ' ' + '/P' + ' ' + szPassword + ' ' + '/S' + ' ' + szServer + ' '  + '/d' + ' ' + szDB + ' ' + '/i' + ' "' + szScriptFilePath  + '" ' + '/o' + ' "' + szOutputFilePath + '"' + ' ';
+					              //osql.exe /U username /P password /S server /d database /i sqlscript.sql /o sqlscript.output
+					              LaunchAppAndWait(szProgram,szCommandLine,LAAW_OPTION_WAIT|LAAW_OPTION_HIDDEN);
+					              
+				                  //To Get Version No. of the AccountingPlus Product Which created the Shared Database.
+					              svFindString = '.' ;
+								  FileGrep(szOutputFilePath, svFindString, svSelectedDBVersion, nvReturnLineNo ,RESTART);  
+									 
+								  //To Get Product Version 
+								  nvSize = 300;
+								  MsiGetProperty(ISMSI_HANDLE,"ProductVersion", svNewBuildVersion, nvSize);
+								  
+								  if !(VerCompare(svNewBuildVersion, svSelectedDBVersion, VERSION) == EQUALS)then  								  
+								
+									    MessageBox ("AccountingPlus Database 'AccountingPlusDB' in '" + szServer + "' Server does not contains same AccountingPlus version Database", SEVERE);
+			                  	       	nResult = 0;
+	                                    
+                                  endif;  
+
+					              	 
+				            endif; 
+				            
+							ListDestroy( listDBs );  
+					endif;
+                //*********************************************************************/ 
+                
+            endif;
+
+        else
+
+            //BACK
+            nCount--;
+            bNext = FALSE;
+            nResult = ListSetIndex( listConnections, nCount );
+            ListCurrentString( listConnections, szConnection );
+
+        endif;
+
+    endwhile;
+ 
+    if( bNext ) then
+        return NEXT;
+    else
+        return BACK;
+    endif;
+                              
+end;
+//---------------------------------------------------------------------------
+// OnFirstUIAfter
+//
+// The OnFirstUIAfter event called by the framework after the file transfer
+// of the setup when the setup is running in first install mode. By default
+// this event displays UI that informs the end user that the setup has been
+// completed successfully.
+//---------------------------------------------------------------------------
+function OnFirstUIAfter()
+    STRING szTitle, szMsg1, szMsg2, szOption1, szOption2,szServiceName,svDest;
+    BOOL bFirOptofuia,bSecOptofuia, bSamples;
+	NUMBER nvSize,nvType,nvOsLangfui ,nResultofuia, nReturn, nvServiceState, bOpt1, bOpt2;
+	STRING svBuildVersion,szKey,szValueofuia,szTitleofuia,szFirMsgofuia,szSecMsgofuia,szRegpgmofuial, objFolderPath;  
+	STRING szProgram, szCmdLine;
+begin    
+    	REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+		REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+		bFirOptofuia  = FALSE;
+		bSecOptofuia  = FALSE;
+		szFirMsgofuia = SdLoadString(IFX_SDFINISH_MSG1);     
+		//SdShowMsg(@Msg_OSA_CONFIG,TRUE);
+		
+		// Copy the Documents to Target location. 
+		CopyDocuments();
+		 
+		svDest = INSTALLDIR ;
+		SetFilesNormal ( svDest , "*.*" , INCLUDE_SUBDIR ) ;  
+		
+		InstallAspnet_regiis(); 
+
+		SetAppPoolSettings();   
+            
+		Disable(STATUSEX);  
+		REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ; 	 
+	 
+		 if(svUpgrade="TRUE")then         
+		         //To Copy  the files which are dumped in Temp Folder while uninstalling lower version
+		         CopyBackUpFiles();
+		         //Setting to required folder permission to Full Access 
+		 		 szProgram = INSTALLDIR ^ "AppData";    
+	 			 StrRemoveLastSlash (szProgram);
+		 		 szCmdLine = "icacls \"" + szProgram + "\" /grant administrators:(OI)(CI)F";
+	 			 LaunchAppAndWait("",szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+				 szProgram = INSTALLDIR ^ "PrintJobs";    
+	 			 StrRemoveLastSlash (szProgram);
+		 		 szCmdLine = "icacls \"" + szProgram + "\" /grant administrators:(OI)(CI)F";
+	 			 LaunchAppAndWait("",szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+	 			 if!(Is(PATH_EXISTS,SETUPEXEDIR ^ "Documents")) then 
+		 			 szProgram = INSTALLDIR ^ "Documents";    
+		 			 StrRemoveLastSlash (szProgram);
+			 		 szCmdLine = "icacls \"" + szProgram + "\" /grant administrators:(OI)(CI)F";
+		 			 LaunchAppAndWait("",szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+	 			 endif;
+                 //To modify the backup config files
+		         UpgradeconfigFile();          
+	    else
+		  
+		//To replace the strings of config files 	
+				ConfigStringReplacement();  
+		//To Set the string values of DBSettings.ini file						
+				//SetDBSettingsValues();  	       
+		endif;
+		 
+		//To replace the strings of config files 	
+		//ConfigStringReplacement();
+		
+		//To Install the services 
+		InstallServices();
+		
+		//To Start the installed service
+		StartServices();
+		  
+		//To Restart the services	  
+		//StopServices();          	
+		//StartServices();
+		 
+		//To Stop the AccountingPlusConfigurator Service           
+		szServiceName =  "AccountingPlusConfigurator" ;
+		if (ServiceExistsService ( szServiceName )) then
+			ServiceGetServiceState ( szServiceName, nvServiceState ); 
+			if (nvServiceState != SERVICE_STOPPED ) then
+			       nReturn = ServiceStopService( szServiceName ) ;
+			       Delay(5); 
+				if (nReturn < 0) then 
+	    				LaunchAppAndWait("","net stop AccountingPlusConfigurator",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+	    		endif;   
+			endif;
+		endif; 
+		 
+		//To Start the AccountingPlusConfigurator Service           
+		szServiceName =  "AccountingPlusConfigurator" ;
+		if (ServiceExistsService ( szServiceName )) then
+			nReturn = ServiceStartService( szServiceName,"" ) ;  
+			Delay(5);
+			if (nReturn < 0) then 
+	  				LaunchAppAndWait("","net start AccountingPlusConfigurator",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   	    			
+	    	endif; 
+		endif;      
+	
+		SetFilePermission();  	
+		RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );	  
+		if(TRUE == SYSINFO.bIsWow64)then 
+			svBuildVersion = AP_REGKEY_64BIT;
+		else
+			svBuildVersion = AP_REGKEY_32BIT;
+		endif;
+
+		nvType = REGDB_STRING;        
+		svUpgrade = "FALSE"; 
+		nvSize = 256;           
+		RegDBSetKeyValueEx ( svBuildVersion, "UPGRADE", nvType, svUpgrade, nvSize); 
+
+	bOpt1  = FALSE;
+	bOpt2  = FALSE;
+	szMsg1 = SdLoadString(IFX_SDFINISH_MSG1);
+	SdFinishEx(szTitle, szMsg1, szMsg2, szOption1, szOption2, bOpt1, bOpt2);
+	
+end;   
+
+//---------------------------------------------------------------------------
+// OnMaintUIBefore
+//
+// The OnMaintUIBefore event is called by the framework when the setup is
+// running in maintenance mode. By default this event displays UI that
+// allows the end user to add or remove features, repair currently
+// installed features or uninstall the application.
+//---------------------------------------------------------------------------
+function OnMaintUIBefore()
+	NUMBER nvServiceState,nResult, nType, nvSize,nResult1;
+	STRING szCmdLine,szProgram,szServiceName,szTitle, szMsg, svDir, svResult, szCaption, svBuildVersion;
+begin
+	// TO DO: if you want to enable background, window title, and caption bar title   								
+	// SetTitle( @PRODUCT_NAME, 24, WHITE );					
+	// SetTitle( @PRODUCT_NAME, 0, BACKGROUNDCAPTION );  			
+	// SetColor(BACKGROUND,RGB (0, 128, 128));					
+	// Enable( FULLWINDOWMODE );						
+	// Enable( BACKGROUND );
+    
+    nType = REMOVEALL;
+    nResult = MessageBox( SdLoadString( IFX_MAINTUI_MSG ), MB_YESNO );
+		if (nResult != IDYES ) then
+                        abort;
+    else   
+    	if (nType = REMOVEALL) then   
+	  		
+				if(TRUE == SYSINFO.bIsWow64)then 
+					svBuildVersion = AP_REGKEY_64BIT;
+				else
+					svBuildVersion = AP_REGKEY_32BIT;
+				endif; 
+				
+				RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );
+				RegDBGetKeyValueEx ( svBuildVersion, "UPGRADE", nType, svUpgrade, nvSize );  
+				MsiSetProperty(ISMSI_HANDLE,"UPGRADE",svUpgrade);  
+				nvSize = 256;
+				MsiGetProperty(ISMSI_HANDLE,"UPGRADE",svUpgrade, nvSize);    
+				//Get the DBTYPE Value from Regkey and Storing in Property
+				RegDBGetKeyValueEx ( svBuildVersion, "DBTYPE", nType, svDBtype, nvSize );
+		  		MsiSetProperty(ISMSI_HANDLE,"DBTYPE",svDBtype); 
+		  		nvSize = 256;
+				MsiGetProperty(ISMSI_HANDLE,"DBTYPE",svDBtype, nvSize); 
+				//Get the DBTYPE Value from Regkey and Storing in Property
+				RegDBGetKeyValueEx ( svBuildVersion, "SERVERTYPE", nType, svServertype, nvSize );
+		  		MsiSetProperty(ISMSI_HANDLE,"SERVERTYPE",svServertype);	    
+			
+				UninstallServices();
+		
+		 endif; 
+		
+
+		   
+		FeatureRemoveAll();    
+		
+		
+		//TO delete the AccountingPlus InstallLog Files.
+        DeleteFile (INSTALLDIR ^ "*.InstallLog");    
+        DeleteFile (INSTALLDIR ^ "*.dll");  
+        
+    endif;
+             	
+    // disable the cancel button
+    Disable(56);
+    
+	// setup default status 
+	SetStatusWindow(0, "");
+	Enable(STATUSEX);
+	StatusUpdate(ON, 100);
+end;
+//---------------------------------------------------------------------------
+// OnMaintUIAfter
+//
+// The OnMaintUIAfter event called by the framework after the file transfer
+// of the setup when the setup is running in maintenance mode. By default
+// this event displays UI that informs the end user that the maintenance setup
+// has been completed successfully.
+//---------------------------------------------------------------------------
+function OnMaintUIAfter()
+	STRING szDIR,szTitle, szMsg1, szMsg2, szOption1, szOption2;
+	NUMBER bOpt1, bOpt2;  
+	STRING szProgram,szScriptFilePath,szCommandLine, svBuildVersion;   
+	NUMBER nLength, nType, nvSize;
+begin
+
+	Disable(STATUSEX);
+
+	bOpt1   = FALSE;
+	bOpt2   = FALSE;
+	 
+    
+	// Added - Version 9.5 - Use appropriate strings for complete
+    // uninstall.
+    if( REMOVEALLMODE ) then
+        szTitle = SdLoadString(IFX_SDFINISH_REMOVE_TITLE);
+        szMsg1 = SdLoadString(IFX_SDFINISH_REMOVE_MSG1);
+    else
+        szTitle = SdLoadString(IFX_SDFINISH_MAINT_TITLE);    
+        szMsg1  = SdLoadString(IFX_SDFINISH_MAINT_MSG1);
+    endif;
+                
+        /*
+        szDB = "AccountingPlusDB";
+    	if(svUpgrade="FALSE" && svDBtype="NEW") then      	         
+		    // To run Uninstall.sql script to drop Database, during uninstallation of application.
+			  szProgram = "osql.exe";
+			  szScriptFilePath = SUPPORTDIR ^  "UNINSTALL.sql"; 
+			  LongPathToQuote(szScriptFilePath,TRUE);
+			  nLength = MAX_PATH;   
+			  szCommandLine = '/U'+ ' ' + szUser + ' ' + '/P' + ' ' + szPassword + ' ' + '/S' + ' ' + szServer + ' '  + '/d' + ' ' + szDB + ' ' + '/i' + ' "' + szScriptFilePath  + '" ';
+			  //osql.exe /U username /P password /S server /d database /i sqlscript.sql /o sqlscript.output
+			  LaunchAppAndWait(szProgram,szCommandLine,LAAW_OPTION_WAIT|LAAW_OPTION_HIDDEN);  		      
+		 endif;
+	 	 */     
+	 
+	 if(TRUE == SYSINFO.bIsWow64)then 
+					svBuildVersion = AP_REGKEY_64BIT;
+	else
+		svBuildVersion = AP_REGKEY_32BIT;
+	endif; 
+	
+	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );
+	RegDBGetKeyValueEx ( svBuildVersion, "UPGRADE", nType, svUpgrade, nvSize );  
+   
+	                      
+	//should not Delete InstallDir and PrintJobs Folders while upgrading application.
+    //if !(SILENTMODE) then
+		if(svUpgrade="TRUE")then
+			szProgram = INSTALLDIR ^ @CID_ADMIN;
+			if Is(PATH_EXISTS, szProgram) then  
+				DeleteDir( szProgram, ALLCONTENTS );      
+			endif;      
+			szProgram = INSTALLDIR ^ @CID_EAM_APP;
+			if Is(PATH_EXISTS, szProgram) then  
+				DeleteDir( szProgram, ALLCONTENTS );      
+			endif;                              
+			szProgram = INSTALLDIR ^ @CID_ACM_APP;
+			if Is(PATH_EXISTS, szProgram) then  
+				DeleteDir( szProgram, ALLCONTENTS );      
+			endif; 
+		else  
+			if(svServertype = "NEW")then
+				UninstallSQLServer();
+			endif;     
+			
+		    if Is(PATH_EXISTS, INSTALLDIR) then  
+				DeleteDir( INSTALLDIR, ALLCONTENTS );      
+			endif; 
+			//TO delete the AccountingPlus programfiles directory.
+			if Is(PATH_EXISTS, INSTALLDIR) then  
+				DeleteDir( INSTALLDIR, ALLCONTENTS );      
+			endif;			
+		endif;  
+	//endif;        
+	
+	 //TO delete the AccountingPlus program folder.
+    if Is(PATH_EXISTS, FOLDER_PROGRAMS ^ @ID_STRING34) then  
+    	DeleteProgramFolder(@ID_STRING34);      
+    endif; 
+	if Is(FILE_EXISTS, DesktopFolder ^ @ID_STRING35 + ".lnk") then
+	  	DeleteFolderIcon ( DesktopFolder , @ID_STRING35 ); 
+    endif;
+         
+	SdFinishEx(szTitle, szMsg1, szMsg2, szOption1, szOption2, bOpt1, bOpt2);
+end;
+
+//---------------------------------------------------------------------------
+// OnMoving
+//
+// The OnMoving event is called just after the standard MSI action 
+// 'InstallInitialize' is executed.
+//---------------------------------------------------------------------------
+function OnMoving()
+begin  
+//To fix uninstallation issue in Vista 64 bit OS 
+REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;  
+
+end;
+//---------------------------------------------------------------------------
+// OnMoved
+//
+// The OnMoved event is called just before the InstallShield action 
+// 'GeneratedMSIScript' is executed.
+//---------------------------------------------------------------------------
+function OnMoved()
+
+string szApp, szCmdLine; 
+number nDelimiter; 
+
+begin  
+//To fix uninstallation issue in Vista 64 bit OS
+REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+if( !REMOVEALLMODE ) then 
+
+
+      // Find the delimiter 
+
+      nDelimiter = StrFind( UNINSTALL_STRING, DISK1SETUPEXENAME ) + StrLengthChars( DISK1SETUPEXENAME ); 
+
+
+      // Build app & quote 
+
+      StrSub( szApp, UNINSTALL_STRING, 0, nDelimiter ); 
+
+      LongPathToQuote( szApp, TRUE ); 
+
+
+      // Build command line 
+
+      StrSub( szCmdLine, UNINSTALL_STRING, nDelimiter, StrLengthChars( UNINSTALL_STRING ) - nDelimiter ); 
+
+
+      // Create shortcut. 
+
+      AddFolderIcon( FOLDER_PROGRAMS ^ @ID_STRING34, @ID_STRING44, szApp + szCmdLine, "", "", 0, "", REPLACE ); 
+
+   endif; 
+end;
+//---------------------------------------------------------------------------
+// OnInstallFilesActionBefore
+//
+// The InstallFilesActionBefore event is called just before the standard MSI
+// action 'InstallFiles' is executed.
+//---------------------------------------------------------------------------
+function OnInstallFilesActionBefore()
+begin
+//To fix uninstallation issue in Vista 64 bit OS
+REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+end;
+//---------------------------------------------------------------------------
+// OnInstallFilesActionAfter
+//
+// The InstallFilesActionAfter event is called just after the standard MSI
+// action 'InstallFiles' is executed.
+//---------------------------------------------------------------------------
+function OnInstallFilesActionAfter()
+begin
+//To fix uninstallation issue in Vista 64 bit OS
+REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+end;
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//
+//  File Name:    SdAskDestPathDlg.rul
+//
+//  Description:  This file contains the InstallShield script for the SdAskDestPath
+//                dialog function.
+//
+/////////////////////////////////////////////////////////////////////////////////////////
+
+#ifndef _SDADPATH_RUL_
+#define _SDADPATH_RUL_
+
+#include "Dialogs.h"
+#include "CustomDlg.h"
+#include "Winapi.h"
+#include "ISRTDefs.h"
+#include "Silent.h"
+#include "sdrc.h"
+#include "sdint.h"
+#include "DialogsPriv.h"
+
+function  SdAskDestPath(szTitle, szMsg, svDir, nStyle)
+          STRING  szDlg, svDirLoc, szTemp;
+          INT     nId, nTemp, nSdDialog;
+          HWND    hwndDlg;
+          BOOL    bDone;
+     
+          begin
+
+          szDlg     = SD_DLG_ASKDESTPATH;
+          nSdDialog = SD_NDLG_ASKDESTPATH;
+          svDirLoc = svDir;
+
+          // record data produced by this dialog
+          if (MODE=SILENTMODE) then
+            SdMakeName( szAppKey, szDlg, szTitle, nSdAskDestPath );
+            SilentReadData( szAppKey, "Result", DATA_NUMBER, szTemp, nId );
+            if ((nId != BACK) && (nId != CANCEL)) then
+               SilentReadData( szAppKey, "szDir", DATA_STRING, svDir, nTemp );
+            endif;
+
+            return nId;
+          endif;
+
+          // ensure general initialization is complete
+          if (!bSdInit) then
+             SdInit();
+          endif;
+
+          if (EzDefineDialog( szDlg, "", "", SD_NDLG_ASKDESTPATH ) = DLG_ERR) then
+            return -1;
+          endif;
+
+          // Loop in dialog until the user selects a standard button
+          bDone = FALSE;
+
+          while (!bDone)
+
+             nId = WaitOnDialog( szDlg );
+
+             switch (nId)
+             case DLG_INIT:
+                  CtrlSetText( szDlg, 0x80000000 | SD_STA_DESTDIR, svDirLoc );
+
+                  if(szMsg != "") then
+                      SdSetStatic( szDlg, SD_STA_CHANGEDIRMSG, szMsg );
+                  endif;
+
+                  hwndDlg = CmdGetHwndDlg( szDlg );
+                  SdGeneralInit( szDlg, hwndDlg, nStyle, szSdProduct );
+
+                  SdSetDlgTitle(szDlg, hwndDlg, szTitle);
+
+             case SD_PBUT_CHANGEDIR:
+                  //SelectDirNoLog( "", "", svDirLoc, FALSE );
+                  BrowseForFolder(hwndDlg,szTitle,svDirLoc)   ;
+                  if (StrLength(svDirLoc) = 2 ) then
+                     svDirLoc = svDirLoc + "\\" ;
+                  endif ;
+                  CtrlSetText( szDlg, 0x80000000 | SD_STA_DESTDIR, svDirLoc );
+                  CtrlSetText( szDlg, 0x80000000 | SD_STA_DESTDIR, svDirLoc );
+
+             case SD_PBUT_CONTINUE:
+                  svDir = svDirLoc;
+                  nId   = NEXT;
+                  bDone = TRUE;
+
+             case BACK:
+                  nId    = BACK;
+                  bDone  = TRUE;
+
+             case DLG_ERR:
+                  SdError( -1, "SdAskDestPath" );
+                  nId   = -1;
+                  bDone = TRUE;
+
+             case DLG_CLOSE:
+                  SdCloseDlg( hwndDlg, nId, bDone );
+
+             default:
+                  // check standard handling
+                  if (SdIsStdButton( nId ) && SdDoStdButton( nId )) then
+                      bDone = TRUE;
+                  endif;
+             endswitch;
+
+          endwhile;
+
+          EndDialog( szDlg );
+          ReleaseDialog( szDlg );
+
+          SdUnInit( );
+
+          // record data produced by this dialog
+          if (MODE=RECORDMODE) then
+              SdMakeName( szAppKey, szDlg, szTitle, nSdAskDestPath );
+              SilentWriteData( szAppKey, "szDir", DATA_STRING, svDir, 0 );
+              SilentWriteData( szAppKey, "Result", DATA_NUMBER, "", nId );
+          endif;
+
+          return nId;
+     
+          end;
+
+#endif
+
+
+
+
+
+
+
+
+#include "Functions.rul"
+#include "Dialogs.rul" 
+#include "ServerLocation.Rul"
+#include "SelectServerType.rul"

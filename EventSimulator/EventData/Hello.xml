@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP-ENV:Body>
+    <Hello generic="1.0.0.22" product-family="71" product-version="0200j300" operation-version="01.01.00" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <device-info uuid="SN9500210700MNSHARP MX-M453N">
+        <serial-number>12345678</serial-number>
+        <modelname>SHARP MX-M453N</modelname>
+        <location/>
+        <mac_address>00:22:F3:89:43:C9</mac_address>
+        <network_address>172.29.241.200</network_address>
+      </device-info>
+      <Credentials>
+        <account-id>i7rsFiJl597530</account-id>
+        <metadata>
+          <password>lo8tP</password>
+        </metadata>
+      </Credentials>
+      <osa-reg-applications>
+        <osa-reg-app key="0" name="poornima">
+        </osa-reg-app>
+        <osa-reg-app key="1" name="kishore">
+        </osa-reg-app>
+        <osa-reg-app key="2" name="Dev-Test">
+        </osa-reg-app>
+        <osa-reg-app key="3" name="Jyotheeswar">
+        </osa-reg-app>
+        <osa-reg-app key="4" name="Vin MVC 2 Test">
+        </osa-reg-app>
+        <osa-reg-app key="5" name="Sreedhar">
+        </osa-reg-app>
+      </osa-reg-applications>
+      <mfp-web-services>
+        <web-service name="MFPCoreWS" port="443">/MfpWebServices/MFPCoreWS.asmx</web-service>
+      </mfp-web-services>
+      <xml-doc-acl>
+        <user-info>
+          <account-id xsi:nil="true">
+          </account-id>
+        </user-info>
+        <mfp-feature sys-name="COMMON" allow="false">
+          <setting-constraints>
+            <property sys-name="duplex-mode">
+              <setting sys-name="SIMPLEX">false</setting>
+              <setting sys-name="DUPLEX">false</setting>
+            </property>
+            <property sys-name="finishing">
+              <setting sys-name="STAPLE">false</setting>
+              <setting sys-name="PUNCH">false</setting>
+              <setting sys-name="FOLD">false</setting>
+              <setting sys-name="SADDLE-STITCH">false</setting>
+            </property>
+          </setting-constraints>
+        </mfp-feature>
+        <mfp-feature sys-name="PRINT" allow="false">
+          <setting-constraints>
+            <property sys-name="color-mode">
+              <setting sys-name="MONOCHROME">false</setting>
+            </property>
+          </setting-constraints>
+          <sub-feature sys-name="FTP-PULL-PRINT" allow="false"/>
+          <sub-feature sys-name="USB-DIRECT-PRINT" allow="false"/>
+          <sub-feature sys-name="SMB-PULL-PRINT" allow="false"/>
+        </mfp-feature>
+        <mfp-feature sys-name="COPY" allow="false">
+          <setting-constraints>
+            <property sys-name="color-mode">
+              <setting sys-name="MONOCHROME">false</setting>
+            </property>
+          </setting-constraints>
+          <sub-feature sys-name="SPECIAL-MODES" allow="false"/>
+        </mfp-feature>
+        <mfp-feature sys-name="IMAGE-SEND" allow="false">
+          <setting-constraints>
+            <property sys-name="color-mode">
+              <setting sys-name="FULL-COLOR">false</setting>
+            </property>
+          </setting-constraints>
+          <sub-feature sys-name="DIRECT-ADDRESS-ENTRY" allow="false">
+            <details>
+              <detail sys-name="EMAIL-SEND">false</detail>
+              <detail sys-name="IFAX-SEND">false</detail>
+              <detail sys-name="NETWORK-FOLDER">false</detail>
+            </details>
+          </sub-feature>
+          <sub-feature sys-name="LOCAL-ADDRESS-BOOK" allow="false">
+            <details>
+              <detail sys-name="EMAIL-SEND">false</detail>
+              <detail sys-name="IFAX-SEND">false</detail>
+            </details>
+          </sub-feature>
+          <sub-feature sys-name="GLOBAL-ADDRESS-BOOK" allow="false">
+            <details>
+              <detail sys-name="ADDRESS-BOOK-1">false</detail>
+              <detail sys-name="ADDRESS-BOOK-2">false</detail>
+              <detail sys-name="ADDRESS-BOOK-3">false</detail>
+              <detail sys-name="ADDRESS-BOOK-4">false</detail>
+              <detail sys-name="ADDRESS-BOOK-5">false</detail>
+              <detail sys-name="ADDRESS-BOOK-6">false</detail>
+              <detail sys-name="ADDRESS-BOOK-7">false</detail>
+            </details>
+          </sub-feature>
+          <sub-feature sys-name="EMAIL-SEND" allow="false"/>
+          <sub-feature sys-name="IFAX-SEND" allow="false"/>
+          <sub-feature sys-name="FTP-SEND" allow="false"/>
+          <sub-feature sys-name="NETWORK-FOLDER" allow="false"/>
+          <sub-feature sys-name="PC-IFAX-SEND" allow="false"/>
+          <sub-feature sys-name="REMOTE-PC-SCAN" allow="false"/>
+          <sub-feature sys-name="USB" allow="false"/>
+          <sub-feature sys-name="DESKTOP" allow="false"/>
+          <sub-feature sys-name="SPECIAL-MODES" allow="false"/>
+        </mfp-feature>
+        <mfp-feature sys-name="SCAN-TO-HDD" allow="false">
+          <setting-constraints>
+            <property sys-name="color-mode">
+              <setting sys-name="MONOCHROME">false</setting>
+              <setting sys-name="FULL-COLOR">false</setting>
+            </property>
+          </setting-constraints>
+          <sub-feature sys-name="SPECIAL-MODES" allow="false"/>
+        </mfp-feature>
+        <mfp-feature sys-name="DOC-FILING-PRINT" allow="false">
+          <setting-constraints>
+            <property sys-name="color-mode">
+              <setting sys-name="MONOCHROME">false</setting>
+            </property>
+          </setting-constraints>
+          <sub-feature sys-name="SPECIAL-MODES" allow="false"/>
+          <sub-feature sys-name="PREVIEW" allow="false"/>
+        </mfp-feature>
+        <mfp-feature sys-name="SHARP-OSA" allow="false">
+          <sub-feature sys-name="STANDARD-APPLICATION" allow="false">
+            <details>
+              <detail sys-name="APPLICATION-1">false</detail>
+              <detail sys-name="APPLICATION-2">false</detail>
+              <detail sys-name="APPLICATION-3">false</detail>
+              <detail sys-name="APPLICATION-4">false</detail>
+              <detail sys-name="APPLICATION-5">false</detail>
+              <detail sys-name="APPLICATION-6">false</detail>
+              <detail sys-name="APPLICATION-7">false</detail>
+              <detail sys-name="APPLICATION-8">false</detail>
+            </details>
+          </sub-feature>
+        </mfp-feature>
+        <mfp-feature sys-name="SETTINGS" allow="false">
+          <sub-feature sys-name="SYSTEM-SETTINGS" allow="false">
+            <details>
+              <detail sys-name="JOB-PROGRAM-STORE">false</detail>
+              <detail sys-name="TOTAL-COUNT">false</detail>
+              <detail sys-name="DISPLAY-CONTRAST">false</detail>
+              <detail sys-name="CLOCK">false</detail>
+              <detail sys-name="KEYBOARD-SELECT">false</detail>
+              <detail sys-name="LIST-PRINT-USER">false</detail>
+              <detail sys-name="BYPASS-TRAY-EXCLUDED">false</detail>
+              <detail sys-name="BYPASS-TRAY">false</detail>
+              <detail sys-name="ADDRESS-CONTROL">false</detail>
+              <detail sys-name="FAX-DATA-RECEIVE">false</detail>
+              <detail sys-name="PRINTER-DEFAULT-SETTINGS">false</detail>
+              <detail sys-name="PCL-SETTINGS">false</detail>
+              <detail sys-name="PS-SETTINGS">false</detail>
+              <detail sys-name="DOC-FILING-CONTROL">false</detail>
+              <detail sys-name="USB-DEVICE-CHECK">false</detail>
+              <detail sys-name="USER-CONTROL">false</detail>
+              <detail sys-name="ENERGY-SAVE">false</detail>
+              <detail sys-name="OPERATION-SETTINGS">false</detail>
+              <detail sys-name="DEVICE-SETTINGS">false</detail>
+              <detail sys-name="COPY-SETTINGS">false</detail>
+              <detail sys-name="NETWORK-SETTINGS">false</detail>
+              <detail sys-name="PRINTER-SETTINGS">false</detail>
+              <detail sys-name="IMAGESEND-OPERATION-SETTINGS">false</detail>
+              <detail sys-name="IMAGESEND-SCANNER-SETTINGS">false</detail>
+              <detail sys-name="IMAGESEND-FAX-SETTINGS">false</detail>
+              <detail sys-name="IMAGESEND-IFAX-SETTINGS">false</detail>
+              <detail sys-name="DOC-FILING-SETTINGS">false</detail>
+              <detail sys-name="LIST-PRINT-ADMIN">false</detail>
+              <detail sys-name="SECURITY-SETTINGS">false</detail>
+              <detail sys-name="PRODUCT-KEY">false</detail>
+              <detail sys-name="ESCP-SETTINGS">false</detail>
+              <detail sys-name="ENABLE-DISABLE-SETTINGS">false</detail>
+              <detail sys-name="FIELD-SUPPORT-SYSTEM">false</detail>
+              <detail sys-name="CHANGE-ADMIN-PASSWORD">false</detail>
+              <detail sys-name="RETENTION-CALLING">false</detail>
+              <detail sys-name="OSA-SETTINGS">false</detail>
+            </details>
+          </sub-feature>
+          <sub-feature sys-name="WEB-SETTINGS" allow="false">
+            <details>
+              <detail sys-name="DISPLAY-DEVICE">false</detail>
+              <detail sys-name="POWER-RESET">false</detail>
+              <detail sys-name="MACHINE-ID">false</detail>
+              <detail sys-name="APPLICATION-SETTINGS">false</detail>
+              <detail sys-name="REGISTER-PRE-SET-TEXT">false</detail>
+              <detail sys-name="EMAIL-ALERT">false</detail>
+              <detail sys-name="JOB-LOG">false</detail>
+              <detail sys-name="PORT-SETTINGS">false</detail>
+              <detail sys-name="STORAGE-BACKUP">false</detail>
+              <detail sys-name="CUSTOM-LINKS">false</detail>
+              <detail sys-name="OPERATION-MANUAL-DOWNLOAD">false</detail>
+            </details>
+          </sub-feature>
+        </mfp-feature>
+      </xml-doc-acl>
+      <xml-doc-limits>
+        <limits sys-name="COPY">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+          </property>
+        </limits>
+        <limits sys-name="PRINT">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+          </property>
+        </limits>
+        <limits sys-name="LIST-PRINT">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+          </property>
+        </limits>
+        <limits sys-name="I-FAX-SEND">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+          </property>
+        </limits>
+        <limits sys-name="SCANNER">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+            <limit sys-name="FULL-COLOR">0</limit>
+          </property>
+        </limits>
+        <limits sys-name="DOC-FILING-PRINT">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+          </property>
+        </limits>
+        <limits sys-name="SCAN-TO-HDD">
+          <property sys-name="color-mode">
+            <limit sys-name="MONOCHROME">0</limit>
+            <limit sys-name="FULL-COLOR">0</limit>
+          </property>
+        </limits>
+      </xml-doc-limits>
+      <counters>
+        <counter sys-name="CNT_TOTAL">1019</counter>
+        <counter sys-name="CNT_TOTAL_FULL_COLOR">0</counter>
+        <counter sys-name="CNT_TOTAL_DUAL_COLOR">0</counter>
+        <counter sys-name="CNT_TOTAL_SINGLE_COLOR">0</counter>
+        <counter sys-name="CNT_PRINT">1009</counter>
+        <counter sys-name="CNT_PRINT_FULL_COLOR">0</counter>
+        <counter sys-name="CNT_COPY">7</counter>
+        <counter sys-name="CNT_COPY_FULL_COLOR">0</counter>
+        <counter sys-name="CNT_COPY_DUAL_COLOR">0</counter>
+        <counter sys-name="CNT_COPY_SINGLE_COLOR">0</counter>
+        <counter sys-name="CNT_SCAN">344</counter>
+        <counter sys-name="CNT_SCAN_FULL_COLOR">317</counter>
+        <counter sys-name="CNT_FAX_PRINT">0</counter>
+        <counter sys-name="CNT_FAX_SEND">0</counter>
+        <counter sys-name="CNT_IFAX_PRINT">0</counter>
+        <counter sys-name="CNT_IFAX_SEND">0</counter>
+        <counter sys-name="CNT_DOCFILE_PRINT">0</counter>
+        <counter sys-name="CNT_DOCFILE_PRINT_FULL_COLOR">0</counter>
+        <counter sys-name="CNT_DOCFILE_PRINT_DUAL_COLOR">0</counter>
+        <counter sys-name="CNT_SCAN2HDD">0</counter>
+        <counter sys-name="CNT_SCAN2HDD_FULL_COLOR">0</counter>
+        <counter sys-name="CNT_SCAN2HDD_DUAL_COLOR">0</counter>
+        <counter sys-name="CNT_OTHER">3</counter>
+        <counter sys-name="CNT_OTHER_FULL_COLOR">0</counter>
+      </counters>
+    </Hello>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

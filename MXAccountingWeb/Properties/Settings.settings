@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AccountingPlusWeb.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PrintRoverWeb_Osa_MFPCoreWS" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost/MFPCoreWS/MFPCoreWS.asmx</Value>
+    </Setting>
+    <Setting Name="PrintRoverWeb_PrintRelease_AuthorizeConnector" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/MXAccountingWeb/WebServices/AuthorizeConnector.asmx</Value>
+    </Setting>
+    <Setting Name="AccountingPlusWeb_SmartAccountant_CounterAccountant" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://smartcounter.csignageplus.com/smartcounter/WebService/counterAccountant.asmx</Value>
+    </Setting>
+    <Setting Name="AccountingPlusWeb_ProductActivator_ProductActivation" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/ApplicationRegistration/WebServices/ProductActivation.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

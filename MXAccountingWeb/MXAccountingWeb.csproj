@@ -1,0 +1,1851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12FC696A-6F34-4C63-8AD9-69F20EEC7342}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AccountingPlusWeb</RootNamespace>
+    <AssemblyName>AccountingPlusWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\AccountingPlus.XML</DocumentationFile>
+    <DesktopBuildPackageLocation>obj\Debug\Package\AccountingPlusWeb.zip</DesktopBuildPackageLocation>
+    <DeployIisAppPath>Default Web Site/AccountingPlusWeb_deploy</DeployIisAppPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accountingpp_SNMPCore_Prd">
+      <HintPath>..\External Liberaries\Accountingpp_SNMPCore_Prd.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Liberaries\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp">
+      <HintPath>..\External Liberaries\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Liberaries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Mono.Options, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4c00852d3788e005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Liberaries\Mono.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSnmpLib, Version=8.0.10406.0, Culture=neutral, PublicKeyToken=4c00852d3788e005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Liberaries\SharpSnmpLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSnmpLib.Engine, Version=8.0.10406.0, Culture=neutral, PublicKeyToken=4c00852d3788e005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Liberaries\SharpSnmpLib.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSnmpLib.Mib, Version=8.0.10406.0, Culture=neutral, PublicKeyToken=4c00852d3788e005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Liberaries\SharpSnmpLib.Mib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Administration\ActiveDirectorySettings.aspx" />
+    <Content Include="Administration\ActiveDirectorySyncSettings.aspx" />
+    <Content Include="Administration\AddCostProfile.aspx" />
+    <Content Include="Administration\AddMFPGroup.aspx" />
+    <Content Include="Administration\ApplicationRegistration.aspx" />
+    <Content Include="Administration\AssignAccessRights.aspx" />
+    <Content Include="Administration\AssignCostProfileToMFPGroups.aspx" />
+    <Content Include="Administration\AssignMFPsToGroups.aspx" />
+    <Content Include="Administration\AssignUserGroupsToMFPGroups.aspx" />
+    <Content Include="Administration\AssignUsersToGroups.aspx" />
+    <Content Include="Administration\AutoRefill.aspx" />
+    <Content Include="Administration\BackupRestore.aspx" />
+    <Content Include="Administration\Balance.aspx" />
+    <Content Include="Administration\CostCenters.aspx" />
+    <Content Include="Administration\CounterDetails.aspx" />
+    <Content Include="Administration\CounterInformation.aspx" />
+    <Content Include="Administration\CurrencySettings.aspx" />
+    <Content Include="Administration\CustomTheme.aspx" />
+    <Content Include="Administration\EmailPrintSettings.aspx" />
+    <Content Include="Administration\ForgetPassword.aspx" />
+    <Content Include="Administration\GeneratePinnumber.aspx" />
+    <Content Include="Administration\ImportTopUpCard.aspx" />
+    <Content Include="Administration\Limits.aspx" />
+    <Content Include="Administration\ManageGroups.aspx" />
+    <Content Include="Administration\ManagePermissions.aspx" />
+    <Content Include="Administration\ManageUserCards.aspx" />
+    <Content Include="Administration\PaperSizes.aspx" />
+    <Content Include="Administration\PermissionsAndLimits.aspx" />
+    <Content Include="Administration\PriceManger.aspx" />
+    <Content Include="Administration\PrintJobStatus.aspx" />
+    <Content Include="Administration\ProxySettings.aspx" />
+    <Content Include="Administration\ServerDetails.aspx" />
+    <Content Include="Administration\ServerScreen.aspx" />
+    <Content Include="Administration\SMTPSettings.aspx" />
+    <Content Include="Administration\Subscription.aspx" />
+    <Content Include="Administration\SysOverView.aspx" />
+    <Content Include="Administration\MyPermissionsandLimits.aspx" />
+    <Content Include="App_Images\player_pause.png" />
+    <Content Include="App_Images\player_play.png" />
+    <Content Include="App_Themes\Black\AppStyle\ApplicationStyle.css" />
+    <Content Include="App_Themes\Black\AppStyle\AutoComplete.css" />
+    <Content Include="App_Themes\Black\AppStyle\dialog_box.css" />
+    <Content Include="App_Themes\Black\AppStyle\Style.css" />
+    <Content Include="App_Themes\Black\Images\1px.gif" />
+    <Content Include="App_Themes\Black\Images\about-icon.png" />
+    <Content Include="App_Themes\Black\Images\AccessDenined.jpg" />
+    <Content Include="App_Themes\Black\Images\AccountingPlus.ico" />
+    <Content Include="App_Themes\Black\Images\add.png" />
+    <Content Include="App_Themes\Black\Images\Add_User.png" />
+    <Content Include="App_Themes\Black\Images\Assign_cost_center_to_MFP.png" />
+    <Content Include="App_Themes\Black\Images\Assign_MFP_group_to_cost_profile.png" />
+    <Content Include="App_Themes\Black\Images\Assign_Users_to_cost_centre.png" />
+    <Content Include="App_Themes\Black\Images\AuditLog_IMG.png" />
+    <Content Include="App_Themes\Black\Images\back.png" />
+    <Content Include="App_Themes\Black\Images\BackPage.png" />
+    <Content Include="App_Themes\Black\Images\Backup.png" />
+    <Content Include="App_Themes\Black\Images\Backup_database.png" />
+    <Content Include="App_Themes\Black\Images\bg-button.gif" />
+    <Content Include="App_Themes\Black\Images\Bg.jpg" />
+    <Content Include="App_Themes\Black\Images\bggreendiag.gif" />
+    <Content Include="App_Themes\Black\Images\Blank.png" />
+    <Content Include="App_Themes\Black\Images\Bottom_BottomBG.png" />
+    <Content Include="App_Themes\Black\Images\Bottom_Left.png" />
+    <Content Include="App_Themes\Black\Images\Bottom_right.png" />
+    <Content Include="App_Themes\Black\Images\ButtonBGBig_Green.png" />
+    <Content Include="App_Themes\Black\Images\ButtonBG_Green.png" />
+    <Content Include="App_Themes\Black\Images\Button_bg.png" />
+    <Content Include="App_Themes\Black\Images\BW_bg.png" />
+    <Content Include="App_Themes\Black\Images\CancelSave.png" />
+    <Content Include="App_Themes\Black\Images\Cancel_buttonMfp.png" />
+    <Content Include="App_Themes\Black\Images\Cancel_button_1.png" />
+    <Content Include="App_Themes\Black\Images\CenterBG.png" />
+    <Content Include="App_Themes\Black\Images\chart.png" />
+    <Content Include="App_Themes\Black\Images\chart_Table.png" />
+    <Content Include="App_Themes\Black\Images\Clear.png" />
+    <Content Include="App_Themes\Black\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Black\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Black\Images\Color_BG.png" />
+    <Content Include="App_Themes\Black\Images\CopyToClipBoard.png" />
+    <Content Include="App_Themes\Black\Images\Critical.png" />
+    <Content Include="App_Themes\Black\Images\Criticalerror.png" />
+    <Content Include="App_Themes\Black\Images\CSV.png" />
+    <Content Include="App_Themes\Black\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Black\Images\Delete-32.png" />
+    <Content Include="App_Themes\Black\Images\Delete-icon.png" />
+    <Content Include="App_Themes\Black\Images\delete.png" />
+    <Content Include="App_Themes\Black\Images\delete_icon.png" />
+    <Content Include="App_Themes\Black\Images\Delete_User.png" />
+    <Content Include="App_Themes\Black\Images\Devices_IMG.png" />
+    <Content Include="App_Themes\Black\Images\DeviceURLs.png" />
+    <Content Include="App_Themes\Black\Images\Disable_Device.png" />
+    <Content Include="App_Themes\Black\Images\DoubleRowHeader.png" />
+    <Content Include="App_Themes\Black\Images\DoubleRowHeader_Small.png" />
+    <Content Include="App_Themes\Black\Images\Down-arrow-32.png" />
+    <Content Include="App_Themes\Black\Images\down_arrow.png" />
+    <Content Include="App_Themes\Black\Images\Down_arrow_sort.png" />
+    <Content Include="App_Themes\Black\Images\d_add.png" />
+    <Content Include="App_Themes\Black\Images\d_delete.png" />
+    <Content Include="App_Themes\Black\Images\d_Discover.png" />
+    <Content Include="App_Themes\Black\Images\d_edit.png" />
+    <Content Include="App_Themes\Black\Images\edit.png" />
+    <Content Include="App_Themes\Black\Images\Edit_Use.png" />
+    <Content Include="App_Themes\Black\Images\Enable_Device.png" />
+    <Content Include="App_Themes\Black\Images\Error.png" />
+    <Content Include="App_Themes\Black\Images\Error_bg.png" />
+    <Content Include="App_Themes\Black\Images\Error_close.png" />
+    <Content Include="App_Themes\Black\Images\Error_Msg.png" />
+    <Content Include="App_Themes\Black\Images\Excel.png" />
+    <Content Include="App_Themes\Black\Images\Exception.png" />
+    <Content Include="App_Themes\Black\Images\FailureIndicator.png" />
+    <Content Include="App_Themes\Black\Images\Folder-Home-icon.png" />
+    <Content Include="App_Themes\Black\Images\GO_button.png" />
+    <Content Include="App_Themes\Black\Images\Graphical report.png" />
+    <Content Include="App_Themes\Black\Images\Grid_Double.png" />
+    <Content Include="App_Themes\Black\Images\Grid_topbg.png" />
+    <Content Include="App_Themes\Black\Images\Grid_topbg_Mover.png" />
+    <Content Include="App_Themes\Black\Images\Group.png" />
+    <Content Include="App_Themes\Black\Images\HeaderBG.png" />
+    <Content Include="App_Themes\Black\Images\Help.png" />
+    <Content Include="App_Themes\Black\Images\Hidden_Menu.png" />
+    <Content Include="App_Themes\Black\Images\Hidden_Menu_2.png" />
+    <Content Include="App_Themes\Black\Images\Home.png" />
+    <Content Include="App_Themes\Black\Images\Images\dialog_close.gif" />
+    <Content Include="App_Themes\Black\Images\Images\error_bg.jpg" />
+    <Content Include="App_Themes\Black\Images\Images\error_header.gif" />
+    <Content Include="App_Themes\Black\Images\Images\prompt_bg.jpg" />
+    <Content Include="App_Themes\Black\Images\Images\prompt_header.gif" />
+    <Content Include="App_Themes\Black\Images\Images\success_bg.jpg" />
+    <Content Include="App_Themes\Black\Images\Images\success_header.gif" />
+    <Content Include="App_Themes\Black\Images\Images\warning_bg.jpg" />
+    <Content Include="App_Themes\Black\Images\Images\warning_header.gif" />
+    <Content Include="App_Themes\Black\Images\Import_User.png" />
+    <Content Include="App_Themes\Black\Images\Information.png" />
+    <Content Include="App_Themes\Black\Images\JobLog_IMG.png" />
+    <Content Include="App_Themes\Black\Images\key-icon.png" />
+    <Content Include="App_Themes\Black\Images\Language_disable.png" />
+    <Content Include="App_Themes\Black\Images\Language_Enable.png" />
+    <Content Include="App_Themes\Black\Images\LeftBG_BG.png" />
+    <Content Include="App_Themes\Black\Images\Limits.png" />
+    <Content Include="App_Themes\Black\Images\LineHr.png" />
+    <Content Include="App_Themes\Black\Images\loading.gif" />
+    <Content Include="App_Themes\Black\Images\Loading_img.gif" />
+    <Content Include="App_Themes\Black\Images\Locked.png" />
+    <Content Include="App_Themes\Black\Images\Lock_User.png" />
+    <Content Include="App_Themes\Black\Images\Log-Out-icon.png" />
+    <Content Include="App_Themes\Black\Images\LoginUser1.png" />
+    <Content Include="App_Themes\Black\Images\Login_bottom_BG.png" />
+    <Content Include="App_Themes\Black\Images\Login_buttonMFP.png" />
+    <Content Include="App_Themes\Black\Images\Login_Button_1.png" />
+    <Content Include="App_Themes\Black\Images\Login_center.png" />
+    <Content Include="App_Themes\Black\Images\Login_leftBG.png" />
+    <Content Include="App_Themes\Black\Images\Login_Left_bottom.png" />
+    <Content Include="App_Themes\Black\Images\Login_RightBG.png" />
+    <Content Include="App_Themes\Black\Images\Login_RightBG1.png" />
+    <Content Include="App_Themes\Black\Images\Login_Right_Bottom.png" />
+    <Content Include="App_Themes\Black\Images\Login_TopBG.png" />
+    <Content Include="App_Themes\Black\Images\login_user.png" />
+    <Content Include="App_Themes\Black\Images\Login_UserICO.png" />
+    <Content Include="App_Themes\Black\Images\Login_UserIcon.png" />
+    <Content Include="App_Themes\Black\Images\Logo.png" />
+    <Content Include="App_Themes\Black\Images\Logout.png" />
+    <Content Include="App_Themes\Black\Images\masthead_bg.jpg" />
+    <Content Include="App_Themes\Black\Images\Menubg_SplitBG.png" />
+    <Content Include="App_Themes\Black\Images\Menu_bg.png" />
+    <Content Include="App_Themes\Black\Images\Menu_BG_bottom.png" />
+    <Content Include="App_Themes\Black\Images\Menu_Hrline.png" />
+    <Content Include="App_Themes\Black\Images\Menu_split.png" />
+    <Content Include="App_Themes\Black\Images\Menu_split1.png" />
+    <Content Include="App_Themes\Black\Images\Mfp.png" />
+    <Content Include="App_Themes\Black\Images\MFP_Group.png" />
+    <Content Include="App_Themes\Black\Images\none.png" />
+    <Content Include="App_Themes\Black\Images\Number_down.png" />
+    <Content Include="App_Themes\Black\Images\Number_Up.png" />
+    <Content Include="App_Themes\Black\Images\ok-icon.png" />
+    <Content Include="App_Themes\Black\Images\ok1.gif" />
+    <Content Include="App_Themes\Black\Images\Padlock.png" />
+    <Content Include="App_Themes\Black\Images\Permissions.png" />
+    <Content Include="App_Themes\Black\Images\Price.png" />
+    <Content Include="App_Themes\Black\Images\Printer_with_chart.png" />
+    <Content Include="App_Themes\Black\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Black\Images\Processing.gif" />
+    <Content Include="App_Themes\Black\Images\Progress.gif" />
+    <Content Include="App_Themes\Black\Images\Refersh.png" />
+    <Content Include="App_Themes\Black\Images\Refreshicon.png" />
+    <Content Include="App_Themes\Black\Images\Register02.png" />
+    <Content Include="App_Themes\Black\Images\Register03.png" />
+    <Content Include="App_Themes\Black\Images\register_icon.png" />
+    <Content Include="App_Themes\Black\Images\Remove_database.png" />
+    <Content Include="App_Themes\Black\Images\Report_IMG.png" />
+    <Content Include="App_Themes\Black\Images\Required.gif" />
+    <Content Include="App_Themes\Black\Images\Reset.png" />
+    <Content Include="App_Themes\Black\Images\ResetLogin.png" />
+    <Content Include="App_Themes\Black\Images\restore.png" />
+    <Content Include="App_Themes\Black\Images\Restore_database.png" />
+    <Content Include="App_Themes\Black\Images\Right_RightBG.png" />
+    <Content Include="App_Themes\Black\Images\Save.gif" />
+    <Content Include="App_Themes\Black\Images\Save.png" />
+    <Content Include="App_Themes\Black\Images\Search.png" />
+    <Content Include="App_Themes\Black\Images\Search_bg.png" />
+    <Content Include="App_Themes\Black\Images\Search_Next.png" />
+    <Content Include="App_Themes\Black\Images\Search_Prev.png" />
+    <Content Include="App_Themes\Black\Images\Search_Small.png" />
+    <Content Include="App_Themes\Black\Images\Selected_MenuBG.png" />
+    <Content Include="App_Themes\Black\Images\Selected_MenuBG1.png" />
+    <Content Include="App_Themes\Black\Images\Select_MeunBG.png" />
+    <Content Include="App_Themes\Black\Images\Select_Sorting_bg.png" />
+    <Content Include="App_Themes\Black\Images\Select_Sorting_bg2.png" />
+    <Content Include="App_Themes\Black\Images\Select_Sorting_bg_New.png" />
+    <Content Include="App_Themes\Black\Images\Settings.png" />
+    <Content Include="App_Themes\Black\Images\Show_Menu.png" />
+    <Content Include="App_Themes\Black\Images\Split.png" />
+    <Content Include="App_Themes\Black\Images\Spliter.png" />
+    <Content Include="App_Themes\Black\Images\status_normal.gif" />
+    <Content Include="App_Themes\Black\Images\Stop.png" />
+    <Content Include="App_Themes\Black\Images\Stright-arrow-31.png" />
+    <Content Include="App_Themes\Black\Images\Success.png" />
+    <Content Include="App_Themes\Black\Images\TabItem.png" />
+    <Content Include="App_Themes\Black\Images\Table_bg.png" />
+    <Content Include="App_Themes\Black\Images\Table_HeaderBG.png" />
+    <Content Include="App_Themes\Black\Images\TextBox_BG.png" />
+    <Content Include="App_Themes\Black\Images\Text_bg.png" />
+    <Content Include="App_Themes\Black\Images\title.gif" />
+    <Content Include="App_Themes\Black\Images\TopLeft.png" />
+    <Content Include="App_Themes\Black\Images\Top_LeftBG.png" />
+    <Content Include="App_Themes\Black\Images\Top_menu_bg_Grid.png" />
+    <Content Include="App_Themes\Black\Images\Top_menu_bg_Grid_1.png" />
+    <Content Include="App_Themes\Black\Images\Top_menu_bg_New.png" />
+    <Content Include="App_Themes\Black\Images\Top_Right.png" />
+    <Content Include="App_Themes\Black\Images\Top_TopBG.png" />
+    <Content Include="App_Themes\Black\Images\undo.png" />
+    <Content Include="App_Themes\Black\Images\Unlock_User.png" />
+    <Content Include="App_Themes\Black\Images\Up-arrow-32.png" />
+    <Content Include="App_Themes\Black\Images\UpdateProgress.gif" />
+    <Content Include="App_Themes\Black\Images\Up_arrow_sort.png" />
+    <Content Include="App_Themes\Black\Images\UserGroup.gif" />
+    <Content Include="App_Themes\Black\Images\UserGroup.png" />
+    <Content Include="App_Themes\Black\Images\User_Icon_IMG.png" />
+    <Content Include="App_Themes\Black\Images\Vr_line.png" />
+    <Content Include="App_Themes\Black\Images\WallPaper_Add.png" />
+    <Content Include="App_Themes\Black\Images\WallPaper_Delete.png" />
+    <Content Include="App_Themes\Black\Images\Warning.png" />
+    <Content Include="App_Themes\Black\Images\XLS.png" />
+    <Content Include="App_Themes\Black\Images\XML.png" />
+    <Content Include="App_Themes\Black\Images\yes.gif" />
+    <Content Include="App_Themes\Blue\AppStyle\ApplicationStyle.css" />
+    <Content Include="App_Themes\Blue\AppStyle\AutoComplete.css" />
+    <Content Include="App_Themes\Blue\AppStyle\dialog_box.css" />
+    <Content Include="App_Themes\Blue\AppStyle\Style.css" />
+    <Content Include="App_Themes\Blue\AppStyle\sweetalert.css" />
+    <Content Include="App_Themes\Blue\Images\1px.gif" />
+    <Content Include="App_Themes\Blue\Images\about-icon.png" />
+    <Content Include="App_Themes\Blue\Images\AccessDenined.jpg" />
+    <Content Include="App_Themes\Blue\Images\AccountingPlus.ico" />
+    <Content Include="App_Themes\Blue\Images\add.png" />
+    <Content Include="App_Themes\Blue\Images\Add_User.png" />
+    <Content Include="App_Themes\Blue\Images\Assign_cost_center_to_MFP.png" />
+    <Content Include="App_Themes\Blue\Images\Assign_MFP_group_to_cost_profile.png" />
+    <Content Include="App_Themes\Blue\Images\Assign_Users_to_cost_centre.png" />
+    <Content Include="App_Themes\Blue\Images\AuditLog_IMG.png" />
+    <Content Include="App_Themes\Blue\Images\back.png" />
+    <Content Include="App_Themes\Blue\Images\BackPage.png" />
+    <Content Include="App_Themes\Blue\Images\Backup.png" />
+    <Content Include="App_Themes\Blue\Images\Backup_database.png" />
+    <Content Include="App_Themes\Blue\Images\bg-button.gif" />
+    <Content Include="App_Themes\Blue\Images\Bg.jpg" />
+    <Content Include="App_Themes\Blue\Images\BG3.jpg" />
+    <Content Include="App_Themes\Blue\Images\bggreendiag.gif" />
+    <Content Include="App_Themes\Blue\Images\Blank.png" />
+    <Content Include="App_Themes\Blue\Images\Bottom_BottomBG.png" />
+    <Content Include="App_Themes\Blue\Images\Bottom_Left.png" />
+    <Content Include="App_Themes\Blue\Images\Bottom_right.png" />
+    <Content Include="App_Themes\Blue\Images\ButtonBGBig_Green.png" />
+    <Content Include="App_Themes\Blue\Images\ButtonBG_Green.png" />
+    <Content Include="App_Themes\Blue\Images\Button_bg.png" />
+    <Content Include="App_Themes\Blue\Images\BW_bg.png" />
+    <Content Include="App_Themes\Blue\Images\CancelSave.png" />
+    <Content Include="App_Themes\Blue\Images\Cancel_buttonMfp.png" />
+    <Content Include="App_Themes\Blue\Images\Cancel_button_1.png" />
+    <Content Include="App_Themes\Blue\Images\CenterBG.png" />
+    <Content Include="App_Themes\Blue\Images\chart.png" />
+    <Content Include="App_Themes\Blue\Images\chart_Table.png" />
+    <Content Include="App_Themes\Blue\Images\Clear.png" />
+    <Content Include="App_Themes\Blue\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Blue\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Blue\Images\Color_BG.png" />
+    <Content Include="App_Themes\Blue\Images\CopyToClipBoard.png" />
+    <Content Include="App_Themes\Blue\Images\Critical.png" />
+    <Content Include="App_Themes\Blue\Images\Criticalerror.png" />
+    <Content Include="App_Themes\Blue\Images\CSV.png" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Blue\Images\Delete-32.png" />
+    <Content Include="App_Themes\Blue\Images\Delete-icon.png" />
+    <Content Include="App_Themes\Blue\Images\delete.png" />
+    <Content Include="App_Themes\Blue\Images\delete_icon.png" />
+    <Content Include="App_Themes\Blue\Images\Delete_User.png" />
+    <Content Include="App_Themes\Blue\Images\Devices_IMG.png" />
+    <Content Include="App_Themes\Blue\Images\DeviceURLs.png" />
+    <Content Include="App_Themes\Blue\Images\Disable_Device.png" />
+    <Content Include="App_Themes\Blue\Images\DoubleRowHeader.png" />
+    <Content Include="App_Themes\Blue\Images\DoubleRowHeader_Small.png" />
+    <Content Include="App_Themes\Blue\Images\Down-arrow-32.png" />
+    <Content Include="App_Themes\Blue\Images\down_arrow.png" />
+    <Content Include="App_Themes\Blue\Images\Down_arrow_sort.png" />
+    <Content Include="App_Themes\Blue\Images\d_add.png" />
+    <Content Include="App_Themes\Blue\Images\d_delete.png" />
+    <Content Include="App_Themes\Blue\Images\d_Discover.png" />
+    <Content Include="App_Themes\Blue\Images\d_edit.png" />
+    <Content Include="App_Themes\Blue\Images\edit.png" />
+    <Content Include="App_Themes\Blue\Images\Edit_Use.png" />
+    <Content Include="App_Themes\Blue\Images\Enable_Device.png" />
+    <Content Include="App_Themes\Blue\Images\Error.png" />
+    <Content Include="App_Themes\Blue\Images\Error_bg.png" />
+    <Content Include="App_Themes\Blue\Images\Error_close.png" />
+    <Content Include="App_Themes\Blue\Images\Error_Msg.png" />
+    <Content Include="App_Themes\Blue\Images\excel-icon.png" />
+    <Content Include="App_Themes\Blue\Images\Excel.png" />
+    <Content Include="App_Themes\Blue\Images\Exception.png" />
+    <Content Include="App_Themes\Blue\Images\FailureIndicator.png" />
+    <Content Include="App_Themes\Blue\Images\Folder-Home-icon.png" />
+    <Content Include="App_Themes\Blue\Images\GeneratePin.png" />
+    <Content Include="App_Themes\Blue\Images\GO_button.png" />
+    <Content Include="App_Themes\Blue\Images\Graphical report.png" />
+    <Content Include="App_Themes\Blue\Images\Grid_Double.png" />
+    <Content Include="App_Themes\Blue\Images\Grid_topbg.png" />
+    <Content Include="App_Themes\Blue\Images\Grid_topbg_Mover.png" />
+    <Content Include="App_Themes\Blue\Images\Group.png" />
+    <Content Include="App_Themes\Blue\Images\HeaderBG.png" />
+    <Content Include="App_Themes\Blue\Images\HeadingLeft_Bg.png" />
+    <Content Include="App_Themes\Blue\Images\HeadingMiddle_Bg.png" />
+    <Content Include="App_Themes\Blue\Images\HeadingRight_Bg.png" />
+    <Content Include="App_Themes\Blue\Images\Help.png" />
+    <Content Include="App_Themes\Blue\Images\Hidden_Menu.png" />
+    <Content Include="App_Themes\Blue\Images\Hidden_Menu_2.png" />
+    <Content Include="App_Themes\Blue\Images\Home.png" />
+    <Content Include="App_Themes\Blue\Images\Images\dialog_close.gif" />
+    <Content Include="App_Themes\Blue\Images\Images\error_bg.jpg" />
+    <Content Include="App_Themes\Blue\Images\Images\error_header.gif" />
+    <Content Include="App_Themes\Blue\Images\Images\prompt_bg.jpg" />
+    <Content Include="App_Themes\Blue\Images\Images\prompt_header.gif" />
+    <Content Include="App_Themes\Blue\Images\Images\success_bg.jpg" />
+    <Content Include="App_Themes\Blue\Images\Images\success_header.gif" />
+    <Content Include="App_Themes\Blue\Images\Images\warning_bg.jpg" />
+    <Content Include="App_Themes\Blue\Images\Images\warning_header.gif" />
+    <Content Include="App_Themes\Blue\Images\Import_User.png" />
+    <Content Include="App_Themes\Blue\Images\Information.png" />
+    <Content Include="App_Themes\Blue\Images\JobLog_IMG.png" />
+    <Content Include="App_Themes\Blue\Images\key-icon.png" />
+    <Content Include="App_Themes\Blue\Images\Language_disable.png" />
+    <Content Include="App_Themes\Blue\Images\Language_Enable.png" />
+    <Content Include="App_Themes\Blue\Images\LeftBG_BG.png" />
+    <Content Include="App_Themes\Blue\Images\Limits.png" />
+    <Content Include="App_Themes\Blue\Images\LineHr.png" />
+    <Content Include="App_Themes\Blue\Images\loading.gif" />
+    <Content Include="App_Themes\Blue\Images\Loading_img.gif" />
+    <Content Include="App_Themes\Blue\Images\Locked.png" />
+    <Content Include="App_Themes\Blue\Images\Lock_User.png" />
+    <Content Include="App_Themes\Blue\Images\Log-Out-icon.png" />
+    <Content Include="App_Themes\Blue\Images\LoginUser1.png" />
+    <Content Include="App_Themes\Blue\Images\Login_bottom_BG.png" />
+    <Content Include="App_Themes\Blue\Images\Login_buttonMFP.png" />
+    <Content Include="App_Themes\Blue\Images\Login_Button_1.png" />
+    <Content Include="App_Themes\Blue\Images\Login_center.png" />
+    <Content Include="App_Themes\Blue\Images\Login_leftBG.png" />
+    <Content Include="App_Themes\Blue\Images\Login_Left_bottom.png" />
+    <Content Include="App_Themes\Blue\Images\Login_RightBG.png" />
+    <Content Include="App_Themes\Blue\Images\Login_RightBG1.png" />
+    <Content Include="App_Themes\Blue\Images\Login_Right_Bottom.png" />
+    <Content Include="App_Themes\Blue\Images\Login_TopBG.png" />
+    <Content Include="App_Themes\Blue\Images\login_user.png" />
+    <Content Include="App_Themes\Blue\Images\Login_UserICO.png" />
+    <Content Include="App_Themes\Blue\Images\Login_UserIcon.png" />
+    <Content Include="App_Themes\Blue\Images\Logo.png" />
+    <Content Include="App_Themes\Blue\Images\Logout.png" />
+    <Content Include="App_Themes\Blue\Images\mail.png" />
+    <Content Include="App_Themes\Blue\Images\masthead_bg.jpg" />
+    <Content Include="App_Themes\Blue\Images\Menubg_SplitBG.png" />
+    <Content Include="App_Themes\Blue\Images\Menu_bg.png" />
+    <Content Include="App_Themes\Blue\Images\Menu_BG_bottom.png" />
+    <Content Include="App_Themes\Blue\Images\Menu_Hrline.png" />
+    <Content Include="App_Themes\Blue\Images\Menu_split.png" />
+    <Content Include="App_Themes\Blue\Images\Menu_split1.png" />
+    <Content Include="App_Themes\Blue\Images\Mfp.png" />
+    <Content Include="App_Themes\Blue\Images\MFP_Group.png" />
+    <Content Include="App_Themes\Blue\Images\none.png" />
+    <Content Include="App_Themes\Blue\Images\Number_down.png" />
+    <Content Include="App_Themes\Blue\Images\Number_Up.png" />
+    <Content Include="App_Themes\Blue\Images\Offline.gif" />
+    <Content Include="App_Themes\Blue\Images\ok-icon.png" />
+    <Content Include="App_Themes\Blue\Images\ok1.gif" />
+    <Content Include="App_Themes\Blue\Images\Online.gif" />
+    <Content Include="App_Themes\Blue\Images\Padlock.png" />
+    <Content Include="App_Themes\Blue\Images\Pdf.png" />
+    <Content Include="App_Themes\Blue\Images\Permissions.png" />
+    <Content Include="App_Themes\Blue\Images\Price.png" />
+    <Content Include="App_Themes\Blue\Images\Printer_with_chart.png" />
+    <Content Include="App_Themes\Blue\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Blue\Images\Processing.gif" />
+    <Content Include="App_Themes\Blue\Images\Progress.gif" />
+    <Content Include="App_Themes\Blue\Images\Publish.png" />
+    <Content Include="App_Themes\Blue\Images\Refersh.png" />
+    <Content Include="App_Themes\Blue\Images\Refreshicon.png" />
+    <Content Include="App_Themes\Blue\Images\Register02.png" />
+    <Content Include="App_Themes\Blue\Images\Register03.png" />
+    <Content Include="App_Themes\Blue\Images\register_icon.png" />
+    <Content Include="App_Themes\Blue\Images\Remove_database.png" />
+    <Content Include="App_Themes\Blue\Images\Report_IMG.png" />
+    <Content Include="App_Themes\Blue\Images\Required.gif" />
+    <Content Include="App_Themes\Blue\Images\Reset.png" />
+    <Content Include="App_Themes\Blue\Images\ResetLogin.png" />
+    <Content Include="App_Themes\Blue\Images\restore.png" />
+    <Content Include="App_Themes\Blue\Images\Restore_database.png" />
+    <Content Include="App_Themes\Blue\Images\Right_RightBG.png" />
+    <Content Include="App_Themes\Blue\Images\Save.gif" />
+    <Content Include="App_Themes\Blue\Images\Save.png" />
+    <Content Include="App_Themes\Blue\Images\Search.png" />
+    <Content Include="App_Themes\Blue\Images\Search_bg.png" />
+    <Content Include="App_Themes\Blue\Images\Search_Next.png" />
+    <Content Include="App_Themes\Blue\Images\Search_Prev.png" />
+    <Content Include="App_Themes\Blue\Images\Search_Small.png" />
+    <Content Include="App_Themes\Blue\Images\Selected_MenuBG.png" />
+    <Content Include="App_Themes\Blue\Images\Selected_MenuBG1.png" />
+    <Content Include="App_Themes\Blue\Images\Select_MeunBG.png" />
+    <Content Include="App_Themes\Blue\Images\Select_Sorting_bg.png" />
+    <Content Include="App_Themes\Blue\Images\Select_Sorting_bg2.png" />
+    <Content Include="App_Themes\Blue\Images\Select_Sorting_bg_New.png" />
+    <Content Include="App_Themes\Blue\Images\Settings.png" />
+    <Content Include="App_Themes\Blue\Images\Show_Menu.png" />
+    <Content Include="App_Themes\Blue\Images\Split.png" />
+    <Content Include="App_Themes\Blue\Images\Spliter.png" />
+    <Content Include="App_Themes\Blue\Images\status_normal.gif" />
+    <Content Include="App_Themes\Blue\Images\Stop.png" />
+    <Content Include="App_Themes\Blue\Images\Stright-arrow-31.png" />
+    <Content Include="App_Themes\Blue\Images\Success.png" />
+    <Content Include="App_Themes\Blue\Images\TabItem.png" />
+    <Content Include="App_Themes\Blue\Images\Table_bg.png" />
+    <Content Include="App_Themes\Blue\Images\Table_HeaderBG.png" />
+    <Content Include="App_Themes\Blue\Images\TextBox_BG.png" />
+    <Content Include="App_Themes\Blue\Images\Text_bg.png" />
+    <Content Include="App_Themes\Blue\Images\title.gif" />
+    <Content Include="App_Themes\Blue\Images\TopLeft.png" />
+    <Content Include="App_Themes\Blue\Images\Top_LeftBG.png" />
+    <Content Include="App_Themes\Blue\Images\Top_menu_bg_Grid.png" />
+    <Content Include="App_Themes\Blue\Images\Top_menu_bg_Grid_1.png" />
+    <Content Include="App_Themes\Blue\Images\Top_menu_bg_New.png" />
+    <Content Include="App_Themes\Blue\Images\Top_Right.png" />
+    <Content Include="App_Themes\Blue\Images\Top_TopBG.png" />
+    <Content Include="App_Themes\Blue\Images\undo.png" />
+    <Content Include="App_Themes\Blue\Images\Unlock_User.png" />
+    <Content Include="App_Themes\Blue\Images\Up-arrow-32.png" />
+    <Content Include="App_Themes\Blue\Images\Update.png" />
+    <Content Include="App_Themes\Blue\Images\UpdateProgress.gif" />
+    <Content Include="App_Themes\Blue\Images\Up_arrow_sort.png" />
+    <Content Include="App_Themes\Blue\Images\UserGroup.gif" />
+    <Content Include="App_Themes\Blue\Images\UserGroup.png" />
+    <Content Include="App_Themes\Blue\Images\User_Icon_IMG.png" />
+    <Content Include="App_Themes\Blue\Images\Vr_line.png" />
+    <Content Include="App_Themes\Blue\Images\WallPaper_Add.png" />
+    <Content Include="App_Themes\Blue\Images\WallPaper_Delete.png" />
+    <Content Include="App_Themes\Blue\Images\Warning.png" />
+    <Content Include="App_Themes\Blue\Images\XLS.png" />
+    <Content Include="App_Themes\Blue\Images\XML.png" />
+    <Content Include="App_Themes\Blue\Images\yes.gif" />
+    <Content Include="App_Themes\Green\AppStyle\ApplicationStyle.css" />
+    <Content Include="App_Themes\Green\AppStyle\AutoComplete.css" />
+    <Content Include="App_Themes\Green\AppStyle\dialog_box.css" />
+    <Content Include="App_Themes\Green\AppStyle\Style.css" />
+    <Content Include="App_Themes\Green\Images\1px.gif" />
+    <Content Include="App_Themes\Green\Images\about-icon.png" />
+    <Content Include="App_Themes\Green\Images\AccessDenined.jpg" />
+    <Content Include="App_Themes\Green\Images\AccountingPlus.ico" />
+    <Content Include="App_Themes\Green\Images\add.png" />
+    <Content Include="App_Themes\Green\Images\Add_User.png" />
+    <Content Include="App_Themes\Green\Images\Assign_cost_center_to_MFP.png" />
+    <Content Include="App_Themes\Green\Images\Assign_MFP_group_to_cost_profile.png" />
+    <Content Include="App_Themes\Green\Images\Assign_Users_to_cost_centre.png" />
+    <Content Include="App_Themes\Green\Images\AuditLog_IMG.png" />
+    <Content Include="App_Themes\Green\Images\back.png" />
+    <Content Include="App_Themes\Green\Images\BackPage.png" />
+    <Content Include="App_Themes\Green\Images\Backup.png" />
+    <Content Include="App_Themes\Green\Images\Backup_database.png" />
+    <Content Include="App_Themes\Green\Images\bg-button.gif" />
+    <Content Include="App_Themes\Green\Images\Bg.jpg" />
+    <Content Include="App_Themes\Green\Images\BG2.jpg" />
+    <Content Include="App_Themes\Green\Images\BG3.jpg" />
+    <Content Include="App_Themes\Green\Images\bg4.jpg" />
+    <Content Include="App_Themes\Green\Images\bggreendiag.gif" />
+    <Content Include="App_Themes\Green\Images\Blank.png" />
+    <Content Include="App_Themes\Green\Images\Bottom_BottomBG.png" />
+    <Content Include="App_Themes\Green\Images\Bottom_Left.png" />
+    <Content Include="App_Themes\Green\Images\Bottom_right.png" />
+    <Content Include="App_Themes\Green\Images\ButtonBGBig_Green.png" />
+    <Content Include="App_Themes\Green\Images\ButtonBG_Green.png" />
+    <Content Include="App_Themes\Green\Images\Button_bg.png" />
+    <Content Include="App_Themes\Green\Images\BW_bg.png" />
+    <Content Include="App_Themes\Green\Images\CancelSave.png" />
+    <Content Include="App_Themes\Green\Images\Cancel_buttonMfp.png" />
+    <Content Include="App_Themes\Green\Images\Cancel_button_1.png" />
+    <Content Include="App_Themes\Green\Images\CenterBG.png" />
+    <Content Include="App_Themes\Green\Images\chart.png" />
+    <Content Include="App_Themes\Green\Images\chart_Table.png" />
+    <Content Include="App_Themes\Green\Images\Clear.png" />
+    <Content Include="App_Themes\Green\Images\CollateOFF.PNG" />
+    <Content Include="App_Themes\Green\Images\CollateON.PNG" />
+    <Content Include="App_Themes\Green\Images\Color_BG.png" />
+    <Content Include="App_Themes\Green\Images\CopyToClipBoard.png" />
+    <Content Include="App_Themes\Green\Images\Critical.png" />
+    <Content Include="App_Themes\Green\Images\Criticalerror.png" />
+    <Content Include="App_Themes\Green\Images\CSV.png" />
+    <Content Include="App_Themes\Green\Images\C_Booklet.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Booklet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_Punch.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_Punch_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Simplex_Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_1Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_Punch.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_Punch_1Staple.png" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_Punch_2Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_Punch_Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\C_Tablet_Staple.PNG" />
+    <Content Include="App_Themes\Green\Images\Delete-32.png" />
+    <Content Include="App_Themes\Green\Images\Delete-icon.png" />
+    <Content Include="App_Themes\Green\Images\delete.png" />
+    <Content Include="App_Themes\Green\Images\delete_icon.png" />
+    <Content Include="App_Themes\Green\Images\Delete_User.png" />
+    <Content Include="App_Themes\Green\Images\Devices_IMG.png" />
+    <Content Include="App_Themes\Green\Images\DeviceURLs.png" />
+    <Content Include="App_Themes\Green\Images\Disable_Device.png" />
+    <Content Include="App_Themes\Green\Images\DoubleRowHeader.png" />
+    <Content Include="App_Themes\Green\Images\DoubleRowHeader_Small.png" />
+    <Content Include="App_Themes\Green\Images\Down-arrow-32.png" />
+    <Content Include="App_Themes\Green\Images\down_arrow.png" />
+    <Content Include="App_Themes\Green\Images\Down_arrow_sort.png" />
+    <Content Include="App_Themes\Green\Images\d_add.png" />
+    <Content Include="App_Themes\Green\Images\d_delete.png" />
+    <Content Include="App_Themes\Green\Images\d_Discover.png" />
+    <Content Include="App_Themes\Green\Images\d_edit.png" />
+    <Content Include="App_Themes\Green\Images\edit.png" />
+    <Content Include="App_Themes\Green\Images\Edit_Use.png" />
+    <Content Include="App_Themes\Green\Images\Enable_Device.png" />
+    <Content Include="App_Themes\Green\Images\Error.png" />
+    <Content Include="App_Themes\Green\Images\Error_bg.png" />
+    <Content Include="App_Themes\Green\Images\Error_close.png" />
+    <Content Include="App_Themes\Green\Images\Error_Msg.png" />
+    <Content Include="App_Themes\Green\Images\Excel.png" />
+    <Content Include="App_Themes\Green\Images\Exception.png" />
+    <Content Include="App_Themes\Green\Images\FailureIndicator.png" />
+    <Content Include="App_Themes\Green\Images\Folder-Home-icon.png" />
+    <Content Include="App_Themes\Green\Images\GO_button.png" />
+    <Content Include="App_Themes\Green\Images\Graphical report.png" />
+    <Content Include="App_Themes\Green\Images\Grid_Double.png" />
+    <Content Include="App_Themes\Green\Images\Grid_topbg.png" />
+    <Content Include="App_Themes\Green\Images\Grid_topbg_Mover.png" />
+    <Content Include="App_Themes\Green\Images\Group.png" />
+    <Content Include="App_Themes\Green\Images\HeaderBG.png" />
+    <Content Include="App_Themes\Green\Images\Help.png" />
+    <Content Include="App_Themes\Green\Images\Hidden_Menu.png" />
+    <Content Include="App_Themes\Green\Images\Hidden_Menu_2.png" />
+    <Content Include="App_Themes\Green\Images\Home.png" />
+    <Content Include="App_Themes\Green\Images\Images\dialog_close.gif" />
+    <Content Include="App_Themes\Green\Images\Images\error_bg.jpg" />
+    <Content Include="App_Themes\Green\Images\Images\error_header.gif" />
+    <Content Include="App_Themes\Green\Images\Images\prompt_bg.jpg" />
+    <Content Include="App_Themes\Green\Images\Images\prompt_header.gif" />
+    <Content Include="App_Themes\Green\Images\Images\success_bg.jpg" />
+    <Content Include="App_Themes\Green\Images\Images\success_header.gif" />
+    <Content Include="App_Themes\Green\Images\Images\warning_bg.jpg" />
+    <Content Include="App_Themes\Green\Images\Images\warning_header.gif" />
+    <Content Include="App_Themes\Green\Images\Import_User.png" />
+    <Content Include="App_Themes\Green\Images\Information.png" />
+    <Content Include="App_Themes\Green\Images\JobLog_IMG.png" />
+    <Content Include="App_Themes\Green\Images\key-icon.png" />
+    <Content Include="App_Themes\Green\Images\Language_disable.png" />
+    <Content Include="App_Themes\Green\Images\Language_Enable.png" />
+    <Content Include="App_Themes\Green\Images\LeftBG_BG.png" />
+    <Content Include="App_Themes\Green\Images\Limits.png" />
+    <Content Include="App_Themes\Green\Images\LineHr.png" />
+    <Content Include="App_Themes\Green\Images\loading.gif" />
+    <Content Include="App_Themes\Green\Images\Loading_img.gif" />
+    <Content Include="App_Themes\Green\Images\Locked.png" />
+    <Content Include="App_Themes\Green\Images\Lock_User.png" />
+    <Content Include="App_Themes\Green\Images\Log-Out-icon.png" />
+    <Content Include="App_Themes\Green\Images\LoginUser1.png" />
+    <Content Include="App_Themes\Green\Images\Login_bottom_BG.png" />
+    <Content Include="App_Themes\Green\Images\Login_buttonMFP.png" />
+    <Content Include="App_Themes\Green\Images\Login_Button_1.png" />
+    <Content Include="App_Themes\Green\Images\Login_center.png" />
+    <Content Include="App_Themes\Green\Images\Login_leftBG.png" />
+    <Content Include="App_Themes\Green\Images\Login_Left_bottom.png" />
+    <Content Include="App_Themes\Green\Images\Login_RightBG.png" />
+    <Content Include="App_Themes\Green\Images\Login_RightBG1.png" />
+    <Content Include="App_Themes\Green\Images\Login_Right_Bottom.png" />
+    <Content Include="App_Themes\Green\Images\Login_TopBG.png" />
+    <Content Include="App_Themes\Green\Images\login_user.png" />
+    <Content Include="App_Themes\Green\Images\Login_UserICO.png" />
+    <Content Include="App_Themes\Green\Images\Login_UserIcon.png" />
+    <Content Include="App_Themes\Green\Images\Logo.png" />
+    <Content Include="App_Themes\Green\Images\Logout.png" />
+    <Content Include="App_Themes\Green\Images\masthead_bg.jpg" />
+    <Content Include="App_Themes\Green\Images\Menubg_SplitBG.png" />
+    <Content Include="App_Themes\Green\Images\Menu_bg.png" />
+    <Content Include="App_Themes\Green\Images\Menu_BG_bottom.png" />
+    <Content Include="App_Themes\Green\Images\Menu_Hrline.png" />
+    <Content Include="App_Themes\Green\Images\Menu_split.png" />
+    <Content Include="App_Themes\Green\Images\Menu_split1.png" />
+    <Content Include="App_Themes\Green\Images\Mfp.png" />
+    <Content Include="App_Themes\Green\Images\MFP_Group.png" />
+    <Content Include="App_Themes\Green\Images\none.png" />
+    <Content Include="App_Themes\Green\Images\Number_down.png" />
+    <Content Include="App_Themes\Green\Images\Number_Up.png" />
+    <Content Include="App_Themes\Green\Images\ok-icon.png" />
+    <Content Include="App_Themes\Green\Images\ok1.gif" />
+    <Content Include="App_Themes\Green\Images\Padlock.png" />
+    <Content Include="App_Themes\Green\Images\Permissions.png" />
+    <Content Include="App_Themes\Green\Images\Price.png" />
+    <Content Include="App_Themes\Green\Images\Printer_with_chart.png" />
+    <Content Include="App_Themes\Green\Images\Print_IMG.png" />
+    <Content Include="App_Themes\Green\Images\Processing.gif" />
+    <Content Include="App_Themes\Green\Images\Progress.gif" />
+    <Content Include="App_Themes\Green\Images\Refersh.png" />
+    <Content Include="App_Themes\Green\Images\Refreshicon.png" />
+    <Content Include="App_Themes\Green\Images\Register02.png" />
+    <Content Include="App_Themes\Green\Images\Register03.png" />
+    <Content Include="App_Themes\Green\Images\register_icon.png" />
+    <Content Include="App_Themes\Green\Images\Remove_database.png" />
+    <Content Include="App_Themes\Green\Images\Report_IMG.png" />
+    <Content Include="App_Themes\Green\Images\Required.gif" />
+    <Content Include="App_Themes\Green\Images\Reset.png" />
+    <Content Include="App_Themes\Green\Images\ResetLogin.png" />
+    <Content Include="App_Themes\Green\Images\restore.png" />
+    <Content Include="App_Themes\Green\Images\Restore_database.png" />
+    <Content Include="App_Themes\Green\Images\Right_RightBG.png" />
+    <Content Include="App_Themes\Green\Images\Save.gif" />
+    <Content Include="App_Themes\Green\Images\Save.png" />
+    <Content Include="App_Themes\Green\Images\Search.png" />
+    <Content Include="App_Themes\Green\Images\Search_bg.png" />
+    <Content Include="App_Themes\Green\Images\Search_Next.png" />
+    <Content Include="App_Themes\Green\Images\Search_Prev.png" />
+    <Content Include="App_Themes\Green\Images\Search_Small.png" />
+    <Content Include="App_Themes\Green\Images\Selected_MenuBG.png" />
+    <Content Include="App_Themes\Green\Images\Selected_MenuBG1.png" />
+    <Content Include="App_Themes\Green\Images\Select_MeunBG.png" />
+    <Content Include="App_Themes\Green\Images\Select_Sorting_bg.png" />
+    <Content Include="App_Themes\Green\Images\Select_Sorting_bg2.png" />
+    <Content Include="App_Themes\Green\Images\Select_Sorting_bg_New.png" />
+    <Content Include="App_Themes\Green\Images\Settings.png" />
+    <Content Include="App_Themes\Green\Images\Show_Menu.png" />
+    <Content Include="App_Themes\Green\Images\Split.png" />
+    <Content Include="App_Themes\Green\Images\Spliter.png" />
+    <Content Include="App_Themes\Green\Images\status_normal.gif" />
+    <Content Include="App_Themes\Green\Images\Stop.png" />
+    <Content Include="App_Themes\Green\Images\Stright-arrow-31.png" />
+    <Content Include="App_Themes\Green\Images\Success.png" />
+    <Content Include="App_Themes\Green\Images\TabItem.png" />
+    <Content Include="App_Themes\Green\Images\Table_bg.png" />
+    <Content Include="App_Themes\Green\Images\Table_HeaderBG.png" />
+    <Content Include="App_Themes\Green\Images\TextBox_BG.png" />
+    <Content Include="App_Themes\Green\Images\Text_bg.png" />
+    <Content Include="App_Themes\Green\Images\title.gif" />
+    <Content Include="App_Themes\Green\Images\TopLeft.png" />
+    <Content Include="App_Themes\Green\Images\Top_LeftBG.png" />
+    <Content Include="App_Themes\Green\Images\Top_menu_bg_Grid.png" />
+    <Content Include="App_Themes\Green\Images\Top_menu_bg_Grid_1.png" />
+    <Content Include="App_Themes\Green\Images\Top_menu_bg_New.png" />
+    <Content Include="App_Themes\Green\Images\Top_Right.png" />
+    <Content Include="App_Themes\Green\Images\Top_TopBG.png" />
+    <Content Include="App_Themes\Green\Images\undo.png" />
+    <Content Include="App_Themes\Green\Images\Unlock_User.png" />
+    <Content Include="App_Themes\Green\Images\Up-arrow-32.png" />
+    <Content Include="App_Themes\Green\Images\UpdateProgress.gif" />
+    <Content Include="App_Themes\Green\Images\Up_arrow_sort.png" />
+    <Content Include="App_Themes\Green\Images\UserGroup.gif" />
+    <Content Include="App_Themes\Green\Images\UserGroup.png" />
+    <Content Include="App_Themes\Green\Images\User_Icon_IMG.png" />
+    <Content Include="App_Themes\Green\Images\Vr_line.png" />
+    <Content Include="App_Themes\Green\Images\WallPaper_Add.png" />
+    <Content Include="App_Themes\Green\Images\WallPaper_Delete.png" />
+    <Content Include="App_Themes\Green\Images\Warning.png" />
+    <Content Include="App_Themes\Green\Images\XLS.png" />
+    <Content Include="App_Themes\Green\Images\XML.png" />
+    <Content Include="App_Themes\Green\Images\yes.gif" />
+    <Content Include="App_UserData\WallPapers\WEB.txt" />
+    <Content Include="Default.aspx" />
+    <Content Include="GraphicalReports\SampleReport2.aspx" />
+    <Content Include="GraphicalReports\SummaryReports.aspx" />
+    <Content Include="App_Themes\Black\SkyHigh.skin" />
+    <Content Include="JavaScript\jquery-ui.css" />
+    <Content Include="JavaScript\jquery-ui.js" />
+    <Content Include="JavaScript\jquery.min.js" />
+    <Content Include="JavaScript\sweetalert.min.js" />
+    <Content Include="Reports\AuditLogTruncateShrink.aspx" />
+    <Content Include="Reports\CrystalReport.aspx" />
+    <Content Include="Reports\LogConfiguration.aspx" />
+    <Content Include="Reports\QuickJobSummary.aspx" />
+    <None Include="Reports\GenaricData.xsc">
+      <DependentUpon>GenaricData.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GenaricData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GenaricData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\GenaricData.xss">
+      <DependentUpon>GenaricData.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\JobLog.xsc">
+      <DependentUpon>JobLog.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\JobLog.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>JobLog.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\JobLog.xss">
+      <DependentUpon>JobLog.xsd</DependentUpon>
+    </None>
+    <None Include="Web References\ProductActivator\ProductActivation.wsdl" />
+    <None Include="Web References\ProductActivator\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SmartAccountant\counterAccountant.disco" />
+    <Content Include="Reports\ReportWithChart.aspx" />
+    <None Include="Web References\ProductActivator\ProductActivation.disco" />
+    <Content Include="Web\QueryAnalyzer.aspx" />
+    <None Include="App_Themes\Blue\Images\HeaderBG.psd" />
+    <Content Include="App_Themes\Blue\SkyHigh.skin" />
+    <None Include="App_Themes\Green\Images\HeaderBG.psd" />
+    <Content Include="App_Themes\Green\SkyHigh.skin" />
+    <None Include="App_UserData\DataStore\DBSettings.ini" />
+    <None Include="GraphicalReports\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="GraphicalReports\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GraphicalReports\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <Content Include="JavaScript\InnerMaster.js" />
+    <Content Include="JavaScript\jsUpdateProgress.js" />
+    <Content Include="MasterPages\TrendsMaster.Master" />
+    <Content Include="LicenceController\ApplicationActivator.aspx" />
+    <Content Include="LicenceController\RegistrationDetails.aspx" />
+    <Content Include="Notify\error.png" />
+    <Content Include="Notify\info.png" />
+    <Content Include="Notify\jNotify.jquery.css" />
+    <Content Include="Notify\jNotify.jquery.js" />
+    <Content Include="Notify\jNotify.jquery.min.js" />
+    <Content Include="Notify\jquery.js" />
+    <Content Include="Notify\success.png" />
+    <Content Include="Overview_Images\spacer.gif" />
+    <Content Include="Overview_Images\SysOverView_01.png" />
+    <Content Include="Overview_Images\SysOverView_02.png" />
+    <Content Include="Overview_Images\SysOverView_03.jpg" />
+    <Content Include="Overview_Images\SysOverView_04.jpg" />
+    <Content Include="Overview_Images\SysOverView_05.png" />
+    <Content Include="Overview_Images\SysOverView_06.png" />
+    <Content Include="Overview_Images\SysOverView_07.png" />
+    <Content Include="Overview_Images\SysOverView_08.png" />
+    <Content Include="Overview_Images\SysOverView_09.png" />
+    <Content Include="Overview_Images\SysOverView_10.png" />
+    <Content Include="Overview_Images\SysOverView_11.png" />
+    <Content Include="Overview_Images\SysOverView_12.png" />
+    <Content Include="Overview_Images\SysOverView_13.png" />
+    <Content Include="Overview_Images\SysOverView_14.png" />
+    <Content Include="Overview_Images\SysOverView_15.png" />
+    <Content Include="Overview_Images\SysOverView_16.png" />
+    <Content Include="Overview_Images\SysOverView_17.png" />
+    <Content Include="Overview_Images\SysOverView_18.png" />
+    <Content Include="Overview_Images\SysOverView_19.png" />
+    <Content Include="Overview_Images\SysOverView_20.png" />
+    <Content Include="Overview_Images\SysOverView_21.png" />
+    <Content Include="Overview_Images\SysOverView_22.png" />
+    <Content Include="Overview_Images\SysOverView_23.png" />
+    <Content Include="Overview_Images\SysOverView_24.png" />
+    <Content Include="Overview_Images\SysOverView_25.png" />
+    <Content Include="Overview_Images\SysOverView_26.png" />
+    <Content Include="Overview_Images\SysOverView_27.png" />
+    <Content Include="Overview_Images\SysOverView_28.png" />
+    <Content Include="Overview_Images\SysOverView_29.png" />
+    <Content Include="Overview_Images\SysOverView_30.png" />
+    <Content Include="Overview_Images\SysOverView_31.png" />
+    <Content Include="Overview_Images\SysOverView_32.png" />
+    <Content Include="Overview_Images\SysOverView_33.png" />
+    <Content Include="Overview_Images\SysOverView_34.png" />
+    <Content Include="Overview_Images\SysOverView_35.png" />
+    <Content Include="Overview_Images\SysOverView_36.png" />
+    <Content Include="Overview_Images\SysOverView_37.png" />
+    <Content Include="Overview_Images\SysOverView_38.png" />
+    <Content Include="Overview_Images\SysOverView_39.png" />
+    <Content Include="Overview_Images\SysOverView_40.png" />
+    <Content Include="Overview_Images\SysOverView_41.png" />
+    <Content Include="Overview_Images\SysOverView_42.png" />
+    <Content Include="Overview_Images\SysOverView_43.png" />
+    <Content Include="Overview_Images\SysOverView_44.png" />
+    <Content Include="Overview_Images\SysOverView_45.png" />
+    <Content Include="Overview_Images\SysOverView_46.png" />
+    <Content Include="Overview_Images\SysOverView_47.png" />
+    <Content Include="Overview_Images\SysOverView_48.png" />
+    <Content Include="Overview_Images\SysOverView_49.png" />
+    <Content Include="Overview_Images\SysOverView_50.png" />
+    <Content Include="Overview_Images\SysOverView_51.png" />
+    <Content Include="Overview_Images\SysOverView_52.png" />
+    <Content Include="Overview_Images\SysOverView_53.png" />
+    <Content Include="Overview_Images\SysOverView_54.png" />
+    <Content Include="Overview_Images\SysOverView_55.png" />
+    <Content Include="Overview_Images\SysOverView_56.png" />
+    <Content Include="Overview_Images\SysOverView_57.png" />
+    <Content Include="Overview_Images\SysOverView_58.png" />
+    <Content Include="Overview_Images\SysOverView_59.png" />
+    <Content Include="Overview_Images\SysOverView_60.png" />
+    <Content Include="Overview_Images\SysOverView_61.jpg" />
+    <Content Include="Overview_Images\SysOverView_62.png" />
+    <Content Include="Overview_Images\SysOverView_63.jpg" />
+    <Content Include="Overview_Images\SysOverView_64.jpg" />
+    <Content Include="Overview_Images\SysOverView_65.jpg" />
+    <Content Include="Overview_Images\SysOverView_66.jpg" />
+    <Content Include="Overview_Images\SysOverView_67.jpg" />
+    <Content Include="Overview_Images\SysOverView_68.jpg" />
+    <Content Include="Overview_Images\SysOverView_69.png" />
+    <Content Include="Overview_Images\SysOverView_70.png" />
+    <Content Include="Overview_Images\SysOverView_71.jpg" />
+    <Content Include="Overview_Images\SysOverView_72.png" />
+    <Content Include="Overview_Images\SysOverView_73.png" />
+    <Content Include="Overview_Images\SysOverView_74.jpg" />
+    <Content Include="Overview_Images\SysOverView_75.png" />
+    <Content Include="Overview_Images\SysOverView_76.png" />
+    <Content Include="Overview_Images\SysOverView_77.png" />
+    <Content Include="Overview_Images\SysOverView_78.png" />
+    <Content Include="Reports\FleetMonitorReports.aspx" />
+    <Content Include="Reports\FleetTrends.aspx" />
+    <Content Include="Reports\Invoice.aspx" />
+    <Content Include="UserControls\SortMenu.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebServices\Configurator.asmx" />
+    <Content Include="WebServices\ContextSearch.asmx" />
+    <Content Include="Web\LogOn.aspx" />
+    <Content Include="Web\MyProfile.aspx" />
+    <None Include="Web References\SmartAccountant\counterAccountant.wsdl" />
+    <None Include="Web References\SmartAccountant\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\ActiveDirectorySettings.aspx.cs">
+      <DependentUpon>ActiveDirectorySettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ActiveDirectorySettings.aspx.designer.cs">
+      <DependentUpon>ActiveDirectorySettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ActiveDirectorySyncSettings.aspx.cs">
+      <DependentUpon>ActiveDirectorySyncSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ActiveDirectorySyncSettings.aspx.designer.cs">
+      <DependentUpon>ActiveDirectorySyncSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AddCostProfile.aspx.cs">
+      <DependentUpon>AddCostProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AddCostProfile.aspx.designer.cs">
+      <DependentUpon>AddCostProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AddMFPGroup.aspx.cs">
+      <DependentUpon>AddMFPGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AddMFPGroup.aspx.designer.cs">
+      <DependentUpon>AddMFPGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AddUpdateDevices.aspx.cs">
+      <DependentUpon>AddUpdateDevices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AddUpdateDevices.aspx.designer.cs">
+      <DependentUpon>AddUpdateDevices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AddUsers.aspx.cs">
+      <DependentUpon>AddUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AddUsers.aspx.designer.cs">
+      <DependentUpon>AddUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ApplicationRegistration.aspx.cs">
+      <DependentUpon>ApplicationRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ApplicationRegistration.aspx.designer.cs">
+      <DependentUpon>ApplicationRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AssignAccessRights.aspx.cs">
+      <DependentUpon>AssignAccessRights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AssignAccessRights.aspx.designer.cs">
+      <DependentUpon>AssignAccessRights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AssignCostProfileToMFPGroups.aspx.cs">
+      <DependentUpon>AssignCostProfileToMFPGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AssignCostProfileToMFPGroups.aspx.designer.cs">
+      <DependentUpon>AssignCostProfileToMFPGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AssignMFPsToGroups.aspx.cs">
+      <DependentUpon>AssignMFPsToGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AssignMFPsToGroups.aspx.designer.cs">
+      <DependentUpon>AssignMFPsToGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AssignUserGroupsToMFPGroups.aspx.cs">
+      <DependentUpon>AssignUserGroupsToMFPGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AssignUserGroupsToMFPGroups.aspx.designer.cs">
+      <DependentUpon>AssignUserGroupsToMFPGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AssignUsersToGroups.aspx.cs">
+      <DependentUpon>AssignUsersToGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AssignUsersToGroups.aspx.designer.cs">
+      <DependentUpon>AssignUsersToGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AutoRefill.aspx.cs">
+      <DependentUpon>AutoRefill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AutoRefill.aspx.designer.cs">
+      <DependentUpon>AutoRefill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\BackupRestore.aspx.cs">
+      <DependentUpon>BackupRestore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\BackupRestore.aspx.designer.cs">
+      <DependentUpon>BackupRestore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Balance.aspx.cs">
+      <DependentUpon>Balance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Balance.aspx.designer.cs">
+      <DependentUpon>Balance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CardConfiguration.aspx.cs">
+      <DependentUpon>CardConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CardConfiguration.aspx.designer.cs">
+      <DependentUpon>CardConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CostCenters.aspx.cs">
+      <DependentUpon>CostCenters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CostCenters.aspx.designer.cs">
+      <DependentUpon>CostCenters.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CounterDetails.aspx.cs">
+      <DependentUpon>CounterDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CounterDetails.aspx.designer.cs">
+      <DependentUpon>CounterDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CounterInformation.aspx.cs">
+      <DependentUpon>CounterInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CounterInformation.aspx.designer.cs">
+      <DependentUpon>CounterInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CurrencySettings.aspx.cs">
+      <DependentUpon>CurrencySettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CurrencySettings.aspx.designer.cs">
+      <DependentUpon>CurrencySettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CustomMessages.aspx.cs">
+      <DependentUpon>CustomMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CustomMessages.aspx.designer.cs">
+      <DependentUpon>CustomMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\CustomTheme.aspx.cs">
+      <DependentUpon>CustomTheme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\CustomTheme.aspx.designer.cs">
+      <DependentUpon>CustomTheme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\DiscoverDevices.aspx.cs">
+      <DependentUpon>DiscoverDevices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\DiscoverDevices.aspx.designer.cs">
+      <DependentUpon>DiscoverDevices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\DiscoveryStatus.aspx.cs">
+      <DependentUpon>DiscoveryStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\DiscoveryStatus.aspx.designer.cs">
+      <DependentUpon>DiscoveryStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\EmailPrintSettings.aspx.cs">
+      <DependentUpon>EmailPrintSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\EmailPrintSettings.aspx.designer.cs">
+      <DependentUpon>EmailPrintSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ForgetPassword.aspx.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ForgetPassword.aspx.designer.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\GeneratePinnumber.aspx.cs">
+      <DependentUpon>GeneratePinnumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\GeneratePinnumber.aspx.designer.cs">
+      <DependentUpon>GeneratePinnumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ImportLdapUsers.aspx.cs">
+      <DependentUpon>ImportLdapUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ImportLdapUsers.aspx.designer.cs">
+      <DependentUpon>ImportLdapUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ImportTopUpCard.aspx.cs">
+      <DependentUpon>ImportTopUpCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ImportTopUpCard.aspx.designer.cs">
+      <DependentUpon>ImportTopUpCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\JobConfiguration.aspx.cs">
+      <DependentUpon>JobConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\JobConfiguration.aspx.designer.cs">
+      <DependentUpon>JobConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\JobList.aspx.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\JobList.aspx.designer.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\JobSettings.aspx.cs">
+      <DependentUpon>JobSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\JobSettings.aspx.designer.cs">
+      <DependentUpon>JobSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Limits.aspx.cs">
+      <DependentUpon>Limits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Limits.aspx.designer.cs">
+      <DependentUpon>Limits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageADSettings.aspx.cs">
+      <DependentUpon>ManageADSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageADSettings.aspx.designer.cs">
+      <DependentUpon>ManageADSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageDBUploadUsers.aspx.cs">
+      <DependentUpon>ManageDBUploadUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageDBUploadUsers.aspx.designer.cs">
+      <DependentUpon>ManageDBUploadUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageDepartments.aspx.cs">
+      <DependentUpon>ManageDepartments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageDepartments.aspx.designer.cs">
+      <DependentUpon>ManageDepartments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageDevice.aspx.cs">
+      <DependentUpon>ManageDevice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageDevice.aspx.designer.cs">
+      <DependentUpon>ManageDevice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageGroups.aspx.cs">
+      <DependentUpon>ManageGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageGroups.aspx.designer.cs">
+      <DependentUpon>ManageGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageLanguages.aspx.cs">
+      <DependentUpon>ManageLanguages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageLanguages.aspx.designer.cs">
+      <DependentUpon>ManageLanguages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManagePermissions.aspx.cs">
+      <DependentUpon>ManagePermissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManagePermissions.aspx.designer.cs">
+      <DependentUpon>ManagePermissions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageSettings.aspx.cs">
+      <DependentUpon>ManageSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageSettings.aspx.designer.cs">
+      <DependentUpon>ManageSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageThemes.aspx.cs">
+      <DependentUpon>ManageThemes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageThemes.aspx.designer.cs">
+      <DependentUpon>ManageThemes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageUserCards.aspx.cs">
+      <DependentUpon>ManageUserCards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageUserCards.aspx.designer.cs">
+      <DependentUpon>ManageUserCards.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\PaperSizes.aspx.cs">
+      <DependentUpon>PaperSizes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\PaperSizes.aspx.designer.cs">
+      <DependentUpon>PaperSizes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\PermissionsAndLimits.aspx.cs">
+      <DependentUpon>PermissionsAndLimits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\PermissionsAndLimits.aspx.designer.cs">
+      <DependentUpon>PermissionsAndLimits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\PriceManger.aspx.cs">
+      <DependentUpon>PriceManger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\PriceManger.aspx.designer.cs">
+      <DependentUpon>PriceManger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\PrintJobStatus.aspx.cs">
+      <DependentUpon>PrintJobStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\PrintJobStatus.aspx.designer.cs">
+      <DependentUpon>PrintJobStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ProxySettings.aspx.cs">
+      <DependentUpon>ProxySettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ProxySettings.aspx.designer.cs">
+      <DependentUpon>ProxySettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ServerDetails.aspx.cs">
+      <DependentUpon>ServerDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ServerDetails.aspx.designer.cs">
+      <DependentUpon>ServerDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ServerScreen.aspx.cs">
+      <DependentUpon>ServerScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ServerScreen.aspx.designer.cs">
+      <DependentUpon>ServerScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SMTPSettings.aspx.cs">
+      <DependentUpon>SMTPSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SMTPSettings.aspx.designer.cs">
+      <DependentUpon>SMTPSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Subscription.aspx.cs">
+      <DependentUpon>Subscription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Subscription.aspx.designer.cs">
+      <DependentUpon>Subscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SysOverView.aspx.cs">
+      <DependentUpon>SysOverView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SysOverView.aspx.designer.cs">
+      <DependentUpon>SysOverView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\UnAuthorisedAccess.aspx.cs">
+      <DependentUpon>UnAuthorisedAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\UnAuthorisedAccess.aspx.designer.cs">
+      <DependentUpon>UnAuthorisedAccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MyPermissionsandLimits.aspx.cs">
+      <DependentUpon>MyPermissionsandLimits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MyPermissionsandLimits.aspx.designer.cs">
+      <DependentUpon>MyPermissionsandLimits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\AppController.cs">
+    </Compile>
+    <Compile Include="AppCode\ApplicationBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppCode\AppWebShare.cs" />
+    <Compile Include="AppCode\PrintHelper.cs" />
+    <Compile Include="AppCode\SNMPFunc.cs" />
+    <Compile Include="AppCode\WsDataProtector.cs" />
+    <Compile Include="ApplicationError.aspx.cs">
+      <DependentUpon>ApplicationError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplicationError.aspx.designer.cs">
+      <DependentUpon>ApplicationError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationErrorMessage.aspx.cs">
+      <DependentUpon>ApplicationErrorMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplicationErrorMessage.aspx.designer.cs">
+      <DependentUpon>ApplicationErrorMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationUploadFileError.aspx.cs">
+      <DependentUpon>ApplicationUploadFileError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplicationUploadFileError.aspx.designer.cs">
+      <DependentUpon>ApplicationUploadFileError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicalReports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicalReports\SampleReport2.aspx.cs">
+      <DependentUpon>SampleReport2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraphicalReports\SampleReport2.aspx.designer.cs">
+      <DependentUpon>SampleReport2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicalReports\SummaryReports.aspx.cs">
+      <DependentUpon>SummaryReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraphicalReports\SummaryReports.aspx.designer.cs">
+      <DependentUpon>SummaryReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LicenceController\ApplicationActivator.aspx.cs">
+      <DependentUpon>ApplicationActivator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LicenceController\ApplicationActivator.aspx.designer.cs">
+      <DependentUpon>ApplicationActivator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LicenceController\RegistrationDetails.aspx.cs">
+      <DependentUpon>RegistrationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LicenceController\RegistrationDetails.aspx.designer.cs">
+      <DependentUpon>RegistrationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Blank.Master.cs">
+      <DependentUpon>Blank.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Blank.Master.designer.cs">
+      <DependentUpon>Blank.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\InnerPage.master.cs">
+      <DependentUpon>InnerPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\InnerPage.Master.designer.cs">
+      <DependentUpon>InnerPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\LogOn.master.designer.cs">
+      <DependentUpon>LogOn.master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\LogOn.master.cs">
+      <DependentUpon>LogOn.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\TrendsMaster.Master.cs">
+      <DependentUpon>TrendsMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\TrendsMaster.Master.designer.cs">
+      <DependentUpon>TrendsMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AuditLog.aspx.cs">
+      <DependentUpon>AuditLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\AuditLog.aspx.designer.cs">
+      <DependentUpon>AuditLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AuditLogTruncateShrink.aspx.cs">
+      <DependentUpon>AuditLogTruncateShrink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\AuditLogTruncateShrink.aspx.designer.cs">
+      <DependentUpon>AuditLogTruncateShrink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CrystalReport.aspx.cs">
+      <DependentUpon>CrystalReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CrystalReport.aspx.designer.cs">
+      <DependentUpon>CrystalReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FleetMonitorReports.aspx.cs">
+      <DependentUpon>FleetMonitorReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FleetMonitorReports.aspx.designer.cs">
+      <DependentUpon>FleetMonitorReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FleetTrends.aspx.cs">
+      <DependentUpon>FleetTrends.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FleetTrends.aspx.designer.cs">
+      <DependentUpon>FleetTrends.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenaricData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenaricData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Invoice.aspx.designer.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\JobLog.aspx.cs">
+      <DependentUpon>JobLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\JobLog.aspx.designer.cs">
+      <DependentUpon>JobLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\JobLog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobLog.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\LogConfiguration.aspx.cs">
+      <DependentUpon>LogConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\LogConfiguration.aspx.designer.cs">
+      <DependentUpon>LogConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\QuickJobSummary.aspx.cs">
+      <DependentUpon>QuickJobSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\QuickJobSummary.aspx.designer.cs">
+      <DependentUpon>QuickJobSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportLog.aspx.cs">
+      <DependentUpon>ReportLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportLog.aspx.designer.cs">
+      <DependentUpon>ReportLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportWithChart.aspx.cs">
+      <DependentUpon>ReportWithChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportWithChart.aspx.designer.cs">
+      <DependentUpon>ReportWithChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingsMenu.ascx.cs">
+      <DependentUpon>SettingsMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingsMenu.ascx.designer.cs">
+      <DependentUpon>SettingsMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SortMenu.ascx.cs">
+      <DependentUpon>SortMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\SortMenu.ascx.designer.cs">
+      <DependentUpon>SortMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProductActivator\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SmartAccountant\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\Configurator.asmx.cs">
+      <DependentUpon>Configurator.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\ContextSearch.asmx.cs">
+      <DependentUpon>ContextSearch.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web\FirstLogOn.aspx.cs">
+      <DependentUpon>FirstLogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\FirstLogOn.aspx.designer.cs">
+      <DependentUpon>FirstLogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\LicenceResponse.aspx.cs">
+      <DependentUpon>LicenceResponse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\LicenceResponse.aspx.designer.cs">
+      <DependentUpon>LicenceResponse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\LogOn.aspx.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\LogOn.aspx.designer.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\QueryAnalyzer.aspx.cs">
+      <DependentUpon>QueryAnalyzer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\QueryAnalyzer.aspx.designer.cs">
+      <DependentUpon>QueryAnalyzer.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Administration\AddUpdateDevices.aspx" />
+    <Content Include="Administration\CardConfiguration.aspx" />
+    <Content Include="Administration\CustomMessages.aspx" />
+    <Content Include="Administration\DiscoverDevices.aspx" />
+    <Content Include="Administration\DiscoveryStatus.aspx" />
+    <Content Include="Administration\ImportLdapUsers.aspx" />
+    <Content Include="Administration\JobConfiguration.aspx" />
+    <Content Include="Administration\ManageADSettings.aspx" />
+    <Content Include="Administration\ManageDBUploadUsers.aspx" />
+    <Content Include="Administration\ManageDepartments.aspx" />
+    <Content Include="Administration\ManageDevice.aspx" />
+    <Content Include="Administration\ManageLanguages.aspx" />
+    <Content Include="Administration\ManageThemes.aspx" />
+    <Content Include="Administration\ManageUsers.aspx" />
+    <Content Include="Administration\UnAuthorisedAccess.aspx" />
+    <Content Include="ApplicationError.aspx" />
+    <Content Include="ApplicationErrorMessage.aspx" />
+    <Content Include="ApplicationUploadFileError.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="JavaScript\dialog_box.js" />
+    <Content Include="JavaScript\resizing_background.js" />
+    <Content Include="MasterPages\Blank.Master" />
+    <Content Include="MasterPages\InnerPage.Master" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Administration\AddUsers.aspx" />
+    <Content Include="Administration\JobList.aspx" />
+    <Content Include="Administration\JobSettings.aspx" />
+    <Content Include="Administration\ManageSettings.aspx" />
+    <Content Include="MasterPages\LogOn.master" />
+    <Content Include="Reports\AuditLog.aspx" />
+    <Content Include="Reports\JobLog.aspx" />
+    <Content Include="Reports\ReportLog.aspx" />
+    <Content Include="UserControls\SettingsMenu.ascx" />
+    <Content Include="Web\FirstLogOn.aspx" />
+    <Content Include="Web\LicenceResponse.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppLibrary\AppLibrary.csproj">
+      <Project>{5DBF1017-FC64-4261-8132-98391C2EE629}</Project>
+      <Name>AppLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApplicationAuditor\ApplicationAuditor.csproj">
+      <Project>{4A325D15-2BA3-40C6-9BFD-6596D641862E}</Project>
+      <Name>ApplicationAuditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataManager\DataManager.csproj">
+      <Project>{8078C05A-9A00-4D46-B7C9-CF9036D67C1F}</Project>
+      <Name>DataManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ldap dll\LdapStoreManager.csproj">
+      <Project>{BF3155FB-1BE3-4009-A0BD-1665CE4CFE1B}</Project>
+      <Name>LdapStoreManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MFPDiscovery\MFPDiscovery.csproj">
+      <Project>{6198420F-6E3B-450E-BEB3-D773CDC9A90A}</Project>
+      <Name>MFPDiscovery</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OsaDirectEAManager\OsaDirectEAManager.csproj">
+      <Project>{7593BBE4-4B61-417F-AFAD-5A1C3C858E58}</Project>
+      <Name>OsaDirectEAManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrintJobProvider\PrintJobProvider.csproj">
+      <Project>{CDEAAED1-0849-4C02-994D-B1D7B7E36C93}</Project>
+      <Name>PrintJobProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegistrationAdaptor\RegistrationAdaptor.csproj">
+      <Project>{A64B09E2-539E-4FFC-8B9C-401BC26FAC80}</Project>
+      <Name>RegistrationAdaptor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GraphicalReports\Report1.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\" />
+    <Folder Include="ScreenCapture\" />
+    <Folder Include="TempImages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/ApplicationRegistration/WebServices/ProductActivation.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProductActivator\</RelPath>
+      <UpdateFromURL>http://localhost/ApplicationRegistration/WebServices/ProductActivation.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AccountingPlusWeb_ProductActivator_ProductActivation</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://smartcounter.csignageplus.com/smartcounter/WebService/counterAccountant.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SmartAccountant\</RelPath>
+      <UpdateFromURL>http://smartcounter.csignageplus.com/smartcounter/WebService/counterAccountant.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AccountingPlusWeb_SmartAccountant_CounterAccountant</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  -->
+  <PropertyGroup>
+    <FxCopResults>$(ProjectDir)\FxCopResults.xml</FxCopResults>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(FxCopResults)" ContinueOnError="true" />
+  </Target>
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
+    <Message Text="Copying to Deployment Dir:" />
+    <Copy SourceFiles="@(Content)" DestinationFolder="C:\Source\MFP\PrintRelease\Web\%(Content.RelativeDir)" />
+    <CreateItem Include="$(OutputPath)\*">
+      <Output TaskParameter="Include" ItemName="Binaries" />
+    </CreateItem>
+    <Copy SourceFiles="@(Binaries)" DestinationFolder="C:\Source\MFP\PrintRelease\Web\bin" />
+    <Error Text="One or more FxCop warnings occurred." Condition="Exists('$(FxCopResults)')" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>20941</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/AccountingPlusAdminDev</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

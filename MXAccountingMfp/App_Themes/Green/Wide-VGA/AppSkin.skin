@@ -1,0 +1,32 @@
+﻿<%--MFP Skins--%>
+<asp:Image runat="server" ImageUrl="Images/LoginIcon.png" SkinID="MasterLoginuser" />
+<asp:Image runat="server" ImageUrl="Images/Info.png" SkinID="InfoImage" width="24" height="24" />
+<asp:Image runat="server" ImageUrl="Images/Login_user_IMG.png" SkinID="LoginUser"/>
+<asp:Image runat="server" ImageUrl="Images/Clear_IMG.png" SkinID="SkinClear" width="28" height="36" />
+<asp:Image runat="server" ImageUrl="Images/Login_IMG.png" SkinID="LoginButton" border="0"/>
+<asp:Image runat="server" ImageUrl="Images/Blank.png" SkinID="ImageBlank"/>
+<asp:Image runat="server" ImageUrl="Images/Swipe_GO_IMG.png" SkinID="SwipeGO"/>
+<asp:Image runat="server" ImageUrl="Images/Manuel_LoginIMG.png" SkinID="ManualLogin" width="28" height="36"/>
+<asp:Image runat="server" ImageUrl="Images/Cancel_IMG.png" SkinID="Cancel"/>
+<asp:Image runat="server" ImageUrl="Images/Cance_print.png" SkinID="CancelPrint"/>
+<asp:Image runat="server" ImageUrl="Images/Close_IMG.png" SkinID="CloseIMG"/>
+<asp:Image runat="server" ImageUrl="Images/Cancel.png" SkinID="NormalCancel"/>
+<asp:Image runat="server" ImageUrl="Images/DeleteFile.png" SkinID="DeleteFile"/>
+<asp:Image runat="server" ImageUrl="Images/Number_Up.png" SkinID="CopiesUp"/>
+<asp:Image runat="server" ImageUrl="Images/Number_down.png" SkinID="CopiesDown"/>
+<asp:Image runat="server" ImageUrl="Images/No_IMG.png" SkinID="ImageNo"/>
+<asp:Image runat="server" ImageUrl="Images/Registion.png" SkinID="RegisterButton" border="0"/>
+<asp:Image runat="server" ImageUrl="Images/loading.gif" SkinID="ImagePageLoading"/>
+<asp:Image runat="server" ImageUrl="Images/Back.png" SkinID="BackButton"/>
+<asp:Image runat="server" ImageUrl="Images/MFP.png" SkinID="IMAGEMFP"/>
+<asp:Image runat="server" ImageUrl="Images/Print_Options.png" SkinID="PrintOptions"/>
+
+<asp:Image runat="server" ImageUrl="Images/Active_Uparrow.png" SkinID="ImageActiveUpArrow"/>
+<asp:Image runat="server" ImageUrl="Images/Disable_Uparrow.png" SkinID="ImageDisableUpArrow"/>
+<asp:Image runat="server" ImageUrl="Images/Active_Downarrow.png" SkinID="ImageActiveDownArrow"/>
+<asp:Image runat="server" ImageUrl="Images/Disable_Downarrow.png" SkinID="ImageDisableDownArrow"/>
+
+<%--OLD--%>
+<asp:Image runat="server" SkinID="PreviousPageDisabled" ImageUrl="Images/Print_Uparrow_dis.png" />
+<asp:Image runat="server" SkinID="NextPageDisabled" ImageUrl="Images/Print_Down_arrowdisable.png" />
+<asp:Image runat="server" SkinID="MFPLoginErrorClose" ImageUrl="Images/Error_close.png" />

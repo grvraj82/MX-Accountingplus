@@ -1,0 +1,1662 @@
+/* CSS Document */
+.LoginBG
+{
+    background-image: url( 'Images/BG.png' );
+    background-repeat: no-repeat;
+}
+
+body
+{
+    background-color: #719cf9;
+    padding:0;
+    margin:0;
+}
+
+.InsideBG
+{
+    background-color: #719cf9;
+}
+
+.Title_Font
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: xx-large;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 5px;
+    height: 36px;
+}
+
+.Settings_Font
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.JobListErrorPanel
+{
+    z-index: 1;
+    position: absolute;
+    left: 180px;
+    top: 280px;
+}
+
+.Print_Status_Button
+{
+    z-index: 1;
+    position: absolute;
+    top: 250px;
+    left: 0px;
+}
+
+.Job_Status_Div_Position
+{
+    z-index: 1;
+    position: absolute;
+    left: 102px;
+    top: 173px;
+}
+
+.Manuel_login_postion
+{
+    z-index: 1;
+    position: absolute;
+    top: 65px;
+    left: 80px;
+}
+
+.Manuel_Text_postion
+{
+    z-index: 1;
+    position: absolute;
+    top: 75px;
+    left: 135px;
+}
+
+.Manual_Login
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 15px;
+}
+
+.checkBoxSelect
+{
+    background-image: url( 'Images/Select_topCheckbox.png' );
+    background-repeat: no-repeat;
+}
+
+.checkBoxUnselect
+{
+    background-image: url( 'Images/Unselect_all.png' );
+    background-repeat: no-repeat;
+}
+
+.info_table
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: transparent;
+    border-right: #79a1fa 1px solid;
+    border-top: #79a1fa 1px solid;
+    border-left: #79a1fa 1px solid;
+    border-bottom: #79a1fa 1px solid;
+}
+
+.info_table_Padd
+{
+    padding-top:30px;
+    padding-left:20px;
+}
+
+.paddNew
+{
+    padding-right:20px !important;
+}
+
+.info_table_Padd_Alter
+{
+    padding-top:5px;
+}
+
+.Button_Left
+{
+    background: url( 'Images/Button_Left.png' );
+    background-position: left;
+}
+
+.Button_center
+{
+    background: url( 'Images/Button_center.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    text-decoration: none;
+}
+
+.Select_Button
+{
+    background-color: Red;
+    background: url( 'Images/Button_center.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    color: #000000;
+    font-weight: bold;
+    height: 38px;
+}
+
+.Button_Right
+{
+    background: url( 'Images/Button_Right.png' );
+    background-position: right;
+}
+
+.ErrorMessage
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: Red;
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.Login_TextFonts
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.Login_Error_msg
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: Red;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.Manual_Login_Button
+{
+    z-index: 1;
+    position: absolute;
+    width: 50%;
+    left: 220px;
+    top: 225px;
+}
+
+.Normal_postion
+{
+}
+
+.Div_alternative_Text
+{
+    z-index: 1;
+    position: absolute;
+    width: 50%;
+    left: 175px;
+    top: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.InsidePage_BGcolor
+{
+    background-color: #719cf9;
+}
+
+.Vr_Line_Insidepage
+{
+    background: url( 'Images/Vr_Line_insdiepage.png' );
+    background-repeat: repeat-y;
+    background-repeat-x: 0%;
+}
+
+.Inside_TOPTitleFontBold
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Inside_TOPTitleUserFontBold
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Title_bar_bg
+{
+    background: url( 'Images/Title_bar_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.Page_Nag_whiteFont
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Menu_bar_selectedBG
+{
+    background: url( 'Images/Menu_bar_selectedBG.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: normal;
+    text-decoration: none;
+    padding-top: 5px;
+}
+
+.Menu_bar_unselect
+{
+    background: url( 'Images/Menu_bar_unselect.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    font-weight: normal;
+    text-decoration: none;
+    padding-top: 5px;
+}
+
+.Menu_split_Center
+{
+    background: url( 'Images/Menu_split_Center.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+
+.Menu_split_selectTime
+{
+    background: url( 'Images/Menu_split_selectTime.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+
+.Menu_split_Left
+{
+    background: url( 'Images/Menu_split_Left.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+
+.Menubar_bg
+{
+    background: url( 'Images/Menubar_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+.Menu_split_right
+{
+    background: url( 'Images/Menu_split_right.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    background-position: right;
+}
+
+.Print_Status_bg
+{
+    background: url( 'Images/Print_Status_bg.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.Error_message_status
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FF0000;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+===================================================OLD======================= */
+
+.ProductName
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.CommunicatorPannel
+{
+    position: absolute;
+    top: 150px;
+    left: 0px;
+}
+
+.CommunicatorPannel_Limits
+{
+    background-color: #94AB6E;
+    position: absolute;
+    top: 120px;
+    left: 150px;
+}
+
+
+.PageTitle
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Pagination
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #88cf00;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.UserName
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #88cf00;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.Title_VersionFont
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.Title_Powerby
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: x-small;
+    font-weight: normal;
+    text-decoration: none;
+}
+.Login_title_centerbg
+{
+    background-color: #b0bbd5;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    font-weight: normal;
+    text-decoration: none;
+}
+.Login_title_bg
+{
+    background-image: url( 'Images/Login_title_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    font-weight: normal;
+    text-decoration: none;
+    height: 40px;
+}
+.Login_tableborder
+{
+    border-right: #8aa5d0 1px dotted;
+    border-top: #8aa5d0 1px dotted;
+    border-left: #8aa5d0 1px dotted;
+    border-bottom: #8aa5d0 1px dotted;
+}
+
+.HR_line
+{
+    background-image: url( 'Images/HR_line.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+.HR_line_New
+{
+    background-image: url( 'Images/HR_line.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    background-position: top;
+}
+.Login_NormalFont
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    font-weight: normal;
+}
+.LoginFont
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    padding-top: 15px;
+}
+.JoblistFont
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.Error_Message
+{
+    background-image: url( 'Images/Error_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: bold;
+}
+
+.Login_font
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.Inputbox
+{
+    width: 225px;
+    height: 25px;
+    font-family: Verdana;
+    color: #000000;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+.PrintList_bg
+{
+    background-color: #3c5ea0;
+}
+.Login_button_left
+{
+    background-image: url( 'Images/Button_leftbg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+.ButtonType2
+{
+    background-image: url( 'Images/Button_centerbg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Verdana;
+    color: #000000;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+    border-right: #f0ff35 1px solid;
+    border-top: #f0ff35 1px solid;
+    border-left: #f0ff35 1px solid;
+    border-bottom: #f0ff35 1px solid;
+}
+.Login_button_right
+{
+    background-image: url( 'Images/Button_rightbg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+.Login_button_left_blue
+{
+    background-image: url( 'Images/Button_Leftbg_blue.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+
+.ButtonType2_disable
+{
+    background-image: url( 'Images/Button_centerbg_blue_disable.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Verdana;
+    color: #cccccc;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+    border-top: #5a7eb3 1px solid;
+    border-right: #5a7eb3 1px solid;
+    border-left: #5a7eb3 1px solid;
+    border-bottom: #5a7eb3 1px solid;
+}
+.ButtonType21
+{
+    background-image: url( 'Images/Normal_buggonbg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Verdana;
+    color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    text-decoration: none;
+    border-right: #d1ffff 1px solid;
+    border-left: #d1ffff 1px solid;
+}
+.Login_button_right_blue
+{
+    background-image: url( 'Images/Button_rightbg_blue.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+
+.Error_msgTable
+{
+    z-index: 10;
+    height: 80px;
+    width: 500px;
+    left: 30px;
+    border-right: #c94042 3px solid;
+    border-top: #c94042 3px solid;
+    border-left: #c94042 3px solid;
+    border-bottom: #c94042 3px solid;
+}
+
+.Error_msgTable_Limits
+{
+    z-index: 10;
+    height: 150px;
+    width: 600px;
+    left: 20px;
+    border-right: #c94042 3px solid;
+    border-top: #c94042 3px solid;
+    border-left: #c94042 3px solid;
+    border-bottom: #c94042 3px solid;
+}
+
+.Error_msgTable_Status
+{
+    z-index: 10;
+    height: 80px;
+    width: 600px;
+    left: 30px;
+    border-right: #76a1fa 3px solid;
+    border-top: #76a1fa 3px solid;
+    border-left: #76a1fa 3px solid;
+    border-bottom: #76a1fa 3px solid;
+}
+
+.Error_msgcenter
+{
+    background-color: #79a1fa;
+    font-family: Verdana;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.Table_Rowcolor
+{
+    background-color: #506eaa;
+    font-family: Verdana;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+}
+.Table_NormalRow
+{
+    font-family: Verdana;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+}
+.Titlebar_bg
+{
+    background-image: url( 'Images/Titlebar_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+.Login_Font
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+}
+.Table_Border
+{
+    border-right: #849ac1 1px solid;
+    border-top: #849ac1 1px solid;
+    border-left: #849ac1 1px solid;
+    border-bottom: #849ac1 1px solid;
+}
+.JobListTableHeader
+{
+    background-image: url( 'Images/Titlebar_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+}
+.JobListTableHeader_Page
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Table_Vrline
+{
+    background-image: url( 'Images/Table_Vrline.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+}
+.Table_HRLine
+{
+    background-image: url( 'Images/Table_HRLine.png' );
+    background-repeat: repeat-y;
+    background-repeat-x: 0%;
+}
+.Table_titebar_Vrline
+{
+    background-image: url( 'Images/Table_titebar_Vrline.png' );
+    background-repeat: no-repeat;
+}
+.Paper_filp
+{
+    background-image: url( 'Images/Paper_filp.png' );
+    background-repeat: no-repeat;
+    z-index: 1;
+    position: absolute;
+    display: block;
+    width: 130px;
+    height: 95px;
+    top: 301px;
+    left: 670px;
+}
+.Arrow_leftdiv
+{
+    z-index: 2;
+    position: absolute;
+    left: 57px;
+    top: 55px;
+}
+.Arrow_rightdiv
+{
+    z-index: 2;
+    position: absolute;
+    left: 95px;
+    top: 55px;
+}
+.Arrow_backbutton
+{
+    z-index: 2;
+    position: absolute;
+    left: 75px;
+    top: 55px;
+}
+
+.JobStatusRow
+{
+    background-color: #8ba8d1;
+}
+
+.JobListRow
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+    background-color: #3c5ea0;
+}
+.Seeting_tabbg
+{
+    background-image: url( 'Images/Setting_tabbg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: normal;
+    text-decoration: none;
+}
+.NormalCheckbox
+{
+    background-image: url( 'Images/Normal_checkbox.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.NormalCheckbox_row
+{
+    background-image: url( 'Images/Checkbox_TabRow.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.Checkbox_Selected
+{
+    background-image: url( 'Images/Checkbox_selected.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.SelectedRow
+{
+    background-color: #0659f8;
+    font-family: Verdana;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: normal;
+    text-decoration: none;
+}
+.Unselect_topCheckbox
+{
+    background-image: url( 'Images/Unselect_topCheckbox.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.Select_topCheckbox
+{
+    background-image: url( 'Images/Select_topCheckbox.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.PrintSetting
+{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: Black;
+}
+
+.SettingTab
+{
+    background-image: url( 'Images/Setting_tabbg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+    color: White;
+}
+
+.SelectedSettingTab
+{
+    background-image: url( 'Images/Setting_tab_bg.png' );
+    background-repeat: repeat-x;
+    background-repeat-y: 0%;
+    font-size: small;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: none;
+    color: #88cf00;
+}
+
+.Setting_tab_left_bg
+{
+    background-image: url( 'Images/Setting_tab_left_bg.png' );
+    background-repeat: repeat-y;
+    background-repeat-x: 0%;
+    background-position: right;
+}
+.Setting_tab_Right_bg
+{
+    background-image: url( 'Images/Setting_tab_Right_bg.png' );
+    background-repeat: repeat-y;
+    background-repeat-x: 0%;
+    background-position: left;
+}
+
+.Setting_tab_Right_Split
+{
+    background-image: url( 'Images/Select_Split.png' );
+    background-repeat: repeat-y;
+    background-repeat-x: 100%;
+    background-position: left;
+}
+.File_namebg
+{
+    background-image: url( 'Images/File_namebg.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+}
+.SettingNormalFontBlack
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 15px;
+}
+.Inputtextbox_Settings
+{
+    width: 150px;
+    height: 25px;
+    font-family: Verdana;
+    color: #c3c3c3;
+    font-size: xx-small;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    background-color: #FFFFFF;
+}
+.Print_Setting_textboxdiv
+{
+    background-image: url( 'Images/Print_setting_Textboxbg.gif' );
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 146px;
+    height: 19px;
+    margin-left: 10px;
+    margin-top: 0px;
+    padding-top: 8px;
+    padding-left: 8px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: x-small;
+    font-weight: normal text-decoration:none;
+}
+.PageNag
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+}
+.Vr_line_pageNG
+{
+    background-image: url( 'Images/Vr_line_pageNG.png' );
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.Print_setting_Settingvaluebg
+{
+    background-image: url( 'Images/Print_setting_Settingvaluebg.png' );
+    background-repeat: no-repeat;
+    background-position: top;
+}
+.Print_Setting_bg
+{
+    background-image: url( 'Images/Print_Setting_bg.png' );
+}
+.Print_seeting_MouseOverbg
+{
+    background-image: url( 'Images/Print_seeting_MouseOverbg.png' );
+    background-repeat: no-repeat;
+    background-position: left;
+}
+.Print_seeting_MouseOverbg_New
+{
+    background-image: url( 'Images/Print_seeting_MouseOverbg1.png' );
+    background-repeat: repeat-x;
+    background-position-y: 0%;
+}
+.Print_setting_selectbg
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #0066ff;
+    font-size: x-small;
+    font-weight: normal;
+    text-decoration: none;
+    padding-left: 15px;
+    background-color: #bdc4d4;
+    width: 100px;
+    border-right: #000000 1px solid;
+    border-top: #000000 1px solid;
+    border-left: #000000 1px solid;
+    border-bottom: #000000 1px solid;
+}
+.Header_height
+{
+    height: 37px;
+}
+.UserName_TextBox
+{
+    width: 225px;
+    height: 30px;
+    border: none;
+    text-align: left;
+    text-decoration: none;
+    color: #000000;
+    font-family: Verdana;
+    font-size: 18px;
+    font-weight: normal;
+    margin-left:12px;
+}
+.Login_title_Font
+{
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: normal;
+    color: #000000;
+    text-align: left;
+    text-decoration: none;
+}
+.Marginleft10
+{
+    margin-left:10px !important;
+}
+.Table_Height
+{
+    height: 59px;
+}
+.BookLet
+{
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    left: 260px;
+    top: 190px;
+}
+.TabLet
+{
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    left: 260px;
+    top: 190px;
+}
+.SettingAutocolorBG
+{
+    background-image: url('Images/Color_BG.png');
+    background-position: top;
+    background-repeat: no-repeat;
+}
+.SettingBWBG
+{
+    background-image: url('Images/BW_bg.png');
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.Login_User_Position
+{
+    z-index: 1;
+    position: absolute;
+    left: 102px;
+    top: 173px;
+}
+
+.Checkrowselect
+{
+    background-color: #a2bdfa;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    font-weight: normal;
+}
+.Checkboxunselectrow
+{
+    background-color: transparent;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.PinNumValign
+{
+    height: 190px;
+}
+
+.NumberAlign
+{
+    right: 0;
+    top: 137px;
+    bottom: 30px;
+    position: absolute;
+    float: right;
+    padding-right: 45px;
+}
+
+.NumberBtnBg
+{
+    background-image: url('Images/Number_Bg.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 73px;
+    height: 64px;
+    text-align: center;
+    font-size: 21px;
+}
+
+.GoFont
+{
+    color: #FFFFFF;
+}
+
+.HeightDiff
+{
+    height: 10px;
+}
+
+.NumberTabsOuterBg
+{
+    background-color: #c6d7de;
+    border: 1px solid #ceebef;
+    padding: 10px 6px 10px 6px;
+    width: 250px;
+}
+
+
+/*Community_Printing CSS Starts*/
+
+.Main_Bg
+{
+    background-image: url('Images/Body_Bg.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.WelcomeFont
+{
+    font-family: Arial;
+    font-size: 17px;
+    color: #022038;
+    font-weight: 700;
+}
+
+.User_Icon
+{
+    background-image: url('Images/User_Icon.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 42px;
+}
+
+.Username_Font
+{
+    font-family: Arial;
+    font-size: 17px;
+    color: #022038;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.PaddingTop_Header
+{
+    padding-top: 38px;
+}
+
+.Height_TopHeader
+{
+    height: 85px;
+}
+
+.Paddingright_12
+{
+    padding-right: 12px;
+}
+
+.Width_UserIcon_Td
+{
+    width: 88px;
+}
+
+.Width_User_Text
+{
+    width: 730px;
+}
+
+.Width_Logout_Td
+{
+    width: 165px;
+}
+
+.WhiteSpace
+{
+    white-space: nowrap;
+}
+
+.Paddingright_30
+{
+    padding-right: 30px;
+}
+
+.PaddingLeft_20
+{
+    padding-left: 20px;
+}
+
+.PaddingTop_10
+{
+    padding-top: 10px;
+}
+
+.PaddingTop_BelowHeader
+{
+    padding-top: 10px;
+}
+
+.Width_LeftTabs
+{
+    width: 194px;
+}
+
+.Width_RightContent
+{
+    width: 826px;
+}
+
+.LeftTab_Selected
+{
+    background-image: url('Images/LeftTab_Selected.png');
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 151px;
+    height: 49px;
+}
+
+.LeftTab_Unselected
+{
+    background-image: url('Images/LeftTab_Unselected.png');
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 151px;
+    height: 49px;
+}
+
+.FontSelected_LeftTab
+{
+    font-family: Arial;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.FontUnselected_LeftTab
+{
+    font-family: Arial;
+    font-size: 15px;
+    color: #000000;
+    font-weight: 600;
+}
+
+.BalanceAmount_Font
+{
+    font-family: Arial;
+    font-size: 17px !important;
+    color: #022038;
+    font-weight: 700;
+}
+
+.Marginbottom_5
+{
+    margin-bottom: 5px;
+}
+
+.MarginRight_5
+{
+    margin-right: 5px;
+}
+
+.Width_ColorIcon
+{
+    width: 85px;
+}
+
+.Width_LeftTabText
+{
+    width: 110px;
+}
+
+.Height_PrintIcon
+{
+    height: 110px;
+}
+
+.Height_Printtext
+{
+    height: 40px;
+}
+
+.Content_LeftPart_Width
+{
+    width: 160px;
+}
+
+.Content_CenterPart_Width
+{
+    width: 68px;
+}
+
+.Height_ForMode_TD
+{
+    height: 40px;
+}
+
+.PaddingTop_25
+{
+    padding-top: 25px;
+}
+
+.Content_Tab_Color
+{
+    background-image: url('Images/Tab_Bg_Color.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 159px;
+    height: 154px;
+}
+
+.Content_Tab_BW
+{
+    background-image: url('Images/Tab_Bg_BW.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 159px;
+    height: 154px;
+}
+
+.ColorImg_Selected_Icon
+{
+    background-image: url('Images/Color_Img_Selected.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    margin: 0px 4px 8px 0px;
+}
+
+.ColorImg_Unselected_Icon
+{
+    background-image: url('Images/Color_Img_Unselected.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    margin: 0px 4px 8px 0px;
+}
+
+.BWImg_Unselected_Icon
+{
+    background-image: url('Images/BW_Img_Unselected.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    margin: 0px 4px 8px 0px;
+}
+
+.BWImg_Selected_Icon
+{
+    background-image: url('Images/BW_Img_Selected.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    margin: 0px 4px 8px 0px;
+}
+
+.FontErrorMessage
+{
+    font-family: Arial;
+    font-size:20px;
+    font-weight:normal;
+    color:#9e1111;
+}
+
+.ErrorMsg_OuterDiv
+{
+    width:450px;
+    word-break:break-all;
+    z-index: 1;
+    position: absolute;
+    margin:27% 30% 0 38%;
+}
+
+.ErrorMsg_Bg
+{
+    background-color:#ffb2b2;
+    line-height:30px;
+    border:1px solid #e13838;
+    height:80px;
+    padding:0px 15px 0px 15px;
+}
+
+.Bal_Btn
+{
+    background-image: url('Images/Bal_Btn_Bg.png');
+    background-position: left;
+    background-repeat: repeat-x;
+    width:100px;
+    border:1px solid #4e6b97;
+    font-family: Arial;
+    font-size: 15px;
+    padding:7px;
+    color: #01375c;
+    font-weight: 600;
+    text-align:center;
+}
+
+.BalCancel_Btn
+{
+    background-image: url('Images/Cancel_Btn_Bg.png');
+    background-position: left;
+    background-repeat: repeat-x;
+    width:100px;
+    border:1px solid #8b8b8b;
+    font-family: Arial;
+    font-size: 15px;
+    padding:7px;
+    color: #414141;
+    font-weight: 600;
+    text-align:center;
+}
+
+.Bal_Main_Bg
+{
+    background-image: url('Images/Balance_Bg.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.Bal_Font
+{
+    font-family: Arial;
+    font-size: 17px;
+    color: #222222;
+    font-weight: lighter;
+}
+
+.Bal_TextBox
+{
+    background-color:#ced8e1;
+    border:1px solid #8898a8 !important;
+    height:32px;
+    width:280px;
+}
+
+.PaddingLeft_Bal
+{
+    padding-left:55px;
+}
+
+.Height_RechargeHeader
+{
+    height: 100px;
+}
+
+.BtnsOuter_Height
+{
+    height:50px;
+}
+
+.BalanceImg_Selected_Icon
+{
+    background-image: url('Images/Mybal_Color.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 27px;
+    margin: 1px 2px 8px 0px;
+}
+
+.BalanceImg_Unselected_Icon
+{
+    background-image: url('Images/Mybal_BW.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 27px;
+    margin: 1px 2px 8px 0px;
+}
+
+.PaddingTop_LogoutBtn
+{
+    padding-top:12px;
+}
+
+.PaddingRight_LogoutBtn
+{
+    padding-right:1px;
+}
+
+.BorderColorOuter_Grid
+{
+    border:1px solid #596269;
+    width:94%;
+}
+
+.PaddingInner_Grid
+{
+    padding:5px 0px 5px 0px !important;
+}
+
+.PaddingLeft_BackBtn
+{
+    padding-left:59px;
+}
+
+.PaddingTop_RechHeaderText
+{
+    padding-top:24px;
+}
+
+.PaddingRight_Bal
+{
+    padding-right:10px;
+}
+
+/*Community_Printing CSS Ends*/
+
+
+/*Login_Tabs CSS Starts*/
+
+.TabsBody_Bg
+{
+    background-color:#dfe9ec;
+    border:1px solid #b3c3cb;
+    padding:15px 0px 15px 0px !important;
+    height:152px;    
+}
+
+.TabsBody_Bg_Alter
+{
+    padding:15px 0px 15px 0px !important;
+}
+
+.PaddRight
+{
+    
+}
+
+.TabsBody_Bg_Width
+{
+    width:415px;
+}
+
+.TabsBody_Bg_Width_Alter
+{
+    width:415px;
+    padding-right:40px;
+}
+
+.RowHeight
+{
+    height:50px;
+}
+
+.TabsBody_Bg_OuterPadd
+{
+    padding-right:16px;
+}
+
+.MarginLoginImg
+{
+    margin:15px 0px 0px 45px;
+}
+
+.MarginLoginImg_Alter
+{
+    margin:25px 0px 0px 45px;
+}
+
+.LogonBtns_Emptywidth
+{
+    width:30%;
+}
+
+.LogonBtns_Emptywidth_Right
+{
+    width:3%;
+}
+
+.Log_SelectedTab
+{
+    background-color:#dfe9ec;
+    border:1px solid #b3c3cb;
+    border-bottom:1px solid #dfe9ec !important;
+    width:160px;
+    height:26px;
+    padding-top:9px;
+    font-size:15px;
+    position:absolute;
+    top:188px;
+    font-weight:normal;
+    color:#111111;
+}
+
+.Log_UnselectedTab
+{
+    background-color:#aebac1;
+    border:1px solid #9baab3;
+    border-bottom:1px solid #b3c3cb !important;
+    width:160px;
+    height:26px;
+    padding-top:9px;
+    position:absolute;
+    top:188px;
+    font-size:15px;
+    font-weight:normal;
+    color:#111111;
+}
+
+.Log_SelectedTab_Card
+{
+    background-color:#dfe9ec;
+    border:1px solid #b3c3cb;
+    border-bottom:1px solid #dfe9ec !important;
+    width:160px;
+    height:26px;
+    padding-top:9px;
+    font-size:15px;
+    position:absolute;
+    top:188px;
+    font-weight:normal;
+    color:#111111;
+}
+
+.Log_UnselectedTab_Card
+{
+    background-color:#aebac1;
+    border:1px solid #9baab3;
+    border-bottom:1px solid #b3c3cb !important;
+    width:160px;
+    height:26px;
+    padding-top:9px;
+    position:absolute;
+    top:188px;
+    font-size:15px;
+    font-weight:normal;
+    color:#111111;
+}
+
+.Tabs_Space
+{
+    width:170px;
+}
+
+.PaddingRight_PinLoginBtn
+{
+    padding-right:30px;
+}
+
+.MarginPinLoginImg
+{
+    margin:10px 20px 0px 0px;
+}
+
+.MarginPinLoginImg_1
+{
+    margin:10px 0px 0px 30px;
+}
+
+.MarginPinLoginImg_1_Alter
+{
+    margin:0px 0px 0px 0px;
+}
+
+.TabsHeight_Pinlogon
+{
+    height:43px;
+}
+
+.TabsHeight_Cardlogon
+{
+    height:37px;
+}
+
+.TabsHeight_Manuallogon
+{
+    height:45px;
+}
+
+/*Login_Tabs CSS Ends*/

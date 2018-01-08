@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP-ENV:Body>
+    <Event generic="1.0.0.22" xmlns="urn:schemas-sc-jp:mfp:osa-1-1" product-family="71" product-version="0200j300" operation-version="01.00.00">
+      <event-data>
+        <user-info>
+          <account-id>2</account-id>
+          <metadata>
+            <property sys-name="login-name">ruser</property>
+            <property sys-name="display-name">ruser</property>
+          </metadata>
+        </user-info>
+        <device-info uuid="SN9500211700MNSHARP MX-M453N">
+          <serial-number>9500211700</serial-number>
+          <modelname>SHARP MX-M453N</modelname>
+          <location>ssdi</location>
+          <mac_address>00:22:F3:89:45:41</mac_address>
+          <network_address>172.29.241.116</network_address>
+        </device-info>
+        <details xsi:type="DETAILS_ON_JOB_COMPLETED_TYPE">
+          <JobResults xsi:type="JOB_RESULTS_SCAN_TYPE">
+            <mfp-job-id>
+              <JobId uid="SN9500211700JB000001977">
+                <job-type>SCAN</job-type>
+                <UISessionId></UISessionId>
+              </JobId>
+            </mfp-job-id>
+            <job-mode sys-name="JOB_MODE_FTP_SEND"/>
+            <job-status>
+              <status>FINISHED</status>
+              <details xsi:type="JOB_STATUS_DETAILS_FINISHED_TYPE">
+                <started_at>2010-08-12T17:12:00+08:00</started_at>
+                <stopped_at>2010-08-12T17:12:00+08:00</stopped_at>
+              </details>
+            </job-status>
+            <timestamp mark="JOB_START">2010-08-12T17:12:00+08:00</timestamp>
+            <timestamp mark="JOB_END">2010-08-12T17:12:00+08:00</timestamp>
+            <user-info>
+              <account-id>2</account-id>
+            </user-info>
+            <device-info uuid="SN9500211700MNSHARP MX-M453N">
+              <serial-number>9500211700</serial-number>
+              <modelname>SHARP MX-M453N</modelname>
+              <location>ssdi</location>
+              <mac_address>00:22:F3:89:45:41</mac_address>
+              <network_address>172.29.241.116</network_address>
+            </device-info>
+            <properties>
+              <property sys-name="login-name">ruser</property>
+              <property sys-name="display-name">ruser</property>
+            </properties>
+            <resources>
+              <paper-out>
+                <sheet-count>1</sheet-count>
+                <property sys-name="color-mode">MONOCHROME</property>
+              </paper-out>
+              <paper-out>
+                <copies-count at="reserved">1</copies-count>
+                <copies-count at="completed">1</copies-count>
+                <page-count at="reserved">1</page-count>
+                <page-count at="completed">1</page-count>
+              </paper-out>
+              <paper-out>
+                <sheet-count>1</sheet-count>
+                <property sys-name="color-mode">MONOCHROME</property>
+                <property sys-name="papersize">A4</property>
+              </paper-out>
+            </resources>
+          </JobResults>
+        </details>
+      </event-data>
+    </Event>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

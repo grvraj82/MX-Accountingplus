@@ -1,0 +1,48 @@
+		     End User License Agreement (EULA)
+
+SHARP SOFTWARE DEVELOPMENT INDIA PVT. LTD. 
+
+Please read this software End User License Agreement ("License") carefully before using the Software. BY CLICKING THE "I ACCEPT" BUTTON YOU ACCEPT THE TERMS AND CONDITIONS SET FORTH BELOW AND AGREE TO ENTER INTO THIS BINDING AGREEMENT WITH SHARP SOFTWARE DEVELOPMENT INDIA PRIVATE LIMITED ("SSDI") and you will be the party designated as ‘End User’ in the License. 
+
+1.Grant of License
+
+This License is made between and the party designated as the End User ("End User"). 
+
+(1a) Installation and Use
+
+SSDI hereby grants the End User a non-exclusive and non-transferable license to install and use the software and any related documentation included therewith (collectively "Software Product") solely for the internal use of the End User on a server computer. The End User may not decompile, reverse engineer, disassemble or otherwise reduce the Software Product or its source code to a human-perceivable form, modify, network, rent, lease, loan, distribute or create derivative works based upon the Software Product in whole or in part, SSDI owns all rights, title and interest to the Software Product (including all worldwide intellectual property rights). 
+				
+(1b) Backup Copies
+
+You may make unaltered copies of the Software Product as may be necessary for backup purposes only. Except as necessary for the purpose mentioned herein, no copying of the Software Product, in whole or in part, is permitted.
+
+2.Rights and limitations
+
+(2a) Maintenance of Copyright Notices
+
+The End User agrees not to remove or alter any branding or copyright notices on any and all copies of the Software Product.
+
+(2b) Support Services
+
+SSDI may or may not provide you with support services related to the Software Product ("Support Services"). Any supplemental software code provided to you as part of the Support Services shall be considered part of the Software Product and subject to the terms and conditions of this Agreement.
+
+(2c) Compliance with Applicable Laws
+
+The End User agrees to  comply with all applicable laws regarding use of the Software Product.
+
+3.No Warranties
+
+SSDI expressly disclaims any warranty for the Software Product. The Software Product is provided "as is" without any express or implied warranty of any kind, including but not limited to any warranties of merchantability, non infringement, or fitness of a particular purpose. SSDI does not warrant or assume responsibility for the accuracy or completeness of any information, text, graphics, links or other items contained within the Software Product. The End User shall assume all risk associated with the quality, performance, installation and use of the Software Product, including, but not limited to, the risks of program errors, damage to equipment, loss of data or software programs, or unavailability or interruption of operations. The End User is solely responsible for determining the appropriateness of the use of the Software Product and shall assume all risks associated with its use. SSDI further expressly disclaims any warranty or representation to the End User or to any third party.
+
+4.Limitation of Liability
+
+In no event shall SSDI be liable for any damages (including, without limitation, lost profits, business interruption, or lost information) rising out of the End User’s use of or inability to use the Software Product, even if SSDI has been advised of the possibility of such damages. In no event will SSDI be liable for loss of data or for indirect, special, incidental, consequential (including lost profit), or other damages based in contract, tort or otherwise. SSDI shall have no liability with respect to the content of the Software Product or any part thereof, including but not limited to errors or omissions contained therein, libel, infringements of rights of publicity, privacy, trademark rights, business interruption, personal injury, loss of privacy, moral rights or the disclosure of confidential information.
+
+5.Termination
+
+This License is effective until terminated.  The End User may terminate this License at any time by ceasing the use of the Software Product and destroying all copies of the Software Product in the End User's possession.  Without prejudice to any other rights, SSDI may terminate this License if, End User fails to comply with the terms and conditions of this License.  In such event, End User must immediately stop using the Software Product, destroy all copies of the Software Product and provide an affidavit certifying End User’s compliance with the foregoing. 
+
+6.Miscellaneous
+
+This License constitutes the entire agreement between the parties relating to the subject matter hereto and supersedes and cancels all previous agreements and negotiations thereof. This License shall be governed by the laws of India. Any dispute between the parties in connection with this License shall be resolved through arbitration in accordance with the provisions of the Indian Arbitration and Conciliation Act, 1996. The arbitration shall be conducted by a single arbitrator to be appointed jointly by the parties. In the event the parties are unable to agree upon a single arbitrator, they shall each appoint one arbitrator and the two arbitrators shall thereupon jointly appoint a third arbitrator. The arbitration shall be conducted in English and shall take place at Bangalore. Notwithstanding anything to the contrary herein, SSDI shall be entitled to the issuance of injunctive or equitable relief by any court of competent jurisdiction relating to breach or threatened breach of all obligations and for any other relief such court deems appropriate. The End User is not permitted to assign its obligations under this License to any other party, unless it obtains the prior written approval of SSDI. In the event of any provision of this License being held or becoming invalid, unenforceable or illegal for any reason, this License shall remain otherwise in full force apart from the said provision, which will be replaced with a legally valid provision that most nearly reflects the same purpose as that of the deleted provision.
+

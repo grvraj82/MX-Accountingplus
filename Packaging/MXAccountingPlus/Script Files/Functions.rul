@@ -1,0 +1,3378 @@
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for OS Requiremtns
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+
+ function BOOL CheckOSVersion()
+	 string svServicePack,svVersionNT,svVersionNT64;
+	 number nvSize ;
+ begin        
+	 nvSize = 256;
+	 MsiGetProperty(ISMSI_HANDLE,"VersionNT",svVersionNT, nvSize);
+	 nvSize = 256;
+	 MsiGetProperty(ISMSI_HANDLE,"VersionNT64",svVersionNT64, nvSize);
+
+	 nvSize = 256;
+	 MsiGetProperty(ISMSI_HANDLE,"ServicePackLevel",svServicePack, nvSize);
+	  //To fix #707 to avoid on Personal PC versions
+	  if (	   (SYSINFO.nSuites & ISOS_ST_XP_HOME) //Windows XP Home Edition
+	  		||((SYSINFO.nOSSuiteMask  & VER_SUITE_PERSONAL) && svVersionNT = "600") // Windsows Vista and windows server 2008 Personal personal platform
+	  		||((SYSINFO.nOSSuiteMask  & VER_SUITE_PERSONAL) && svVersionNT = "601" )// Windsows7 and windows server 2008 R2 Personal personal platform
+	  		//||( SYSINFO.WINNT.bWinServer2003 &&(SYSINFO.bIsWow64 != 0))   // windows server 2003 64 bit
+	  	 ) then
+	 //if ((SYSINFO.nSuites & ISOS_ST_XP_HOME)||(SYSINFO.nSuites & ISOS_ST_SMALLBUSINESS_RESTRICTED )||(SYSINFO.nOSSuiteMask  = VER_SUITE_PERSONAL )||(SYSINFO.nOSSuiteMask  = VER_SUITE_SMALLBUSINESS_RESTRICTED )) then
+	 		return FALSE;                                                                                                       
+	 else  
+	 if (	 (svVersionNT = "501" && svServicePack >= "2" && svVersionNT64 = "") //Windows XP Professional over SP2 32bit
+	 		 ||(SYSINFO.WINNT.bWinServer2003)  //Window Server 2003  32bit
+	 		 ||( SYSINFO.WINNT.bWinServer2003 &&(SYSINFO.bIsWow64 != 0)) // windows server 2003 64 bit
+	 	 	 ||(svVersionNT = "600" && (SYSINFO.nSuites & ( ISOS_ST_WORKSTATION) ))//  | ISOS_ST_BACKOFFICE | ISOS_ST_DATACENTER | ISOS_ST_ENTERPRISE | ISOS_ST_SMALLBUSINESS ) ))  //Windows Vista Ultimate/Enterprise/Business 32bit
+	 	 	 ||(svVersionNT64 = "600" && (SYSINFO.nSuites & ( ISOS_ST_WORKSTATION) ))//  | ISOS_ST_BACKOFFICE | ISOS_ST_DATACENTER | ISOS_ST_ENTERPRISE | ISOS_ST_SMALLBUSINESS ) )) //Windows Vista  Ultimate/Enterprise/Business 64bit
+	 	 	 ||(svVersionNT = "600" && (SYSINFO.nSuites &  ( ISOS_ST_SERVER )) ) //Window Server 2008 32bit
+	 	 	 ||(svVersionNT64 = "600" && (SYSINFO.nSuites & (  ISOS_ST_SERVER ) )) //Window Server 2008 64bit 
+	 	 	 ||(SYSINFO.WINNT.bWinVista_Server2008) //Window Server 2008
+	 	 	 ||(svVersionNT = "601" && (SYSINFO.nSuites & (  ISOS_ST_WORKSTATION) ))//  | ISOS_ST_BACKOFFICE | ISOS_ST_DATACENTER | ISOS_ST_ENTERPRISE | ISOS_ST_SMALLBUSINESS ) ))  //Windows 7 Ultimate/Enterprise/Business 32bit
+	 	 	 ||(svVersionNT64 = "601" && (SYSINFO.nSuites & (  ISOS_ST_WORKSTATION) ))//  | ISOS_ST_BACKOFFICE | ISOS_ST_DATACENTER | ISOS_ST_ENTERPRISE | ISOS_ST_SMALLBUSINESS ) ))  //Windows 7 Ultimate/Enterprise/Business 64bit
+	 	 	 ||(svVersionNT = "601" && (SYSINFO.nSuites &  ( ISOS_ST_SERVER | VER_NT_DOMAIN_CONTROLLER)) ) //Window Server 2008 R2 32bit
+	 	 	 ||(svVersionNT64 = "601" && (SYSINFO.nSuites & (  ISOS_ST_SERVER | VER_NT_DOMAIN_CONTROLLER))) //Window Server 2008 R2 64bit 
+	 	 	 ||(SYSINFO.WINNT.bWin7_Server2008R2) //Windows7 and windows server 2008 R2 
+			 ||(svVersionNT = "602" && (SYSINFO.nSuites & (  ISOS_ST_WORKSTATION  | ISOS_ST_BACKOFFICE | ISOS_ST_DATACENTER | ISOS_ST_ENTERPRISE | ISOS_ST_SMALLBUSINESS ) ))  //Windows 7 Ultimate/Enterprise/Business 32bit
+	 	 	 ||(svVersionNT64 = "602" && (SYSINFO.nSuites & (  ISOS_ST_WORKSTATION  | ISOS_ST_BACKOFFICE | ISOS_ST_DATACENTER | ISOS_ST_ENTERPRISE | ISOS_ST_SMALLBUSINESS ) )) //Windows 7 Ultimate/Enterprise/Business 64bit
+			 ||(svVersionNT = "602" && (SYSINFO.nSuites &  ( ISOS_ST_SERVER )) )  //Window Server 2012 32bit
+	 	 	 ||(svVersionNT64 = "602" && (SYSINFO.nSuites & (  ISOS_ST_SERVER ) )) //Window Server 2012 64bit 
+	 	 )  then 
+	 		return TRUE ;
+	 	else
+	 		return FALSE;
+	 	endif; 
+	 endif;	      
+end;	                  
+
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for IIS Requiremtns
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+function BOOL CheckIIS()
+number nFound ,nTypeob ,nSizeob,nIISVersion,nResult;
+string szValue,szIISgetVer;
+BOOL bIISExists;
+begin
+	REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY ;
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	nFound=RegDBKeyExist(IISREGPATH);
+	bIISExists = Is(FILE_EXISTS,SystemFolder ^ "inetsrv" ^ "inetmgr.exe" );
+	if ( (nFound = 1)   )then  
+		szValue = "";
+		nResult = RegDBGetKeyValueEx(IISREGPATH, IISVERSION, nTypeob, szValue, nSizeob);
+		StrSub (szIISgetVer, szValue, 8,1); 
+		StrToNum( nIISVersion, szIISgetVer);
+		if (nIISVersion < 5) then
+			return FALSE;
+		else
+			return TRUE;
+		endif;
+	else
+			return FALSE;
+	endif;   
+end;    
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for SQL Server Express Requiremtns
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+function BOOL CheckSQLServerExpress()
+	number nFound ,nTypeob ,nSizeob,nIISVersion,nResult;
+	string szValue,szIISgetVer;
+	BOOL bIISExists;
+begin
+	REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY ;
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	nFound=RegDBKeyExist("SOFTWARE\\Microsoft\\Microsoft SQL Server\\90\\Tools\\Setup");
+	if ( (nFound = 1) )then  
+		szValue = "";
+		nResult = RegDBGetKeyValueEx("SOFTWARE\\Microsoft\\Microsoft SQL Server\\90\\Tools\\Setup", 
+										"Edition", nTypeob, szValue, nSizeob);
+		if (szValue != "Express Edition") then
+			return FALSE;
+		else
+			return TRUE;
+		endif;
+	else
+			return FALSE;
+	endif;   
+end;    
+
+ 
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for Admin user
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+
+function BOOL CheckAdminUser()
+begin
+	if (Is(USER_ADMINISTRATOR,"")) then
+		return TRUE; 	
+	else if (Is(USER_POWERUSER,"")) then
+		return TRUE; 
+	else
+		return FALSE;
+	endif; 
+	endif;
+end;
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for .Net Framework 2.0
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+
+
+function BOOL CheckNetFrameWork20()
+	number nCheck;
+begin
+    REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY ;
+    RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	nCheck = RegDBKeyExist(DOTFRAMCHECK20);
+	if (nCheck = 1) then
+		bFrameWork20 = TRUE;
+		return TRUE;
+	else
+		bFrameWork20 = FALSE;
+		return FALSE;
+	endif;
+end;  
+
+
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for prerequisites
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+         
+function CheckPrerequisites() 
+number nSFVersion,nvVersionNT,nvSize   ;
+string svMsg,svVersionNT,svVirtualDirectoryName;   
+BOOL 	bPreReq;
+begin   
+	
+	if !(CheckOSVersion()) then
+		SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+		MessageBox(@CID_OS_SUPPORT,SEVERE);
+		abort;
+	endif;          
+	if !(CheckAdminUser()) then
+		SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+		MessageBox( @CID_ADMIN_RIGHTS,SEVERE);
+		abort;
+	endif; 
+	if!(CheckSystemRam()) then
+		SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+		MessageBox( @CID_RAM_SUPPORT,SEVERE);
+		abort;
+	endif;      
+	if!(CheckProcesorSpeed()) then
+		SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+		MessageBox(@CID_PROCESSOR_SUPPORT,SEVERE);
+		abort;
+	endif;   
+	
+	CheckWebPrerequisites();
+	
+	if !(CheckNetFrameWork40()) then
+		InstallNetFrameWork40();
+	endif;	    
+	
+	
+end;      
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for prerequisites
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+         
+function CheckWebPrerequisites() 
+number nSFVersion,nvVersionNT,nvSize   ;
+string svMsg,svVersionNT,svVirtualDirectoryName;   
+BOOL 	bPreReq;
+begin   
+	
+	 nvSize = 256;
+	 MsiGetProperty(ISMSI_HANDLE,"VersionNT",svVersionNT, nvSize);
+	 StrToNum( nvVersionNT,svVersionNT);
+
+    bPreReq = FALSE;  
+	if !(CheckIIS()) then  
+		svMsg = "	" + @CID_IIS_REQ ;
+		bPreReq = TRUE;
+	    if (nvVersionNT >= 600 ) then  
+	    	if !(IIS6BackWardCompatability()) then
+				svMsg = "	" + @CID_IIS_REQ  + "\n" +	"	" +/* " - " +*/ @CID_IIS_BAK_REQ ;
+				bPreReq = TRUE;
+			endif;
+		endif;
+	else
+	    if (nvVersionNT >= 600 ) then  
+	    	if !(IIS6BackWardCompatability()) then
+				svMsg = "	" + @CID_IIS_REQ  + "\n" +	"	" +/* " - " +*/ @CID_IIS_BAK_REQ ;
+				bPreReq = TRUE;
+			endif;
+		endif;
+
+	endif; 
+	/*
+	if !(CheckSQLServerExpress()) then
+		svMsg = svMsg + "\n" +  @CID_SQL_EXPRESS;
+		bPreReq = TRUE;
+	endif;  
+	*/
+	if (bPreReq) then  
+		SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME + " - InstallShield Wizard");
+		MessageBox( @CID_MAIN_ERR_MSG + "\n\n" + svMsg ,SEVERE);
+		abort;
+	endif;	
+end;      
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006	Ravikiran	1.0 
+//To check virtual directory exists or not
+// 			Input: 	Virtual Directory Name
+//			Output	 
+//					
+//---------------------------------------------
+
+
+function BOOL VirDirectoryExists(svVirName)
+	OBJECT W3SVC ,Root,IISVirtualDir,GotParent; 
+	STRING svTemp; 
+	number kk;
+begin             
+	try
+ 		set W3SVC = CoGetObject("IIS://LocalHost/W3SVC","")  ;
+  		try 
+  	 		set Root = CoGetObject(W3SVC.AdsPath + "/1/ROOT","") ;
+   			try 
+    			set IISVirtualDir = NOTHING;
+   				set IISVirtualDir = CoGetObject(Root.ADsPath + "/" + svVirName,"" );  
+   				svTemp = IISVirtualDir.Name;
+	   			return TRUE ;
+	   		catch
+	   			return FALSE;
+   			endcatch;
+ 
+  		catch
+  
+  		endcatch;
+  
+  
+ 	catch 
+
+ 	endcatch;
+  
+end; 
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006	Ravikiran	1.0 
+//To check IIS6 Backward compatability exists or not
+// 			Input: 	Virtual Directory Name
+//			Output	 
+//					
+//---------------------------------------------
+function BOOL IIS6BackWardCompatability()
+	STRING svVersionNT;
+	NUMBER nvSize ,nResult;   
+	NUMBER nvPnt, nvResult, nvRec, nSize, nLevel,nType;
+	STRING szKey, szMsg, svRec,svResult;
+
+begin       
+
+
+nvSize = 256;
+MsiGetProperty(ISMSI_HANDLE,"VersionNT",svVersionNT, nvSize);
+if(svVersionNT >= "600"  ) then	
+	szKey = "SOFTWARE\\Microsoft\\InetStp\\Components";
+    REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY ;
+    RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+    nSize=255;
+    nType= REGDB_NUMBER;
+
+    nvResult = RegDBGetKeyValueEx(szKey,"ADSICompatibility", nType ,svResult,nSize);
+
+	if ( nvResult = ERROR_SUCCESS )then
+		if (svResult = "1" ) then
+			return TRUE ;
+		else
+			return FALSE;
+		endif;
+	else
+		return FALSE;
+	endif;
+
+endif;
+
+end; 
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//22/09/2006	Ravikiran	2.0 	
+//	Get the property value in the property table
+// 			Input:
+//				  	svPropertyName 		Property Name
+//			Ourput:
+//				  	svPropertyValue		Property Value
+//---------------------------------------------
+
+function string  GetProperty (hMSI, svPropertyName)
+	STRING svPropertyValue ;
+	NUMBER nvSize ;
+begin
+	nvSize = 256;
+	MsiGetProperty (hMSI, svPropertyName, svPropertyValue, nvSize);
+	return svPropertyValue ;
+end; 
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//25/09/2004				1.2 	
+//	Replace the string in the target file
+// 			Input:
+//     				File path,Search string and replace string
+//---------------------------------------------  
+
+function FindAndReplace(svPath, svSearchString, svReplaceString)
+	STRING svReturnLine,szString;
+	NUMBER nvReturnLineNo, nvsubPos,nvResult;   
+begin
+	 //it rerutns the line and line number
+	 nvResult = FileGrep(svPath,svSearchString, svReturnLine,nvReturnLineNo ,RESTART);
+	 if (nvResult  < 0 ) then 
+	 else
+	 	nvResult = FileInsertLine (svPath, svReplaceString, nvReturnLineNo, REPLACE); 
+	 endif;
+	
+end; 
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//  File Name:    SQLServerSelectLoginDlg.rul
+//
+//  Description:  This file contains the InstallShield script for the 
+//                SQLServerSelectLogin dialog function.
+//
+/////////////////////////////////////////////////////////////////////////////////////////
+
+#include "ISRTDefs.h"
+#include "Dialogs.h"
+#include "CustomDlg.h"
+#include "Silent.h"
+#include "Sdrc.h"
+#include "Sdint.h"
+#include "Winapi.h"
+#include "Misc.h"
+#include "DialogsPriv.h"
+#include "scrlist.h"
+#include "uidefs.h"
+
+#include "strpriv.h"
+
+#ifdef SQLRT_OBL
+#include "SQLRT.h"
+#elif SQLCONV_OBL
+#include "SQLConv.h"
+#endif
+
+// private constants
+#define DLG_SQLSELECTLOGIN          "SQLServerSelectLogin"
+#define DLG_SQLSELECTLOGIN_ID       10109
+#define EDIT_NAME                   301
+#define EDIT_PASSWORD               305
+#define RADIO_WINDOWS               17813
+#define RADIO_SQL                   17814   
+#define COMBO_SERVERS				17815  
+#define BUTTON_BROWSE				31
+#define STATIC_CONNECTION_LABEL     17819
+#define STATIC_CONNECTION           17820
+#define STATIC_DATABASE_LABEL		17816
+#define EDIT_DATABASE				17817
+#define BUTTON_DATABASE_BROWSE		17818
+#define LINE_DATABASE_SEPARATOR		1303   
+#define SERVER_TEXT                 17836
+
+
+// private globals
+NUMBER nDlgSQLSELECTLOGIN;
+
+prototype SQLSelectLoginEnableButton( INT, INT, BYREF STRING, BYREF STRING, BOOL );
+
+function SQLServerSelectLogin( svServer, svUser, svPassword, bvWindowsLogin)
+    STRING szDB; 
+begin
+
+    return SQLServerSelectLogin2( "", svServer, svUser, svPassword, bvWindowsLogin, szDB, FALSE, FALSE );
+
+end;
+
+function SQLServerSelectLoginEx( szConnection, svServer, svUser, svPassword, bvWindowsLogin)
+    STRING szDB; 
+begin
+
+    return SQLServerSelectLogin2( szConnection, svServer, svUser, svPassword, bvWindowsLogin, szDB, TRUE, FALSE );
+
+end;
+
+function SQLServerSelectLogin2( szConnection, svServer, svUser, svPassword, bvWindowsLogin, svDB, bShowConnectionName, bShowCatalog)
+    NUMBER nId, nLen, nStyle, nNil, nMessage;
+    STRING szAppKey, szNil, szCaption, szTitle, szServer; 
+    LIST listServers;
+    BOOL bDone, bEnterLogin;
+    HWND hDlg, hComboBoxName, hBrowseButton, hServerText, hEditName, hEditPassword, hWnd, hEditDB, hLableDB, hButtonDB, hLineDB, hFont1;
+begin
+
+    if (!g_bSQLRTInitialized) then
+        return ISERR_GEN_FAILURE;
+    endif;
+
+    // record data produced by this dialog
+    if (MODE = SILENTMODE) then
+        SdMakeName(szAppKey, DLG_SQLSELECTLOGIN, "", nDlgSQLSELECTLOGIN);
+        SilentReadData(szAppKey, "Result", DATA_NUMBER, szNil, nId);
+        if ((nId != BACK) && (nId != CANCEL)) then
+            SilentReadData( szAppKey, "szUser", DATA_STRING, svUser, nNil );
+            SilentReadData( szAppKey, "szPass", DATA_STRING, svPassword, nNil );
+            SilentReadData( szAppKey, "szServer", DATA_STRING, svServer, nNil );
+            SilentReadData( szAppKey, "szDB", DATA_STRING, svDB, nNil );
+            SilentReadData( szAppKey, "szAuthen", DATA_NUMBER, szNil, bvWindowsLogin );
+        endif;
+        return nId;
+    endif;
+
+    // ensure general initialization is complete
+    if (!bSdInit) then
+      SdInit();
+    endif;
+
+    if (EzDefineDialog(DLG_SQLSELECTLOGIN, "", "", DLG_SQLSELECTLOGIN_ID) = DLG_ERR) then
+        return ISERR_GEN_FAILURE;
+    endif;
+
+    // Loop in dialog until the user selects a standard button
+    bDone = FALSE;
+
+    while (!bDone)
+        nId = WaitOnDialog(DLG_SQLSELECTLOGIN);
+        switch (nId)
+        case DLG_INIT:
+				
+            // Set connection name
+            if( bShowConnectionName = TRUE ) then
+                CtrlSetText( DLG_SQLSELECTLOGIN, STATIC_CONNECTION, szConnection );    
+            else
+                // Hide control
+                CtrlSetText( DLG_SQLSELECTLOGIN, STATIC_CONNECTION_LABEL, "" );
+                CtrlSetText( DLG_SQLSELECTLOGIN, STATIC_CONNECTION, "" );    
+            endif;   
+            
+             hDlg = CmdGetHwndDlg(DLG_SQLSELECTLOGIN);
+            
+           /*******************************************************/ 
+            if(svUpgrade="TRUE") then               
+                // Get the handle of the fonts to use for the static text
+			    // that is displayed by the custom dialog.			
+			    hFont1 = GetFont("Arial", 10, STYLE_BOLD);
+                CtrlSetFont (DLG_SQLSELECTLOGIN, hFont1, SERVER_TEXT);
+                // Setting the Value to Area Text to display Server Name
+	            CtrlSetText( DLG_SQLSELECTLOGIN, SERVER_TEXT, svServer );
+	            
+	            //Diasble the comboBox while upgrading.
+	            hComboBoxName = GetDlgItem(hDlg, COMBO_SERVERS); 
+	            hBrowseButton = GetDlgItem(hDlg, BUTTON_BROWSE);
+	            //EnableWindow( hComboBoxName, FALSE); 
+	            //EnableWindow( hBrowseButton, FALSE);
+	            //Hiding the below Controls 
+	            ShowWindow(hComboBoxName, 0); 
+	            ShowWindow(hBrowseButton, 0);   
+            else  
+            	//Hiding the below Controls 
+            	hServerText = GetDlgItem(hDlg, SERVER_TEXT);
+                ShowWindow(hServerText, 0);
+            endif;  
+            /*********************************************************/
+
+                          
+                          
+        	//populate servers list
+        	listServers = SQLRTGetServers2( szConnection, TRUE );
+        	CtrlSetList( DLG_SQLSELECTLOGIN, COMBO_SERVERS, listServers ); 
+            if( svServer = "" ) then
+                ListGetFirstString( listServers, szServer );
+            else
+                szServer = svServer;
+            endif;
+
+        	ListDestroy( listServers );
+        	CtrlSetText( DLG_SQLSELECTLOGIN, COMBO_SERVERS, szServer );
+
+            nLen = StrLengthChars(svUser);
+            if (nLen = 0) then
+                nLen = Resize(svUser, 256);
+            endif;
+            
+            nLen = StrLengthChars(svPassword);
+            if (nLen = 0) then
+                nLen = Resize(svPassword, 256);
+            endif;
+
+
+            hDlg = CmdGetHwndDlg(DLG_SQLSELECTLOGIN);
+            SdGeneralInit(DLG_SQLSELECTLOGIN, hDlg, 0, szSdProduct);
+
+            szTitle = GetDialogTitle(DLG_ASK_TEXT);
+            SdSetDlgTitle(DLG_SQLSELECTLOGIN, hDlg, szTitle);
+            
+            hEditName = GetDlgItem(hDlg, EDIT_NAME);
+            if (nLen < 255) then
+                nLen = 255;
+            endif;
+            SendMessage(hEditName, EM_LIMITTEXT, nLen-1, 0);
+
+            hEditPassword = GetDlgItem(hDlg, EDIT_PASSWORD);
+            if (nLen < 255) then
+                nLen = 255;
+            endif;
+            SendMessage(hEditPassword, EM_LIMITTEXT, nLen-1, 0);
+
+            nStyle = GetWindowLong(hEditPassword, GWL_STYLE);
+            nStyle = (nStyle & ~ES_OEMCONVERT);
+            SetWindowLong(hEditPassword, GWL_STYLE, nStyle);
+            
+            if( bvWindowsLogin ) then
+
+                CtrlSetState (DLG_SQLSELECTLOGIN, RADIO_WINDOWS, BUTTON_CHECKED);
+                CtrlSetState (DLG_SQLSELECTLOGIN, RADIO_SQL, BUTTON_UNCHECKED);
+                EnableWindow( hEditPassword, FALSE );
+                EnableWindow( hEditName, FALSE );    
+            else
+
+                CtrlSetState (DLG_SQLSELECTLOGIN, RADIO_WINDOWS, BUTTON_UNCHECKED);
+                CtrlSetState (DLG_SQLSELECTLOGIN, RADIO_SQL, BUTTON_CHECKED);
+                EnableWindow( hEditPassword, TRUE );
+                EnableWindow( hEditName, TRUE ); 
+                CtrlSetText( DLG_SQLSELECTLOGIN, EDIT_NAME, szServer );
+                CtrlSetText( DLG_SQLSELECTLOGIN, COMBO_SERVERS, szServer );
+            endif;   
+            
+            bEnterLogin = (CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED);
+            CtrlSetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlSetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword); 
+            SQLSelectLoginEnableButton( hDlg, SD_PBUT_CONTINUE, svUser, svServer, bEnterLogin );
+            SQLSelectLoginEnableButton( hDlg, BUTTON_DATABASE_BROWSE, svUser, svServer, bEnterLogin );
+            
+            // Set catalog name
+            if( bShowCatalog = TRUE ) then
+                CtrlSetText( DLG_SQLSELECTLOGIN, EDIT_DATABASE, svDB );    
+            else
+                // Hide control
+                hLableDB = GetDlgItem(hDlg, STATIC_DATABASE_LABEL);
+                ShowWindow( hLableDB, FALSE );
+                hEditDB = GetDlgItem(hDlg, EDIT_DATABASE);
+                ShowWindow( hEditDB, FALSE );
+                hButtonDB = GetDlgItem(hDlg, BUTTON_DATABASE_BROWSE);
+                ShowWindow( hButtonDB, FALSE );
+                hLineDB = GetDlgItem(hDlg, LINE_DATABASE_SEPARATOR);
+                ShowWindow( hLineDB, FALSE );
+            endif;
+ 		
+		case RADIO_WINDOWS:
+            if( CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_WINDOWS ) = BUTTON_CHECKED ) then
+                CtrlSetState (DLG_SQLSELECTLOGIN, RADIO_SQL, BUTTON_UNCHECKED);
+                EnableWindow( hEditPassword, FALSE );
+                EnableWindow( hEditName, FALSE );
+            endif;   
+            bEnterLogin = (CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword); 
+            CtrlGetText(DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer); 
+            SQLSelectLoginEnableButton( hDlg, SD_PBUT_CONTINUE, svUser, svServer, bEnterLogin );
+            SQLSelectLoginEnableButton( hDlg, BUTTON_DATABASE_BROWSE, svUser, svServer, bEnterLogin );
+
+        case RADIO_SQL:
+            if( CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED ) then
+                CtrlSetState (DLG_SQLSELECTLOGIN, RADIO_WINDOWS, BUTTON_UNCHECKED);
+                EnableWindow( hEditPassword, TRUE );
+                EnableWindow( hEditName, TRUE );
+            endif;  
+            bEnterLogin = (CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword); 
+            CtrlGetText(DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer); 
+            SQLSelectLoginEnableButton( hDlg, SD_PBUT_CONTINUE, svUser, svServer, bEnterLogin );
+            SQLSelectLoginEnableButton( hDlg, BUTTON_DATABASE_BROWSE, svUser, svServer, bEnterLogin );
+
+        case BUTTON_BROWSE:
+        	if( SQLBrowse2(szConnection, svServer) = NEXT ) then
+        	    CtrlSetText( DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer );
+        	endif;  
+        	bEnterLogin = (CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword); 
+            CtrlGetText(DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer); 
+            SQLSelectLoginEnableButton( hDlg, SD_PBUT_CONTINUE, svUser, svServer, bEnterLogin );
+            SQLSelectLoginEnableButton( hDlg, BUTTON_DATABASE_BROWSE, svUser, svServer, bEnterLogin );
+            
+        case EDIT_NAME:
+		   	nMessage = CtrlGetSubCommand(DLG_SQLSELECTLOGIN);
+		   	if(nMessage = EDITBOX_CHANGE) then	
+	        	bEnterLogin = (CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED);
+	            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+	            CtrlGetText(DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer); 
+	            SQLSelectLoginEnableButton( hDlg, SD_PBUT_CONTINUE, svUser, svServer, bEnterLogin );
+	            SQLSelectLoginEnableButton( hDlg, BUTTON_DATABASE_BROWSE, svUser, svServer, bEnterLogin );
+	        endif;  
+	        
+        case COMBO_SERVERS:
+        	bEnterLogin = (CtrlGetState( DLG_SQLSELECTLOGIN, RADIO_SQL ) = BUTTON_CHECKED);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlGetText(DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer); 
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword); 
+            SQLSelectLoginEnableButton( hDlg, SD_PBUT_CONTINUE, svUser, svServer, bEnterLogin );
+            SQLSelectLoginEnableButton( hDlg, BUTTON_DATABASE_BROWSE, svUser, svServer, bEnterLogin );
+            
+        case SD_PBUT_CONTINUE: 
+            CtrlGetText(DLG_SQLSELECTLOGIN, COMBO_SERVERS, svServer); 
+            bvWindowsLogin = FALSE;
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_DATABASE, svDB); 
+            
+			//read server
+
+            nId   = NEXT;
+            bDone = TRUE;
+
+        case SD_PBUT_BACK:
+            nId    = BACK;
+            bDone  = TRUE;
+
+        case DLG_ERR:
+            nId   = ISERR_GEN_FAILURE;
+            SdError(nId, DLG_SQLSELECTLOGIN);
+            bDone = TRUE;
+
+        case DLG_CLOSE:
+            SdCloseDlg(hDlg, nId, bDone);
+
+        case BUTTON_DATABASE_BROWSE:
+        	if( SQLDatabaseBrowse(szConnection, svServer, !bEnterLogin, svUser, svPassword, svDB) = NEXT ) then
+        	    CtrlSetText( DLG_SQLSELECTLOGIN, EDIT_DATABASE, svDB );
+        	endif;  
+
+        case EDIT_DATABASE:
+		   	nMessage = CtrlGetSubCommand(DLG_SQLSELECTLOGIN);
+		   	if(nMessage = EDITBOX_CHANGE) then	
+        	    CtrlGetText( DLG_SQLSELECTLOGIN, EDIT_DATABASE, svDB );
+	        endif;  
+
+        default:
+            // check standard handling
+            if (SdIsStdButton(nId) && SdDoStdButton(nId)) then
+                if ((nId != EDIT_NAME) && (nId != EDIT_PASSWORD)) then
+                    bDone = TRUE;
+                endif;
+            endif;
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_NAME, svUser);
+            CtrlGetText(DLG_SQLSELECTLOGIN, EDIT_PASSWORD, svPassword);
+      	    CtrlGetText( DLG_SQLSELECTLOGIN, EDIT_DATABASE, svDB );
+        endswitch;
+    endwhile;
+
+    EndDialog(DLG_SQLSELECTLOGIN);
+    ReleaseDialog(DLG_SQLSELECTLOGIN);
+
+    SdUnInit();
+
+    // record data produced by this dialog
+    if (MODE = RECORDMODE) then
+        SdMakeName(szAppKey, DLG_SQLSELECTLOGIN, "", nDlgSQLSELECTLOGIN);
+        SilentWriteData( szAppKey, "szUser", DATA_STRING, svUser, nNil );
+        SilentWriteData( szAppKey, "szPass", DATA_STRING, svPassword, nNil );
+        SilentWriteData( szAppKey, "szServer", DATA_STRING, svServer, nNil );
+        SilentWriteData( szAppKey, "szDB", DATA_STRING, svDB, nNil );
+        SilentWriteData( szAppKey, "szAuthen", DATA_NUMBER, szNil, bvWindowsLogin );
+        SilentWriteData( szAppKey, "Result", DATA_NUMBER, szNil, nId );
+    endif;
+
+    return nId;
+end;
+
+function  SQLSelectLoginEnableButton( hwndDlg, nControlID, svName, svServer, bLogin )
+	HWND  hwndItem;
+begin
+
+	hwndItem = GetDlgItem( hwndDlg, nControlID );
+	if (!IsWindow( hwndItem)) then 
+		return FALSE; 
+	endif;
+     
+    //StrRemoveSpaces(  ); 
+	//StrRemoveSpaces(  );
+	
+	if( svServer = "" ) then
+	    EnableWindow( hwndItem, FALSE );
+	else 
+	    if( bLogin ) then
+		    if( svName = "" ) then
+	            EnableWindow( hwndItem, FALSE);
+	        else
+	            EnableWindow( hwndItem, TRUE);
+	        endif;
+	    else
+	        EnableWindow( hwndItem, TRUE );
+	    endif;
+	endif;
+end;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//		Function: CaFn_CheckNetFrame35(hMSI)
+//
+//	 Description: To Check the .NetFrameWork 3.5
+//
+///////////////////////////////////////////////////////////////////////////////
+function BOOL CheckNetFrameWork()
+	
+begin 
+		//if the .NetFrameWork 4.0
+	if (CheckNetFrameWork40()) then 	
+		        return TRUE;
+	else                     
+		//.NetFrameWork 4.0  not found
+	         	return FALSE; 
+	         	
+	endif;
+	
+ end;   
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//07/06/2010				1.0 	
+//	checks for .Net Framework 3.5
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+
+
+function BOOL CheckNetFrameWork35()
+	LIST listSubKeys  ,listNames   ;   
+	NUMBER nReturn,nReturn1;
+	STRING szString,svVersion;
+	NUMBER nLength, nNETFrameMajVer,nNETFrameMinorVer;
+	LIST   nVerList;
+	STRING svNETFrameMajVer,svNETFrameMinorVer;
+begin
+    //creating lists
+	listSubKeys  = ListCreate(STRINGLIST);
+	listNames    = ListCreate(STRINGLIST);  
+	// Setting registry root to local machine
+	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );
+	//Getting the subkey names as a string
+	nReturn = RegDBQueryKey( DOTFRAMCHECK35 , REGDB_NAMES, listSubKeys ); 
+	//Getting the first string   						
+	nReturn = ListGetFirstString ( listSubKeys, szString )   ;
+	//until the end of the list  
+	while ( nReturn != END_OF_LIST ) 
+		nReturn1 = StrFind(szString ,".NET CLR"); 
+		if (nReturn1 = 0 ) then
+ 		// Start - Considering the major version is over 2 digits in future. SHARP T.Okochi 2008/05/22
+			nLength = StrLength ( szString ); 
+			//Getting the Version after .netclr in the name   
+						
+			StrSub(svVersion,szString,9,nLength-9);
+			
+			
+			nVerList = ListCreate ( STRINGLIST );
+			StrGetTokens ( nVerList , svVersion , "." );
+			ListGetFirstString ( nVerList, svNETFrameMajVer);  
+						
+			StrToNum ( nNETFrameMajVer, svNETFrameMajVer); 
+			//Check the first charcter 3 or greather
+			if ( nNETFrameMajVer >= DOTFRAMEWORKVERSION )  then
+				ListGetNextString ( nVerList, svNETFrameMinorVer ); 
+				StrToNum ( nNETFrameMinorVer, svNETFrameMinorVer); 
+				if ( nNETFrameMinorVer >= DOTFRAMEWORKMINORVERSION ) then
+					ListDestroy (listNames);
+					ListDestroy (listSubKeys );     							    
+					ListDestroy (nVerList);
+					return TRUE;
+			    endif;
+			endif; 
+			
+			ListDestroy (nVerList); 
+		endif; 
+		//go to the next name
+		nReturn  = ListGetNextString(listSubKeys,szString );
+	endwhile; 
+	ListDestroy (listNames);
+	ListDestroy (listSubKeys );     							    
+	//returning false if the version is not found which is greater than 3.0 in the query list
+	return FALSE;
+
+end; 
+
+///////////////////////////////////////////////////////////////////
+//   function: CheckNetFrameWork40() 
+//
+//Description: Checking for the .NetFrameWork4.0
+//
+///////////////////////////////////////////////////////////
+function BOOL  CheckNetFrameWork40()
+STRING svPath,svValueName,svValue;
+NUMBER nResult,nvSize,nvType;
+begin
+	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE ); 
+	svPath="SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Client";
+	svValueName="Install"; 
+	nResult=RegDBGetKeyValueEx (svPath,svValueName,nvType,svValue,nvSize);
+	if( svValue="1")then
+		return TRUE;
+	endif;
+	return FALSE;
+end;
+
+  
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//28/06/2006				1.0 	
+//	checks for RAM
+//	Check 
+// 			Input:
+//				  
+//---------------------------------------------
+
+function BOOL CheckDiskSpace()
+number nvResult;
+STRING svResult;
+begin
+    nvResult = GetDiskSpaceEx(INSTALLDIR,GBYTES) ;
+    if ( nvResult  >= 5 ) then
+		return TRUE;
+	else
+		return FALSE;
+	endif;
+end;        
+function BOOL CheckSystemRam()
+number nvResult;
+STRING svResult,svSystemRAM;   
+
+begin
+    if (GetSystemInfo (EXTENDEDMEMORY, nvResult, svResult) < 0) then
+    else
+       	NumToStr(svResult,nvResult);
+       	
+       	nvResult = nvResult / 1024; // convert it from Kb to Mb
+       	NumToStr(svResult,nvResult);
+       	
+        NumToStr(svSystemRAM, nvResult);
+    endif;
+
+	if (nvResult >= 1024 ) then
+		return TRUE;
+	else
+		return FALSE;
+	endif;
+end;   
+////////////////////////////////////////////////////
+//
+// Check for Processor Speed
+//
+////////////////////////////////////////////////////
+function BOOL CheckProcesorSpeed()
+STRING szKey ,szName,svValue;
+NUMBER nvType,  nvSize,nReturn,nProSpeed;
+begin
+	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE  );   
+	szKey="HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0";  
+	szName="~MHz";
+	nReturn=RegDBGetKeyValueEx ( szKey, szName, nvType, svValue, nvSize );
+	StrToNum(nProSpeed,svValue) ;
+	if(nProSpeed>=1500) then
+		return TRUE;
+	else
+		return FALSE;
+	endif;
+	
+end; 
+
+///////
+function STRING GetUIDFromSID(svSID)
+	string strComputer;
+	OBJECT objWMIService,objAccount;
+begin  
+	strComputer = "." ;
+	try 
+		set objWMIService = CoGetObject("winmgmts:\\\\" + strComputer + "\\root\\cimv2","") ;
+		try
+			set objAccount = objWMIService.Get("Win32_SID.SID='" + svSID + "'") ;
+			return objAccount.AccountName;
+		catch
+			return "Everyone";  //IF the function fails it returns Everyone
+		endcatch;
+	catch
+		return "Everyone";//IF the function fails it returns Everyone
+	endcatch;		
+end;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                              //
+//   Description  : This function is used to set folder permission  "ASPNET"					//
+//                                                                                              //
+////////////////////////////////////////////////////////////////////////////////////////////////// 
+		
+		
+function SetNTFSAPermission( szFolder,szPermission )
+	STRING	szCmd; 
+	STRING  szUser ;
+	STRING  szAction ;
+	STRING  szDir ;
+	INT		szMode,nvSize; 
+	STRING szCmdArgs,svVersionNT;
+begin
+		logMessage("INFORMATION", "Function At:SetNTFSAPermission Calling Function: Status:Started");		         
+	//REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY  ;
+	nvSize = 256;
+	MsiGetProperty(ISMSI_HANDLE,"VersionNT",svVersionNT, nvSize);		
+
+	if(SYSINFO.WINNT.bWin2000 || SYSINFO.WINNT.bWinXP || SYSINFO.WINNT.bWinServer2003 || svVersionNT >= "600" ) then 
+		szCmd = "cmd.exe";
+		szUser = szPermission; 
+		if (SYSINFO.WINNT.bWinServer2003 || svVersionNT >= "600") then  
+			LongPathToQuote(szUser,TRUE);
+			szCmdArgs = "/c cacls \"" + szFolder + "\" /T /E /G "  + szUser + ":F"; 
+		else 
+			LongPathToQuote(szUser,FALSE);
+			szCmdArgs = "/c cacls \"" + szFolder + "\" /T /E /G "  + szUser + ":F"; 
+		endif;
+		szAction	=	"open";
+		szDir		=	WINSYSDIR;
+		szMode	= 	SW_HIDE;
+		ExecuteFile( szAction, szCmd, szCmdArgs, szDir, szMode ); 
+	endif;
+		logMessage("INFORMATION", "Function At:SetNTFSAPermission Calling Function: Status:Ended");		         
+
+end;
+ 
+function ExecuteFile( szAction, szFile, szParam, szDir, szMode )
+HWND	hwndSetup;
+begin
+	// Check the Operating System type
+	// If the Operating System is 32-bit version it will have Shell32.dll
+	//
+		logMessage("INFORMATION", "Function At:ExecuteFile Calling Function: Status:Started");		         
+	if ( bInstall16 != TRUE ) then
+		// Load the dll to call the function available
+		//
+    	if ( UseDLL( "Shell32.dll" ) = 0 ) then
+    		// Get the handle of the installation window
+    		//
+     		hwndSetup = GetWindowHandle( HWND_INSTALL );
+     		// If the above call fails
+     		//
+      		if ( hwndSetup < 0 ) then 
+      			hwndSetup = 0;
+      		endif;
+      		// Run / print the file in hide mode( Without displaying 
+      		// the child window to the enduser )
+      		//
+      		ShellExecuteA( hwndSetup, szAction, szFile, szParam, szDir, szMode );
+      		//Unload the dll
+      		//
+      		UnUseDLL( "Shell32.dll" );
+    	endif; 
+  	
+  	endif;  
+		logMessage("INFORMATION", "Function At:ExecuteFile Calling Function: Status:Ended");		         
+
+end;  
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//22/09/2004				1.2 	
+//	Writes log/error messages to the log file
+// 			Input:
+//					messageType 		Error message type
+// 		 			messageText			Error text message  
+//---------------------------------------------
+function logMessage(messageType, messageText)
+begin      
+	OutputDebugString(messageType + " = " + messageText);
+end;
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//22/09/2006	Ravikiran	2.0 	
+//	To check the given folder
+//---------------------------------------------
+function BOOL IsDoNotContainSpecialFolder(hMSI,svPath,svSpecialFolders ,svDelimiter)
+	LIST lstFolders;
+	number nResult,nPos;
+	STRING svFolder,svFolderPath,svSubFolderPath;	
+begin
+	lstFolders = ListCreate (STRINGLIST); 
+	nResult  = StrGetTokens ( lstFolders, svSpecialFolders, svDelimiter ); 
+	if (nResult < 0 ) then 
+		ListDestroy(lstFolders); 
+	    return FALSE;
+	endif;
+		nResult = ListGetFirstString (lstFolders, svFolder); 
+		while (nResult != END_OF_LIST) 		
+			if (svFolder = "PersonalFolder") then	
+	        	//Get PersonalFolder path using property value 
+	        	svFolderPath = GetProperty (hMSI, svFolder);
+	        	nPos = StrFindEx(svFolderPath,"\\",3);		
+				StrSub(svSubFolderPath,svFolderPath,0,nPos);
+	        	nPos = StrFindEx(svPath,svSubFolderPath,0);		
+			    if (nPos >= 0 ) then
+					ListDestroy(lstFolders ); 
+					return FALSE;
+				endif; 
+			endif;
+        	svFolderPath = GetProperty (hMSI, svFolder);
+        	nPos = StrFindEx(svPath,svFolderPath,0);		
+		    if (nPos >= 0 ) then
+				ListDestroy(lstFolders ); 
+				return FALSE;
+			endif; 
+			nResult = ListGetNextString (lstFolders, svFolder); 
+		endwhile;
+	ListDestroy(lstFolders ); 
+	return TRUE;
+
+end;
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//05/10/2004				1.2 	
+//	To browse the directory                                           
+// 			Input:
+//				  srDir 		installed directory 
+//---------------------------------------------
+function BrowseForFolder(hWND,szTitle,szDir)
+	long lpIDList ;
+	string sBuffer,szMsg ;
+	BrowseInfo tBrowseInfo ;
+begin
+	tBrowseInfo.hWndOwner = hWND ;
+	tBrowseInfo.ulFlags = 64;
+	lpIDList = SHBrowseForFolder(&tBrowseInfo) ;
+	if (lpIDList) then
+		sBuffer = "";
+		SHGetPathFromIDList( lpIDList, sBuffer);
+		if ( sBuffer != "") then
+			if (IsValidDrive( sBuffer , szMsg , IS_FIXED )) then
+				szDir = sBuffer; 
+			else
+				//logMessage("WARNING", "Please select a correct Hard Disk Drive for installing ebs product.");
+				MessageBox(szMsg + "\n" + "Please select the Destination Path from your Local Machine for installing ebs product." ,SEVERE);  
+			endif;
+		elseif(sBuffer  = "") then
+		//logMessage("WARNING", "Please select a correct Hard Disk Drive for installing ebs product.");
+			MessageBox("Please select the Destination Path from your Local Machine for installing ebs product.",SEVERE);
+		endif;
+	endif;
+end;
+//---------------------------------------------------------------------------
+// Function: IsValidDrive
+//
+//           It is to validate the drives in the system
+//---------------------------------------------------------------------------
+function BOOL IsValidDrive(svPath,szMsg,nvType)
+NUMBER nvResult,nNumberOfCharacters,nType;
+STRING svDrive;
+begin
+	nNumberOfCharacters = StrSub(svDrive,svPath,0,2);
+	if ( nNumberOfCharacters <= 2 ) then
+    	GetSystemInfo(DRIVE,nType,svDrive);
+    else
+    	//logMessage("INFORMATION", "Please select a correct Hard Disk Drive for installing ebs product.");
+    	MessageBox("Please select a correct Hard Disk Drive for installing ebs product.",INFORMATION);
+    endif;
+    switch (nType)
+    	case IS_REMOVABLE:
+    		szMsg = "Target drive is a removable drive." ; 
+    		if (nvType = nType ) then
+	    		return TRUE ;
+	    	else
+	    		return FALSE ;
+	    	endif;
+	    	
+    	case IS_FIXED:
+    		szMsg = "Target drive is a fixed drive." ; 
+    		if (nvType = nType ) then
+	    		return TRUE ;
+	    	else
+	    		return FALSE ;
+	    	endif;
+    	case IS_CDROM:
+    		szMsg = "Target drive is a CD-ROM drive." ; 
+    		if (nvType = nType ) then
+	    		return TRUE ;
+	    	else
+	    		return FALSE ;
+	    	endif; 
+    	case IS_REMOTE:
+    		szMsg = "Target drive is a network drive." ; 
+    		if (nvType = nType ) then
+	    		return TRUE ;
+	    	else
+	    		return FALSE ;
+	    	endif; 
+    	case IS_UNKNOWN:
+    		szMsg = "Target drive is unknown." ; 
+    		if (nvType = nType ) then
+	    		return TRUE ;
+	    	else
+	    		return FALSE ;
+	    	endif; 
+	    default:
+            szMsg = "Error";
+   	 endswitch;
+end ;
+  
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//13/01/2010				1.0 	
+//	Writes log/error messages to the log file
+// 			Input:
+//					svFileExt 		File Extension to search in file maps
+// 		 			svVersion		Version of the file to search	
+//---------------------------------------------
+
+function BOOL IsASPNETVersion (svFileExt,svVersion)
+	OBJECT objw3svc ;
+	VARIANT objScriptMaps;	
+	BOOL bDone; 
+    NUMBER nArraySize,nCount ;
+begin
+	//Creating the world wide web object
+    set objw3svc = CoGetObject("IIS://localhost/w3svc/1/ROOT","")  ;     
+    if IsObject(objw3svc) then
+		objScriptMaps = objw3svc.ScriptMaps; 
+		nArraySize = SizeOf(objScriptMaps);
+		 for nCount = 0 to nArraySize - 1 
+			if (StrFindEx(objScriptMaps(nCount),svFileExt,0)>= 0) then
+				if (StrFindEx(objScriptMaps(nCount),svVersion,0)>= 0) then
+					return TRUE;
+				endif;  
+			endif;
+		 endfor; 		
+	else
+		return FALSE;
+	endif; 
+	return FALSE;
+end;    
+
+ //////////////////////////////////////////////////////////////////////////////
+/// Function Name : SetEnable32bitapponwin64()
+/// Description :  This function is used set "Enable32bitapponwin64" to "TRUE" 
+///				   
+/// Arguments:	No arguments	
+/// Revision History : 
+/////////////////////////////////////////////////////////////////////////////
+
+function SetEnable32bitapponwin64()
+	OBJECT IIsObject;
+begin
+ if (SYSINFO.bIsWow64 ) then
+	if ( SYSINFO.WINNT.bWinXP || SYSINFO.WINNT.bWinServer2003) then
+		try
+			set IIsObject = CoGetObject("IIS://localhost/W3SVC/AppPools","");
+			try
+				IIsObject.Put("enable32bitapponwin64" ,TRUE ) ;
+			catch
+				set IIsObject = NOTHING;
+			endcatch;
+			try			
+				IIsObject.Setinfo();   
+			catch
+				set IIsObject = NOTHING;
+			endcatch;
+			set IIsObject = NOTHING;
+		catch
+			set IIsObject = NOTHING;
+		endcatch;
+	endif;
+ endif;
+end;
+
+ //////////////////////////////////////////////////////////////////////////////
+/// Function Name : SetWebServiceExtension()
+/// Description :  This function is used set "Allowed" to "ASP.Net" in the "Web Service Extension" of IIS for the server family. 
+///				   
+/// Arguments:	No arguments	
+/// Revision History : 
+/////////////////////////////////////////////////////////////////////////////
+function void SetWebServiceExtension()
+	OBJECT oIISinfo;      /// Holds the IIS version number
+	OBJECT oIIS;          /// Object refers to web site in the IIS
+	NUMBER nResult,nTypeob,nSizeob,nIISVersion;
+	STRING szValue,szIISgetVer;
+begin  
+	/// Get the IIS version number    
+	nResult = RegDBGetKeyValueEx(IISREGPATH, IISVERSION, nTypeob, szValue, nSizeob);
+	StrSub (szIISgetVer, szValue, 8,1); 
+	StrToNum( nIISVersion, szIISgetVer);  
+	
+	if (nIISVersion >= 6) then
+		/// set "Allowed" to "ASP.NET" under "Web Service Extensions"
+	    try
+		    set oIIS = CoGetObject("IIS://localhost/W3SVC","");
+		    if (SYSINFO.bIsWow64 ) then 
+		    	try
+		    		oIIS.EnableWebServiceExtension("ASP.NET v2.0.50727 (32-bit)"); 
+				catch
+				 	set oIIS = NOTHING;
+				endcatch;
+		    	
+		    else	
+		    	try
+			    	oIIS.EnableWebServiceExtension("ASP.NET v2.0.50727"); 
+				catch
+				 	set oIIS = NOTHING;
+				endcatch;
+		    endif;
+		    
+		    set oIIS = NOTHING;
+		catch
+		 	set oIIS = NOTHING;
+		endcatch;
+	endif;
+ 
+end;  
+
+
+//---------------------------------------------
+//Date			User		Version		Comments
+//---------------------------------------------
+//29/08/2006				
+//		Input:directory to search,Set files attribute to normal
+//      INCLUDE_SUBDIR - search subdirectories
+//            else - only search specified directory 
+
+//---------------------------------------------------
+function SetFilesNormal ( szDir , szFileName , nOp )
+
+  NUMBER nSize, nvResult, nRes;
+  STRING svFile, svFilePath, svDummy;
+  BOOL bContinue;
+begin
+		logMessage("INFORMATION", "Function At:SetFilesNormal  Calling Function: Status:Started");		         
+
+nSize = 0;
+bContinue = TRUE;
+StrRemoveLastSlash ( szDir );
+
+nRes = FindAllFiles ( szDir , szFileName , svFile , RESET );
+
+while ( nRes = 0 && bContinue )
+
+	if ( nOp != INCLUDE_SUBDIR ) then
+		ParsePath ( svFilePath , svFile , PATH );
+		StrRemoveLastSlash ( svFilePath );
+		if ( svFilePath != szDir ) then
+			bContinue = FALSE;
+		endif;
+	endif;
+
+	if ( bContinue ) then
+ 		SetFileInfo ( svFile, FILE_ATTRIBUTE, FILE_ATTR_NORMAL | FILE_ATTR_ARCHIVED , "" );
+ 	nRes = FindAllFiles ( szDir , szFileName , svFile , CONTINUE );			
+	endif;
+endwhile;
+// Remove the line below if you are using InstallShield 5 prior to version 5.52
+nRes = FindAllFiles ( szDir , szFileName , svFile , CANCEL );
+
+		logMessage("INFORMATION", "Function At:SetFilesNormal  Calling Function: Status:Ended");		         
+
+end;   
+
+    
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ /// Function Name: CopyDocuments()
+ /// Purpose: This function is used to copy Language Specific ReadMe.txt or Document files.
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ function void CopyDocuments()
+ 	NUMBER nvSize;
+ 	STRING svProductLanguage,svSrcPath,svSrcPathpdf, svSrcPathtxt,svDestPath,svLanguageID;
+ begin            
+ 	/*nvSize = 256;
+ 	/// Get the Product Language
+ 	MsiGetProperty (ISMSI_HANDLE, "ProductLanguage",svProductLanguage,nvSize) ;
+ 	
+ 	/// Check whether the language is present in the list
+ 	switch (svProductLanguage) 
+
+       case "1033":
+        			/// Languge is English
+        			svLanguageID="English";                			 
+        case "1031":
+        			/// Languge is German
+        			svLanguageID="German";  
+        case "1036":
+        			/// Languge is French
+        			svLanguageID="French"; 
+        case "1040":
+        			/// Languge is Italian
+        			svLanguageID="Italian";          			
+        case "1034":
+        			/// Languge is Spanish 
+        			svLanguageID="Spanish";         			
+        case "1043":
+        			/// Languge is Dutch 
+        			svLanguageID="Dutch";   
+        case "1053":
+        			/// Languge is Swedish 
+        			svLanguageID="Swedish";        			  			          			  
+        case "1044":
+        			/// Languge is Norwegian  
+        			svLanguageID="Norwegian";              	
+        case "1035":
+        			/// Languge is Finnish  
+        			svLanguageID="Finnish";    
+        case "1030":
+					/// Languge is Danish  
+					svLanguageID="Danish";   
+        case "1029":
+					/// Languge is Czech  
+					svLanguageID="Czech";    
+	    case "1038":
+					/// Languge is Hungarian  
+					svLanguageID="Hungarian";    	    
+	    case "2070":
+					/// Languge is Portuguese   
+					svLanguageID="Portuguese";  
+		case "2052":
+					/// Languge is Chinese   
+					svLanguageID="Chinese"; 
+		case "1028":
+					/// Languge is Taiwanese   
+					svLanguageID="Taiwanese";					
+       default: 
+              		/// Laguage is not present in supported list
+           			svLanguageID="English";; 
+
+    endswitch;  */
+     
+     
+    /// Form Source directtory file path
+    svSrcPath = SETUPEXEDIR ^ "Documents" ^ "English" ^ "AccountingPlus Usage Guides";// ^ svLanguageID;
+    
+    if (ExistsDir (svSrcPath) = EXISTS) then 
+    
+    svSrcPath = svSrcPath ^ "*";
+    
+        
+    svDestPath = INSTALLDIR ^ "Documents" ^ "English" ^ "AccountingPlus Usage Guides";
+    
+    CreateDir(svDestPath);
+    //LongPathToQuote(svDestPath,TRUE);  
+    
+     /// Copy ReadMe.txt file to target location
+    //XCopyFile(svSrcPath,svDestPath,COMP_NORMAL);   
+    
+    /// Copy User guide
+    XCopyFile(svSrcPath,svDestPath,INCLUDE_SUBDIR); 
+      
+    endif;  
+       
+ end;       
+ 
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Function Name:  CheckUpgrade()
+/// Purpose: this function is used to check for the already existing build. If the existing build is
+///			 already greater than the current build, abort the installation.
+////////////////////////////////////////////////////////////////////////////////////////// 
+function void CheckUpgrade()
+    NUMBER nvType,nvSize, nvReturnLineNo;
+    STRING svUninstallString,svBuildVersion,svUILevel,svProductGUID;
+    STRING szSrcDir,szDestDir,svTempPath,svString;
+    STRING SvWebConfigPath, svFindString, svMainString, svSubString;  
+    HWND hMSI1,hMSI2,hMSI,hProcess , dwProcessId;  
+   
+begin     
+   //REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY;
+    LoadStringFromStringTable ( @CID_PRODUCT_NAME, svString );
+	svProductGUID=GetProductCode(svString);
+    //MsiSetProperty(ISMSI_HANDLE,"PRODUCTID",svProductGUID);
+  	svExistGuid = svProductGUID;
+    //svProductGUID=GetHostProductCode(hMSI);    
+	//svProductGUID = REG_AP_BUILD_32 + "\\"+ svProductGUID;
+	//nCheck = RegDBKeyExist(svProductGUID);   
+	//Setting the default value for Properties
+	MsiSetProperty(ISMSI_HANDLE,"UPGRADE","FALSE");
+		
+	if (svProductGUID !="" ) then                                
+		        if(TRUE == SYSINFO.bIsWow64)then 
+					svProductGUID = REG_AP_BUILD_64 + "\\"+ svProductGUID;
+					else
+					svProductGUID = REG_AP_BUILD_32 + "\\"+ svProductGUID;
+				endif;   
+			
+			if(TRUE == SYSINFO.bIsWow64)then 
+					svBuildVersion = AP_REGKEY_64BIT;
+				else
+					svBuildVersion = AP_REGKEY_32BIT;
+			endif;
+					
+			RegDBGetKeyValueEx ( svProductGUID, "InstallLocation", nvType, szInstallLocation, nvSize );
+		     /// License dialog should not be displayed during upgradation. As it is already registered to the user
+		    /// Control this by any global property    
+			/// Check the presence of the key in the registry
+			RegDBGetKeyValueEx ( svProductGUID, "DisplayVersion", nvType, szOldBuildVersion, nvSize );
+			   
+			if(szOldBuildVersion="")then  
+				// Set some default value to szOldBuildVersion otherwise VersionCompare() API fails
+				szOldBuildVersion = "1.0.0.0";    
+			endif;                       
+				
+			nvSize = 300;
+			MsiGetProperty(ISMSI_HANDLE,"ProductVersion", svNewBuildVersion, nvSize);    /*
+			/// Get the current installing build version from VersionInfo.txt file
+			OpenFileMode (FILE_MODE_NORMAL); 
+			
+	        OpenFile (hMSI, SourceDir,"VersionInfo.txt"); 
+	        /// Read the line 
+	        GetLine ( hMSI, svNewBuildVersion ); 
+			CloseFile(hMSI);  */   
+			/// Check if installation is in silent mode
+			nvSize = 300;
+			MsiGetProperty(hMSI,"UILevel",svUILevel,nvSize);   
+			/// Compare the versions. 
+		if (/*svExistGuid = "InstallShield_{607A0F8F-BB88-4C03-BCD8-CB86A7713AA7}"||(*/ VerCompare(svNewBuildVersion,szOldBuildVersion,VERSION) == GREATER_THAN)then
+			svUpgrade = "TRUE"; 
+			MsiSetProperty(ISMSI_HANDLE,"UPGRADE",svUpgrade);
+					SetDialogTitle ( DLG_ASK_YESNO, @CID_PRODUCT_NAME );     
+		                if (AskYesNo ( @CID_OlderVersion,YES)=NO) then
+		                  	abort;
+		                endif;    		                
+		        RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );	
+				nvType = REGDB_STRING;        
+				nvSize = 256;           
+				RegDBSetKeyValueEx ( svBuildVersion, "UPGRADE", nvType, svUpgrade, nvSize);
+				
+				//Get the DBTYPE Value from Regkey and Storing in Property
+				RegDBGetKeyValueEx ( svBuildVersion, "DBTYPE", nvType, svDBtype, nvSize );
+		  		MsiSetProperty(ISMSI_HANDLE,"DBTYPE",svDBtype);       		  		 
+		                
+		        nvSize = 300;
+				MsiGetProperty(ISMSI_HANDLE,"SUPPORTDIR",svSupPath,nvSize);   
+				
+				// To Get the Lower Version Database Server Name from the Config File.   
+		 		svFindString = '<add name="DBConnection"' ;
+				SvWebConfigPath = szInstallLocation ^ @CID_ADMIN ^ "web.config" ; 
+				FileGrep(SvWebConfigPath,svFindString, svMainString,nvReturnLineNo ,RESTART);
+           		CharReplace(svMainString, STRTOCHAR('\\'), STRTOCHAR('\\' + '\\'), 0);
+           		StrPiece(svSubString, svMainString, "=", 4);  
+           		StrPiece(szServer, svSubString, ";", 1); 
+           		StrPiece(svSubString, svMainString, "=", 5);  
+           		StrPiece(szDB, svSubString, ";", 1);
+           		StrPiece(svSubString, svMainString, "=", 6);  
+           		StrPiece(szUser, svSubString, ";", 1);
+           		StrPiece(svSubString, svMainString, "=", 7);  
+           		StrPiece(szPassword, svSubString, ";", 1);
+				
+		elseif(LESS_THAN == VerCompare(svNewBuildVersion,szOldBuildVersion,VERSION))then
+			    /// Already higher version of the build is already installed. So abort the installation
+			    nvSize = 300;
+			    MsiGetProperty(hMSI,"UILevel",svUILevel,nvSize);   
+				   if(svUILevel !="2" )then
+						SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+						MessageBox(@IDS_PREVENT_DOWNGRADE_EXIT,SEVERE);  
+					else
+					 	/// Write to the log file in silent installation mode
+			 			 WriteToLogFile("Error",@CID_AppAlreadyPresent);
+			 		 	 WriteEventLog(hMSI,@CID_AppAlreadyPresent,EVENTLOG_ERROR_TYPE);    
+			 		 	 
+			 		endif; 
+		 			/// Abort the installation
+		 		abort;     
+	 	else
+		 	    //OnMaintUIBefore(); 
+		 		/// Both builds are equal	     
+		 		nvSize = 300;
+			    MsiGetProperty(hMSI1,"UILevel",svUILevel,nvSize);   
+				    if(svUILevel !="2" )then
+						/// Installer will take care and moves maintenance mode
+			 		else
+					 	/// Write to the log file in silent installation mode
+			 			WriteToLogFile("Error",@CID_UninstallSuccess);
+			 		 	WriteEventLog(hMSI,@CID_UninstallSuccess,EVENTLOG_ERROR_TYPE);
+			 		endif; 
+	 	  endif;                      
+	endif;
+	end;  
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Function Name:  UpgradeProcess()
+/// Purpose: this function is used to uninstall the already existing lower build while upgrading with
+///          higher build. 
+////////////////////////////////////////////////////////////////////////////////////////// 
+	
+function void UpgradeProcess()     
+NUMBER nvType,nvSize, nvReturnLineNo;
+string szKeyob, szNumName, szNumValue, szProgram,szCmdLine,szSubStr,szSubStr1, svUILevel;       
+STRING svIssFile,svAddLine,szWorkingDir,svCmdLine,svUninstallPath;
+HWND hMSI1,hMSI2,hMSI;
+begin
+      			//The guid for first version of all host builds is same 
+				/// Already build is present	      
+				/// Check if application is open or not. If open, display the relevant error message.
+				//	svUILevel = GetProperty(hMSI,"UILevel");   
+				/// Check if installation is in silent mode
+				nvSize = 300;
+				MsiGetProperty(hMSI,"UILevel",svUILevel,nvSize);  
+				
+				/// Check if application is open or not. If open, display the relevant error message and abort the installation
+				/// Display the relevant messagebox	      
+				if(svUILevel !="2" )then
+					SdShowMsg ( @CID_Uninstalling + svNewBuildVersion + @CID_Wait_Msg, TRUE); 
+				else
+				 	/// Log installed successfully message	 		 	 
+		 		endif;  
+		 		
+		 		//To store the files in Temp Folder as backup.
+		 		BackUpFiles();
+		 		
+		 		//Denying delete permissions to administrators group for required folder  
+		 		szProgram = szInstallLocation ^ "PrintJobs";   
+		 		StrRemoveLastSlash (szProgram);
+		 		szCmdLine = "icacls \"" + szProgram + "\" /deny administrators:(OI)(CI)D";
+	 			LaunchAppAndWait("",szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+				szProgram = szInstallLocation ^ "AppData";
+				StrRemoveLastSlash (szProgram);
+		 		szCmdLine = "icacls \"" + szProgram + "\" /deny administrators:(OI)(CI)D";
+	 			LaunchAppAndWait("",szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+                if!(Is(PATH_EXISTS,SETUPEXEDIR ^ "Documents")) then
+	                szProgram = szInstallLocation ^ "Documents";
+					StrRemoveLastSlash (szProgram);
+			 		szCmdLine = "icacls \"" + szProgram + "\" /deny administrators:(OI)(CI)D";
+		 			LaunchAppAndWait("",szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+	            endif;
+		 		    
+				//Get the generated ISS file path 
+			   	svIssFile = GenereteIssFile(svExistGuid);
+				//to get command line '" -runfromtemp "' + "-l0x0409"' because -l0x0409 is different from different langugaes  
+				RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );     
+				if(TRUE == SYSINFO.bIsWow64)then 
+						svUninstallPath = REG_AP_BUILD_64;
+					else
+						svUninstallPath = REG_AP_BUILD_32;
+				endif;
+		 
+		 			szKeyob = svUninstallPath + "\\" +svExistGuid  ;
+					szNumName  = "UninstallString";
+					//nType      = REGDB_STRING;   
+					
+					
+					//nSize      = -1  ;
+				RegDBGetKeyValueEx (szKeyob, szNumName, nvType, szNumValue, nvSize);
+					if(TRUE == SYSINFO.bIsWow64)then
+							StrSub (szSubStr1, szNumValue, 126, 22);
+						else
+							StrSub (szSubStr1, szNumValue, 119, 22);
+					endif;
+				StrSub (szSubStr, svExistGuid, 14, 38);
+				szWorkingDir = ProgramFilesFolder ^ "InstallShield Installation Information" ^ szSubStr ; 
+				szProgram = szWorkingDir ^ "setup.exe";
+				szCmdLine =" /s" + ' /f1"' + svIssFile + '" -runfromtemp ' +" "+ szSubStr1;  						
+					if (Is(PATH_EXISTS,szWorkingDir)) then
+						 LaunchAppAndWait(szProgram,szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT);        
+							//WaitForApplication( LAAW_PROCESS_INFORMATION , LAAW_PROCESS_INFORMATION, 300000, LAAW_OPTION_WAIT  );
+							//LaunchApplication( svProgram,svCmdLine, "", SW_HIDE, 300000, LAAW_OPTION_WAIT ); 
+			              WaitForApplication( LAAW_PROCESS_INFORMATION.hProcess, 0, INFINITE, LAAW_OPTION_WAIT_INCL_CHILD | LAAW_OPTION_WAIT );
+			
+			
+							//Sleep(600000);
+					endif;
+				if ( Is(FILE_EXISTS, WINSYSDIR^"AccountingPlusUninst.iss") ) then
+						SetFileInfo ( WINSYSDIR^"AccountingPlusUninst.iss", FILE_ATTRIBUTE, FILE_ATTR_NORMAL | FILE_ATTR_ARCHIVED , "" );
+						DeleteFile ( WINSYSDIR^"AccountingPlusUninst.iss" ); 
+				endif;	 
+                
+				/// New build is greater than the old build. So install the new build by un-installing the old build.
+				/// Uninstall the old build by getting the "UninstallString" value from registry
+				//RegDBGetKeyValueEx ( svProductGUID, "UninstallString", nvType, svUninstallString, nvSize );  
+				/// Launch the UninstallString 
+				//LaunchAppAndWait("",svUninstallString + " /qn",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT);  
+				/// Do not show the message
+				SdShowMsg ( @CID_Uninstalling + svNewBuildVersion + @CID_Wait_Msg, FALSE);
+end; 
+	 
+	 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Function Name:  GetProductCode()
+/// Purpose: This function is used to get the currently installed product GUID 
+function string GetProductCode(svString)
+	LIST listSubKeys ,listNames,lstTemp; 
+	STRING szString,szAP_GUID,szKeyob,szNumName,svUninstallPath,szNumValue;  
+	NUMBER nReturn,nReturn1,nType,nSize,nvType,nvSize;
+begin
+	//REGDB_OPTIONS = REGDB_OPTIONS | REGDB_OPTION_WOW64_64KEY;  
+	REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY    ;
+
+
+	/// Create lists for Registry keys and names  
+	 listSubKeys  = ListCreate(STRINGLIST);
+	 listNames    = ListCreate(STRINGLIST);      
+	 
+	// Check user machine whether any AccountingPlus product is installed	 
+	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE );     
+	if(TRUE == SYSINFO.bIsWow64)then 
+			svUninstallPath = REG_AP_BUILD_64;
+		else
+			svUninstallPath = REG_AP_BUILD_32;
+	endif;
+	
+	//nCheck = RegDBKeyExist(svRegAccountingPlus);   
+	   
+     	nReturn = RegDBQueryKey(svUninstallPath , REGDB_KEYS, listSubKeys );    						
+		nReturn = ListGetFirstString ( listSubKeys, szString )   ;  
+		
+		while ( nReturn != END_OF_LIST ) 
+			nReturn1 = StrFind(szString ,"InstallShield_"); 
+			if (nReturn1 = 0 ) then
+				lstTemp = ListCreate(STRINGLIST); 			
+				//szKeyob = svUninstallPath + szString  ;
+				szKeyob = svUninstallPath + "\\" +szString  ;
+				szNumName  = "DisplayName";
+				nType      = REGDB_STRING;
+				nSize      = -1  ;        
+				
+				RegDBGetKeyValueEx (szKeyob, szNumName, nvType, szNumValue, nvSize);
+				
+				
+				if ( szNumValue =  svString ) then
+					 szAP_GUID = szString;   
+			    endif;     	 
+			endif;
+		    nReturn  = ListGetNextString(listSubKeys,szString ); 
+		endwhile;
+		ListDestroy (listNames);
+		ListDestroy (listSubKeys );   
+		
+		/// Return AccountingPlus product GUID
+		return szAP_GUID;
+		//REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY; 
+end; 	         
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+/// Function Name: WriteToLogFile
+/// Purpose: This function is used to write the error messages to the log file
+/////////////////////////////////////////////////////////////////////////////
+function void WriteToLogFile(svType,svInformation)
+    STRING svSourceDir,svSourceDirVal,svMachineName,svDLLfilePath,svDir,svLogFileName,svLogFilePath,svTemp;  
+    HWND hMSI;
+    NUMBER nvSize,nResult ,nFileHandle;
+begin             
+	
+	if Is(DIR_WRITEABLE,SRCDIR) then	
+			OpenFileMode (FILE_MODE_APPEND); 
+			 
+			/// Get the Dll path from the Source Directory  
+			nvSize = 256;
+			MsiGetProperty(hMSI,"ComputerName",svMachineName,nvSize);
+			svSourceDir = GetProperty(hMSI,"SourceDir");
+			svDir = svSourceDir ^ "Logs";
+			svLogFileName = svMachineName ;
+			svLogFilePath = svDir ^ svLogFileName;   
+			
+			UseDLL(svDLLfilePath);     
+			
+			
+			if(Is(FILE_EXISTS,svDir ^ svLogFileName ))  then
+			
+			else
+				/// File does not exist so create file
+				CreateFile (nFileHandle, svDir, svLogFileName);
+			endif;
+			
+			 if(Is(FILE_WRITEABLE,svDir ^ svLogFileName ))then
+				svInformation = svType + ":" + svInformation;	
+				 OpenFile (nFileHandle, svDir, svLogFileName);	
+				 /// Open the file to read    
+				 WriteLine(nFileHandle ,svInformation);
+				 CloseFile(nFileHandle);    
+			 else
+			 	//File not writable	
+			 	
+		 	 endif;
+		endif; 	 
+				 
+end; 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Function Name: WriteEventLog() 
+/// Purpose: This function is used to write the error/warning/information messages to the Event Viewer
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function WriteEventLog(hMSI,szMessage,nvMessageType)
+	NUMBER nResult,nvSize;
+	HWND hEventLog;
+	POINTER pMessage;
+	BOOL bResult; 
+begin
+   //OutputDebug (hMSI,"INFORMATION" ,szMessage + "Function Called = WriteEventLog" );
+
+	pMessage = &szMessage;
+	nResult = UseDLL ( WINSYSDIR ^ "advapi32.dll" );
+	hEventLog = RegisterEventSourceA("", "MsiInstaller");
+	//bResult = ReportEventA(hEventLog, 
+	//EVENTLOG_INFORMATION_TYPE, 0, INSTR_CONFIG_CHANGED, NULL, 1, 0, pMessage, NULL);
+	bResult = ReportEventA(hEventLog,
+	nvMessageType, 0, 11708, NULL, 1, 0, &pMessage, NULL); 
+	bResult = DeregisterEventSource(hEventLog);
+	UnUseDLL ( "advapi32.dll" );
+end;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Function Name: CreateRegistryEntries
+/// Purpose: This function is used to create registry entries and set values for it. 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function void CreateRegistryEntries(hMSI)
+	STRING svRegKey,svRegName,svRegkeyValue,svSrcDir,svNewBuildVersion,svBuildVersion;
+	NUMBER nType,nSize,nCheck; 
+	
+begin                                                                                                             
+	
+	/// Set default root for registry key
+	
+	// Write the Build number to the registry key
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE); 
+	
+	/// Write the build number to the registry  
+	
+	///Read the build number from VersionInfo.txt file
+	MsiGetProperty(hMSI,"SourceDir",svSrcDir,nSize);
+	OpenFileMode (FILE_MODE_NORMAL); 
+    OpenFile (hMSI, svSrcDir,  "VersionInfo.txt");  
+    
+    /// Read the version number 
+    GetLine ( hMSI, svNewBuildVersion ); 	
+                                             
+    if(TRUE == SYSINFO.bIsWow64)then 
+		svBuildVersion  = AP_REGKEY_64BIT;
+	else
+		svBuildVersion = AP_REGKEY_32BIT;
+	endif;
+	                                      
+	/// Write the build number to the registry 
+	nType = REGDB_STRING;        
+	nSize = -1;
+	RegDBSetKeyValueEx ( svBuildVersion, "Version", nType, svNewBuildVersion, nSize );
+	RegDBSetKeyValueEx ( svBuildVersion, "InstallLocation", nType, INSTALLDIR, nSize );     
+	 
+end;   
+
+
+// To Generate a Response file to silently Uninstall the Application
+function string GenereteIssFile(svCopyGuid)
+string szSubStr,szLine,szIssFile;
+number nvFileHandle;
+begin
+     						    
+						StrSub (szSubStr, svCopyGuid, 14, 38);
+						OpenFileMode (FILE_MODE_NORMAL);  
+						CreateFile (nvFileHandle, WINSYSDIR, "AccountingPlusUninst.iss"); 								 
+						// Set the message to write to the file for silent uninstallation.
+						szLine ="["+szSubStr+"-DlgOrder]" ; 						       		
+						writelinefile(szLine,nvFileHandle);
+						szLine="Dlg0="+szSubStr+"-MessageBox-0"; 
+						writelinefile(szLine,nvFileHandle);					         	
+						szLine = "Count=2"; 
+						writelinefile(szLine,nvFileHandle);
+						szLine ="Dlg1="+szSubStr+"-SdFinish-0";
+						writelinefile(szLine,nvFileHandle);  
+						szLine="["+szSubStr	+"-MessageBox-0]"  ;  
+						writelinefile(szLine,nvFileHandle); 								          							          
+						szLine="Result=6" ;
+						writelinefile(szLine,nvFileHandle); 						       		
+						szLine ="["+szSubStr+"-SdFinish-0]" ;
+						writelinefile(szLine,nvFileHandle); 						            
+						szLine ="Result=1"; 
+						writelinefile(szLine,nvFileHandle);
+						szLine ="bOpt1=0"; 
+						writelinefile(szLine,nvFileHandle);
+						szLine ="bOpt2=0" ;  
+						writelinefile(szLine,nvFileHandle); 
+						CloseFile (nvFileHandle);
+						szIssFile=WINSYSDIR+"AccountingPlusUninst.iss";
+						return szIssFile; 
+						          
+
+end;
+
+
+function writelinefile(szline,nvFileHandle) 
+	//NUMBER nvFileHandle;
+	begin
+	logMessage("INFORMATION", "Function At:writelinefile Calling Function: Status:Started");		         
+	 WriteLine(nvFileHandle, szline);
+	logMessage("INFORMATION", "Function At:writelinefile Calling Function: Status:Ended");		         
+end;
+	
+	
+function void ConfigStringReplacement()
+string svFindString, SvWebConfigPath, svReplaceString, scValue;
+begin   
+
+// Replacing the web.config String
+	
+	// Replacing the ADMIN web.config string
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN  ^  "web.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	svFindString = '<add name="AccountingPlusDB"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN ^ "web.config" ;
+	svReplaceString = '' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+
+	svFindString = '<add name="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN ^ "web.config" ;
+	svReplaceString = '<add name="DBConnection" connectionString="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" providerName="System.Data.SqlClient"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );    
+
+	svFindString = '<add key="PrintJobsLocation"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN  ^  "web.config" ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  
+	
+	svFindString = '<add key="CustomAppData"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN  ^  "web.config" ;
+	svReplaceString = '		<add key="CustomAppData" value="' + INSTALLDIR ^ @CID_ADMIN ^ "CustomAppData" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   
+	
+	svFindString = '<add key="EAMThemesFolder"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN  ^  "web.config" ;
+	svReplaceString = '		<add key="EAMThemesFolder" value="' + INSTALLDIR ^ @CID_EAM_APP  + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	svFindString = '<add key="ACMThemesFolder"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN  ^  "web.config" ;
+	svReplaceString = '		<add key="ACMThemesFolder" value="' + INSTALLDIR ^ @CID_ACM_APP + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );	
+    
+    // Replacing the EAM web.config string
+    svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_EAM_APP ^  "web.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  
+	
+	svFindString = '<add key="PrintJobsLocation"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_EAM_APP ^  "web.config" ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	svFindString = '<add key="DeviceSessionDataFolder"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_EAM_APP ^  "web.config" ;
+	svReplaceString = '		<add key="DeviceSessionDataFolder" value="' + INSTALLDIR ^ @CID_EAM_APP ^ @CID_EAM_DSD + '"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  
+	
+	svFindString = '<add key="CustomAppData"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_EAM_APP  ^  "web.config" ;
+	svReplaceString = '		<add key="CustomAppData" value="' + INSTALLDIR ^ @CID_ADMIN ^ "CustomAppData" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  
+ 	
+ 	// Replacing the ACM web.config string
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ACM_APP ^  "web.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  
+
+	svFindString = '<add key="PrintJobsLocation"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ACM_APP ^  "web.config" ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 	  
+	
+	svFindString = '<add key="CustomAppData"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ACM_APP  ^  "web.config" ;
+	svReplaceString = '		<add key="CustomAppData" value="' + INSTALLDIR ^ @CID_ADMIN ^ "CustomAppData" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  	
+
+	// Replacing the Application Localizer exe.config string
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "Application Localizer" ^  "AppLocalizer.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+ 	
+    // Replacing the AccountingPlusPrimaryJobListner.exe.config string
+	svFindString = '<add key="StreamDestinationPath"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusPrimaryJobListner.exe.config" ;
+	svReplaceString = '		<add key="StreamDestinationPath" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusPrimaryJobListner.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	
+	// Replacing the AccountingPlusSecondaryJobListner.exe.config string
+	svFindString = '<add key="StreamDestinationPath"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusSecondaryJobListner.exe.config" ;
+	svReplaceString = '		<add key="StreamDestinationPath" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusSecondaryJobListner.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	// Replacing the AccountingPlusTertiaryJobListner.exe.config string
+	svFindString = '<add key="StreamDestinationPath"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusTertiaryJobListner.exe.config" ;
+	svReplaceString = '		<add key="StreamDestinationPath" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusTertiaryJobListner.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	// Replacing the AccountingPlusPrimaryJobReleaser.exe.config string
+	svFindString = '<add key="PrintJobsLocation"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusPrimaryJobReleaser.exe.config" ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusPrimaryJobReleaser.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );       
+	
+	// Replacing the AccountingPlusSecondaryJobReleaser.exe.config string
+	svFindString = '<add key="PrintJobsLocation"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusSecondaryJobReleaser.exe.config" ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusSecondaryJobReleaser.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	// Replacing the AccountingPlusTertiaryJobReleaser.exe.config string
+	svFindString = '<add key="PrintJobsLocation"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusTertiaryJobReleaser.exe.config" ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusTertiaryJobReleaser.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	/* 
+	// Replacing the AccountingPlusFleetMonitor.exe.config string
+	svFindString = '<add key="AccountingPlusFleetMonitor"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusFleetMonitor.exe.config" ;
+	svReplaceString = '		<add key="AccountingPlusFleetMonitor" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusFleetMonitor.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );  
+	*/  
+	
+	// Replacing the AccountingPlusConfigurator.exe.config string
+	svFindString = '<add key="AccountingPlusConfigurator"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusConfigurator.exe.config" ;
+	svReplaceString = '		<add key="AccountingPlusConfigurator" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusConfigurator.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );    
+	svFindString = '<add key="PrintJobsLocation"' ;
+	svReplaceString = '		<add key="PrintJobsLocation" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	// Replacing the ScreenCastClient.exe.config string
+	svFindString = '<add key="ScreenCaptureDestination"' ; 
+	scValue = INSTALLDIR ^ @CID_ADMIN ^ @CID_SC;
+	SvWebConfigPath = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_SCC ^ "ScreenCastClient.exe.config" ;
+	svReplaceString = '<add key="ScreenCaptureDestination" value="' + scValue + '"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	//Replacing the EventSimulator.exe.config string  	
+ 	svFindString = '<add key="EventDataPath"' ; 
+	scValue = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES ^ @CID_Tl_ES_ED;
+	SvWebConfigPath = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES ^ "EventSimulator.exe.config" ;
+	svReplaceString = '<add key="EventDataPath" value="' + scValue + '"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	svFindString = '<add key="JobRequestsPath"' ; 
+	scValue = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES  ^ @CID_Tl_ES_JR;
+	SvWebConfigPath = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES ^ "EventSimulator.exe.config" ;
+	svReplaceString = '<add key="JobRequestsPath" value="' + scValue + '"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	svFindString = '<add key="AccountantDBPath"' ; 
+	scValue = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES ^ @CID_Tl_ES_ES ^ "AccountantDB.xlsx";
+	SvWebConfigPath = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES ^ "EventSimulator.exe.config" ;
+	svReplaceString = '<add key="AccountantDBPath" value="' + scValue + '"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );   
+	
+	//Replacing the JobDispatcher.exe.config string  	
+ 	svFindString = '<add key="DBConnection"' ; 
+	//scValue = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_JD;
+	SvWebConfigPath = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_JD ^ "JobDispatcher.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	//Replacing the JobTransmitter.exe.config string  	
+ 	svFindString = '<add key="DBConnection"' ; 
+	//scValue = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_JT;
+	SvWebConfigPath = INSTALLDIR ^ @CID_Tl ^ @CID_Tl_JT ^ "JobTransmitter.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	
+	// Replacing the AccountingPlusEmailExtractor.exe.config string  	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusEmailExtractor.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );    
+	svFindString = '<add key="DestinationPath"' ;
+	svReplaceString = '		<add key="DestinationPath" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	svFindString = '<add key="EmailCountPath"' ;
+	svReplaceString = '		<add key="EmailCountPath" value="' + INSTALLDIR ^ "AppData" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+
+end;	           
+
+function void UpgradeconfigFile()
+string svFindString, SvWebConfigPath, svReplaceString, scValue;
+begin
+    // updating the AccountingPlusConfigurator.exe.config string
+	svFindString = '<add key="ServiceWatchTime"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusConfigurator.exe.config" ;
+	svReplaceString = '<add key="ServiceWatchTime" value="180000"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	svFindString = '<add key="Key1"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusConfigurator.exe.config" ;
+	svReplaceString = '<add key="Key1" value="3600000"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	svFindString = '<add key="Key2"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusConfigurator.exe.config" ;
+	svReplaceString = '<add key="Key2" value="900000"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );    
+	
+	svFindString = '<add key="Key3"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusConfigurator.exe.config" ;
+	svReplaceString = '<add key="Key3" value="3600000"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+	
+	// Replacing the AccountingPlusEmailExtractor.exe.config string  	
+	svFindString = '<add key="DBConnection"' ;
+	SvWebConfigPath = INSTALLDIR ^ "AccountingPlusEmailExtractor.exe.config" ;
+	svReplaceString = '<add key="DBConnection" value="server=' + szServer +'; Initial Catalog=AccountingPlusDB;user Id=AccountingPlusAdmin; Password=AccountingPlusAdmin;" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );    
+	svFindString = '<add key="DestinationPath"' ;
+	svReplaceString = '		<add key="DestinationPath" value="' + INSTALLDIR ^ "PrintJobs" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	svFindString = '<add key="EmailCountPath"' ;
+	svReplaceString = '		<add key="EmailCountPath" value="' + INSTALLDIR ^ "AppData" + '" />' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString ); 
+	
+	// Replacing the ADMIN web.config string
+	svFindString = '<add key="RegistrationUrl"' ;
+	SvWebConfigPath = INSTALLDIR ^ @CID_ADMIN  ^  "web.config" ;
+	svReplaceString = '<add key="RegistrationUrl" value="https://www.sactivation.com/webservices/productactivation.asmx"/>' ;
+	FindAndReplace( SvWebConfigPath ,svFindString ,svReplaceString );
+end;
+	
+
+function void InstallServices()
+string  svProgram, svComLine; 
+begin    
+	         
+	//Installing the services using InstallUtil.exe  	
+	svProgram = FRAMEWORK40PATH ^ "InstallUtil.exe"; 
+	
+	CreateDir(INSTALLDIR ^ "PrintJobs");                
+	
+	//Installing the AccountingPlusPrimaryJobReleaser service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusPrimaryJobReleaser.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+	
+	//Installing the AccountingPlusSecondaryJobReleaser service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusSecondaryJobReleaser.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );  
+	
+	//Installing the AccountingPlusTertiaryJobReleaser service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusTertiaryJobReleaser.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+	
+	//Installing the AccountingPlusPrimaryJobListner service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusPrimaryJobListner.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+	
+	//Installing the AccountingPlusSecondaryJobListner service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusSecondaryJobListner.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );  
+	
+	//Installing the AccountingPlusTertiaryJobListner service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusTertiaryJobListner.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+	/*  
+	//Installing the AccountingPlusFleetMonitor service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusFleetMonitor.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   */
+	
+	//Installing the AccountingPlusConfigurator service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusConfigurator.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+	
+	 
+	//Installing the AccountingPlusEmailExtractor service
+	svComLine =  '"' + INSTALLDIR ^  "AccountingPlusEmailExtractor.exe" + '"';  
+	LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+    
+end;	
+
+
+function void StartServices()
+string szServiceName;
+number nReturn;
+begin
+    //To Start and start the Services  
+    
+    //To Start the AccountingPlusPrimaryJobReleaser Service           
+	szServiceName =  "AccountingPlusPrimaryJobReleaser" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusPrimaryJobReleaser",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    			Delay(5);
+    	endif; 
+	endif;	  
+	
+	//To Start the AccountingPlusSecondaryJobReleaser Service           
+	szServiceName =  "AccountingPlusSecondaryJobReleaser" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusSecondaryJobReleaser",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    			Delay(5);
+    	endif; 
+	endif;  	
+	
+	//To Start the AccountingPlusTertiaryJobReleaser Service           
+	szServiceName =  "AccountingPlusTertiaryJobReleaser" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusTertiaryJobReleaser",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    			Delay(5);
+    	endif; 
+	endif;   		       	 
+	
+	//To Start the AccountingPlusPrimaryJobListner Service           
+	szServiceName =  "AccountingPlusPrimaryJobListner" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusPrimaryJobListner",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    			Delay(5);
+    	endif; 
+	endif; 	  
+	
+	//To Start  the AccountingPlusSecondaryJobListner Service           
+	szServiceName =  "AccountingPlusSecondaryJobListner" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusSecondaryJobListner",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    			Delay(5);
+    	endif; 
+	endif;  
+	
+	//To Start the AccountingPlusTertiaryJobListner Service           
+	szServiceName =  "AccountingPlusTertiaryJobListner" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusTertiaryJobListner",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    			Delay(5);
+    	endif; 
+	endif;  
+	
+	//To Start the AccountingPlusConfigurator Service           
+	szServiceName =  "AccountingPlusConfigurator" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusConfigurator",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+    			Delay(5);
+    	endif; 
+	endif;   
+	
+	/*  	
+	
+	//To Start and restart the AccountingPlusFleetMonitor Service           
+	szServiceName =  "AccountingPlusFleetMonitor" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusFleetMonitor",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+    			Delay(5);
+    	endif; 
+	endif;  
+	*/ 	
+	
+	//To Start the AccountingPlusEmailExtractor Service           
+	szServiceName =  "AccountingPlusEmailExtractor" ;
+	if (ServiceExistsService ( szServiceName )) then
+		nReturn = ServiceStartService( szServiceName,"" ) ;  
+		Delay(5);
+		if (nReturn < 0) then 
+  				LaunchAppAndWait("","net start AccountingPlusEmailExtractor",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+    			Delay(5);
+    	endif;
+    endif;
+end;
+
+function void StopServices()
+string  szServiceName;
+number  nReturn, nvServiceState;
+begin
+     //To Stop the Services  
+    
+    //To Stop the AccountingPlusPrimaryJobReleaser Service           
+	szServiceName =  "AccountingPlusPrimaryJobReleaser" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		      nReturn = ServiceStopService( szServiceName ) ; 
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusPrimaryJobReleaser",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;   	  
+	
+	//To Stop the AccountingPlusSecondaryJobReleaser Service           
+	szServiceName =  "AccountingPlusSecondaryJobReleaser" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		      nReturn = ServiceStopService( szServiceName ) ; 
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusSecondaryJobReleaser",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;
+	
+	//To Stop the AccountingPlusTertiaryJobReleaser Service           
+	szServiceName =  "AccountingPlusTertiaryJobReleaser" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		      nReturn = ServiceStopService( szServiceName ) ; 
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusTertiaryJobReleaser",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;     		       	 
+	
+	//To Stop the AccountingPlusPrimaryJobListner Service           
+	szServiceName =  "AccountingPlusPrimaryJobListner" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		      nReturn = ServiceStopService( szServiceName ) ; 
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusPrimaryJobListner",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;  	  
+	
+	//To Stop the AccountingPlusSecondaryJobListner Service           
+	szServiceName =  "AccountingPlusSecondaryJobListner" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		      nReturn = ServiceStopService( szServiceName ) ; 
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusSecondaryJobListner",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;
+	
+	//To Stop the AccountingPlusTertiaryJobListner Service           
+	szServiceName =  "AccountingPlusTertiaryJobListner" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		      nReturn = ServiceStopService( szServiceName ) ; 
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusTertiaryJobListner",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;   
+	
+	//To Stop the AccountingPlusConfigurator Service           
+	szServiceName =  "AccountingPlusConfigurator" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		       nReturn = ServiceStopService( szServiceName ) ;  
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusConfigurator",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;
+	
+	/*  	
+	
+	//To stop the AccountingPlusFleetMonitor Service           
+	szServiceName =  "AccountingPlusFleetMonitor" ;   		
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		       nReturn = ServiceStopService( szServiceName ) ;  
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusFleetMonitor",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;	
+	*/ 	
+	
+	//To Stop the AccountingPlusEmailExtractor Service           
+	szServiceName =  "AccountingPlusEmailExtractor" ;
+	if (ServiceExistsService ( szServiceName )) then
+		ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		if (nvServiceState != SERVICE_STOPPED ) then
+		       nReturn = ServiceStopService( szServiceName ) ;  
+				Delay(5);
+			if (nReturn < 0) then 
+    				LaunchAppAndWait("","net stop AccountingPlusEmailExtractor",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+    				Delay(5);
+    		endif;   
+		endif;
+	endif;
+end;     
+
+function void UninstallServices()
+string  svProgram,  svComLine, szServiceName ;
+number  nvServiceState;
+begin
+							
+    //Installing the services using InstallUtil.exe  	
+	svProgram = FRAMEWORK40PATH ^ "InstallUtil.exe"; 
+    
+    szServiceName =  "AccountingPlusPrimaryJobReleaser" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;
+		
+			//svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusPrimaryJobReleaser.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			
+			if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusPrimaryJobReleaser';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif;  
+		   
+		    szServiceName =  "AccountingPlusSecondaryJobReleaser" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;
+		
+			//svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusSecondaryJobReleaser.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			
+			if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusSecondaryJobReleaser';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif;
+		    
+		    szServiceName =  "AccountingPlusTertiaryJobReleaser" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;
+		
+			//svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusTertiaryJobReleaser.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			
+			if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusTertiaryJobReleaser';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif;            	
+			
+			szServiceName =  "AccountingPlusPrimaryJobListner" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;
+		
+			//svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusPrimaryJobListner.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			
+			if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusPrimaryJobListner';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif;  
+		   
+		    szServiceName =  "AccountingPlusSecondaryJobListner" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;
+		
+			//svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusSecondaryJobListner.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			
+			if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusSecondaryJobListner';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif;
+		    
+		    szServiceName =  "AccountingPlusTertiaryJobListner" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;
+		
+			//svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusTertiaryJobListner.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			
+			if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusTertiaryJobListner';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif;    
+		
+		    /*
+		    szServiceName =  "AccountingPlusFleetMonitor" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;    
+		    
+		    //svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusFleetMonitor.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+			*/
+			
+			szServiceName =  "AccountingPlusConfigurator" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;  
+		    
+		    //svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusConfigurator.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+		     
+		    if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusConfigurator';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif; 
+		    
+		    
+		    szServiceName =  "AccountingPlusEmailExtractor" ;
+			if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+		        if (nvServiceState != SERVICE_STOPPED ) then
+		        	ServiceStopService( szServiceName ) ;  
+		        endif;
+		    endif;  
+		    
+		    //svProgram = FOLDER_DOTNET_20 ^ "InstallUtil.exe" ;
+			svComLine =  '/u "' + INSTALLDIR ^ "AccountingPlusEmailExtractor.exe" + '"';  
+			LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );   
+		     
+		    if (ServiceExistsService ( szServiceName )) then
+				svComLine =  'sc delete AccountingPlusEmailExtractor';  
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+		    endif; 
+		    
+end;      
+
+
+function void SetFilePermission()
+string svUser, svPath, svVersionNT, svVersionNT64;
+number  nvSize;
+begin
+      nvSize = 256;
+	MsiGetProperty(ISMSI_HANDLE,"VersionNT",svVersionNT, nvSize);		
+  	nvSize = 256;
+	MsiGetProperty(ISMSI_HANDLE,"VersionNT64",svVersionNT64, nvSize);		
+
+	if ( SYSINFO.WINNT.bWinServer2003 ||  svVersionNT >= "600" ) then
+		//S-1-5-20 is SID for Network Service User
+		svUser   = GetUIDFromSID("S-1-5-20"); 
+		svPath   =  INSTALLDIR^ @CID_ADMIN ^ "PR.lic";
+		SetNTFSAPermission(svPath,svUser);    
+		SetFileInfo(svPath,FILE_ATTRIBUTE,FILE_ATTR_HIDDEN | FILE_ATTR_SYSTEM, "");  
+	elseif (  svVersionNT64 >= "600" ) then
+		//S-1-5-20 is SID for Network Service User
+		svUser   = GetUIDFromSID("S-1-5-20"); 
+		svPath   =  INSTALLDIR^ @CID_ADMIN ^ "PR.lic";
+		SetNTFSAPermission(svPath,svUser);    
+		SetFileInfo(svPath,FILE_ATTRIBUTE,FILE_ATTR_HIDDEN | FILE_ATTR_SYSTEM, "");  
+
+	elseif(SYSINFO.WINNT.bWin2000 || SYSINFO.WINNT.bWinXP) then
+		svUser   ="ASPNET";  
+		svPath   =  INSTALLDIR^ @CID_ADMIN  ^ "PR.lic";
+		SetNTFSAPermission(svPath,svUser);  
+		SetFileInfo(svPath,FILE_ATTRIBUTE,FILE_ATTR_HIDDEN | FILE_ATTR_SYSTEM, "");  
+	endif;  
+	if ( SYSINFO.WINNT.bWinServer2003 ||  svVersionNT >= "600" ) then
+		//S-1-5-20 is SID for Network Service User
+		svUser   = GetUIDFromSID("S-1-5-20"); 
+		svPath   =  INSTALLDIR^ "PR.lic";
+		SetNTFSAPermission(svPath,svUser);    
+		SetFileInfo(svPath,FILE_ATTRIBUTE,FILE_ATTR_HIDDEN | FILE_ATTR_SYSTEM, "");  
+	elseif (  svVersionNT64 >= "600" ) then
+		//S-1-5-20 is SID for Network Service User
+		svUser   = GetUIDFromSID("S-1-5-20"); 
+		svPath   =  INSTALLDIR^ "PR.lic";
+		SetNTFSAPermission(svPath,svUser);    
+		SetFileInfo(svPath,FILE_ATTRIBUTE,FILE_ATTR_HIDDEN | FILE_ATTR_SYSTEM, "");  
+
+	elseif(SYSINFO.WINNT.bWin2000 || SYSINFO.WINNT.bWinXP) then
+		svUser   ="ASPNET";  
+		svPath   =  INSTALLDIR^ "PR.lic";
+		SetNTFSAPermission(svPath,svUser);  
+		SetFileInfo(svPath,FILE_ATTRIBUTE,FILE_ATTR_HIDDEN | FILE_ATTR_SYSTEM, "");  
+	endif;
+end;	
+
+
+// To dump the files as backup in temp folder while uninstalling lower version.
+function void BackUpFiles()
+string szSrcDir, svTempPath;
+number nvSize;
+begin          
+			 
+			
+			szSrcDir= szInstallLocation;
+			svTempPath = svSupPath; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then 
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;
+   
+    		szSrcDir= szInstallLocation ^ @CID_ADMIN  ^ "web.config";    		
+			svTempPath = svSupPath ^ @CID_ADMIN; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir,svTempPath,COMP_NORMAL);
+			endif;      
+			
+			szSrcDir= szInstallLocation ^ @CID_EAM_APP  ^ "web.config";
+			svTempPath = svSupPath ^ @CID_EAM_APP; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir,svTempPath,COMP_NORMAL);
+			endif;  
+			
+			szSrcDir= szInstallLocation ^ @CID_ACM_APP  ^ "web.config";
+			svTempPath = svSupPath ^ @CID_ACM_APP; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir,svTempPath,COMP_NORMAL);
+			endif;    
+			
+			szSrcDir= szInstallLocation ^ @CID_ADMIN  ^ "App_UserData";    		
+			svTempPath = svSupPath ^ @CID_ADMIN ^ "App_UserData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir  ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;      
+			
+			szSrcDir= szInstallLocation ^ @CID_EAM_APP ^ "App_UserData";
+			svTempPath = svSupPath ^ @CID_EAM_APP ^ "App_UserData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir  ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;  
+			
+			szSrcDir= szInstallLocation ^ @CID_ACM_APP  ^ "App_UserData";
+			svTempPath = svSupPath ^ @CID_ACM_APP ^ "App_UserData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir  ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif; 
+			
+			szSrcDir= szInstallLocation ^ @CID_ADMIN  ^ "App_Data";
+			svTempPath = svSupPath ^ @CID_ADMIN  ^ "App_Data"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir  ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;
+			/*
+			szSrcDir= szInstallLocation ^ "AppData";
+			svTempPath = svSupPath ^ "AppData";      			
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;    
+			
+			szSrcDir= szInstallLocation ^ @CID_ADMIN  ^ "App_Data"  ^ "PR.Lic";
+			svTempPath = svSupPath ^ @CID_ADMIN  ^ "App_Data"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir,svTempPath,COMP_NORMAL);
+			endif;                       
+			
+			szSrcDir= szInstallLocation ^ "PrintJobs" ^ "AD";
+			svTempPath = svSupPath ^ "PrintJobs" ^ "AD"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;   
+			
+			szSrcDir= szInstallLocation ^ "PrintJobs" ^ "DB";
+			svTempPath = svSupPath ^ "PrintJobs" ^ "DB"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;   */
+			
+			szSrcDir= szInstallLocation ^ @CID_ADMIN  ^ "CustomAppData";
+			svTempPath = svSupPath ^ @CID_ADMIN  ^ "CustomAppData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir  ^ "*.*",svTempPath,INCLUDE_SUBDIR);
+			endif;
+			
+			szSrcDir= szInstallLocation ^ @CID_Tl ^ @CID_Tl_SCC;
+			svTempPath = svSupPath ^ @CID_Tl ^ @CID_Tl_SCC; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;
+			
+			szSrcDir= szInstallLocation ^ @CID_Tl ^ @CID_Tl_ES;
+			svTempPath = svSupPath ^ @CID_Tl ^ @CID_Tl_ES; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;
+			
+			szSrcDir= szInstallLocation ^ @CID_Tl ^ @CID_Tl_JD;
+			svTempPath = svSupPath ^ @CID_Tl ^ @CID_Tl_JD; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;
+			
+			szSrcDir= szInstallLocation ^ @CID_Tl ^ @CID_Tl_JT;
+			svTempPath = svSupPath ^ @CID_Tl ^ @CID_Tl_JT; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;  
+			
+			szSrcDir= szInstallLocation ^ @CID_APP_LOC;
+			svTempPath = svSupPath ^ @CID_APP_LOC; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;     			
+			
+			
+			szSrcDir= szInstallLocation ^ "AccountingPlusEmailExtractor";
+			svTempPath = svSupPath ^ "AccountingPlusEmailExtractor"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 CreateDir(svTempPath);
+				 XCopyFile(szSrcDir ^ "*.config",svTempPath,COMP_NORMAL);
+			endif;    
+			
+end;     
+
+//To Copy the backup files which dumped in temp folder while uninstalling lower version
+function void CopyBackUpFiles()
+
+  string szSrcDir, svTargetPath;
+number nvSize;
+begin         			  
+			
+			svTargetPath= INSTALLDIR;
+			szSrcDir = svSupPath; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then 
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;
+   
+    		svTargetPath= INSTALLDIR ^ @CID_ADMIN;    		
+			szSrcDir = svSupPath ^ @CID_ADMIN ^ "web.config"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir,svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;      
+			
+			svTargetPath= INSTALLDIR ^ @CID_EAM_APP;
+			szSrcDir = svSupPath ^ @CID_EAM_APP ^ "web.config"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir,svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;  
+			
+			svTargetPath= INSTALLDIR ^ @CID_ACM_APP;
+			szSrcDir = svSupPath ^ @CID_ACM_APP ^ "web.config"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir,svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;    
+			
+			svTargetPath= INSTALLDIR ^ @CID_ADMIN ^ "App_UserData";    		
+			szSrcDir = svSupPath ^ @CID_ADMIN ^ "App_UserData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;      
+			
+			svTargetPath= INSTALLDIR ^ @CID_EAM_APP ^ "App_UserData";
+			szSrcDir = svSupPath ^ @CID_EAM_APP ^ "App_UserData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;  
+			
+			svTargetPath= INSTALLDIR ^ @CID_ACM_APP ^ "App_UserData";
+			szSrcDir = svSupPath ^ @CID_ACM_APP ^ "App_UserData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;
+			
+			svTargetPath= INSTALLDIR ^ @CID_ADMIN ^ "App_Data";    		
+			szSrcDir = svSupPath ^ @CID_ADMIN ^ "App_Data"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;  
+			/*
+			svTargetPath= INSTALLDIR ^ "AppData";    		
+			szSrcDir = svSupPath ^ "AppData"; 
+			if(Is(PATH_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.Lic",svTargetPath,COMP_NORMAL);
+				 	XCopyFile(szSrcDir ^ "*.dat",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif; 			 
+			
+			svTargetPath= INSTALLDIR ^ @CID_ADMIN ^ "App_Data";
+			szSrcDir = svSupPath ^ @CID_ADMIN ^ "App_Data" ^ "PR.dat"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then  
+			 	 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir,svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;    
+			
+			svTargetPath= INSTALLDIR ^ @CID_ADMIN ^ "App_Data";
+			szSrcDir = svSupPath ^ @CID_ADMIN ^ "App_Data" ^ "PR.Lic"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(FILE_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir,svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;                        
+			
+			svTargetPath= INSTALLDIR ^ "PrintJobs" ^ "AD";
+			szSrcDir = svSupPath ^ "PrintJobs" ^ "AD"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;   
+			
+			svTargetPath= INSTALLDIR ^ "PrintJobs" ^ "DB";
+			szSrcDir = svSupPath ^ "PrintJobs" ^ "DB"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;   */
+			
+			svTargetPath= INSTALLDIR ^ @CID_ADMIN ^ "CustomAppData";
+			szSrcDir = svSupPath ^ @CID_ADMIN ^ "CustomAppData"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.*",svTargetPath,INCLUDE_SUBDIR);
+				 endif;
+			endif;
+			
+			svTargetPath= INSTALLDIR ^ @CID_Tl ^ @CID_Tl_SCC;
+			szSrcDir = svSupPath ^ @CID_Tl ^ @CID_Tl_SCC; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;
+			
+			svTargetPath= INSTALLDIR ^ @CID_Tl ^ @CID_Tl_ES;
+			szSrcDir = svSupPath ^ @CID_Tl ^ @CID_Tl_ES; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;
+			
+			svTargetPath= INSTALLDIR ^ @CID_Tl ^ @CID_Tl_JD;
+			szSrcDir = svSupPath ^ @CID_Tl ^ @CID_Tl_JD; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;
+			
+			svTargetPath= INSTALLDIR ^ @CID_Tl ^ @CID_Tl_JT;
+			szSrcDir = svSupPath ^ @CID_Tl ^ @CID_Tl_JT; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif;   
+			
+			svTargetPath= INSTALLDIR ^ @CID_APP_LOC;
+			szSrcDir = svSupPath ^ @CID_APP_LOC; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then		
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif; 		
+			
+			
+			svTargetPath= INSTALLDIR ^ "AccountingPlusEmailExtractor";
+			szSrcDir = svSupPath ^ "AccountingPlusEmailExtractor"; 
+			// Check if web.config file is exist in szSrcDir Folder
+			if(Is(PATH_EXISTS,szSrcDir))then		
+				 if(Is(PATH_EXISTS,svTargetPath))then
+				 	XCopyFile(szSrcDir ^ "*.config",svTargetPath,COMP_NORMAL);
+				 endif;
+			endif; 		
+			
+end;	  
+ 
+ 
+ function void GetDBSettingsValues()
+ string svIniPath;
+ begin
+     
+      svIniPath = szInstallLocation ^ @CID_ADMIN ^ "App_UserData" ^ "DataStore" ^ "DBSettings.ini" ; 
+	 if (Is(FILE_EXISTS,svIniPath) ) then      	 			
+	    			 
+               GetProfString ( svIniPath, "SQLServer", "Server", szServer );  
+               GetProfString ( svIniPath, "SQLServer", "Initial Catalog", szConnection );
+               GetProfString ( svIniPath, "SQLServer", "user Id", szUser );
+               GetProfString ( svIniPath, "SQLServer", "Password", szPassword );
+      endif;
+ end;  
+ 
+ /*
+ function void SetDBSettingsValues()
+ string  svIniPath;
+ begin
+     
+      svIniPath = INSTALLDIR ^ @CID_ADMIN ^ "App_UserData" ^ "DataStore" ^ "DBSettings.ini"  ; 
+	 if (Is(FILE_EXISTS,svIniPath) ) then 
+	 			
+	    	   WriteProfString( svIniPath, "SQLServer", "Server", szServer );  
+               WriteProfString( svIniPath, "SQLServer", "Initial Catalog", szConnection );
+               WriteProfString( svIniPath, "SQLServer", "user Id", "AccountingPlusAdmin" );
+               WriteProfString( svIniPath, "SQLServer", "Password", "AccountingPlusAdmin" );	 
+              
+      endif;
+ end;*/       
+  
+  
+function void InstallAspnet_regiis()
+string  svProgram, svComLine, svVersionNT, svVersionNT64, svServicePack;
+begin
+       		if(CheckNetFrameWork40()) then
+					if Is(PATH_EXISTS, FRAMEWORK40PATH) then   
+							if !(IsASPNETVersion (".aspx","4.0.30319")) then
+									if (SYSINFO.bIsWow64)  then
+										svProgram = FRAMEWORK40PATH64 ^ "aspnet_regiis.exe" ;
+											if(Is(FILE_EXISTS,svProgram))then
+												svProgram = FRAMEWORK40PATH64 ^ "aspnet_regiis.exe" ;
+											else
+												svProgram = FRAMEWORK40PATH ^ "aspnet_regiis.exe" ; 
+				   							endif;
+									else
+									svProgram = FRAMEWORK40PATH ^ "aspnet_regiis.exe" ;
+									endif;
+								svComLine = "-iru -enable";  
+								LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );    
+								Sleep(1000);  
+								SetEnable32bitapponwin64();   
+								SetWebServiceExtension();
+							endif;
+					 endif; 
+			 endif;    
+			 
+			 if((svVersionNT = "501" && svServicePack >= "2" && svVersionNT64 = "")||(SYSINFO.WINNT.bWinServer2003)) then  			
+					if (SYSINFO.bIsWow64)  then
+							svProgram = FRAMEWORK40PATH64 ^ "aspnet_regiis.exe";
+								if(Is(FILE_EXISTS,svProgram))then
+										svProgram = FRAMEWORK40PATH64 ^ "aspnet_regiis.exe";
+								else
+										svProgram = FRAMEWORK40PATH ^ "aspnet_regiis.exe"; 
+					   			endif;
+					else
+							svProgram = FRAMEWORK40PATH ^ "aspnet_regiis.exe";
+					endif;
+					
+				    if (Is(FILE_EXISTS,svProgram ) ) then  
+							svComLine = '-norestart -s "W3SVC/1/root"';
+							LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+					endif;  
+            endif;
+end; 
+
+function void SetAppPoolSettings()  
+string svProgram, svComLine;
+begin
+       		svProgram = SystemFolder ^ "inetsrv" ^ "appcmd.exe" ;
+		    if (Is(FILE_EXISTS,svProgram ) ) then  
+				svComLine = 'set apppool /apppool.name:AccountingPlusAdminPool /managedRuntimeVersion:v4.0 /managedPipelineMode:Integrated';
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT ); 
+				svComLine = 'set apppool /apppool.name:AccountingPlusACMPool /managedRuntimeVersion:v4.0 /managedPipelineMode:Integrated';
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+				svComLine = 'set apppool /apppool.name:AccountingPlusEAMPool /managedRuntimeVersion:v4.0 /managedPipelineMode:Integrated';
+				LaunchAppAndWait(svProgram,svComLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );
+			endif; 
+end;
+
+function StrPiece (szPiece, szString, szDelim, nPiece)
+number	nThisPiece, nWhere;
+number	nLength;
+
+begin
+	szString = szString + szDelim;
+	nLength = StrLength (szDelim);
+	szPiece = "";
+	for nThisPiece = 1 to nPiece
+		nWhere = StrFind (szString, szDelim);
+		if nWhere < 0 then
+			return;
+		endif;
+		if nThisPiece = nPiece then
+			StrSub (szPiece, szString, 0, nWhere);
+		else
+			StrSub (szString, szString, nWhere + nLength, 999);
+		endif;
+	endfor;
+end; 
+
+///////////////////////////////////////////////////////////////////
+//   function: InstallNetFrameWork40() 
+//
+//Description: Checking for the .NetFrameWork4.0
+//
+///////////////////////////////////////////////////////////
+function void  InstallNetFrameWork40()
+STRING szProgram, szCmdLine;
+begin
+	if!(CheckNetFrameWork40()) then
+		szProgram = SETUPEXEDIR ^ "Prerequisites" ^ "dotNetFx40_Full_x86_x64.exe"; 
+		szCmdLine =" /q /norestart";
+		//szCmdLine =" /norestart /passive";
+		//To Uninstall Net framework 
+		//szCmdLine ="/uninstall /q /norestart";
+		if (Is(FILE_EXISTS,szProgram)) then
+			 SdShowMsg ( "Installing .Net 4.0, Please wait...", TRUE); 
+			 LaunchAppAndWait(szProgram,szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT);        
+			 WaitForApplication( LAAW_PROCESS_INFORMATION.hProcess, 0, INFINITE, LAAW_OPTION_WAIT_INCL_CHILD | LAAW_OPTION_WAIT );
+			 SdShowMsg ( "Installing .Net 4.0, Please wait...", FALSE); 
+		else
+			SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+			MessageBox( @CID_MAIN_ERR_MSG + "\n\n" + "	" + @CID_DOT_NET ,SEVERE);
+			abort;
+		endif;
+	endif;
+end;
+
+///////////////////////////////////////////////////////////////////
+//   function: CheckNetFrameWork45() 
+//
+//Description: Checking for the .NetFrameWork4.5
+//
+///////////////////////////////////////////////////////////
+function BOOL  CheckNetFrameWork45()
+STRING svPath,svValueName, svInstallValue, svVersionValue;
+NUMBER nResult,nvSize,nvType;
+begin
+	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE ); 
+	svPath="SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full";
+	if( RegDBKeyExist(svPath)) then
+		svValueName="Install"; 
+		nResult=RegDBGetKeyValueEx (svPath,svValueName,nvType,svInstallValue,nvSize);
+		svValueName="Version"; 
+		nResult=RegDBGetKeyValueEx (svPath,svValueName,nvType,svVersionValue,nvSize);
+		if( svInstallValue="1" && svVersionValue="4.5.50709")then
+			return TRUE;
+		endif;
+		return FALSE;
+	else
+	return FALSE;
+	endif;
+end; 
+
+///////////////////////////////////////////////////////////////////
+//   function: InstallNetFrameWork45() 
+//
+//Description: Checking for the .NetFrameWork4.5
+//
+///////////////////////////////////////////////////////////
+function void  InstallNetFrameWork45()
+STRING szProgram, szCmdLine;
+begin
+	if!(CheckNetFrameWork45()) then
+		szProgram = SETUPEXEDIR ^ "Prerequisites" ^ "dotNetFx45_Full_x86_x64.exe"; 
+		szCmdLine =" /q /norestart";
+		//To Uninstall Net framework 
+		//szCmdLine ="/uninstall /q /norestart";
+		if (Is(FILE_EXISTS,szProgram)) then
+			 SdShowMsg ( "Installing .Net 4.5, Please wait...", TRUE); 
+			 LaunchAppAndWait(szProgram,szCmdLine,LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT);        
+			 WaitForApplication( LAAW_PROCESS_INFORMATION.hProcess, 0, INFINITE, LAAW_OPTION_WAIT_INCL_CHILD | LAAW_OPTION_WAIT );
+			 SdShowMsg ( "Installing .Net 4.5, Please wait...", FALSE); 
+		else
+			SetDialogTitle(DLG_MSG_SEVERE,@CID_PRODUCT_NAME);
+			MessageBox( @CID_MAIN_ERR_MSG + "\n\n" + "	" + @CID_DOT_NET ,SEVERE);
+			abort;
+		endif;
+	endif;
+end;  
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Function:    IsInstanceExists
+//
+// Description: This function is used to find whether the OSANST instance is 
+//				existed or not. If existed then installer wont display the Host 
+//				information dialogbox other wise installer will display the
+//				Host information dialogbox
+//
+//////////////////////////////////////////////////////////////////////////////
+function BOOL IsInstanceExists()
+string szAppDBInstanceKeyInRegistry,svResult;
+number nSize,nType,nvResult;
+begin
+			REGDB_OPTIONS = REGDB_OPTIONS & ~REGDB_OPTION_WOW64_64KEY ;
+			RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+		    nSize=255;
+		    nType= REGDB_NUMBER;        
+		   	if(TRUE = SYSINFO.bIsWow64)then
+				   	szAppDBInstanceKeyInRegistry = DBINSTANCE_REGKEY_64;
+				else
+					szAppDBInstanceKeyInRegistry = DBINSTANCE_REGKEY_32;
+			endif;  
+			/// DB Instance key present under "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL"	
+		    nvResult = RegDBGetKeyValueEx(szAppDBInstanceKeyInRegistry,SQL_DB_INSTANCE, nType ,svResult,nSize);
+		    if(nvResult != 0)then   
+		    	return FALSE;
+		    else
+		    	return TRUE;
+			endif;
+end;
+
+//////////////////////////////////////////////////////////////////////////////
+/// Function Name : InstallSQLServer()
+/// Description :  This function is used to install SQL Server 2008R2 and creates
+///				   the database instance with following credentials
+///									Instance Name : MXAPSERVER
+///									User Name : sa
+///									Password : ISPADMIN@123
+///				   
+/// Arguments:	No arguments	
+/// Revision History : 
+/////////////////////////////////////////////////////////////////////////////
+
+function void InstallSQLServer()
+    STRING szSQLServerPath; /// Holds the path of SQL server (setup.exe)
+    STRING szSQLServerCmd,SzAuthorityName, szUserName;	/// Holds the command line parameters for installaing SQL server
+    STRING szSQLKey;
+    NUMBER nResult;
+begin   
+     /// Do not display "Installing SQL Server.." message if SQL Server is already present
+	  RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	  if(TRUE == SYSINFO.bIsWow64)then
+	     szSQLKey = ID_REG_PATH64_SQL2008R2;
+	  else 
+	  	 szSQLKey = ID_REG_PATH_SQL2008R2;
+	  endif;   	  
+	   	   
+	if !(IsInstanceExists()) then  
+		SdShowMsg(@CID_InstallSQL,TRUE);	
+		ChangeDirectory(INSTALLDIR);
+		szSQLServerPath = SETUPEXEDIR ^ "Prerequisites" ^ "SQLServer2008R2_x86_ENU.exe"; 		
+		//Install sql server 2012 express
+		szSQLServerCmd = 'Setup /Q /HIDECONSOLE /IACCEPTSQLSERVERLICENSETERMS /ACTION=Install /FEATURES=SQL /INSTANCENAME=MXAPSERVER /SECURITYMODE=SQL /SQLSVCACCOUNT="NT AUTHORITY\\SYSTEM" /SQLSYSADMINACCOUNTS="BUILTIN\\ADMINISTRATORS" /SAPWD=ISPADMIN@123';  
+		//.Net Framework 3.5 SP1 is prerequisite to install sql server 2008 R2, will install .Net 3.5 SP1 if not exists. 
+		//InstallNetFrameWork35SP1();
+		nResult = LaunchAppAndWait(szSQLServerPath,szSQLServerCmd,LAAW_OPTION_WAIT|LAAW_OPTION_HIDDEN);
+		WaitForApplication( LAAW_PROCESS_INFORMATION.hProcess, 0, INFINITE, LAAW_OPTION_WAIT_INCL_CHILD | LAAW_OPTION_WAIT );	
+	SdShowMsg("",FALSE);
+	endif;
+	if (nResult < ISERR_SUCCESS) then
+		MessageBox("Sql Instance failed to install.", SEVERE);
+		abort;	
+	endif;
+	
+end;
+
+//////////////////////////////////////////////////////////////////////////////
+/// Function Name : UninstallSQLServer()
+/// Description :  This function is used to uninstall SQL Server 2008 R2 and Instance
+///				   which we have created using this IDABORT
+///									Instance Name : MXAPSERVER
+///									User Name : sa
+///									Password : ISPADMIN@123
+///				   
+/// Arguments:	No arguments	
+/// Revision History : 
+/////////////////////////////////////////////////////////////////////////////
+
+function void UninstallSQLServer()
+    STRING szSQLSetupPath, szSQLInstalledPath, szDataPath, szSQLRootPath; /// Holds the path of SQL server (setup.exe)
+    STRING szSQLServerCmd, svResult;	/// Holds the command line parameters for installaing SQL server
+    STRING szSQLKey, szSQLPathkey, szDBInstanceKey, szServiceName;
+    NUMBER nvType, nvSize, nType, nSize, nReturn, nvServiceState;
+begin   
+	
+	if (IsInstanceExists()) then
+	
+		  //To Stop the TipServerDataTower Service           
+			szServiceName =  "MSSQL$MXAPSERVER" ;
+		  if (ServiceExistsService ( szServiceName )) then
+				ServiceGetServiceState ( szServiceName, nvServiceState ); 
+				if (nvServiceState != SERVICE_STOPPED ) then
+				      nReturn = ServiceStopService( szServiceName ) ; 
+					if (nReturn < 0) then 
+		    				LaunchAppAndWait("","net stop MSSQL$MXAPSERVER",LAAW_OPTION_HIDDEN|LAAW_OPTION_WAIT );     
+		    		endif;   
+				endif;
+		  endif;
+		  /// Do not display "Installing SQL Server.." message if SQL Server is already present
+		  RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+		  if(TRUE == SYSINFO.bIsWow64)then
+			 szSQLKey = ID_REG_PATH64_SQL2008R2;
+		  else 
+			 szSQLKey = ID_REG_PATH_SQL2008R2;
+		  endif; 
+	  	  if(TRUE = SYSINFO.bIsWow64)then
+		   		szDBInstanceKey = DBINSTANCE_REGKEY_64;
+		   		szSQLPathkey = ID_REG_SQL_PATH64_SQL2008R2;
+		  else
+				szDBInstanceKey = DBINSTANCE_REGKEY_32;
+				szSQLPathkey = ID_REG_SQL_PATH_SQL2008R2;
+		  endif;  
+			/// DB Instance key present under "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL"	
+		    RegDBGetKeyValueEx(szDBInstanceKey,SQL_DB_INSTANCE, nType ,svResult,nSize);
+		    if(svResult !="" )then		    	 
+		    	RegDBGetKeyValueEx(szSQLPathkey,"VerSpecificRootDir", nType ,szSQLRootPath,nSize);
+		    	StrRemoveLastSlash ( szSQLRootPath );
+	     		szSQLRootPath = SubStrReplaceinStr(szInstallLocation, "\\100", "");
+	     		szDataPath = szSQLRootPath ^ svResult;
+		    endif;
+		    //VerSpecificRootDir
+		  if(RegDBKeyExist(szSQLKey) = 1)then 
+			  RegDBGetKeyValueEx ( szSQLKey, "BootstrapDir", nvType, szSQLInstalledPath, nvSize);
+	    	  szSQLInstalledPath = szSQLInstalledPath ^ "SQLServer2008R2"; 		  
+			  /// SQL Server is not present. So display "Installing SQl Server..." message
+			  if(Is ( FILE_EXISTS, szSQLInstalledPath^"setup.exe") = TRUE)then
+					szSQLSetupPath = szSQLInstalledPath^"setup.exe"; 
+					//Uninstall Sql server 2012 express
+					szSQLServerCmd = ' /Q /HIDECONSOLE /ACTION=Uninstall /FEATURES=SQL /INSTANCENAME=MXAPSERVER';
+					SdShowMsg(@CID_UninstallSQL,TRUE);
+					LaunchAppAndWait(szSQLSetupPath,szSQLServerCmd,LAAW_OPTION_WAIT|LAAW_OPTION_HIDDEN);
+					WaitForApplication( LAAW_PROCESS_INFORMATION.hProcess, 0, INFINITE, LAAW_OPTION_WAIT_INCL_CHILD | LAAW_OPTION_WAIT );
+					if(Is(PATH_EXISTS,szDataPath))then 
+						DeleteDir(szDataPath,ALLCONTENTS);
+					endif;					
+					SdShowMsg("",FALSE);
+			   endif;			 
+		  endif;
+	endif;	
+end;
+
+
+function BOOL CheckSQLConnection(svConnection, svServer, svDB, svUser, svPassword)
+string sTemp[MAX_PATH];
+string sMessage;
+number nResult, nSize;
+BOOL   bWinLogin;
+LIST   listConnections, listDBs; 
+NUMBER nValue;
+begin	
+		//store data in case we need it again
+        SQLRTPutConnectionInfo2( svConnection, svServer, svDB, svUser, svPassword );
+        //test connection
+		nResult = SQLRTTestConnection2( svConnection, svServer, svDB, svUser, svPassword, bWinLogin );
+        nSize = MAX_PATH;
+        MsiGetProperty( ISMSI_HANDLE, "IS_SQLSERVER_STATUS", sTemp, nSize );
+       if( sTemp != "0" ) then
+			nSize = _MAX_PATH;
+			MsiGetProperty( ISMSI_HANDLE, "IS_SQLSERVER_STATUS_ERROR", sMessage, nSize );
+			return FALSE;			
+        else //SUCCESS
+		    return TRUE;				
+        endif;
+end;
+
+function STRING SubStrReplaceinStr(mainString, searchString, replaceString)
+INT sLen, mLen, pos;
+STRING test, before, after;
+begin
+  sLen=StrLength(searchString);
+  mLen=StrLength(mainString);
+  pos=0;
+  while (pos+sLen<=mLen)
+    StrSub(test, mainString, pos, sLen);
+    if (test=searchString) then
+      StrSub(before, mainString, 0, pos);
+      StrSub(after, mainString, pos+sLen, mLen-pos);
+      mainString=before+replaceString+after;
+      mLen=StrLength(mainString);
+    endif;
+    pos=pos+1;
+  endwhile;
+  return mainString;
+end;
+
+
+

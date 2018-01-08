@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="True" CodeBehind="LogOn.master.cs" Inherits="AccountingPlusDevice.MasterPages.LogOn" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta name="Browser" content="NetFront" />
+    <asp:Literal ID="LiteralCssStyle" runat="server"></asp:Literal>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <asp:Literal ID="LiteralClientVariables" runat="server"></asp:Literal>
+    </asp:ContentPlaceHolder>
+</head>
+<style type="text/css">
+      <asp:Literal ID="PageBackground" runat="server"></asp:Literal>
+    </style>
+<body leftmargin="0" topmargin="0" scroll="NO" class="LoginBG" onload="PageShowingEve()">
+    <form id="form1" runat="server">
+    <div style="width: 100%">
+        <table width="<%=pageWidth%>" border="0" cellpadding="0" cellspacing="0" height="<%=pageHeight%>">
+            <tr>
+                <td align="left" valign="middle" class="Title_Font">
+                    <asp:Label ID="LabelPrintRelease" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" width="100%">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="Table_Height">
+                        <tr>
+                            <td width="9%" align="left" valign="top">
+                                &nbsp;
+                            </td>
+                            <td width="7%" align="center" valign="middle">
+                                <div class="Manuel_login_postion">
+                                    <asp:Image ID="ImageLoginUser" Visible="false" runat="server" />
+                                </div>
+                            </td>
+                            <td width="75%" align="left" valign="middle" class="Manual_Login">
+                                <div class="Manuel_Text_postion">
+                                    <asp:Label ID="LabelLogOn" runat="server" Text=""></asp:Label>
+                                </div>
+                            </td>
+                            <td width="9%" align="left" valign="top">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top">
+                    <asp:ContentPlaceHolder ID="LogOnControls" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+    <script language="javascript" type="text/javascript">
+        function PageShowingEve() {
+            setTimeout(PageShowing(), 50000);
+        }
+        function PageShowing() {
+            document.getElementById("PageLoadingID").style.display = "none";
+            document.getElementById("PageShowingID").style.display = "inline";
+        }
+    </script>
+</body>
+</html>

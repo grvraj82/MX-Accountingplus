@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DatabaseBridge</name>
+    </assembly>
+    <members>
+        <member name="T:DatabaseBridge.AbstractDatabase`3">
+            <summary>
+            Abstract base class for encapsulating provider independant database interactin logic.
+            </summary>
+             <list type="table">
+                <listheader>
+                   <term>Class</term>
+                   <description>Description</description>
+                </listheader>
+                <item>
+                   <term>AbstractDatabase</term>
+                       <description>Abstract base class for encapsulating provider independant database interactin logic.</description>
+                </item>
+              </list>
+            <remarks>
+            Class Diagram:<br/>
+            <img src="ClassDiagrams/CD_DatabaseBridge.AbstractDatabase.png"/>
+            </remarks>
+            <typeparam name="TConnectionType"><see cref="T:System.Data.Common.DbConnection"/> derived Connection type.</typeparam>
+            <typeparam name="TCommandType"><see cref="T:System.Data.Common.DbCommand"/> derived Command type.</typeparam>
+            <typeparam name="TAdapterType">derived Data Adapter type.</typeparam>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.GetConnectionString">
+            <summary>When overridden in derived classes returns the connection string for the database.</summary>
+            <returns>The connection string for the database.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.GetSqlStringCommand(System.String)">
+            <summary>
+            Gets a DbCommand object with the specified 
+            <see cref="P:System.Data.Common.DbCommand.CommandText"/>.
+            </summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.GetSqlStringCommand.jpg"/>
+            </remarks>
+            <param name="sqlQuery">The SQL string.</param>
+            <returns>A DbCommand object with the specified <see cref="P:System.Data.Common.DbCommand.CommandText"/>.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteNonQuery(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the specified command against the current connection.
+            </summary> 
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteNonQuery.jpg" />
+            </remarks>
+            <param name="cmd">The command to be executed.</param>
+            <returns>Result returned by the database engine.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteNonQuery(System.Collections.Hashtable)">
+            <summary>
+            Executes the specified command against the current connection.
+            </summary> 
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteNonQuery_1.jpg" />
+            </remarks>
+            <param name="hashtableSqlQuery">The command to be executed.</param>
+            <returns>Result returned by the database engine.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteReader(System.Data.Common.DbCommand)">
+            <summary>Executes the specified command against the current connection.</summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteReader.jpg" />
+            </remarks>
+            <param name="cmd">The command to be executed.</param>
+            <returns>Result returned by the database engine.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteReader(System.Data.Common.DbCommand,System.Data.CommandBehavior)">
+            <summary>Executes the specified command against the current connection.</summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteReader.jpg"/>
+            </remarks>
+            <param name="cmd">The command to be executed.</param>
+            <param name="behavior">One of the <see cref="T:System.Data.CommandBehavior"/> values.</param>
+            <returns>Result returned by the database engine.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.DatatableBulkInsert(System.Data.DataTable,System.String)">
+            <summary>
+            Datatables the bulk insert.
+            </summary>
+            <param name="dtBulkData">The dt bulk data.</param>
+            <param name="Tablename">The tablename.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteScalar``1(System.Data.Common.DbCommand,``0)">
+            <summary>Executes the specified command against the current connection.</summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteScalar.jpg" />
+            </remarks>
+            <param name="cmd">The command to be executed.</param>
+            <returns>Result returned by the database engine.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteDataSet(System.Data.Common.DbCommand)">
+            <summary>Executes the specified command against the current connection.</summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteDataSet.jpg" />
+            </remarks>
+            <param name="cmd">The command to be executed.</param>
+            <returns>Result returned by the database engine.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.ExecuteDataTable(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the data table.
+            </summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.ExecuteDataTable.jpg" />
+            </remarks>
+            <param name="cmd">The Command.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.RunStoredProcedure(System.String,System.Data.DataSet,System.String,System.Collections.ArrayList)">
+            <summary>
+            Run a stored procedure of Select SQL type.
+            </summary>
+            <param name="dbConnStr">Connection String to connect Sql Server</param>
+            <param name="ds">DataSet which will return after filling Data</param>
+            <param name="spName">Stored Procedure Name</param>
+            <param name="spPramArrList">Parameters in ArrayList</param>
+            <returns>Return DataSet after filing data by SQL.</returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.RunStoredProcedure(System.String,System.String,System.Collections.ArrayList)">
+            <summary>
+            Run a stored procedure which will execure some nonquery SQL.
+            </summary>
+            <param name="dbConnStr">Connection String to connect Sql Server</param>
+            <param name="spName">Stored Procedure Name</param>
+            <param name="spPramArrList">Parameters in a ArrayList</param>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.spArgumentsCollection(System.Collections.ArrayList,System.String,System.String,System.String)">
+            <summary>
+            This function built an Array List, which is collection of some SP parameter's Name, Value and Data type.
+            </summary>
+            <param name="arrLst">Array List which will store all argument.</param>
+            <param name="spParmName">SP Argument Parameter Name.</param>
+            <param name="spParmValue">SP Argument Parameter Value.</param>
+            <param name="spPramValueType">Parameter value type EXACTLY same as SqlDBType. E.g. 'SqlDbType.BigInt' will 'BigInt'. </param>
+            <returns></returns>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.Finalize">
+            <summary>Disposes the resources associated with the current database connection.</summary>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.Dispose">
+            <summary>Disposes the resources associated with the current database connection.</summary>
+            <remarks>
+            Sequence Diagram:<br/>
+            <img src="SequenceDiagrams/SD_DatabaseBridge.AbstractDatabase.Dispose.jpg" />
+            </remarks>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.Dispose(System.Boolean)">
+            <summary>
+            Disposes the resources associated with the current database connection
+            </summary>
+            <param name="disposing">Wheter to dispose or not</param>
+        </member>
+        <member name="P:DatabaseBridge.AbstractDatabase`3.Connection">
+            <summary>Gets the Connection object associated with the current instance.</summary>
+        </member>
+        <member name="F:DatabaseBridge.AbstractDatabase`3.SPArgBuild.pramValueType">
+            <summary>
+            Write full data type, such as SqlDBType.VarChar.
+            </summary>
+        </member>
+        <member name="M:DatabaseBridge.AbstractDatabase`3.SPArgBuild.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Use to create SP Argument Build conestruction.
+            </summary>
+            <param name="pramName">SP Argument Parameter Name.</param>
+            <param name="pramValue">SP Argument Parameter Value.</param>
+        </member>
+    </members>
+</doc>

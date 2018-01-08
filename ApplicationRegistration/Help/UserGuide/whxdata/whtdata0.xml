@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="Quick Start" >
+  <item name="Portal Admin" url="Portal_Admin.htm" />
+  <item name="Product Admin" url="Product_Admin.htm" />
+  <item name="Product Customer Representative" url="Product_Customer_Representative.htm" />
+  <item name="LogOff" url="LogOff.htm" />
+</book>
+<book name="Defining Products in the server" >
+  <item name="Products" url="Product_Definition.htm" />
+  <item name="Adding Product Definition" url="Managing_Product_Definition.htm" />
+  <item name="Editing Product Information" url="Editing_Product_Information.htm" />
+  <item name="Deleting a Product" url="Deleting_a_Product.htm" />
+  <item name="Exporting Product Details" url="Exporting_Product_Details.htm" />
+</book>
+<book name="Serial keys" >
+  <item name="Serial key Definition" url="Serial_key_Definition.htm" />
+  <item name="Managing Serial Key Definition" url="Managing_Serial_Key_Definition.htm" />
+</book>
+<book name="Registrations" >
+  <item name="Registration Details" url="Registration_Details.htm" />
+  <item name="Managing Registration details" url="Managing_Registration_details.htm" />
+</book>
+<book name="Reports" >
+  <item name="Report Generator for Registration Details" url="Report_Generator_for_Registration_Details.htm" />
+</book>
+<book name="Users" >
+  <item name="User Definition" url="User_Definition.htm" />
+  <item name="Manage User/Edit Profile" url="Manage_User_Edit_Profile.htm" />
+</book>
+<book name="Roles" >
+  <item name="Role Definition" url="Role_Definition.htm" />
+  <item name="Manage Role" url="Manage_Role.htm" />
+  <item name="Assign Roles to user (s)" url="Assign_Roles_to_user(s).htm" />
+</book>
+<book name="Configuration" >
+  <item name="Web Application Configuration" url="Web_Application_Configuration.htm" />
+  <item name="Manage Lookup tables" url="Manage_Lookup_tables.htm" />
+  <item name="Manage Field Access Definition" url="Manage_Field_Access_Definition.htm" />
+  <item name="Email Content Configuration" url="Email_Content_Configuration.htm" />
+  <item name="Support Contact Details" url="Support_Contact_Details.htm" />
+  <item name="Other Configurations" url="Other_Configurations.htm" />
+</book>
+<book name="Options" >
+  <item name="Change Password" url="Options.htm" />
+  <item name="Edit Profile" url="Edit_Profile.htm" />
+</book>
+<book name="Non - Functional Requirements " >
+  <item name="Non - Functional Requirements for the Server" url="Non_-_Functional_Requirements.htm" />
+</book>
+
+</tocdata>

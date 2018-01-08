@@ -1,0 +1,52 @@
+﻿body, div, p, h1, h2, h3, h4, ul, li, table
+{
+	margin:0;
+	padding:0;
+	border:none;
+}
+
+
+/*AutoComplete flyout */
+
+.autocomplete_completionListElement 
+{  
+	margin : 0px!important;
+	background-color:White;
+	color : windowtext;
+	border : buttonshadow;
+	border-width : 1px;
+	border-style : solid;
+	cursor : 'default';
+	overflow : auto;
+	height : 200px;
+    text-align : left; 
+    list-style-type : none;
+    font: "segoe ui", Verdana, Arial, Helvetica;
+    font-size: 12px;
+    
+}
+
+/* AutoComplete highlighted item */
+
+.autocomplete_highlightedListItem
+{
+	background-color:#a7cdf0;
+	color: black;
+	padding: 1px;
+	font: "segoe ui", Verdana, Arial, Helvetica;
+    font-size: 12px;
+    cursor:hand;
+    cursor:pointer;
+}
+
+/* AutoComplete item */
+
+.autocomplete_listItem 
+{
+	background-color : window;
+	color : windowtext;
+	padding : 1px;
+	font: "segoe ui", Verdana, Arial, Helvetica;
+    font-size: 12px;
+}
+

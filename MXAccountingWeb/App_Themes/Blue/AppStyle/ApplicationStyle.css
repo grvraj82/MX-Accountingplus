@@ -1,0 +1,1876 @@
+/* CSS Document */
+
+/* MFP Styles */
+input[type="submit"]
+{
+	 background-image: url("../Images/Button_bg.png");
+	   border:#b0dcfa 1px solid;
+       height: 30px;
+       color: #FFFFFF;
+       text-decoration: none;
+       font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+       font-size: 11px;
+       font-weight: bold;
+       min-width:75px;
+       font-stretch: normal;
+       cursor:pointer;
+}
+
+input[type="text"]
+{
+       font: "segoe ui", Verdana, Arial, Helvetica;
+       font-size: 12px;
+       
+}
+
+td
+{
+    font: "segoe ui", Verdana, Arial, Helvetica;
+       font-size: 12px;
+}
+
+table.Grid
+{ 
+    border-collapse:collapse; 
+    border-bottom:solid 1px #ccc; 
+}
+ 
+table.Grid th{ 
+    border-bottom:solid 0px #ccc; 
+}
+
+table.Grid tr{ 
+    border-bottom:solid 1px #ccc; 
+}
+
+table.DoubleHeaderGrid
+{ 
+    border-collapse:collapse; 
+    border:solid 1px #ccc; 
+}
+ 
+table.DoubleHeaderGrid td,th{ 
+    border:solid 1px #ccc; 
+}
+
+.Border0
+{
+    border:0px !important;
+}
+
+.MFPLoginBG
+{
+	background-image:url('../Images/BG_login.png');
+	background-repeat:no-repeat;
+}
+
+.MFPLogin_font
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	color: #000000;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.MFPNormal_FontLabel
+{
+	font-family: Verdana,Arial, Helvetica, sans-serif;	
+	font-size: 12px;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.MFPLoginDisableBG
+{
+	background-image:url('../Images/Background_Error_bg.png');
+	background-repeat:no-repeat;
+
+}
+.ImageError
+{
+	font-family: Verdana,Arial, Helvetica, sans-serif;	
+	font-size: 15px;
+	font-weight:bold;
+	width:128;
+	height:128;
+}
+
+.CommunicatorPannel
+{
+	position: absolute;
+}
+
+.CommunicatorPannelBg
+{
+	z-index: 10;
+	background-image: url('../Images/Error_Msg.png' );
+	background-repeat: no-repeat;
+	height: 200px;
+	width: 550px;
+}
+
+
+/*End of MFP Styles */
+
+.LoginBG
+{
+	background-image: url('../Images/BackGroung.jpg');
+	background-repeat:x-repeat;
+	background-repeat-y:100%;
+	height: 203px;
+}
+
+.InsidePageBG
+{
+	background-image: url('../Images/BackGroung.jpg');
+	background-repeat:x-repeat;
+	background-repeat-y:100%;
+	background-position:top;
+}
+
+.Table_bg
+{
+	border-right: #dadadc 1px solid;
+	border-top: #dadadc 1px solid;
+	border-left: #dadadc 1px solid;
+	border-bottom: #dadadc 1px solid;
+}
+
+.Table_bg_InsidePage
+{
+	background-image: url('../Images/Table_bg.png');
+	border-right: #FFFFFF 1px solid;
+	border-top: #FFFFFF 1px solid;
+	border-left: #FFFFFF 1px solid;
+	border-bottom: #FFFFFF 1px solid;
+}
+
+.Table_Inside
+{
+	background-image: url('../Images/Table_bg.png');	
+}
+
+.Inside_tableborder_New
+{
+	border-right: #dadadc 1px solid;
+	border-top: #dadadc 1px solid;
+	border-left: #dadadc 1px solid;
+	border-bottom: #dadadc 1px solid;
+}
+.Table_alternagtivroew
+{
+	background-color:#f7f7f7;
+}
+.POPUPWindiw
+{
+	border-right: #ffe74a 1px solid;
+	border-top: #ffe74a 1px solid;
+	border-left: #ffe74a 1px solid;
+	border-bottom: #ffe74a 1px solid;
+	background-color:#FFFFFF;
+}
+
+.Browser_bg
+{
+	background-image: url('../Images/bggreendiag.gif');	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	color: #000000;
+	font-size: 10px;
+	font-weight:normal;
+	border-right: #ffe74a 1px solid;
+	border-top: #ffe74a 1px solid;
+	border-left: #ffe74a 1px solid;
+	border-bottom: #ffe74a 1px solid;
+	
+}
+
+.Login_bg
+{
+	background-image: url('../Images/Login_bg.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.LabelLoginFont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+}
+.LabelLoginFont1
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	color: #000000;
+	font-size: 11px;
+	font-weight:normal;
+}
+
+.LoginusernameFont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #4e4c4c;
+}
+
+.Text_box
+{
+
+	/*background-image: url("../Images/Login_textbox.png");
+	background-repeat: no-repeat;*/
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 20px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+
+}
+
+.Text_box1
+{
+
+	background-image: url("../Images/Required.gif");
+	background-repeat: no-repeat;
+	background-position:right;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 20px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+
+}
+
+
+.Drop_Down
+{
+	border: #FFFFFF 1px solid;
+	background-image: url("../Images/DropDownoDown.png");
+	background-repeat: no-repeat;
+	width: 222px;
+	height: 35px;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: normal;
+	color: #484747;
+	text-decoration: none;
+}
+
+.Login_Button
+{
+	/*background-image: url("../Images/Login_Button_1.png");
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	border:#ffff04 1px solid;
+	height: 31px;
+	width:105px;	*/
+	color: #395306;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	font-stretch: normal;
+}
+
+.Login_Button1
+{
+		background-image: url("../Images/Button_bg.png");
+		border:#b0dcfa 1px solid;
+       height: 30px;
+       color: #FFFFFF;
+       text-decoration: none;
+       font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+       font-size: 10px;
+       font-weight: bold;
+       font-stretch: normal;
+
+}
+.Login_Buttonbig
+{
+	/*background-image: url("../Images/Login_Button_1.png");
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	border:#ffff04 1px solid;
+	height: 31px;
+	width:230px;	*/
+	color: #395306;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	font-stretch: normal;
+}
+.Cancel_button
+{
+	/*background-image: url("../Images/Cancel_button_1.png");
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	border:#c3c4c4 1px solid;
+	height: 31px;
+	width:105px;*/
+	color: #395306;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	font-stretch: normal;
+	
+}
+
+.Copyrights
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 9px;
+	text-decoration: none;
+	font-weight: normal;
+	color: #929292;
+	padding-bottom: 10px;
+}
+
+.visited2
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	color: #000000;
+	text-decoration:none;
+}
+.div_time
+{
+	vertical-align: middle;
+}
+
+.WelcomeFont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: normal;
+	color: #71706f;
+}
+.LoginUserFont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	/*color: #ffa200;*/
+	color:#000000;
+}
+.Menu_bg
+{
+	border-right: #ff8a00 1px solid;
+	border-left:#ff8a00 1px solid;
+	border-bottom: #ff8a00 1px solid;
+}
+.Menu_split
+{
+	background-image: url('../Images/Menu_split.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	padding:0px 3px 0px 3px;
+}
+
+.Menu_splitHeader
+{
+	background-image: url('../Images/Menu_split.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	padding:0px 1px 0px 1px;
+}
+.Normal_Menufont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #464645;
+}
+
+.Div_users
+{
+	width:100%;
+	height:50px;
+	background-image: url('../Images/Select_menu_bg.png');
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align:center;
+}
+.Div_users_uncheck
+{
+	width:100%;
+	height:50px;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000000;
+	text-align:center;	
+}
+.Sort_by
+{
+	background-image:url('../Images/Arrow_bleck.png');
+	background-repeat:no-repeat;
+	background-position:right;		
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align:center;
+	padding-left:15%;	
+}
+
+.Select_menu_bg
+{	
+	background-image: url('../Images/Select_menu_bg.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;
+	background-position: center;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFFFFF;
+	 /*BORDER-RIGHT: #efa119 1px solid;  	BORDER-TOP: #efa119 1px solid; 	BORDER-LEFT: #efa119 1px solid; 	BORDER-BOTTOM: #efa119 1px solid;*/
+}
+.Top_menu_bg
+{
+	background-image:url('../Images/Login_TopBG.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:bottom;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000000;
+	padding-left:0px;
+	padding-bottom:0px;
+	min-height:30px;
+}
+.Select_Sorting_bg
+{
+	background-image: url('../Images/Select_Sorting_bg.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #71706f;
+}
+
+.UnSelect_Sorting_bg
+{
+	background-image: url('../Images/Unselect_sorting_bg.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #71706f;
+}
+.Search_bg
+{
+	border-style: none;
+	border-color: #a1a1a1;
+	background-image: url("../Images/Search_bg.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 132px;
+	height: 25px;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: normal;
+	color: #484747;
+	text-decoration: none;
+	padding-left: 9px;
+	padding-top: 10px;
+}
+
+.Grid_topbg
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 10px;
+	font-weight: bold;
+	color: #484747;
+	text-decoration: none;
+	height:25px;
+	
+	background-image: url('../Images/Top_menu_bg_Grid.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;	
+	
+}
+
+.Title_topbg
+{
+	background-image: url('../Images/Top_menu_bg_Grid_1.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+	height:30px;
+	
+}
+.Title_Border
+{
+	border-right: #ffd800 1px solid;
+	border-top: #ffd800 1px solid;
+	border-left: #ffd800 1px solid;
+	border-bottom: #ffd800 1px solid;
+}
+
+
+.Grid_topbg_Menu
+{
+	background-image: url('../Images/Top_menu_bg_Grid.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;	
+	text-decoration:none;
+	height:30px;
+}
+.Grid_topbg_Menu:hover
+{
+	background-image: url('../Images/Grid_topbg_Mover.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;
+	text-decoration:none;
+	height:30px;
+	
+}
+
+.GridLeftAlign
+{
+    text-align:left;
+    padding:0px 5px 0px 5px;
+}
+
+
+.Grid_topbg1:hover
+{
+	/*color:Blue;
+	background-image: url('../Images/Grid_topbg_Mover.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;*/
+	
+}
+
+.Grid_Report
+{
+	height: 24px;
+	background-image: url('../Images/Grid_topbg.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	color: #484747;
+	text-decoration: none;
+}
+
+.H_title
+{
+	font: 12px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	padding: 0px 5px 0px 5px;
+}
+
+.H_title_New
+{
+	font: 12px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	height:30px;
+	padding:0px 0px 0px 3px;
+}
+
+
+.H_titleGroup
+{
+	font: 22px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:bold;
+	color: #ffffff;
+	text-decoration: none;
+	
+}
+.Grid_tr
+{
+	height: 24px;	
+	font: 11px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+}
+.Grid_tr a
+{
+	height: 24px;	
+	font: 11px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+}
+.Grid_tr a:hover
+{
+	height: 24px;	
+	font: 11px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:normal;
+	color: #484747;
+	text-decoration:underline;
+}
+.LogReportRow
+{
+	height: 24px;
+	background-color: White;
+	vertical-align: middle;
+	text-align: center;
+	color: #000000;
+	font-size: 10px;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+}
+
+.table_border_org
+{
+	border-right: #ffd800 1px solid;
+	border-top: #ffd800 1px solid;
+	border-left: #ffd800 1px solid;
+	border-bottom: #ffd800 1px solid;
+}
+
+.ListBox
+{
+	border-right: #ffd800 1px solid;
+	border-top: #ffd800 1px solid;
+	border-left: #ffd800 1px solid;
+	border-bottom: #ffd800 1px solid;
+	text-decoration: strong;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 8.5pt;
+	color: #000000;
+}
+
+#progressBackgroundFilter
+{
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	background-color: #000;
+	filter: alpha(opacity=50);
+	opacity: 0.50;
+	z-index: 1000;
+}
+#processMessage
+{
+	text-align: center;
+	vertical-align: middle;
+	font-family: Verdana Arial Georgia;
+	font-size: 22px;
+	color: Green;
+	position: fixed;
+	top: 30%;
+	left: 35%;
+	right: 35%;
+	padding: 10px;
+	width: 30%;
+	height: 30%;
+	z-index: 1001;
+	background-color: #fff;
+	border: solid 1px #000;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity=90);
+}
+
+
+.DoubleRowHeader_M:hover
+{
+	text-align: center;
+	font:  12px "segoe ui", Verdana, Arial, Helvetica;
+	
+}
+
+.DoubleRowHeader
+{
+	text-align: center;
+	color: #484747;
+	font:  12px "segoe ui", Verdana, Arial, Helvetica;
+	background-image: url('../Images/DoubleRowHeader.png');
+}
+
+.DoubleRowHeaderSmall
+{
+	text-align: center;
+	color: #484747;
+	font:  11px "segoe ui", Verdana, Arial, Helvetica;
+	background-image: url('../Images/DoubleRowHeader_Small.png');
+}
+
+.Mfp_tr
+{
+	background-color:White;
+}
+.SotrBox_1
+{
+	border-right: #ffd800 1px solid;
+	border-top: #ffd800 1px solid;
+	border-left: #ffd800 1px solid;
+	border-bottom: #ffd800 1px solid;
+	font-size:large;
+}
+.SotrBox_Selected
+{
+	border-right: #f98d00 1px solid;
+	border-top: #f98d00 1px solid;
+	border-left: #f98d00 1px solid;
+	border-bottom: #f98d00 1px solid;
+	color:Green;
+	font-size:large;
+}
+.Lightboxbg1
+{
+		display:none;		
+		position: absolute;	
+		background-color:#000000; 	 
+		top: 0%;
+		left: 0%;	 
+		z-index:6;	 
+		filter: alpha(opacity=70);	
+		width:100%;
+		height:100%;
+}
+	
+.WhiteBoxbg
+{
+		display:none;
+		position:absolute;
+		top: 35%;
+		left: 35%;
+		width: 350;
+		height: 150; 
+		background-color:White;     
+		border: 1px solid #6a7b8c;	
+		z-index:25;		
+		vertical-align:bottom;
+}
+.Error_msg_font
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;	
+}
+
+
+.TabItem
+{
+	background-image:url('../Images/TabItem.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:bottom;
+	
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#000000;	
+	height:35px;	
+}
+
+
+.SelectedTabItem
+{
+	background-image:url('../Images/Select_Sorting_bg_New.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:top;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#000000;	
+	height:35px;
+	BORDER-RIGHT:#ff8a00 1px solid;
+	BORDER-LEFT: #ff8a00 1px solid;
+}
+
+.MainTab
+{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+.TabOnmouseOver
+{
+	background-image:url('../Images/Select_Sorting_bg2.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:top;	
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#000000;	
+	height:35px;
+	BORDER-RIGHT:#ff8a00 1px solid;
+	BORDER-LEFT: #ff8a00 1px solid;
+}
+.TabOnmouseOver:hover
+{	
+	cursor: pointer;
+	cursor: hand;
+}
+
+.visited4
+{
+	text-decoration:none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	color: #078cfc;
+	font-weight:bold;
+}
+.Adduser
+{
+	background-image: url('../Images/Top_menu_bg_Grid.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+}
+
+.f10b
+{
+	font:  "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+	white-space:nowrap;
+}
+.LineHr
+{
+	background-image: url('../Images/LineHr.png');
+	background-repeat: repeat-y;
+	background-repeat-x: 0%;	
+}
+.FormTextBox_bg
+{	
+	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 20px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	width:220px;
+	
+	/*
+	background-image: url('../Images/Text_bg.png');
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:5px;
+	padding-top:10px;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	border:none;
+	width:221px;
+	height:31px;
+	text-align:left;
+*/
+}
+
+.FormTextBox_bg1
+{	
+	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 16px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	width:80px;
+}
+
+.FormTextBox_bg_Small
+{	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 20px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+	width:50px;
+}
+
+.FormTextBoxReg
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 20px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+	width:580px;
+	
+}
+
+.FormDropDown_bg
+{	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 25px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+	width:225px;
+}
+
+.FormDropDown_Small
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	height: 20px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	width:135px; /* 150px */
+}
+
+.Setting_bg
+{
+	
+	background-color:#fdf3ba;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+}
+.Setting_bg_Font
+{
+	background-color:#fdf3ba;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+}
+.GeneralSetting_bg_Font
+{
+	background-color:#fdf3ba;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color:#078cfc;
+	text-decoration: none;
+}
+.JobSetting_bg_Font
+{
+	background-color:#fdf3ba;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color:#078cfc; 
+	text-decoration: none;
+}
+.Setting_bg_Font a:hover
+{
+	background-color:#fdf3ba;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #000000;
+	text-decoration: none;
+}
+.HideSettingBox
+{
+	background-image: url('../Images/Hiden_settingsbox.png');
+	background-repeat:no-repeat;
+	background-position:bottom;
+	
+	vertical-align:middle;
+	background-color:#FFFFFF;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #000000;
+	text-transform:capitalize;
+	text-decoration: none;
+	
+}
+
+.HideSettingBox a
+{
+	vertical-align:middle;	Normal_FontLabel
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color:#000000;
+	text-transform:capitalize;
+	text-decoration: none;
+	
+}
+
+.Graph_titleFont
+{
+	font-family: Verdana;	
+	font-size: 15px;
+	font-weight:bold;
+	color: #000000;
+	text-decoration: none;
+	text-align:left;
+	
+	
+}
+
+.Normal_FontLabel
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 13px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+}
+.Normal_FontLabelCard
+{
+	font-family: Verdana;	
+	font-size: 11px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	text-align:left;
+}
+.Normal_FontLabel_bold
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 10px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+}
+.Normal_FontLabel_Normal
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 10px;
+	font-weight:bold;
+	color: #000000;
+	text-decoration: none;
+}
+
+/* CSS GridView*/
+.GridViewStyle
+{    
+    border-right: 2px solid #b3b4b6;
+    border-bottom: 2px solid #b3b4b6;
+    border-left: 2px solid #b3b4b6;
+    border-top: 2px solid #b3b4b6;
+    padding: 4px;
+}
+
+.GridViewStyle a
+{
+    color: #FFFFFF;
+}
+
+.GridViewHeaderStyle th
+{
+    border-left: 1px solid #b3b4b6;
+    border-right: 1px solid #b3b4b6;
+}
+
+.GridViewHeaderStyle1
+{
+	background-image:url('../Images/Table_HeaderBG.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	font:  12px "segoe ui", Verdana, Arial, Helvetica;		
+	text-decoration:none;
+	font-weight:normal;
+	color:#000000;
+	height:30px;
+}
+
+
+.GridViewHeaderStyle
+{
+      
+	background-image:url('../Images/Table_HeaderBG.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	font:  12px "segoe ui", Verdana, Arial, Helvetica;		
+	text-decoration:none;
+	font-weight:normal;
+	color:#000000;
+	height:30px;
+}
+.AboutHeader
+{
+    background-image: url('../Images/title.gif');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;	
+    font-weight: bold;
+    color: White;
+}
+
+.GridViewFooterStyle
+{
+    background-color: #b3b4b6;
+    font-weight: bold;
+    color: White;
+}
+
+.GridViewRowStyle
+{
+    background-color: #FFFFFF;
+    height:40%;
+    color: Black;
+   
+    
+}
+
+.GridViewAlternatingRowStyle 
+{
+    background-color: #F7F6F3;
+    height:40%;
+    color: White;
+     border:#F7F6F3:50%;
+}
+
+
+
+.GridViewSelectedRowStyle
+{
+    background-color: #fef6cb;
+    font-weight: bold;
+    color:White;
+}
+
+.GridViewPagerStyle
+{
+    background-color: #284775;
+    color:White;
+}
+
+.GridViewPagerStyle table /* to center the paging links*/
+{
+    margin: 0 auto 0 auto;
+}
+
+
+.ListGrid_Font
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 8px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	width:50px;
+	
+}
+.ListGrid_Font_Updated
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 10px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	width:110px;
+	
+}
+.ListGrid_Lablefont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 9px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+
+	
+}
+.Grid_Split
+{
+	background-image: url('../Images/Split.png');
+	background-repeat:repeat-y;
+	background-repeat-x:0%;
+	background-position:center;
+}
+
+
+.GenerReport
+{
+	background-image: url("../Images/GenerReport.png");
+	background-repeat:no-repeat;
+	width: 164px;
+	height: 38px;
+	border: none;
+	color: #395306;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	font-stretch: normal;
+	
+}
+.HideSettingBox1
+{
+	background-image: url('../Images/Hiden_settingsbox1.png');
+	background-repeat:no-repeat;
+	background-position:top;
+	
+	vertical-align:middle;
+	background-color:#FFFFFF;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #000000;
+	text-transform:capitalize;
+	text-decoration: none;
+	
+}
+.Report_Grid
+{
+	background-image: url('../Images/Top_menu_bg_Grid.png');
+	background-repeat: repeat-x;
+	background-repeat-y: 0%;	
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: normal;
+	color: #484747;
+	text-decoration: none;
+}
+.TableGridColor
+{
+	background-color:#b3b4b6;
+}
+.GridRow
+{
+	height:25px;
+	background-color:#FFFFFF;
+}
+
+.GridRowInvoice
+{
+	height:25px;
+	color:#ffffff;
+	background-color:#5B9502;
+	font-weight:bold;
+}
+
+.GridRowOnmouseOver
+{
+	background-color:#cce0e8;
+	height:25px;
+}
+.GridRowOnmouseOut
+{
+	background-color:#FFFFFF;
+	height:25px;
+}
+
+.GridRowInvoice
+{
+	background-color:#cde4e8;
+	height:25px;
+	font: 11px "segoe ui", Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color:Black;
+}
+
+.CustomButton
+{
+	background-image: url("../Images/Login_Button_1.png");
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	border:#ffff04 1px solid;
+	height: 31px;
+	width:105px;	
+	color: #395306;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	font-stretch: normal;
+}
+
+
+.linkButton
+{	
+	/*padding: 5px 20px;
+	background: #eee;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	color: Black;
+	text-align:left;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	font-weight: normal;
+	height:15px;*/
+	
+	color:#010101;	
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	font-weight:normal;
+	
+	}
+	
+	
+	.linkButton:hover
+	{
+	/*background : #1b0 url('../Images/linkarrow.gif') no-repeat right center;*/
+	background-color:#1b0;
+	color: #fff;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	font-weight: normal;
+	height:15px;
+
+}
+	
+.linkButtonSelect
+{	
+	color:#ffffff;	
+	text-decoration: none;	
+	font: "segoe ui", Verdana, Arial, Helvetica;
+	font-size:14px;
+	
+}
+
+	
+.linkButtonSelect_Selected
+{
+	background-color:#1c343c;
+	color:White;	
+	text-decoration: none;
+	font-size:14px;
+	font:   "segoe ui", Verdana, Arial, Helvetica;
+	padding-top:10px;
+	/* New */ padding-right:5px;
+	text-align:right;
+	
+	background-image:url('../Images/Menu_Hrline.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:bottom;	
+}
+
+.SettingsTableBorder
+{
+	border-style:solid;
+    border-width:1px;
+	border-color:Gray;
+	
+
+}
+.SettingsmenuTab
+{
+		background-image:url('../Images/title.gif');
+		color : #FFFFFF;
+		font-size : 13px;
+		font-family : Verdana,Tahoma,Arial;
+		font-weight: normal;
+}
+
+.NavigationMenu
+{
+	color:Green;
+	font-size:larger;
+}
+.CardData
+{	
+	
+	background: #eee;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	color: Black;
+	text-align:left;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	font-weight: normal;
+	height:15px;
+	
+
+}
+.CardDataDecoding
+{	
+	padding: 5px 20px;
+	background: #eee;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	color: Black;
+	text-align:right;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	font-weight: normal;
+	height:15px;
+	
+}
+.CardDataDecoding1
+{	
+	padding: 5px 20px;
+	background: #eee;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	color: Black;
+	text-align:left;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	font-weight: normal;
+	height:15px;
+	
+}
+.Setting_tableBorder
+{
+	border-right: #ffdb00 1px solid;
+	border-top: #ffdb00 1px solid;
+	border-left: #ffdb00 1px solid;
+	border-bottom: #ffdb00 1px solid;
+}
+.Yellow_line
+{
+	background-color:#ffdb00;
+}
+.Setting_FontNormal_black
+{
+	color:#010101;	
+	text-decoration: none;
+	font-family:Verdana;
+	font-size: 10px;
+	font-weight:normal;
+	
+}
+.Setting_FontNormal_black_select
+{
+	background : #1b0 url('../Images/Stright-arrow-31.png') no-repeat right center;
+	color:#010101;	
+	text-decoration: none;
+	font-family:Verdana;
+	font-size: 10px;
+	font-weight:bold;
+	background-color:#ffdb5a;
+	font-style:italic;
+}
+.Setting_FontNormal
+{
+	padding: 5px 10px;
+	display: block;
+	color:#010101;	
+	text-align:left;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	font-weight: normal;
+	height:20px;
+	vertical-align:middle;
+	/*padding:3px 10px;
+	color:#010101;	
+	text-decoration: none;
+	font-family:Verdana;
+	font-size: 11px;
+	font-weight:normal;
+	vertical-align:middle;*/
+}
+.Setting_select
+{	
+	background-image:url('../Images/Mover_1.png');
+	padding: 5px 10px;
+	display: block;
+	color:#010101;	
+	text-align:left;
+	text-decoration: none;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 11px;
+	font-weight: normal;
+	height:20px;
+	vertical-align:middle;
+}
+
+.Setting_FontNormal:hover
+{
+
+	background-image:url('../Images/Mover_1.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:right;
+	color:#ff0000;	
+	text-decoration: none;
+	font-family:Verdana;
+	font-size: 11px;
+	font-weight:bold;
+	font-weight:normal;
+	vertical-align:middle;
+	
+}
+
+.Lightboxbg
+{
+	width:100%;
+	height:100%;
+	color:#000000;
+	background-color:#000000;		
+	filter: alpha(opacity=80);
+	top:0%;
+	left:0%;
+	z-index:250;
+	position:absolute;
+	display:none;
+	
+}	
+.WhiteBoxbg
+{
+	display:none;
+	position:absolute;
+	top: 25%;
+	left: 35%;
+	width: 350;
+	height:450; 
+	border: 3px solid #ff8a00;	
+	z-index:251;
+	overflow: hidden;
+	vertical-align:bottom;
+}
+
+
+.AddressText
+{
+	text-indent:12px;
+}
+.RegisterLabels
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+}
+ .modal
+{
+    background-color: Transparent;
+}
+#tblPopup
+{
+    background-color: #fdfdfd;
+    color: Black; 
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:9px;
+    text-decoration:none;
+    font-weight:normal;
+    color:#000000;
+    border-right: #757272 1px solid;
+	border-top: #757272 1px solid;
+	border-left: #757272 1px solid;
+	border-bottom: #757272 1px solid;
+ }
+#tblPopup .footer
+{
+    padding: 10px;
+    text-align: center;
+}
+
+#tblPopupConfirm
+{
+    background-color: #fdfdfd;
+    color: Black; 
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:9px;
+    text-decoration:none;
+    font-weight:normal;
+    color:#000000;
+    border-right: #757272 1px solid;
+	border-top: #757272 1px solid;
+	border-left: #757272 1px solid;
+	border-bottom: #757272 1px solid;
+ }
+#tblPopupConfirm .footer
+{
+    padding: 10px;
+    text-align: center;
+}
+.Login_TOP
+{
+	background-image:url('../Images/Login_TOP.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+}
+.Login_leftBG
+{
+	background-image:url('../Images/Login_leftBG.png');
+	background-repeat:repeat-y;
+	background-repeat-x:0%;
+	background-position:right;
+
+}
+.Login_RightBG
+{
+	background-image:url('../Images/Login_RightBG1.png');
+	background-repeat:repeat-y;
+	background-repeat-x:0%;
+	background-position:left;
+}
+.Login_bottom_BG
+{
+	background-image:url('../Images/Login_bottom_BG.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:top;
+}
+.Login_center
+{
+	background-image:url('../Images/Login_center.png');
+}
+.TRBG
+{
+	background-color:#fdf5cf;
+}
+.FormTextBoxRegBOX
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 10px;
+	height: 20px;
+	font-weight:bold;
+	color: #484747;
+	text-decoration: none;
+	width:250px;
+	
+}
+
+.Dropdown_CSS
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	height: 20px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	width:226px;
+	
+	/*width:226px;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;	
+	font-size: 10px;
+	font-weight:normal;
+	color: #484747;
+	text-decoration: none;
+	height:23px;*/
+}
+/* TAB MENU   
+----------------------------------------------------------*/
+
+.Setting_FontNormal_white
+{
+	color:#ffffff;	
+	text-decoration: none;
+	font-family:Verdana;
+	font-size: 12px;
+	font-weight:normal;
+	
+	
+}
+.link
+{
+	
+	display: block;
+	border-bottom-color:#66a500;
+	background-position:bottom;
+	padding-top:10px;
+	
+	background-image:url('../Images/Menu_Hrline.png');
+	background-repeat:repeat-x;
+	background-repeat-y:0%;
+	background-position:bottom;
+	
+	
+	color: #000000;
+	text-decoration:none;
+	font-family:Verdana;
+	font-size: 12px;
+	font-weight:normal;	
+	vertical-align:bottom;
+}
+
+.linkLast
+{
+	
+	display: block;
+	padding-top:10px;
+	color: #000000;
+	text-decoration:none;
+	font-family:Verdana;
+	font-size: 12px;
+	font-weight:normal;	
+	vertical-align:bottom;
+}
+
+.linkButtonReset
+{
+    font-size:11px;
+    color:#000000;
+    text-decoration:none;
+}
+
+.linkButtonReset:hover 
+{
+    font-size:11px;
+    color:#000000;
+    text-decoration:underline;
+}
+
+.watermarked {
+	height:22px;
+	width:150px;
+	padding:2px 0 0 2px;
+	border:1px solid #BEBEBE;
+	background-color:#FFFFFF;
+	color:gray;
+}
+
+.SearchTextBox
+{
+    padding: 5px 5px 5px 5px; 
+    color:black;
+    border:1px solid #b7b7b7;
+}
+
+.BorderForInnerTable
+{
+	border-right:1px solid #007da5;
+	border-left:1px solid #007da5;
+	
+}
+
+.BorderForInnerTableTop
+{
+	border-top:1px solid #007da5;
+}
+
+.BorderForInnerTableBottom
+{
+	border-bottom:1px solid #007da5;
+}
+
+.paddingForInnerTableHeaderRight
+{
+	padding-right:10px;
+}
+
+.paddingForInnerTableHeader
+{
+	padding:10px 10px 0px 10px;
+}
+
+.paddingForInnerTableHeaderBottom
+{
+	padding-botom:10px;
+}
+
+.FontForInnerTable
+{
+	font-size:11px;
+	font-weight:normal;
+	color:#393939;
+	padding-left:5px;
+}
+
+.FontForInnerTablePL
+{
+	font-size:11px;
+	font-weight:normal;
+	color:#393939;
+	padding-left:5px;
+	font-weight:bold;
+}
+
+.SearchBoxSize
+{
+	width:312px;
+}
+
+.SelectedRowLeft
+{
+    background-image:url('../Images/SelectedRow_Left.png');
+    background-repeat:no-repeat;
+    background-position:right top;
+    font-weight:bold;
+}
+
+.SelectedRowDown
+{
+    background-image:url('../Images/SelectedRow_Down.png');
+    background-repeat:no-repeat;
+    background-position:right top;
+    font-weight:bold;
+}
+
+.MenuSpliter
+{
+    background-image:url('../Images/Menu_split.png');
+    background-repeat:no-repeat;
+    background-position:left center;
+    padding-right:8px;
+    padding-left:8px;
+}
+.LabelWarningFont
+{
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size: 12px;
+	font-weight: bold;
+	color: #9F6000;
+   
+}
+.gvclass table th 
+{
+	text-align:left;
+    font-weight: normal;                  
+} 
+.HeadingMiddleBg
+{
+	background-image:url('../Images/HeadingMiddle_Bg.png');
+	background-position:left;
+	background-repeat:repeat-x;
+	height:34px;
+	font: bold 13px "segoe ui", Verdana, Arial, Helvetica;
+	font-size:12px;
+	color:White;
+	white-space:nowrap;
+}
+
+
+.Grid_trReg
+{
+		
+	font: 11px "segoe ui", Verdana, Arial, Helvetica;	
+	font-weight:normal;
+	color: #484747;
+	
+}
+

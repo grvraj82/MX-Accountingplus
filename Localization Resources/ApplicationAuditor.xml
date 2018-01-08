@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApplicationAuditor</name>
+    </assembly>
+    <members>
+        <member name="M:ApplicationAuditor.Database.GetConnectionString">
+             <summary>
+            Author(s): Rajshekhar Desurkar
+            Function Name : GetConnectionString
+            Description : It returning Connection String from Config File
+            Inputs and Outputs : nil / Connection String
+            Return Value : string
+            Revision History : 
+            Last Modified by : Rajshekhar Desurkar
+             </summary>
+        </member>
+        <member name="T:ApplicationAuditor.LogManager">
+            <summary>
+            Controls all the data related to Auditor
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:ApplicationAuditor.LogManager.RecordMessage(System.String,System.String,ApplicationAuditor.LogManager.MessageType,System.String)">
+            <summary>
+            Records the Audit Message.
+            </summary> 
+            <param name="messageSource">Message source.</param>
+            <param name="messageOwner">Message owner.</param>
+            <param name="messageType">Type of Message.</param>
+            <param name="message">Message.</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:ApplicationAuditor.LogManager.RecordMessage(System.String,System.String,ApplicationAuditor.LogManager.MessageType,System.String,System.String,System.String,System.String)">
+            <summary>
+            Records the Audit Message.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="messageSource">Message source.</param>
+            <param name="messageOwner">Message owner.</param>
+            <param name="messageType">Type of Message.</param>
+            <param name="message">Message.</param>
+            <param name="suggestion">Suggestion.</param>
+            <param name="exception">Exception.</param>
+            <param name="stackTrace">stack .</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:ApplicationAuditor.LogManager.LogMessage(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Records the message.
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="messageSource">Message source.</param>
+            <param name="messageOwner">Message owner.</param>
+            <param name="messageType">Type of the message.</param>
+            <param name="message">Message.</param>
+            <param name="suggestion">Suggestion.</param>
+            <param name="exception">Exception.</param>
+            <param name="stackTrace">Stack Trace.</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:ApplicationAuditor.LogManager.FormatSqlData(System.String)">
+            <summary>
+            Formats the SQL data.
+            </summary>
+            <param name="data">SQL Data.</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:ApplicationAuditor.LogManager.Gethostip">
+            <summary>
+            Gethostips this instance.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SOAP-ENV:Body>
+    <Authenticate generic="1.0.0.19" xmlns="urn:schemas-sc-jp:mfp:osa-1-1" product-family="63" product-version="0400P200" operation-version="01.00.00">
+      <user-info>
+        <account-id>2</account-id>
+        <metadata>
+          <password>2</password>
+        </metadata>
+      </user-info>
+      <device-info uuid="SN8506665X00MNSHARP MX-3100N">
+        <serial-number>8506665X00</serial-number>
+        <modelname>SHARP MX-3100N</modelname>
+        <location></location>
+        <mac_address>00:22:F3:12:78:EE</mac_address>
+        <network_address>172.29.240.6</network_address>
+      </device-info>
+    </Authenticate>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

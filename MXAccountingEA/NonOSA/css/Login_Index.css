@@ -1,0 +1,369 @@
+body
+{
+	margin:0;
+	padding:0;
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:url("../Images/Bg.jpg") left top no-repeat scroll #04080e;
+}
+
+li
+{
+	list-style:none;
+}
+
+a:hover, a:visited, a
+{
+	text-decoration:none;
+}
+
+h1, h2
+{
+	text-transform:uppercase;
+	font-weight:bold;
+}
+
+
+/*Header Css Starts*/
+
+.top-header
+{
+	background-color:rgba(0,0,0,0.36);
+	width:100%;
+	z-index:99999;
+}
+
+.top-header img.logo
+{
+	margin:0 auto;
+    margin-top:10px !important;
+    /*min-width:170px;*/
+	transition:all .5s ease 0s;
+    -webkit-transition:all .5s ease 0s;
+    -moz-transition:all .5s ease 0s;
+    -o-transition:all .5s ease 0s;
+    -ms-transition:all .5s ease 0s;
+}
+
+.header-logo a
+{
+    float:left;
+}
+
+.navbar-default
+{
+  background-color:transparent;
+  border-color:transparent;
+  margin-bottom:0;
+  /*margin-top: 8px;*/
+  transition:all .5s ease 0s;
+  -webkit-transition:all .5s ease 0s;
+  -moz-transition:all .5s ease 0s;
+  -o-transition:all .5s ease 0s;
+  -ms-transition:all .5s ease 0s;
+}
+
+.nav-bar
+{
+	/*margin-top: 12px;*/
+}
+
+.navbar-toggle
+{
+	background-color:#b4b4b4;
+}
+
+.navbar-toggle span
+{
+	color:#fff;
+}
+
+ul.nav
+{
+	margin:0;
+	padding:0;
+}
+
+.navbar-default .navbar-nav>li>a
+{
+ 	font-size:15px;
+	color:#FFFFFF;
+	transition:all .7s ease 0s;
+	-webkit-transition:all .7s ease 0s;
+	-moz-transition:all .7s ease 0s;
+	-o-transition:all .7s ease 0s;
+	-ms-transition:all .7s ease 0s;
+	padding:14px 15px;
+    font-size:16px !important;
+	font-weight:normal;
+}
+
+.navbar-default .navbar-nav>li>a:hover
+{
+	background:transparent !important;
+	color:#FFFFFF !important;
+}
+
+.navbar-default .navbar-toggle .icon-bar
+{
+    background-color:#000;
+}
+
+.navbar-default .navbar-nav>li>a.active
+{
+    background:transparent !important;
+	color:#FFFFFF !important;
+}
+
+.navbar-default .navbar-toggle
+{
+    border-color:#cecece;
+    margin-top:4px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form
+{
+    border-color:#000000 !important;
+}
+
+.navbar-nav > li > a
+{
+    line-height:47px;
+}
+
+.Admin_Img
+{
+    background:url("../Images/Sprite_image.png") no-repeat -107px -80px;
+    height:26px;
+    width:23px;
+    float:left;
+    margin:9px 10px 0 0;
+}
+
+.Logout_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -166px -80px;
+    height:58px;
+    width:58px;
+    float:left;
+    margin:0 10px 0 10px;
+}
+
+.LogoutOuter
+{
+    padding:8px 5px 0 0 !important;
+    line-height:57px !important;
+}
+
+/*Header Css Ends*/
+
+
+/* Inner Page Css Starts */
+
+.InnerPadd
+{
+    padding:20px !important;
+}
+
+.TitleFont
+{
+    font-size:25px;
+    color:#FFFFFF;
+}
+
+.GridOuterDiv
+{
+    padding-top:20px;
+    padding-right:0px !important;
+    padding-left:0 !important;
+}
+
+.DataGrid
+{
+    border:1px solid #222935;
+}
+
+.DataGrid tr th
+{
+    background:rgba(0,0,0,0.6);
+    border-bottom:1px solid #222935;
+    font-size:19px;
+    font-weight:normal !important;
+    color:#FFFFFF;
+    height:50px;
+    padding-left:10px;  
+}
+
+.DataGrid tr th:first-child
+{
+    width:40px;
+    text-align:center;
+    padding-left:0;
+}
+
+.DataGrid tr
+{
+    background:rgba(0,0,0,0.2);
+}
+
+.DataGrid tr:nth-child(odd)
+{
+    background:rgba(0,0,0,0.6);
+}
+
+.DataGrid tr td
+{    
+    border-bottom:1px solid #222935;
+    font-size:15px;
+    color:#FFFFFF;
+    height:65px;
+    padding-left:10px;
+}
+
+.DataGrid tr td:first-child
+{    
+    padding-left:0px;
+    width:40px;
+    text-align:center;
+}
+
+.Print_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -10px -10px;
+    height:58px;
+    width:58px;
+    float:left;
+    /*margin:0 10px 0 10px;*/
+}
+
+.PrintandDelete_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -88px -10px;
+    height:58px;
+    width:58px;
+    float:left;
+    /*margin:0 10px 0 10px;*/
+}
+
+.FastPrint_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -166px -10px;
+    height:58px;
+    width:58px;
+    float:left;
+    /*margin:0 10px 0 10px;*/
+}
+
+.Delete_Icon
+{
+    background:url("../Images/Sprite_image.png") no-repeat -244px -10px;
+    height:58px;
+    width:58px;
+    float:left;
+    /*margin:0 10px 0 10px;*/
+}
+
+.ButtonsOuterDiv
+{
+    padding-top:20px;
+    padding-right:0 !important;
+    padding-left:25px !important;
+}
+
+.ButtonsOuterDiv ul
+{
+    padding:0;
+}
+
+.ButtonsOuterDiv ul li
+{
+    line-height:58px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.ButtonsOuterDiv ul li span
+{
+    margin:0 0 0 15px;
+    font-size:20px;
+    color:#FFFFFF;
+}
+
+/* Inner Page Css Ends */
+
+
+/* Responsive Area */
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+	.navbar-default .navbar-nav>li>a {font-size:15px; padding:14px 9px;}
+
+}
+
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+
+	.navbar-default .navbar-nav>li>a {font-size:16px; padding:10px 8px;}
+
+    .ButtonsOuterDiv {padding-left:15px !important;}
+
+    .ButtonsOuterDiv ul li span {margin:0 0 0 12px; font-size:17px;}
+          
+}
+
+@media (max-width: 992px) {
+
+    .top-header {padding-bottom:7px;}
+    
+}
+
+@media (max-width: 835px) {
+
+    .ButtonsOuterDiv ul li span {margin:0 0 0 10px; font-size:15px;}
+    
+}
+
+@media (max-width: 767px) {
+
+    .Admin_Img {margin:0px 10px 0 0;}
+
+    .Logout_Icon {background:url("../Images/Sprite_image.png") no-repeat -462px -9px; height:29px; width:28px; margin:0 10px 10px 10px;}
+
+    .ButtonsOuterDiv {padding-left:0px !important;}
+
+    .ButtonsOuterDiv ul li {margin-bottom:20px; float:left; padding-right:15px;}
+
+
+}
+
+/* xs */
+@media (min-width: 480px) and (max-width: 767px) {
+
+	.navbar-default .navbar-nav>li>a {font-size:20px;}
+
+    .navbar-default .navbar-toggle {margin:19px 29px 0 0;}
+
+    .navbar-nav > li > a {line-height:30px !important;}
+          
+}
+
+/* XS Portrait */
+@media (max-width: 479px) {
+
+	.top-header img.logo {margin:0 auto;}
+
+	.navbar-default .navbar-toggle {border-color:#fff; margin:19px 0 0 0 !important; right:28px;}
+
+	.navbar-default .navbar-nav>li>a {font-size:16px; text-align:left;}
+
+    .navbar-nav > li > a {line-height:25px !important;}
+        
+}
+
+@media (max-width: 400px) {
+
+    .ButtonsOuterDiv ul li {float:none;}
+
+}
+
+

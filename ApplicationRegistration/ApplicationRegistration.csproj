@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2E4EB78-929E-45D0-BECD-1259B8DAD8B8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApplicationRegistration</RootNamespace>
+    <AssemblyName>ApplicationRegistration</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppClientScripts\Editor.js" />
+    <Content Include="AppConfiguration\ConfigurationIndex.aspx" />
+    <Content Include="AppConfiguration\ConfigurePageAccess.aspx" />
+    <Content Include="AppConfiguration\CustomiseColumns.aspx" />
+    <Content Include="AppConfiguration\DisplayFields.aspx" />
+    <Content Include="AppConfiguration\ManageEmailContent.aspx" />
+    <Content Include="AppConfiguration\ManageHelpDeskContacts.aspx" />
+    <Content Include="AppConfiguration\ManageMasterData.aspx" />
+    <Content Include="AppConfiguration\ManageStates.aspx" />
+    <Content Include="AppConfiguration\OtherConfigurations.aspx" />
+    <Content Include="AppGraphics\GetProductLogo.aspx" />
+    <Content Include="AppImages\add.gif" />
+    <Content Include="AppImages\Add.jpg" />
+    <Content Include="AppImages\Assign Limits.jpg" />
+    <Content Include="AppImages\Assign Product.jpg" />
+    <Content Include="AppImages\Assign Roles.gif" />
+    <Content Include="AppImages\Assign User.jpg" />
+    <Content Include="AppImages\blank.gif" />
+    <Content Include="AppImages\body_center1.gif" />
+    <Content Include="AppImages\bottom_bott.gif" />
+    <Content Include="AppImages\bottom_bott1.gif" />
+    <Content Include="AppImages\bottom_center.gif" />
+    <Content Include="AppImages\bottom_left.gif" />
+    <Content Include="AppImages\bottom_left1.gif" />
+    <Content Include="AppImages\bottom_right.gif" />
+    <Content Include="AppImages\caledar.gif" />
+    <Content Include="AppImages\CloseMessage.gif" />
+    <Content Include="AppImages\ColorPrinter.gif" />
+    <Content Include="AppImages\CompanyLogo.gif" />
+    <Content Include="AppImages\delete.gif" />
+    <Content Include="AppImages\Delete.jpg" />
+    <Content Include="AppImages\doc.gif" />
+    <Content Include="AppImages\doc.jpg" />
+    <Content Include="AppImages\edit.gif" />
+    <Content Include="AppImages\Edit.jpg" />
+    <Content Include="AppImages\EditorImages\alignCenter.jpg" />
+    <Content Include="AppImages\EditorImages\alignLeft.jpg" />
+    <Content Include="AppImages\EditorImages\alignRight.jpg" />
+    <Content Include="AppImages\EditorImages\background.gif" />
+    <Content Include="AppImages\EditorImages\bgcolor.jpg" />
+    <Content Include="AppImages\EditorImages\bold.jpg" />
+    <Content Include="AppImages\EditorImages\Copy.gif" />
+    <Content Include="AppImages\EditorImages\cpicker.gif" />
+    <Content Include="AppImages\EditorImages\Cut.gif" />
+    <Content Include="AppImages\EditorImages\fontcolor.jpg" />
+    <Content Include="AppImages\EditorImages\img.jpg" />
+    <Content Include="AppImages\EditorImages\italic.jpg" />
+    <Content Include="AppImages\EditorImages\justifyall.gif" />
+    <Content Include="AppImages\EditorImages\Lindent.GIF" />
+    <Content Include="AppImages\EditorImages\link.jpg" />
+    <Content Include="AppImages\EditorImages\oList.jpg" />
+    <Content Include="AppImages\EditorImages\Paste.gif" />
+    <Content Include="AppImages\EditorImages\Print.gif" />
+    <Content Include="AppImages\EditorImages\Redo.gif" />
+    <Content Include="AppImages\EditorImages\reportwriter.gif" />
+    <Content Include="AppImages\EditorImages\Rindent.gif" />
+    <Content Include="AppImages\EditorImages\save.gif" />
+    <Content Include="AppImages\EditorImages\save.jpg" />
+    <Content Include="AppImages\EditorImages\smallcpicker.gif" />
+    <Content Include="AppImages\EditorImages\table.jpg" />
+    <Content Include="AppImages\EditorImages\underline.jpg" />
+    <Content Include="AppImages\EditorImages\Undo.gif" />
+    <Content Include="AppImages\EditorImages\uolist.jpg" />
+    <Content Include="AppImages\EditorImages\zoom+.gif" />
+    <Content Include="AppImages\EditorImages\zoom-.gif" />
+    <Content Include="AppImages\Error.jpg" />
+    <Content Include="AppImages\left_1.gif" />
+    <Content Include="AppImages\left_1_2_1.gif" />
+    <Content Include="AppImages\left_1_2_11.gif" />
+    <Content Include="AppImages\left_1_3.gif" />
+    <Content Include="AppImages\left_1_3_t.gif" />
+    <Content Include="AppImages\left_1_t.gif" />
+    <Content Include="AppImages\left_21.gif" />
+    <Content Include="AppImages\left_21_t.gif" />
+    <Content Include="AppImages\line.gif" />
+    <Content Include="AppImages\logo.gif" />
+    <Content Include="AppImages\Logo_sharp.gif" />
+    <Content Include="AppImages\mebereLogOn_icon.gif" />
+    <Content Include="AppImages\pg_first.gif" />
+    <Content Include="AppImages\pg_first_disabled.gif" />
+    <Content Include="AppImages\pg_last.gif" />
+    <Content Include="AppImages\pg_last_disabled.gif" />
+    <Content Include="AppImages\pg_next.gif" />
+    <Content Include="AppImages\pg_next_disabled.gif" />
+    <Content Include="AppImages\pg_prev.gif" />
+    <Content Include="AppImages\pg_prev_disabled.gif" />
+    <Content Include="AppImages\Print.gif" />
+    <Content Include="AppImages\ProductRegActLogo.gif" />
+    <Content Include="AppImages\tableHeaderRow.gif" />
+    <Content Include="AppImages\test.gif" />
+    <Content Include="AppImages\test1.gif" />
+    <Content Include="AppImages\test_t.gif" />
+    <Content Include="AppImages\test_t1.gif" />
+    <Content Include="AppImages\test_t2.gif" />
+    <Content Include="AppImages\test_t21.gif" />
+    <Content Include="AppImages\top_left.gif" />
+    <Content Include="AppImages\top_left_t.gif" />
+    <Content Include="AppImages\top_right.gif" />
+    <Content Include="AppImages\top_right1.gif" />
+    <Content Include="AppImages\top_right1_t.gif" />
+    <Content Include="AppImages\top_top.gif" />
+    <Content Include="AppImages\underConstruction.png" />
+    <Content Include="AppImages\unknownUser.gif" />
+    <Content Include="AppImages\userLogOn_icon.gif" />
+    <Content Include="AppImages\xls.gif" />
+    <Content Include="AppImages\xls.jpg" />
+    <Content Include="AppStyle\ApplicationStyle.css" />
+    <Content Include="AppStyle\style.css" />
+    <Content Include="DataCapture\ApplicationError.aspx" />
+    <Content Include="DataCapture\AssignRoles.aspx" />
+    <Content Include="DataCapture\Calendar.aspx" />
+    <Content Include="DataCapture\ChangePassword.aspx" />
+    <Content Include="DataCapture\LogOff.aspx" />
+    <Content Include="DataCapture\LogOn.aspx" />
+    <Content Include="DataCapture\ManageProducts.aspx" />
+    <Content Include="DataCapture\ManageRedist.aspx" />
+    <Content Include="DataCapture\ManageRegistration.aspx" />
+    <Content Include="DataCapture\ManageRoles.aspx" />
+    <Content Include="DataCapture\ManageSerialKeys.aspx" />
+    <Content Include="DataCapture\ManageUser.aspx" />
+    <Content Include="DataCapture\Options.aspx" />
+    <Content Include="DataCapture\Products.aspx" />
+    <Content Include="DataCapture\Redistributor.aspx" />
+    <Content Include="DataCapture\Roles.aspx" />
+    <Content Include="DataCapture\SelectProduct.aspx" />
+    <Content Include="DataCapture\UnderConstruction.aspx" />
+    <Content Include="DataCapture\Users.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Help\PageHelp.aspx" />
+    <Content Include="Help\UserGuide\Add.JPG" />
+    <Content Include="Help\UserGuide\Add_Edit_delete_Icons.JPG" />
+    <Content Include="Help\UserGuide\Add_User_Inof.JPG" />
+    <Content Include="Help\UserGuide\Assigning_Roles_to_users.JPG" />
+    <Content Include="Help\UserGuide\Assign_Roles_Icon.JPG" />
+    <Content Include="Help\UserGuide\Assign_Roles_to_user%28s%29.htm" />
+    <Content Include="Help\UserGuide\Change_Password.JPG" />
+    <Content Include="Help\UserGuide\Configure_web_application.JPG" />
+    <Content Include="Help\UserGuide\cshdat_robohelp.htm" />
+    <Content Include="Help\UserGuide\cshdat_webhelp.htm" />
+    <Content Include="Help\UserGuide\Delete.JPG" />
+    <Content Include="Help\UserGuide\Delete_a_Product.JPG" />
+    <Content Include="Help\UserGuide\Deleting_a_Product.htm" />
+    <Content Include="Help\UserGuide\Edit.JPG" />
+    <Content Include="Help\UserGuide\Editing_Product_Information.htm" />
+    <Content Include="Help\UserGuide\Edit_delete.JPG" />
+    <Content Include="Help\UserGuide\Edit_Product_info.JPG" />
+    <Content Include="Help\UserGuide\Edit_Profile.htm" />
+    <Content Include="Help\UserGuide\Edit_User_info.JPG" />
+    <Content Include="Help\UserGuide\eHelp.xml" />
+    <Content Include="Help\UserGuide\ehlpdhtm.js" />
+    <Content Include="Help\UserGuide\Email_config.JPG" />
+    <Content Include="Help\UserGuide\Email_Content_Configuration.htm" />
+    <Content Include="Help\UserGuide\Exporting_Product_Details.htm" />
+    <Content Include="Help\UserGuide\ExportTo.JPG" />
+    <Content Include="Help\UserGuide\ExportTo_Icon.JPG" />
+    <Content Include="Help\UserGuide\Export_to_product.JPG" />
+    <Content Include="Help\UserGuide\Getting_Started.htm" />
+    <Content Include="Help\UserGuide\Login.htm" />
+    <Content Include="Help\UserGuide\Login.JPG" />
+    <Content Include="Help\UserGuide\LogOff.htm" />
+    <Content Include="Help\UserGuide\Logoff.JPG" />
+    <Content Include="Help\UserGuide\Lookup_tables.JPG" />
+    <Content Include="Help\UserGuide\Manage_Field_Access_Definition.htm" />
+    <Content Include="Help\UserGuide\Manage_Lookup_tables.htm" />
+    <Content Include="Help\UserGuide\Manage_Lookup_tables.JPG" />
+    <Content Include="Help\UserGuide\Manage_Role.htm" />
+    <Content Include="Help\UserGuide\Manage_Support_Contact_Details.JPG" />
+    <Content Include="Help\UserGuide\Manage_User_Edit_Profile.htm" />
+    <Content Include="Help\UserGuide\Managing_Field_Access_Definition.JPG" />
+    <Content Include="Help\UserGuide\Managing_Product_Definition.htm" />
+    <Content Include="Help\UserGuide\Managing_Registration_details.htm" />
+    <Content Include="Help\UserGuide\Managing_Registration_Information.JPG" />
+    <Content Include="Help\UserGuide\Managing_Roles.JPG" />
+    <Content Include="Help\UserGuide\Managing_SerialKey_definition.JPG" />
+    <Content Include="Help\UserGuide\Managing_Serial_Key_Definition.htm" />
+    <Content Include="Help\UserGuide\NewProducts_definition.JPG" />
+    <Content Include="Help\UserGuide\Non_-_Functional_Requirements.htm" />
+    <Content Include="Help\UserGuide\Options.htm" />
+    <Content Include="Help\UserGuide\Options.JPG" />
+    <Content Include="Help\UserGuide\Other_Configurations.htm" />
+    <Content Include="Help\UserGuide\Other_Configurations.JPG" />
+    <Content Include="Help\UserGuide\Portal_Admin.htm" />
+    <Content Include="Help\UserGuide\PrintIcon.JPG" />
+    <Content Include="Help\UserGuide\Printing_a_Registration_Record.JPG" />
+    <Content Include="Help\UserGuide\Products1.JPG" />
+    <Content Include="Help\UserGuide\Product_Added.JPG" />
+    <Content Include="Help\UserGuide\Product_Admin.htm" />
+    <Content Include="Help\UserGuide\Product_Customer_Representative.htm" />
+    <Content Include="Help\UserGuide\Product_Definition.htm" />
+    <Content Include="Help\UserGuide\Product_deleted_successfully.JPG" />
+    <Content Include="Help\UserGuide\Registration-and-Activation.htm" />
+    <Content Include="Help\UserGuide\Registration-and-Activation_csh.htm" />
+    <Content Include="Help\UserGuide\Registration-and-Activation_rhc.htm" />
+    <Content Include="Help\UserGuide\Registration_and_Activation.css" />
+    <Content Include="Help\UserGuide\Registration_and_Activation.htm" />
+    <Content Include="Help\UserGuide\Registration_and_Activation_ns.css" />
+    <Content Include="Help\UserGuide\Registration_Details.htm" />
+    <Content Include="Help\UserGuide\Registration_Details.JPG" />
+    <Content Include="Help\UserGuide\Report_ActivationCode.JPG" />
+    <Content Include="Help\UserGuide\Report_Generator_for_Registration_Details.htm" />
+    <Content Include="Help\UserGuide\Report_RegDates.JPG" />
+    <Content Include="Help\UserGuide\Roles_info.JPG" />
+    <Content Include="Help\UserGuide\Role_Definition.htm" />
+    <Content Include="Help\UserGuide\SerialKeys.JPG" />
+    <Content Include="Help\UserGuide\Serial_key_Definition.htm" />
+    <Content Include="Help\UserGuide\Support_Contact_Details.htm" />
+    <Content Include="Help\UserGuide\Support_Contact_details.JPG" />
+    <Content Include="Help\UserGuide\Update_Profile.JPG" />
+    <Content Include="Help\UserGuide\Users.JPG" />
+    <Content Include="Help\UserGuide\User_Definition.htm" />
+    <Content Include="Help\UserGuide\webhelp.cab" />
+    <Content Include="Help\UserGuide\webhelp.jar" />
+    <Content Include="Help\UserGuide\Web_Application_Configuration.htm" />
+    <Content Include="Help\UserGuide\whcshdata.htm" />
+    <Content Include="Help\UserGuide\whcsh_home.htm" />
+    <Content Include="Help\UserGuide\whdata\whftdata.js" />
+    <Content Include="Help\UserGuide\whdata\whftdata0.htm" />
+    <Content Include="Help\UserGuide\whdata\whfts.htm" />
+    <Content Include="Help\UserGuide\whdata\whfts.js" />
+    <Content Include="Help\UserGuide\whdata\whfwdata.js" />
+    <Content Include="Help\UserGuide\whdata\whfwdata0.htm" />
+    <Content Include="Help\UserGuide\whdata\whfwdata1.htm" />
+    <Content Include="Help\UserGuide\whdata\whgdata.js" />
+    <Content Include="Help\UserGuide\whdata\whglo.htm" />
+    <Content Include="Help\UserGuide\whdata\whglo.js" />
+    <Content Include="Help\UserGuide\whdata\whidata.js" />
+    <Content Include="Help\UserGuide\whdata\whidx.htm" />
+    <Content Include="Help\UserGuide\whdata\whidx.js" />
+    <Content Include="Help\UserGuide\whdata\whtdata.js" />
+    <Content Include="Help\UserGuide\whdata\whtdata0.htm" />
+    <Content Include="Help\UserGuide\whdata\whtoc.htm" />
+    <Content Include="Help\UserGuide\whdata\whtoc.js" />
+    <Content Include="Help\UserGuide\whestart.ico" />
+    <Content Include="Help\UserGuide\whfbody.htm" />
+    <Content Include="Help\UserGuide\whfdhtml.htm" />
+    <Content Include="Help\UserGuide\whfform.htm" />
+    <Content Include="Help\UserGuide\whfhost.js" />
+    <Content Include="Help\UserGuide\whform.js" />
+    <Content Include="Help\UserGuide\whframes.js" />
+    <Content Include="Help\UserGuide\whgbody.htm" />
+    <Content Include="Help\UserGuide\whgdata\whexpbar.gif" />
+    <Content Include="Help\UserGuide\whgdata\whlstf0.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstf1.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstf2.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstf3.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl0.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl1.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl10.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl11.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl12.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl13.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl14.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl15.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl16.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl17.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl18.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl19.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl2.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl20.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl21.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl3.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl4.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl5.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl6.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl7.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl8.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstfl9.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstg0.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlsti0.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt0.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt1.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt10.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt2.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt3.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt4.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt5.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt6.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt7.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt8.htm" />
+    <Content Include="Help\UserGuide\whgdata\whlstt9.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvf30.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvf31.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvf32.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvf33.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvl31.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvl32.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvl33.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvp30.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvp31.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvp32.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvp33.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvt30.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvt31.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvt32.htm" />
+    <Content Include="Help\UserGuide\whgdata\whnvt33.htm" />
+    <Content Include="Help\UserGuide\whgdef.htm" />
+    <Content Include="Help\UserGuide\whgdhtml.htm" />
+    <Content Include="Help\UserGuide\whghost.js" />
+    <Content Include="Help\UserGuide\whhost.js" />
+    <Content Include="Help\UserGuide\whibody.htm" />
+    <Content Include="Help\UserGuide\whidhtml.htm" />
+    <Content Include="Help\UserGuide\whiform.htm" />
+    <Content Include="Help\UserGuide\whihost.js" />
+    <Content Include="Help\UserGuide\whlang.js" />
+    <Content Include="Help\UserGuide\whmozemu.js" />
+    <Content Include="Help\UserGuide\whmsg.js" />
+    <Content Include="Help\UserGuide\whnjs.htm" />
+    <Content Include="Help\UserGuide\whphost.js" />
+    <Content Include="Help\UserGuide\whproj.htm" />
+    <Content Include="Help\UserGuide\whproj.js" />
+    <Content Include="Help\UserGuide\whproj.xml" />
+    <Content Include="Help\UserGuide\whproxy.js" />
+    <Content Include="Help\UserGuide\whres.xml" />
+    <Content Include="Help\UserGuide\whrstart.ico" />
+    <Content Include="Help\UserGuide\whskin_banner.htm" />
+    <Content Include="Help\UserGuide\whskin_blank.htm" />
+    <Content Include="Help\UserGuide\whskin_frmset01.htm" />
+    <Content Include="Help\UserGuide\whskin_frmset010.htm" />
+    <Content Include="Help\UserGuide\whskin_homepage.htm" />
+    <Content Include="Help\UserGuide\whskin_info.htm" />
+    <Content Include="Help\UserGuide\whskin_mbars.htm" />
+    <Content Include="Help\UserGuide\whskin_papplet.htm" />
+    <Content Include="Help\UserGuide\whskin_pdhtml.htm" />
+    <Content Include="Help\UserGuide\whskin_pickup.htm" />
+    <Content Include="Help\UserGuide\whskin_plist.htm" />
+    <Content Include="Help\UserGuide\whskin_tbars.htm" />
+    <Content Include="Help\UserGuide\whskin_tw.htm" />
+    <Content Include="Help\UserGuide\whstart.ico" />
+    <Content Include="Help\UserGuide\whstart.js" />
+    <Content Include="Help\UserGuide\whstub.js" />
+    <Content Include="Help\UserGuide\whst_topics.xml" />
+    <Content Include="Help\UserGuide\whtbar.js" />
+    <Content Include="Help\UserGuide\whtdhtml.htm" />
+    <Content Include="Help\UserGuide\whthost.js" />
+    <Content Include="Help\UserGuide\whtopic.js" />
+    <Content Include="Help\UserGuide\wht_abge.jpg" />
+    <Content Include="Help\UserGuide\wht_abgi.jpg" />
+    <Content Include="Help\UserGuide\wht_abgw.jpg" />
+    <Content Include="Help\UserGuide\wht_abte.jpg" />
+    <Content Include="Help\UserGuide\wht_abti.jpg" />
+    <Content Include="Help\UserGuide\wht_abtw.jpg" />
+    <Content Include="Help\UserGuide\wht_fts_h.gif" />
+    <Content Include="Help\UserGuide\wht_fts_n.gif" />
+    <Content Include="Help\UserGuide\wht_glo_h.gif" />
+    <Content Include="Help\UserGuide\wht_glo_n.gif" />
+    <Content Include="Help\UserGuide\wht_go.gif" />
+    <Content Include="Help\UserGuide\wht_hide.gif" />
+    <Content Include="Help\UserGuide\wht_idx_h.gif" />
+    <Content Include="Help\UserGuide\wht_idx_n.gif" />
+    <Content Include="Help\UserGuide\wht_logo1.gif" />
+    <Content Include="Help\UserGuide\wht_logo2.gif" />
+    <Content Include="Help\UserGuide\wht_next.gif" />
+    <Content Include="Help\UserGuide\wht_next_g.gif" />
+    <Content Include="Help\UserGuide\wht_prev.gif" />
+    <Content Include="Help\UserGuide\wht_prev_g.gif" />
+    <Content Include="Help\UserGuide\wht_spac.gif" />
+    <Content Include="Help\UserGuide\wht_sync.gif" />
+    <Content Include="Help\UserGuide\wht_tab0.gif" />
+    <Content Include="Help\UserGuide\wht_tab1.gif" />
+    <Content Include="Help\UserGuide\wht_tab2.gif" />
+    <Content Include="Help\UserGuide\wht_tab3.gif" />
+    <Content Include="Help\UserGuide\wht_tab4.gif" />
+    <Content Include="Help\UserGuide\wht_tab5.gif" />
+    <Content Include="Help\UserGuide\wht_tab6.gif" />
+    <Content Include="Help\UserGuide\wht_tab7.gif" />
+    <Content Include="Help\UserGuide\wht_tab8.gif" />
+    <Content Include="Help\UserGuide\wht_toc1.gif" />
+    <Content Include="Help\UserGuide\wht_toc2.gif" />
+    <Content Include="Help\UserGuide\wht_toc3.gif" />
+    <Content Include="Help\UserGuide\wht_toc4.gif" />
+    <Content Include="Help\UserGuide\wht_toc_h.gif" />
+    <Content Include="Help\UserGuide\wht_toc_n.gif" />
+    <Content Include="Help\UserGuide\wht_ws.gif" />
+    <Content Include="Help\UserGuide\wht_ws_g.gif" />
+    <Content Include="Help\UserGuide\whutils.js" />
+    <Content Include="Help\UserGuide\whver.js" />
+    <Content Include="Help\UserGuide\whxdata\whftdata0.xml" />
+    <Content Include="Help\UserGuide\whxdata\whfts.xml" />
+    <Content Include="Help\UserGuide\whxdata\whfwdata0.xml" />
+    <Content Include="Help\UserGuide\whxdata\whfwdata1.xml" />
+    <Content Include="Help\UserGuide\whxdata\whglo.xml" />
+    <Content Include="Help\UserGuide\whxdata\whidx.xml" />
+    <Content Include="Help\UserGuide\whxdata\whtdata0.xml" />
+    <Content Include="Help\UserGuide\whxdata\whtoc.xml" />
+    <Content Include="KeyValidators\SKV.dll" />
+    <Content Include="obj\ProductRegistration.csproj.FileList.txt" />
+    <Content Include="obj\ProductRegistration.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\ProductRegistration.dll" />
+    <Content Include="obj\Release\ProductRegistration.pdb" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.ErrorMessages.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.FailureMessages.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.Labels.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.Messages.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.RegistrationWSMessages.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.SuccessMessages.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.Warnings.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\App_GlobalResources.WebServiceMessages.Designer.cs.dll" />
+    <Content Include="Others\SupportContactDetails.aspx" />
+    <Content Include="Reports\ReportIndex.aspx" />
+    <Content Include="SDSec.dll" />
+    <Content Include="Views\PrintRegistrationDetails.aspx" />
+    <Content Include="Views\RegistrationDetails.aspx" />
+    <Content Include="Views\SerialKeys.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="WebServices\ProductActivation.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppCode\DataAccessManager.cs" />
+    <Compile Include="AppCode\DataManager.cs" />
+    <Compile Include="AppCode\WebConfiguration.cs" />
+    <Compile Include="AppCode\WebLibrary.cs" />
+    <Compile Include="AppConfiguration\ConfigurationIndex.aspx.cs">
+      <DependentUpon>ConfigurationIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\ConfigurationIndex.aspx.designer.cs">
+      <DependentUpon>ConfigurationIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\ConfigurePageAccess.aspx.cs">
+      <DependentUpon>ConfigurePageAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\ConfigurePageAccess.aspx.designer.cs">
+      <DependentUpon>ConfigurePageAccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\CustomiseColumns.aspx.cs">
+      <DependentUpon>CustomiseColumns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\CustomiseColumns.aspx.designer.cs">
+      <DependentUpon>CustomiseColumns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\DisplayFields.aspx.cs">
+      <DependentUpon>DisplayFields.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\DisplayFields.aspx.designer.cs">
+      <DependentUpon>DisplayFields.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageEmailContent.aspx.cs">
+      <DependentUpon>ManageEmailContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageEmailContent.aspx.designer.cs">
+      <DependentUpon>ManageEmailContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageHelpDeskContacts.aspx.cs">
+      <DependentUpon>ManageHelpDeskContacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageHelpDeskContacts.aspx.designer.cs">
+      <DependentUpon>ManageHelpDeskContacts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageMasterData.aspx.cs">
+      <DependentUpon>ManageMasterData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageMasterData.aspx.designer.cs">
+      <DependentUpon>ManageMasterData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageStates.aspx.cs">
+      <DependentUpon>ManageStates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\ManageStates.aspx.designer.cs">
+      <DependentUpon>ManageStates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration\OtherConfigurations.aspx.cs">
+      <DependentUpon>OtherConfigurations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppConfiguration\OtherConfigurations.aspx.designer.cs">
+      <DependentUpon>OtherConfigurations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppGraphics\GetProductLogo.aspx.cs">
+      <DependentUpon>GetProductLogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppGraphics\GetProductLogo.aspx.designer.cs">
+      <DependentUpon>GetProductLogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppMaster\Header.Master.cs">
+      <DependentUpon>Header.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppMaster\Header.Master.designer.cs">
+      <DependentUpon>Header.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AppMaster\LogOn.Master.cs">
+      <DependentUpon>LogOn.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppMaster\LogOn.Master.designer.cs">
+      <DependentUpon>LogOn.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AppMaster\Nothing.Master.cs">
+      <DependentUpon>Nothing.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppMaster\Nothing.Master.designer.cs">
+      <DependentUpon>Nothing.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\FailureMessages1.designer.cs">
+      <DependentUpon>FailureMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="App_GlobalResources\Labels1.designer.cs">
+      <DependentUpon>Labels.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="App_GlobalResources\Messages1.designer.cs">
+      <DependentUpon>Messages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="App_GlobalResources\SuccessMessages1.designer.cs">
+      <DependentUpon>SuccessMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="App_GlobalResources\Warnings1.designer.cs">
+      <DependentUpon>Warnings.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="App_GlobalResources\WebServiceMessages1.designer.cs">
+      <DependentUpon>WebServiceMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DataCapture\ApplicationError.aspx.cs">
+      <DependentUpon>ApplicationError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ApplicationError.aspx.designer.cs">
+      <DependentUpon>ApplicationError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\AssignProductstoRedist.aspx.cs">
+      <DependentUpon>AssignProductstoRedist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\AssignProductstoRedist.aspx.designer.cs">
+      <DependentUpon>AssignProductstoRedist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\AssignRedistLimits.aspx.cs">
+      <DependentUpon>AssignRedistLimits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\AssignRedistLimits.aspx.designer.cs">
+      <DependentUpon>AssignRedistLimits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\AssignRoles.aspx.cs">
+      <DependentUpon>AssignRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\AssignRoles.aspx.designer.cs">
+      <DependentUpon>AssignRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\AssignUsertoRedist.aspx.cs">
+      <DependentUpon>AssignUsertoRedist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\AssignUsertoRedist.aspx.designer.cs">
+      <DependentUpon>AssignUsertoRedist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\Calendar.aspx.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\Calendar.aspx.designer.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\LogOff.aspx.cs">
+      <DependentUpon>LogOff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\LogOff.aspx.designer.cs">
+      <DependentUpon>LogOff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\LogOn.aspx.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\LogOn.aspx.designer.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ManageProducts.aspx.cs">
+      <DependentUpon>ManageProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ManageProducts.aspx.designer.cs">
+      <DependentUpon>ManageProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ManageRedist.aspx.cs">
+      <DependentUpon>ManageRedist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ManageRedist.aspx.designer.cs">
+      <DependentUpon>ManageRedist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ManageRegistration.aspx.cs">
+      <DependentUpon>ManageRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ManageRegistration.aspx.designer.cs">
+      <DependentUpon>ManageRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ManageRoles.aspx.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ManageRoles.aspx.designer.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ManageSerialKeys.aspx.cs">
+      <DependentUpon>ManageSerialKeys.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ManageSerialKeys.aspx.designer.cs">
+      <DependentUpon>ManageSerialKeys.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\Options.aspx.cs">
+      <DependentUpon>Options.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\Options.aspx.designer.cs">
+      <DependentUpon>Options.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\Redistributor.aspx.cs">
+      <DependentUpon>Redistributor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\Redistributor.aspx.designer.cs">
+      <DependentUpon>Redistributor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\SelectProduct.aspx.cs">
+      <DependentUpon>SelectProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\SelectProduct.aspx.designer.cs">
+      <DependentUpon>SelectProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\UnderConstruction.aspx.cs">
+      <DependentUpon>UnderConstruction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\UnderConstruction.aspx.designer.cs">
+      <DependentUpon>UnderConstruction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCapture\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCapture\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Help\PageHelp.aspx.cs">
+      <DependentUpon>PageHelp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\PageHelp.aspx.designer.cs">
+      <DependentUpon>PageHelp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Others\SupportContactDetails.aspx.cs">
+      <DependentUpon>SupportContactDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Others\SupportContactDetails.aspx.designer.cs">
+      <DependentUpon>SupportContactDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportIndex.aspx.cs">
+      <DependentUpon>ReportIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportIndex.aspx.designer.cs">
+      <DependentUpon>ReportIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrintRegistrationDetails.aspx.cs">
+      <DependentUpon>PrintRegistrationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PrintRegistrationDetails.aspx.designer.cs">
+      <DependentUpon>PrintRegistrationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationDetails.aspx.cs">
+      <DependentUpon>RegistrationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RegistrationDetails.aspx.designer.cs">
+      <DependentUpon>RegistrationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SerialKeys.aspx.cs">
+      <DependentUpon>SerialKeys.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SerialKeys.aspx.designer.cs">
+      <DependentUpon>SerialKeys.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\ProductActivation.asmx.cs">
+      <DependentUpon>ProductActivation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AppImages\EditorImages\Thumbs.db" />
+    <None Include="AppImages\Thumbs.db" />
+    <Content Include="AppMaster\Header.Master" />
+    <Content Include="AppMaster\LogOn.Master" />
+    <Content Include="AppMaster\Nothing.Master" />
+    <Content Include="App_GlobalResources\ErrorMessages.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\FailureMessages.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>FailureMessages1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Labels.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Labels1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Messages.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Messages1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\SuccessMessages.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SuccessMessages1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Warnings.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Warnings1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\WebServiceMessages.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WebServiceMessages1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataCapture\AssignProductstoRedist.aspx" />
+    <Content Include="DataCapture\AssignRedistLimits.aspx" />
+    <Content Include="DataCapture\AssignUsertoRedist.aspx" />
+    <None Include="Help\UserGuide\Registration-and-Activation.log" />
+    <None Include="Help\UserGuide\RoboHHRE.lng" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\Refactor\" />
+    <Folder Include="TempReports\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>42300</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/ApplicationRegistration</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

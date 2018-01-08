@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SOAP-ENV:Body>
+    <Authorize generic="1.0.0.19" product-family="71" product-version="0200j300" operation-version="01.00.00" xmlns="urn:schemas-sc-jp:mfp:osa-1-1">
+      <mfp-job-id>
+        <JobId uid="SN9500210700JB000005921">
+          <job-type>SCAN</job-type>
+          <UISessionId/>
+        </JobId>
+      </mfp-job-id>
+      <user-info>
+        <account-id>2</account-id>
+      </user-info>
+      <device-info uuid="SN9500210700MNSHARP MX-M453N">
+        <serial-number>9500210700</serial-number>
+        <modelname>SHARP MX-M453N</modelname>
+        <location/>
+        <mac_address>00:22:F3:89:43:C9</mac_address>
+        <network_address>172.29.240.101</network_address>
+      </device-info>
+      <job-settings>
+        <job-mode sys-name="JOB_MODE_E_MAIL_SEND"/>
+      </job-settings>
+    </Authorize>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

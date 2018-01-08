@@ -1,0 +1,241 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//  File Name:    SdCustInfoDlg.rul
+//
+//  Description:  This file contains the InstallShield script for the SdCustomerInformation
+//                dialog function.
+//
+/////////////////////////////////////////////////////////////////////////////////////////
+ 
+
+#ifndef _SDCUSTINFO_RUL_
+#define _SDCUSTINFO_RUL_
+
+#include "Dialogs.h"
+#include "Misc.h"
+#include "CustomDlg.h"
+#include "Winapi.h"
+#include "ISRTDefs.h"
+#include "Silent.h"
+#include "CDlgDefs.h"
+#include "sdrc.h"
+#include "sdint.h"
+#include "Sysvars.h"
+
+#include "strpriv.h"
+#include "Enable.h"
+#include "uidefs.h"
+#include "OSInfo.h"
+#include "Is.h"
+
+prototype SdRegEnableButton( INT, INT, BYREF STRING, BYREF STRING );
+
+function  SdCustomerInformation( szTitle, svName, svCompany, nvUser )
+          STRING  szDlg, szTemp, svText, szTextSub,svInitialUserName;
+          NUMBER  nId, nMessage, nTemp, nSdDialog,nSdCustInfo;
+          HWND    hwndDlg, hwndItem;
+          BOOL    bDone;
+        
+          begin
+
+          szDlg     = SD_DLG_CUSTOMERINFO;
+          nSdDialog = SD_NDLG_CUSTOMERINFO;  
+          nSdCustInfo = SD_NDLG_CUSTOMERINFO;
+
+		  szTextSub = "USERNAME";
+
+          // record data produced by this dialog
+          if (MODE=SILENTMODE) then
+             SdMakeName( szAppKey, szDlg, szTitle, nSdCustInfo );
+             SilentReadData( szAppKey, "Result", DATA_NUMBER, szTemp, nId );
+             if ((nId != BACK) && (nId != CANCEL)) then
+               SilentReadData( szAppKey, "szName", DATA_STRING, svName, nTemp );
+               SilentReadData( szAppKey, "szCompany", DATA_STRING, svCompany, nTemp );
+               SilentReadData( szAppKey, "nvUser", DATA_NUMBER, szTemp, nvUser);
+             endif;
+
+             return nId;
+          endif;
+
+          // ensure general initialization is complete
+          if (!bSdInit) then
+             SdInit();
+          endif;
+
+          if ( EzDefineDialog( szDlg, "", "", nSdDialog ) = DLG_ERR) then
+              return -1;
+          endif;
+
+          // Loop in dialog until the user selects a standard button
+          bDone = FALSE;
+
+          while (!bDone)
+
+              nId = WaitOnDialog( szDlg );
+
+              switch(nId)
+              case DLG_INIT:                   
+		   if( !StrLengthChars( svName ) ) then
+		   svName = IFX_PRODUCT_REGISTEREDOWNER;
+                   endif;
+		if( svName = "Microsoft")then
+                   svName = "";                 
+                   endif;
+                    if( svName = "Microsoft")then
+                   svName = "";                 
+                   endif;
+
+                   if( !StrLengthChars( svCompany ) ) then
+                       svCompany = IFX_PRODUCT_REGISTEREDCOMPANY;
+                   endif;             
+                    if( svCompany = "Microsoft")then
+                   svCompany = "";                 
+                   endif;
+		if( svCompany = "Microsoft")then
+                   svCompany = "";                 
+                   endif;
+
+                   CtrlSetText( szDlg, SD_EDIT_NAME, svName );
+                   CtrlSetText( szDlg, SD_EDIT_COMPANY, svCompany );
+
+                   hwndDlg = CmdGetHwndDlg( szDlg );
+                   SdGeneralInit( szDlg, hwndDlg, STYLE_BOLD, szSdProduct );
+
+                   SdSetDlgTitle(szDlg, hwndDlg, szTitle);
+
+				   if (DISABLE_PERUSERBTN) then
+						hwndItem = GetDlgItem( hwndDlg, IDC_RADIO_ME );
+						EnableWindow(hwndItem, FALSE);				
+				   endif;
+
+				   if (!(!SYSINFO.WINNT.bWinNT || Is(USER_ADMINISTRATOR,"") || Is(USER_POWERUSER,"")) || DISABLE_ALLUSERBTN) then
+						hwndItem = GetDlgItem( hwndDlg, IDC_RADIO_ALL );
+						EnableWindow(hwndItem, FALSE);	
+				   endif;
+
+				   if (ALLUSERS) then
+					   CtrlSetState (szDlg, IDC_RADIO_ALL, BUTTON_CHECKED);				
+				   else
+					   CtrlSetState (szDlg, IDC_RADIO_ME, BUTTON_CHECKED);	   
+				   endif;
+
+				   CtrlGetText(szDlg, IDC_RADIO_ME, svText);
+				   svInitialUserName = svText;
+					   
+				   if( svName != "" ) then				          
+					   TextSub.Value(szTextSub) = svName;
+				   endif;
+
+				   TextSub.Substitute(svText);
+                   CtrlSetText(szDlg, IDC_RADIO_ME, svText);
+
+              case SD_EDIT_NAME:
+                   nMessage = CtrlGetSubCommand(szDlg);
+                   if(nMessage = EDITBOX_CHANGE) then
+                       CtrlGetText(szDlg, SD_EDIT_NAME, svName);
+
+					   TextSub.Value(szTextSub) = svName;
+					  
+					   svText = svInitialUserName;
+					   TextSub.Substitute(svText);
+                       CtrlSetText(szDlg, IDC_RADIO_ME, svText);
+
+                       SdRegEnableButton( hwndDlg, NEXT, svName, svCompany );
+                   endif;
+
+
+              case SD_EDIT_COMPANY:
+                   nMessage = CtrlGetSubCommand(szDlg);
+                   if(nMessage = EDITBOX_CHANGE) then
+                       CtrlGetText(szDlg, SD_EDIT_COMPANY, svCompany);
+                       SdRegEnableButton( hwndDlg, NEXT, svName, svCompany );
+                   endif;
+
+
+              case SD_PBUT_CONTINUE:
+                   nId    = NEXT;
+                   bDone  = TRUE;
+   				   IFX_PRODUCT_REGISTEREDOWNER = svName;
+                   IFX_PRODUCT_REGISTEREDCOMPANY = svCompany;
+
+              case BACK:
+                   nId    = BACK;
+                   bDone  = TRUE;
+
+              case BACK:
+                   nId    = BACK;
+                   bDone  = TRUE;
+
+              case DLG_ERR:
+                   SdError( -1, "SdCustomerInfo" );
+                   nId    = -1;
+                   bDone  = TRUE;
+
+              case DLG_CLOSE:
+                   SdCloseDlg( hwndDlg, nId, bDone );
+
+              default:
+                   // check standard handling
+                   if (SdIsStdButton( nId ) && SdDoStdButton( nId )) then
+                       bDone = TRUE;
+                   endif;
+              endswitch;
+
+          endwhile;
+
+		  if (CtrlGetState (szDlg, IDC_RADIO_ALL) = BUTTON_CHECKED) then
+		      ALLUSERS = TRUE;
+		      nvUser = 1;
+		  else
+		      ALLUSERS = FALSE;
+		      nvUser = 0;
+		  endif;
+
+          EndDialog( szDlg );
+          ReleaseDialog( szDlg );
+
+          SdUnInit( );
+
+          // record data produced by this dialog
+          if (MODE=RECORDMODE) then
+               SdMakeName( szAppKey, szDlg, szTitle, nSdCustInfo );
+               SilentWriteData( szAppKey, "szName", DATA_STRING, svName, 0 );
+               SilentWriteData( szAppKey, "szCompany", DATA_STRING, svCompany, 0 );
+			   SilentWriteData( szAppKey, "nvUser", DATA_NUMBER, "", nvUser);
+               SilentWriteData( szAppKey, "Result", DATA_NUMBER, "", nId );
+          endif;
+
+          return nId;
+
+          end;
+
+/*--------------------------------------------------------------------------*/
+/*                                                                          */
+/*   Function:     SdRegEnableButton                                        */
+/*                                                                          */
+/*   Description:  This funciton will enable or disable a certain button in */
+/*                 SdRegisterUser dialog.                                   */
+/*                                                                          */
+/*--------------------------------------------------------------------------*/
+function  SdRegEnableButton( hwndDlg, nControlID, svName, svCompany )
+          HWND  hwndItem;
+        
+          begin
+
+          hwndItem = GetDlgItem( hwndDlg, nControlID );
+          if (!IsWindow( hwndItem)) then return FALSE; endif;
+
+         // StrRemoveSpaces( svCompany );
+          //StrRemoveSpaces( svName );
+          /*
+          if(svName = "" || svCompany = "") then
+              EnableWindow( hwndItem, FALSE);
+          else
+              EnableWindow( hwndItem, TRUE);
+          endif;
+          */
+              EnableWindow( hwndItem, TRUE);
+          
+          end;
+
+#endif
